@@ -1,0 +1,29 @@
+1)  clone git project from git.triad.local/NorthropGrumman/FDAExplorer
+
+2)  install node from https://nodejs.org
+      -- this will install node and npm (node package manager)
+
+3)  install express globally using "npm install -g express"
+      -- the -g flag will install the node module globally,
+          such as in the "User\AppData\Roaming\npm\node_modules" directory
+      -- installing a module without the -g flag will place it in the
+          node_modules directory inside of the project
+
+4)  install bower globally using "npm install -g bower"
+      -- bower is the front end package manager, where a lot of the
+          angularjs plug-ins/dependencies/tools can be grabbed from
+
+5)  install grunt globally using "npm install -g grunt-cli"
+      -- grunt is a useful tool for running the node server and
+          doing some debugging. I think there are different profiles
+          that you can configure to run the node server with during
+          development
+
+6)  open a command window, cd to the "src/server" directory, and run
+    "npm install"
+
+7)  cd to the "src/client" directory and run "npm install && bower install"
+
+8)  to stand up the web app, cd to the "src/client" directory and run
+    "grunt serve"
+      -- this should stand it up at localhost:9000/#/
