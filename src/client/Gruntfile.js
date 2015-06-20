@@ -25,7 +25,11 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     // Project settings
-    yeoman: appConfig,
+    yeoman: {
+      // configurable paths
+      app: require('./bower.json').appPath || 'app',
+      dist: '../server/dist' 
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -40,11 +44,10 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      //NOT USING KARMA
-      //jsTest: {
-      //  files: ['test/spec/{,*/}*.js'],
-      //  tasks: ['newer:jshint:test', 'karma']
-      //},
+      jsTest: {
+        files: ['test/spec/{,*/}*.js'],
+        tasks: ['newer:jshint:test', 'karma']
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -181,9 +184,8 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath:  /\.\.\//
-      }
-      //NOT USING KARMA
-      /*test: {
+      },
+      test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
         ignorePath:  /\.\.\//,
@@ -198,7 +200,7 @@ module.exports = function (grunt) {
               }
             }
           }
-      }*/
+      }
     },
 
     // Renames files for browser caching purposes
@@ -375,16 +377,15 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    }
+    },
 
-    // WE MIGHT NOT BE USING KARMA
     // Test settings
-    /*karma: {
+    karma: {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }*/
+    }
   });
 
 

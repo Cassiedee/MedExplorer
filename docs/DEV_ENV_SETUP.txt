@@ -24,6 +24,27 @@
 
 7)  cd to the "src/client" directory and run "npm install && bower install"
 
-8)  to stand up the web app, cd to the "src/client" directory and run
-    "grunt serve"
-      -- this should stand it up at localhost:9000/#/
+8)  to build the front end, you must cd to the "src/client" directory
+    and run "grunt"
+      -- this will compile all of the front end files into the
+          "src/server/dist" folder
+
+9)  to run the node server, cd to the "src/server" directory and
+    run "nodemon app.js". Then visit "http://localhost:3000" in your browser.
+      -- this starts the node server, which hosts the front end out of the
+          "src/server/dist" folder onto localhost over port 3000
+
+NOTE: nodemon will re-deploy the node server when any changes are made,
+      automatically
+      
+      while developing the client, you can use grunt to host and update any
+      changes you make to the front end code, automatically. To do this, cd
+      to the "src/client" directory and run "grunt serve". This should open
+      a window in your browser at "localhost:9000". This window will
+      automatically refresh when changes are made! When you are finished
+      developing,  run "grunt" to compile the changes to the 
+      "/src/server/dist" directory.
+
+      "grunt serve" hosts the client on "localhost:9000" completely separate
+      from the node server, so these changes will not show up on
+      "localhost:3000" until you run "grunt"

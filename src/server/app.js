@@ -5,15 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
 
-// WE AREN'T USING ANY SERVER TEMPLATING, ANGULAR DOES THIS FOR US
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
+app.use("/", express.static(path.join(__dirname, 'dist')));
+app.set('views', __dirname + '/views')
+app.set('view engine', 'jade')
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -22,12 +18,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// WE AREN'T USING THIS PUBLIC DIRECTORY
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// WE DON'T HAVE ANY ROUTES SET UP YET
-// app.use('/', routes);
-// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,9 +31,6 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(express.static(path.join(__dirname, '../client/.tmp')));
-  app.use(express.static(path.join(__dirname, '../client/app')));
-
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -55,17 +42,14 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-if(app.get('env') === 'production') {
-  app.use(express.static(path.join(__dirname, '/dist')));
-  
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: {}
-    });
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
   });
-}
+});
 
+app.listen(3000);
 
 module.exports = app;
