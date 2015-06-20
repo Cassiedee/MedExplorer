@@ -42,9 +42,9 @@ NOTE: nodemon will re-deploy the node server when any changes are made,
       to the "src/client" directory and run "grunt serve". This should open
       a window in your browser at "localhost:9000". This window will
       automatically refresh when changes are made! When you are finished
-      developing,  run "grunt" to compile the changes to the 
-      "/src/server/dist" directory.
+      developing,  run "update.bat" to update your front-end changes on 
+      the node server.
 
       "grunt serve" hosts the client on "localhost:9000" completely separate
       from the node server, so these changes will not show up on
-      "localhost:3000" until you run "grunt"
+      "localhost:3000" until you run "update.bat"
