@@ -30,9 +30,9 @@
           "src/server/dist" folder
 
 9)  to run the node server, cd to the "src/server" directory and
-    run "nodemon app.js". Then visit "http://localhost:3000" in your browser.
+    run "nodemon app.js". Then visit "http://localhost:80" in your browser.
       -- this starts the node server, which hosts the front end out of the
-          "src/server/dist" folder onto localhost over port 3000
+          "src/server/dist" folder onto localhost over port 80
 
 NOTE: nodemon will re-deploy the node server when any changes are made,
       automatically
@@ -47,4 +47,4 @@ NOTE: nodemon will re-deploy the node server when any changes are made,
 
       "grunt serve" hosts the client on "localhost:9000" completely separate
       from the node server, so these changes will not show up on
-      "localhost:3000" until you run "update.bat"
+      "localhost:80" until you run "update.bat"

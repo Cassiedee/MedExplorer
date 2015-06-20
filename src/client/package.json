@@ -1,10 +1,7 @@
 {
   "name": "client",
   "version": "0.0.0",
-  "dependencies": {
-    "grunt-contrib-imagemin": "^0.9.4",
-    "grunt-google-cdn": "^0.4.3"
-  },
+  "dependencies": {},
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
