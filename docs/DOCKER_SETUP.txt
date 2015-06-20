@@ -38,4 +38,5 @@ Docker setup:
    
       Hello World from CentOS6 in Docker
    
-	If so, then Docker has successfully been stood up.
+	If so, then Docker has successfully been stood up. All the commands above can also be found in 
+	repo_location/centos-dockerfiles/nodejs/centos6/README.md
