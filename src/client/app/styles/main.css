@@ -72,8 +72,9 @@ body {
 	margin:0 auto;
 }
 
-.simpleform{
-	
+.footerlink{
+	font-size: xx-small;
+	margin-left: .5cm;
 }
 
 /* Responsive: Portrait tablets and up */
