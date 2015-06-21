@@ -28,6 +28,6 @@ We refined and combined our Design Ideas into a single draft wireframe that was 
 
 ## Evaluation
 
-UX testing is performed to verify user models and design decisions. Various evaluation methods include interviews, expectancy tests, A?B testing, and/or usability evaluations to measure efficiency, accuracy, and user satisfaction.
+UX testing is performed to verify user models and design decisions. Various evaluation methods include interviews, expectancy tests, A/B testing, and/or usability evaluations to measure efficiency, accuracy, and user satisfaction.
 
 ## Design Documentation
