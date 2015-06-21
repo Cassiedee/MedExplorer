@@ -7,9 +7,11 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-app.use("/", express.static(path.join(__dirname, 'dist')));
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
+
+app.use("/", express.static(path.join(__dirname, 'dist')));
+app.use(require('./routes/REST'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
