@@ -1,9 +1,17 @@
 var test = require('unit.js');
+var rest = require('../routes/REST.js');
 
-//pointless test (you can delete)
-//test.should('foobar').be.equal('foobar');
-describe('Learning by the example', function(){
-  it('example variable', function(){
-    test.assert(true);
+
+describe('REST API Test Suite', function()
+{
+  it('hello_test', function()
+  {
+    /* configure mock response object */
+    var res = {responseObj:null}; 
+    res.json = function(res) {this.responseObj = res;}
+
+    var req = {'params' : {'name' : 'Eric'}};
+    rest.functions.hello(req,res);
+    test.assert.equal(res.responseObj.response,"Hello, Eric");
   });
 });

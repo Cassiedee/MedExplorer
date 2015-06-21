@@ -2,15 +2,19 @@ var express = require('express');
 var datasource = require('../controllers/datasource');
 var router = express.Router();
 
+var restFunctions = {};
+
+restFunctions.hello = function(req, res) {
+    res.json({
+      "response": "Hello, " + req.params.name
+    });
+  }
+
 /*
  * GET REST calls
  */
-router.get('/REST/hello/:name', hello);
-function hello(req, res) {
-  res.json({
-    "response": "Hello, " + req.params.name
-  });
-}
+router.get('/REST/hello/:name', restFunctions.hello);
+
 
 router.get('/REST/search', search);
 function search(req, res) {
@@ -24,3 +28,4 @@ function search(req, res) {
 }
 
 module.exports = router;
+module.exports.functions = restFunctions;
