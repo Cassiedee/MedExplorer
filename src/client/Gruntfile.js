@@ -414,9 +414,8 @@ module.exports = function (grunt) {
     'wiredep',
     'concurrent:test',
     'autoprefixer',
-    'connect:test'
-    //NOT USING KARMA
-    //'karma'
+    'connect:test',
+    'karma'
   ]);
 
   grunt.registerTask('build', [

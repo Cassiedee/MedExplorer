@@ -18,6 +18,8 @@
           doing some debugging. I think there are different profiles
           that you can configure to run the node server with during
           development
+      -- NOTE: if the grunt command will not run because it is not found,
+          you must close and re-open your command window
 
 6)  open a command window, cd to the "src/server" directory, and run
     "npm install"
