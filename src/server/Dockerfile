@@ -15,6 +15,7 @@ ADD . /src
 
 RUN cd /src; npm install
 
-EXPOSE 80
+#EXPOSE 80
 
-CMD ["node", "/src/app.js"]
+#CMD ["npm", "start"]
+CMD PORT=80 npm start
