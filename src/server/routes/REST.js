@@ -39,7 +39,6 @@ function setTrendingDrugs(req, res) {
   datasource.setTrendingDrugs(req.body, function() {
     getTrendingDrugs(req, res);
   });
-
 };
 
 module.exports = router;
