@@ -23,7 +23,7 @@ angular
         url: '/',
         views: {
           'main@': {
-            controller: 'HelloWorldController',
+            controller: 'MainController',
             templateUrl: 'views/main.html'
           },
 		  'content@home': {
