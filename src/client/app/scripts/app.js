@@ -21,31 +21,26 @@ angular
     $stateProvider
       .state('home', {
         url: '/',
-        controller: 'HelloWorldController',
         views: {
-          'main': {
+          'main@': {
+            controller: 'HelloWorldController',
             templateUrl: 'views/main.html'
-          }
+          },
+		  'content@home': {
+		    controller: 'SecondViewController',
+			templateUrl: 'views/trendingtable.html'
+		  }
         }
       })
       .state('home.search', {
         url: 'search',
-        controller: 'SearchResultsController',
         views: {
-          'content': {
+          'content@home': {
+            controller: 'SearchResultsController',
             templateUrl: 'views/search_results.html'
-          }
-        }
-      })
-      .state('home.trends', {
-        url: 'trends',
-        controller: 'SecondViewController',
-        views: {
-			'trends': {
-            templateUrl: 'views/trendingtable.html'
           }
         }
       });
 
-      $urlRouterProvider.otherwise("/");;
+      $urlRouterProvider.otherwise('/');
   });
