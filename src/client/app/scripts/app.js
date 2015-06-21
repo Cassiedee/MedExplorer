@@ -24,7 +24,7 @@ angular
         controller: 'HelloWorldController',
         views: {
           'main': {
-            templateUrl: 'views/helloworld.html'
+            templateUrl: 'views/main.html'
           }
         }
       })
