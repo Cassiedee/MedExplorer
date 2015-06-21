@@ -1,7 +1,8 @@
 # Ignore VIM swapfiles
 *.swp
 
-# Ignore old_dists
+# Ignore dist
+src/server/dist
 src/server/dist_old
 
 # Ignore node_modules
