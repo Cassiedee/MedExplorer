@@ -5,10 +5,10 @@ var router = express.Router();
 var restFunctions = {};
 
 restFunctions.hello = function(req, res) {
-    res.json({
-      "response": "Hello, " + req.params.name
-    });
-  }
+  res.json({
+    "response": "Hello, " + req.params.name
+  });
+};
 
 /*
  * GET REST calls
@@ -25,7 +25,22 @@ function search(req, res) {
   datasource.simplesearch(req.query.field, req.query.value, function(status, data) {
     res.send(status + '<br>' + JSON.stringify(data));
   });
-}
+};
+
+router.get('/REST/trendingDrugs', getTrendingDrugs);
+function getTrendingDrugs(req, res) {
+  datasource.getTrendingDrugs(function(data) {
+    res.json(data);
+  });
+};
+
+router.post('/REST/trendingDrugs', setTrendingDrugs);
+function setTrendingDrugs(req, res) {
+  datasource.setTrendingDrugs(req.body, function() {
+    getTrendingDrugs(req, res);
+  });
+
+};
 
 module.exports = router;
 module.exports.functions = restFunctions;

@@ -1,5 +1,28 @@
 var http = require("http");
 var https = require("https");
+var fs = require('fs');
+
+
+exports.getTrendingDrugs = function(callback) {
+  //Read trending_drugs into memory
+  fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
+    if(err) {
+      callback(err);
+      return;
+    }
+    callback(JSON.parse(data));
+  });
+};
+
+
+exports.setTrendingDrugs = function(data, callback) {
+  //Write trending_drugs 
+  fs.writeFile('data/trending_drugs.json', JSON.stringify(data), function(err) {
+    if(err)
+      err;
+    callback();
+  });
+};
 
 var API_KEY = 'yTYnUvdcecwjxEgbECMYviNmByhA7bhZi8OgAUKK';
 
@@ -11,12 +34,7 @@ var options = {
     }
 };
 
-/**
- * getJSON:  REST get request returning JSON object(s)
- * @param options: http options object
- * @param callback: callback to pass the results JSON object(s) back
- */
-exports.simplesearch = function(field, value, callback) {
+exports.simpleSearch = function(field, value, callback) {
     options.path = '/drug/event.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':"' + encodeURIComponent(value) + '"&limit=1';
     options.method = 'GET';
 
