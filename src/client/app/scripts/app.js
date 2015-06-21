@@ -37,12 +37,12 @@ angular
           }
         }
       })
-      .state('home.test', {
-        url: 'test',
+      .state('home.trends', {
+        url: 'trends',
         controller: 'SecondViewController',
         views: {
-          'content': {
-            templateUrl: 'views/secondview.html'
+			'trends': {
+            templateUrl: 'views/trendingtable.html'
           }
         }
       });

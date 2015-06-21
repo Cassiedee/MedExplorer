@@ -1,0 +1,41 @@
+<div class="jumbotron container-fluid push-spaces" ng-init="drugs = [
+	[
+		{name: 'Aceteminophen'},
+		{name: 'Ibuprofen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'}
+	],
+	[
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'}
+	],
+	[
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'}
+	],
+	[
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'},
+		{name: 'asdf'},
+		{name: 'Aceteminophen'},
+		{name: 'Aceteminophen'}
+	]
+]">
+  <p>The {{drugs.length * drugs[0].length}} most popular or trending topics.</p>
+  <table align="center" class="centeredtable">
+	<tr ng-repeat="row in drugs">
+	<td ng-repeat="d in row">
+	<a href="/search?term={{d.name}}">
+	{{d.name}}
+	</a>
+	</td>
+	</tr>
+  </table>
+</div>
