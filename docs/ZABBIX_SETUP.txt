@@ -1,3 +1,7 @@
-1. Deploy MariaDB Docker image "docker run -d --name zabbix-db -p 3306:3306 --env="MARIADB_USER=username" --env="MARIADB_PASS=my_password" million12/mariadb" Make sure you use the same username and password for the Zabbix setup.
+1. Deploy Zabbix docker image, by running command "docker run -d -p 10051:10051 -p 10052:10052 -p 9001:80 -p 2812:2812 --name zabbix  berngp/docker-zabbix"
 
-2. Deploy Zabbix server image "docker run -d --name zabbix -p 80:80 -p 10051:10051 --env="DB_ADDRESS=database_ip" --env="DB_USER=username" --env="DB_PASS=my_password" million12/zabbix-server"
+2. Get local 80 port mapping by running "docker ps -f name=zabbix"  Find the port that is mapped to 80 for this container.
+
+3. Open VirtualBox and open the settings for the boot2docker-vm. On the sidebar, click 'Network', 
+   and then click on 'Port Forwarding'. Create a new port and set both 'Host Port' and 'Guest Port'
+   to the port mapped to 9001. The rest of the fields can be left to there default values.
