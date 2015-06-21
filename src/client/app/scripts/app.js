@@ -15,18 +15,37 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ]).config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/helloworld.html',
-        controller: 'HelloWorldController'
+    'ngTouch',
+    'ui.router'
+  ]).config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/',
+        controller: 'HelloWorldController',
+        views: {
+          'main': {
+            templateUrl: 'views/helloworld.html'
+          }
+        }
       })
-      .when('/test', {
-        templateUrl: 'views/secondview.html',
-        controller: 'SecondViewController'
+      .state('home.search', {
+        url: 'search',
+        controller: 'SearchResultsController',
+        views: {
+          'content': {
+            templateUrl: 'views/search_results.html'
+          }
+        }
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('home.test', {
+        url: 'test',
+        controller: 'SecondViewController',
+        views: {
+          'content': {
+            templateUrl: 'views/secondview.html'
+          }
+        }
       });
+
+      $urlRouterProvider.otherwise("/");;
   });
