@@ -59,6 +59,23 @@ body {
   margin-top: 28px;
 }
 
+.searchbutton{
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  background-size:18px 18px;
+}
+
+.searchbar{
+	display:table;
+	margin:0 auto;
+}
+
+.simpleform{
+	
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
