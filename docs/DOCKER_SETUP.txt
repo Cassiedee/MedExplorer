@@ -1,42 +1,28 @@
 Docker setup:
 
-1. Download and run docker-install.exe (found at: 
-   https://github.com/boot2docker/windows-installer/releases/tag/v1.7.0)
-
-2. Pull the centos git repository at https://github.com/centos/centos-dockerfiles to your local 
-   machine and record the location you placed this repository. You can use any git program you prefer.
-
-3. Open the start menu, and open 'All Programs'->'Docker'->'Boot2Docker start'. This will start 
+1. Open the start menu, and open 'All Programs'->'Docker'->'Boot2Docker start'. This will start 
    a VM that is running Docker.
    
-4. Open VirtualBox and open the settings for the boot2docker-vm. On the sidebar, click 'Network', 
+2. Open VirtualBox and open the settings for the boot2docker-vm. On the sidebar, click 'Network', 
    and then click on 'Port Forwarding'. Create a new port and set both 'Host Port' and 'Guest Port'
    to 8080. The rest of the fields can be left to there default values.
    
-5. Once the VM finishes loading, you will be given a command prompt. In this prompt, navigate to 
-   the directory repo_location/centos-dockerfiles/nodejs/centos6.
-   
-   You should find the following files:
-		Dockerfile  LICENSE  README.md  index.js  package.json
+3. Once the VM finishes loading, you will be given a command prompt. In this prompt, navigate to 
+   the "MedExplorer/src/server" directory. You should find Dockerfile inside of this directory.
 		
-6. Run the command:    docker build -rm -t <username>/nodejs:centos6 .
+4. Run the command:    docker build -rm -t <username>/nodejs:centos6 .
    
    Replace <username> with your username and note the dot at the end. This will build nodejs 
    application.
    
-7. Run the command:    docker run -d -p 8080:8080 <username>/nodejs:centos6
+5. Run the command:    docker run -d -p 8080:8080 <username>/nodejs:centos6
    
    Make sure <username> matches the <username> you use in the previous command. This will run the 
    application.
 
-8. Run the command:    docker ps
+6. Run the command:    docker ps
    
    This will give you information on the running applications. You should see the nodejs application
    in this list (the IMAGES field will be <username>/nodejs:centos6).
    
-9. Go to your browser and open http://localhost:8080. You should see the following message:
-   
-      Hello World from CentOS6 in Docker
-   
-	If so, then Docker has successfully been stood up. All the commands above can also be found in 
-	repo_location/centos-dockerfiles/nodejs/centos6/README.md
+7. Go to your browser and open http://localhost. You should see the MedExplorer client
