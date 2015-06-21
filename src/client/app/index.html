@@ -35,8 +35,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#/">Home<span class="sr-only">(current)</span></a></li>
-            <li class=""><a href="#/test">Other<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a ui-sref="home">Home<span class="sr-only">(current)</span></a></li>
+            <li class=""><a ui-sref="home.test">Other<span class="sr-only">(current)</span></a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -53,7 +53,7 @@
     </div>
     
     <div class="container-fluid">
-      <div ng-view=""></div>
+      <div ui-view="main"></div>
     </div>
 
     <!--
@@ -73,6 +73,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -80,6 +81,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/HelloWorldController.js"></script>
     <script src="scripts/controllers/SecondViewController.js"></script>
+    <script src="scripts/controllers/SearchResultsController.js"></script>
     <!-- endbuild -->
   </body>
 </html>
