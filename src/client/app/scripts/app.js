@@ -22,6 +22,10 @@ angular
         templateUrl: 'views/helloworld.html',
         controller: 'HelloWorldController'
       })
+      .when('/test', {
+        templateUrl: 'views/secondview.html',
+        controller: 'SecondViewController'
+      })
       .otherwise({
         redirectTo: '/'
       });
