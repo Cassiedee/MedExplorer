@@ -50,3 +50,7 @@ NOTE: nodemon will re-deploy the node server when any changes are made,
       "grunt serve" hosts the client on "localhost:9000" completely separate
       from the node server, so these changes will not show up on
       "localhost:80" until you run "update.bat"
+
+
+
+OpenFDA API key: yTYnUvdcecwjxEgbECMYviNmByhA7bhZi8OgAUKK
