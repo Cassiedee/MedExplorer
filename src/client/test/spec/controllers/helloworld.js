@@ -3,7 +3,7 @@
 describe('Controller: HelloWorldController', function () {
 
   // load the controller's module
-  beforeEach(module('FDAExplorer'));
+  beforeEach(module('MedExplorer'));
 
   var HelloWorldController,
     scope;

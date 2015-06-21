@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('FDAExplorer', [
+  .module('MedExplorer', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -31,12 +31,12 @@ angular
 
 /**
  * @ngdoc function
- * @name FDAExplorer.controller:HelloWorldController
+ * @name MedExplorer.controller:HelloWorldController
  * @description
  * # HelloWorldController
- * Controller of the FDAExplorer
+ * Controller of the MedExplorer
  */
-angular.module('FDAExplorer')
+angular.module('MedExplorer')
   .controller('HelloWorldController', ["$scope", function ($scope) {
     $scope.message = 'Hello World!';
     console.log($scope.message);

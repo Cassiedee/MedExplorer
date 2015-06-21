@@ -1,6 +1,9 @@
 # Ignore VIM swapfiles
 *.swp
 
+# Ignore .tmp
+src/client/.tmp
+
 # Ignore dist
 src/server/dist
 src/server/dist_old

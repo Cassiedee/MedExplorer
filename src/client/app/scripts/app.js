@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('FDAExplorer', [
+  .module('MedExplorer', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
