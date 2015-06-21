@@ -1,6 +1,22 @@
 # User Centered Design
 
-## Wireframes
+Our User Centered Design approach has 6 elements to it's process.
+
+## Research
+
+Front end research includes a review of existing documentation, user manuals, academic research, etc. It lays the ground work for establishing requirements based on users' needs. Research provides the foundation for user stories.  Generative UX Research is an ongoing process. Methods may include interviews, focus groups, cognitive-walkthroughs, and/or heuristic. evaluations.
+
+## User Models
+
+User models include task flows, [personas] (Personas), scenarios, communication models, and mental models. These artifacts enable designers and developers to imagine what the users need operationally to accomplish the mission at hand.  We generated two personas for the MedExplorer project, [Kent Nelson, Doctor] (Personas/ADF_Doctor_Persona_06202015) and [Emma Jones, Consumer] (Personas/ADF_Consumer_Persona_06202015).
+
+## User Stories
+
+User research ensures user stories are valid by identifying user priorities. As new information emerge, stories are refiend and re-prioritized.
+
+## Wireframes & Prototypes
+
+Designers create [wireframes] (Wireframes) and low fidelity prototypes. Interaction designs are produced and regularly are brought into the scrums to facilitate feasibility conversations with developers.
 
 ### Design Ideas
 
@@ -10,4 +26,8 @@ We refined and combined our Design Ideas into a single draft wireframe that was 
 
 ### Final Wireframes
 
-## Design Template
+## Evaluation
+
+UX testing is performed to verify user models and design decisions. Various evaluation methods include interviews, expectancy tests, A?B testing, and/or usability evaluations to measure efficiency, accuracy, and user satisfaction.
+
+## Design Documentation
