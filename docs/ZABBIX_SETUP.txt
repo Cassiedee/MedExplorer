@@ -1,3 +1,0 @@
-1. Deploy MariaDB Docker image "docker run -d --name zabbix-db -p 3306:3306 --env="MARIADB_USER=username" --env="MARIADB_PASS=my_password" million12/mariadb" Make sure you use the same username and password for the Zabbix setup.
-
-2. Deploy Zabbix server image "docker run -d --name zabbix -p 80:80 -p 10051:10051 --env="DB_ADDRESS=database_ip" --env="DB_USER=username" --env="DB_PASS=my_password" million12/zabbix-server"
