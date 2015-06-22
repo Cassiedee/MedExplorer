@@ -7,4 +7,4 @@ mkdir ..\server\dist_old
 move ..\server\dist ..\server\dist_old\dist_%mydate%_%mytime%
 
 echo 'calling grunt'
-call grunt
+call grunt --force
