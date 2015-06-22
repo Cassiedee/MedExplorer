@@ -1,18 +1,11 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name MedExplorer.controller:SearchResultsController
- * @description
- * # SearchResultsController
- * Controller of the MedExplorer
- */
 angular.module('MedExplorer')
   .controller('SearchResultsController', ['$scope', '$http','$state', function($scope, $http, $state) {
     $scope.results = [];
-    // Simple GET request example :
-    $http.get('/REST/search?field=patient.drug.openfda.pharm_class_epc&value='+$state.params.value).success(function(data) {
-      $scope.results = data.results;
-      console.log($scope.results);
+    $scope.searchTerm = $state.params.value;
+    $http.get('/REST/search?datasource=drug&type=event&field=patient.drug.openfda.generic_name&value='+$state.params.value).success(function(data) {
+      if(!data.error)
+        $scope.results = data.response.results;
     });
   }]);

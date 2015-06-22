@@ -8,7 +8,6 @@ mkdir ..\server\dist_old
 move ..\server\dist ..\server\dist_old\dist_%mydate%_%mytime%
 mkdir ..\server\dist
 xcopy /Y /s app ..\server\dist
-xcopy /Y bower_components ..\server
 
 pause
 goto loop

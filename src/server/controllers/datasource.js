@@ -6,12 +6,10 @@ var fs = require('fs');
 exports.getTrendingDrugs = function(callback) {
   //Read trending_drugs into memory
   fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
-    if(err) {
+    if(err)
       callback(err);
-      return;
-    }
-    callback(data);
-    console.log(data);
+    else
+    callback(JSON.parse(data));
   });
 };
 
@@ -20,8 +18,9 @@ exports.setTrendingDrugs = function(data, callback) {
   //Write trending_drugs 
   fs.writeFile('data/trending_drugs.json', JSON.stringify(data), function(err) {
     if(err)
-      err;
-    callback();
+      callback(err);
+    else
+      callback();
   });
 };
 
@@ -35,10 +34,15 @@ var options = {
     }
 };
 
-exports.simpleSearch = function(field, value, callback) {
-    options.path = '/drug/event.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':"' + encodeURIComponent(value) + '"&limit=1';
+/*
+ *  datasource should be drug, device, or food
+ *  type should be event, label, or enforcement
+ *  this search pass all results into the callback funciton,
+ *    where the value of field matches value for each result
+ */
+exports.simpleSearch = function(datasource, type, field, value, callback) {
     options.method = 'GET';
-
+    options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=25';
     console.log(options.path);
     var protocol = options.port == 443 ? https : http;
     var req = protocol.request(options, function(res) {
