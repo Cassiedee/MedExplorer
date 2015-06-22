@@ -8,6 +8,7 @@
 body {
   padding: 0;
   font-family: 'Roboto', Sans-serif;
+  font-weight: 400;
 }
 
 a {
@@ -20,14 +21,12 @@ a {
 
 .trendingdrug {
 	padding:10px;
-	font-weight:100;
+	font-size: 16pt;
+	font-style:normal;
 }
 
 .trendingdrug a {
 	word-wrap: break-word;
-	font-size: 16pt;
-	font-family: "Roboto", Sans-serif;
-	font-style:normal;
 	font-weight:300;
 }
 
@@ -124,6 +123,10 @@ a {
   border-style:solid;
   border-color:#b8bfc4;
   background-color:#f8fafa;
+}
+
+.jumbotron p {
+	font-weight:300;
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
