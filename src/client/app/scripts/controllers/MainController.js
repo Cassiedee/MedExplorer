@@ -13,7 +13,7 @@ angular.module('MedExplorer')
     console.log($scope.message);
     
     $scope.update = function(search) {
-    	// alert('button pressed: ' + $scope.search.value);
-    	$location.path('/search');
+    	alert('button pressed: ' + $scope.search.value);
+    	$location.path('/search?value='+$scope.search.value);
       };
   });

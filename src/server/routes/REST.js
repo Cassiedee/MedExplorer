@@ -23,7 +23,7 @@ function search(req, res) {
     return;
   }
   datasource.simplesearch(req.query.field, req.query.value, function(status, data) {
-    res.send(status + '<br>' + JSON.stringify(data));
+    res.json(data);
   });
 };
 

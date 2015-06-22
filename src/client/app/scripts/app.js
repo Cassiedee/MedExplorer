@@ -33,7 +33,7 @@ angular
         }
       })
       .state('home.search', {
-        url: 'search',
+        url: 'search?field&value',
         views: {
           'content@home': {
             controller: 'SearchResultsController',
