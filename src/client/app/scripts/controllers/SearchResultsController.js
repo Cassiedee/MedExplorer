@@ -10,6 +10,5 @@ angular.module('MedExplorer')
       $scope.resultsLength = 0;
       if($scope.results && $scope.results.length)
         $scope.resultsLength = $scope.results.length;
-      console.log($scope.resultsLength);
     });
   }]);

@@ -13,5 +13,7 @@ describe('REST API Test Suite', function()
     var req = {'params' : {'name' : 'Eric'}};
     rest.functions.hello(req,res);
     test.assert.equal(res.responseObj.response,"Hello, Eric");
+
+    //expect(res.responseObj.response).toEqual("Hello, Eric");
   });
 });

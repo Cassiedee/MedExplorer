@@ -9,14 +9,26 @@ body {
   padding: 0;
 }
 
+a {
+  outline: 0;
+}
+
 .trendingdrug {
 	padding:10px;
 }
 
 .trendingdrug a {
 	word-wrap: break-word;
-	font-size: 12pt;
-	font-family: "Myriad Pro", Sans-serif
+	font-size: 16pt;
+	font-family: "Roboto", Sans-serif;
+	font-style:normal;
+	font-weight:300;
+}
+
+.majorsiteinfo {
+	background-color: #0d283d;
+	color: white;
+	font-family: "Roboto", Sans-serif;
 }
 
 .pageheader {
@@ -32,31 +44,26 @@ body {
 	left: 75px;
 	top:0px;
 	z-index:2;
-	background-color: #0d283d;
-}
-
-.logospace img {
-	position:relative;
-	left: 10px;
-	top:20px;
+	border-radius:50%;
+	left: 15px;
 }
 
 .titlespace {
 	position: relative;
-	left: 160px;
 	top:0px;
 	width: 100%;
 	height:40px;
-	font-size: 24pt;
-	color: white;
-	font-family: "Myriad Pro", Sans-serif
+	font-size:24pt;
 }
 
 .searchspace {
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	background-color:#eff2f5;
-	margin:0px;
+}
+
+.disclaimer {
+	font-size:10pt;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -82,9 +89,10 @@ body {
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background-color:#0d283d;
 }
 
 .container-narrow > hr {
@@ -126,19 +134,39 @@ body {
 }
 
 .searchbar{
-	display:table;
-	margin:0 auto;
+	max-width:50%;
+	
+	margin-right:auto;
 }
 
 .footerlink{
 	font-size: xx-small;
 	margin-left: .5cm;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.container-fluid, .container  {
+	padding-left:0px;
+	padding-right:0px;
 }
 
 @media screen and (max-width: 768px) {
   .container .jumbotron, .container-fluid .jumbotron {
     margin-left:25px;
 	margin-right:25px;
+  }
+  
+  .searchbar {
+	margin-left:0;
+  }
+  
+  .logospace {
+	width:60px;
+	height:60px;
+  }
+  .titlespace {
+    left: 90px;
   }
 }
 
@@ -160,8 +188,14 @@ body {
     margin-bottom: 30px;
   }
   .container .jumbotron, .container-fluid .jumbotron {
-    margin-left:150px;
-	margin-right:150px;
+    margin-left:100px;
+	margin-right:100px;
+  }
+  .searchbar {
+	margin-left:auto;
+  }
+  .titlespace {
+    left: 110px;
   }
 }
 
@@ -226,4 +260,23 @@ body {
 }
 .tab ul .active:hover a {
 	color: rgb(6,179,6);
+}
+
+.tabDiv{
+	text-align: left;
+}
+
+.results-list {
+  overflow-y: auto;
+}
+
+.results-list-item {
+  text-align: left;
+}
+
+.captioned-image {
+  font-size: 10px;
+  width: 1%;
+  display: table;
+  text-align: center;
 }
