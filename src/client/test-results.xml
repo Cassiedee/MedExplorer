@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 1.9.8 (Windows 7 0.0.0)" package="" timestamp="2015-06-22T14:53:23" id="0" hostname="MOngoDB3" tests="1" errors="0" failures="0" time="0.024">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
+    </properties>
+    <testcase name="message should read &quot;Hello World!&quot;" time="0.024" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: HelloWorldController"/>
+    <system-out><![CDATA[PhantomJS 1.9.8 (Windows 7 0.0.0) LOG: 'Hello World!'
+
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

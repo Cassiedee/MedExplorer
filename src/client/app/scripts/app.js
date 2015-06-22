@@ -27,7 +27,7 @@ angular
             templateUrl: 'views/main.html'
           },
 		  'content@home': {
-		    controller: 'SecondViewController',
+		        controller: 'TrendingTableController',
 			templateUrl: 'views/trendingtable.html'
 		  }
         }

@@ -22,17 +22,17 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
-      'bower_components/jquery/dist/jquery.js',
-      'bower_components/angular/angular.js',
-      'bower_components/angular-animate/angular-animate.js',
-      'bower_components/angular-cookies/angular-cookies.js',
-      'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
-      'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-touch/angular-touch.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
-      'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/angular-mocks/angular-mocks.js',
+      'app/vendor/jquery/dist/jquery.js',
+      'app/vendor/angular/angular.js',
+      'app/vendor/angular-animate/angular-animate.js',
+      'app/vendor/angular-cookies/angular-cookies.js',
+      'app/vendor/angular-resource/angular-resource.js',
+      'app/vendor/angular-route/angular-route.js',
+      'app/vendor/angular-sanitize/angular-sanitize.js',
+      'app/vendor/angular-touch/angular-touch.js',
+      'app/vendor/bootstrap/dist/js/bootstrap.js',
+      'app/vendor/angular-ui-router/release/angular-ui-router.js',
+      'app/vendor/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
@@ -60,13 +60,19 @@ module.exports = function(config) {
 
     // Which plugins to enable
     plugins: [
+      "karma-junit-reporter",
       "karma-phantomjs-launcher",
       "karma-jasmine"
     ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false,
+    singleRun : true,
+    reporters : ['dots','junit'],
+    junitReporter : {
+        outputFile: 'test-results.xml'
+    },
+
 
     colors: true,
 

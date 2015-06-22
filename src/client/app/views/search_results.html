@@ -1,9 +1,14 @@
 <div class="jumbotron container-fluid push-spaces">
-  <h2>Search Results</h2>
-  <pre ng-repeat="result in results">
-    companynumb: {{result.companynumb}}
-    serious: {{result.serious}}
-    transmissiondate: {{result.transmissiondate}}
-    <span style="display:inline;" ng-repeat="r in result.patient.reaction">reactionmeddrapt: {{r.reactionmeddrapt}}<br></span>
-  </pre>
+  <h2 style="display:inline;">Search Results:</h2><h3 style="display:inline;"> {{searchTerm}}</h3>
+  <div class="list-group">
+    <a class="list-group-item" ng-repeat="result in results">
+      <h4 class="list-group-item-heading">Result #{{$index+1}}{{'\n'}}</h4>
+      <div class="list-group-item-text">
+        <span ng-repeat="r in result.patient.reaction">
+          {{r.reactionmeddrapt}}
+          <br ng-if="$index <= result.patient.reaction.length">
+        </span>
+      </div>
+    </a>
+  </div>
 </div>
