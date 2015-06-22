@@ -2,8 +2,8 @@
 	<p>The {{results.length}} most popular or trending topics.</p>
 	<div class="row">
 		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 trendingdrug" ng-repeat="drug in results track by $index">
-                  <a ui-sref="home.search({value: drug.name})">
-			{{drug.name}}
+			<a ui-sref="home.search({value: drug.name})">
+				{{drug.name}}
 			</a>
 		</div>
 	</div>
