@@ -125,3 +125,66 @@ body {
 	margin-right:150px;
   }
 }
+
+  /* tabs */
+.tab ul li:hover {
+ background-color: white;
+ color: rgb(6,179,6);
+}
+
+.ng-enter, .ng-leave, .ng-hide {
+	opacity: 0;
+	height: 0px;
+}
+.ng-enter-active .ng-leave-active{
+	opacity: 1;
+}
+.tab {
+	margin: 10px 0px;
+	width: 100%;
+	float: left;
+}
+.tab ul li {
+	background-color: rgb(234, 234, 234);
+	padding: 5px 10px;
+	float: left;
+	margin-left: 2px;
+	list-style: none;
+	
+}
+.tab ul li:nth-child(1) {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.tab ul li:nth-child(3) {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.tab ul li a {
+	color: rgb(6,179,6);
+	float: left;
+	text-decoration: none;
+}
+.tab ul .active {
+	background-color: rgb(6,179,6);
+	padding: 5px 10px;
+	float: left;
+	margin-left: 2px;
+	list-style: none;
+}
+.tab ul .active:nth-child(1) {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.tab ul .active:nth-child(3) {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+.tab ul .active a {
+	color: white;
+	float: left;
+	text-decoration: none;
+}
+.tab ul .active:hover a {
+	color: rgb(6,179,6);
+}

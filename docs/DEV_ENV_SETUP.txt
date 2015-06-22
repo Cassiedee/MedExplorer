@@ -34,7 +34,7 @@
 9)  to run the node server, cd to the "src/server" directory and
     run "nodemon app.js". Then visit "http://localhost:80" in your browser.
       -- this starts the node server, which hosts the front end out of the
-          "src/server/dist" folder onto localhost over port 80
+          "src/server/dist" folder onto localhost over port 3000
 
 NOTE: nodemon will re-deploy the node server when any changes are made,
       automatically
