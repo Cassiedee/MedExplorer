@@ -9,6 +9,16 @@ body {
   padding: 0;
 }
 
+.trendingdrug {
+	padding:10px;
+}
+
+.trendingdrug a {
+	word-wrap: break-word;
+	font-size: 12pt;
+	font-family: "Myriad Pro", Sans-serif
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -44,8 +54,16 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-style:solid;
+  border-color:#b8bfc4;
+  background-color:#f8fafa;
 }
+
+.container .jumbotron, .container-fluid .jumbotron {
+  border-radius: 0px;
+  margin-top:50px;
+}
+
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
@@ -68,6 +86,7 @@ body {
 }
 
 .searchbar{
+	background-color:#eff2f5;
 	display:table;
 	margin:0 auto;
 }
@@ -75,6 +94,13 @@ body {
 .footerlink{
 	font-size: xx-small;
 	margin-left: .5cm;
+}
+
+@media screen and (max-width: 768px) {
+  .container .jumbotron, .container-fluid .jumbotron {
+    margin-left:25px;
+	margin-right:25px;
+  }
 }
 
 /* Responsive: Portrait tablets and up */
@@ -94,8 +120,8 @@ body {
   .header {
     margin-bottom: 30px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+  .container .jumbotron, .container-fluid .jumbotron {
+    margin-left:150px;
+	margin-right:150px;
   }
 }
