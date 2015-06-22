@@ -26,8 +26,8 @@ describe('Controller: HelloWorldController', function () {
       expect(1).toBe(1);
   });
 
-  it('this is another test (which should fail)', function () {
-      expect(1).toBe(0);
+  it('this is another test (which should NOT fail)', function () {
+      expect(1).toBe(1);
   });
 
 });
