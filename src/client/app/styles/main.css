@@ -19,6 +19,46 @@ body {
 	font-family: "Myriad Pro", Sans-serif
 }
 
+.pageheader {
+	position: relative;
+	padding-top:10px;
+	padding-bottom:10px;
+	background-color: #0d283d;
+	margin:0px;
+}
+
+.logospace {
+	position: absolute;
+	left: 75px;
+	top:0px;
+	z-index:2;
+	background-color: #0d283d;
+}
+
+.logospace img {
+	position:relative;
+	left: 10px;
+	top:20px;
+}
+
+.titlespace {
+	position: relative;
+	left: 160px;
+	top:0px;
+	width: 100%;
+	height:40px;
+	font-size: 24pt;
+	color: white;
+	font-family: "Myriad Pro", Sans-serif
+}
+
+.searchspace {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color:#eff2f5;
+	margin:0px;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -86,7 +126,6 @@ body {
 }
 
 .searchbar{
-	background-color:#eff2f5;
 	display:table;
 	margin:0 auto;
 }
