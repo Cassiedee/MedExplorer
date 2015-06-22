@@ -26,7 +26,6 @@ a {
 .trendingdrug a {
 	word-wrap: break-word;
 	font-size: 16pt;
-<<<<<<< HEAD
 	font-family: "Roboto", Sans-serif;
 	font-style:normal;
 	font-weight:300;
@@ -36,15 +35,6 @@ a {
 	background-color: #0d283d;
 	color: white;
 	font-family: "Roboto", Sans-serif;
-=======
-	font-style:normal;
-	font-weight:100;
-}
-
-.majorsiteinfo {
-	background-color: #0d283d;
-	color: white;
->>>>>>> branch 'master' of http://git.triad.local/NorthropGrumman/MedExplorer.git
 }
 
 .pageheader {
@@ -78,8 +68,6 @@ a {
 	background-color:#eff2f5;
 }
 
-<<<<<<< HEAD
-=======
 .btn-primary {
 	background-color: #4a555e;
 	border-width:0px;
@@ -93,7 +81,6 @@ a {
 	margin-right: 20px;
 }
 
->>>>>>> branch 'master' of http://git.triad.local/NorthropGrumman/MedExplorer.git
 .disclaimer {
 	font-size:10pt;
 }
@@ -168,10 +155,6 @@ a {
 
 .searchbar{
 	max-width:50%;
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of http://git.triad.local/NorthropGrumman/MedExplorer.git
 	margin-right:auto;
 }
 
