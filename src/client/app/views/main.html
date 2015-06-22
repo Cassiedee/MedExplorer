@@ -1,7 +1,9 @@
 <div>	
 	<span class="searchbar">
 		<form novalidate class="simpleform">
-			<img src="images/logo.png" style="width:30px;height:30px;vertical-align:middle" />
+                        <a ui-sref="home">
+			  <img src="images/logo.png" style="width:30px;height:30px;vertical-align:middle" />
+                        </a>
 			<input type="text" ng-model="search.value" />
 			<button ng-click="update(search)" class="searchbutton"><img src="images/search.png" alt="" width="18" height="18"></button>
 		</form>
