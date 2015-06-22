@@ -8,7 +8,9 @@
  * Controller of the MedExplorer
  */
 angular.module('MedExplorer')
-  .controller('SecondViewController', function ($scope) {
-    $scope.message = 'View #2!';
-    console.log($scope.message);
-  });
+  .controller('SecondViewController', ['$scope', '$http', function($scope, $http) {
+  $scope.results = [];
+	$http.get('/REST/trendingDrugs').success(function(data) {
+      $scope.results = JSON.parse(data);
+    });
+  }]);
