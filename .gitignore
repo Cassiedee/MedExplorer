@@ -13,6 +13,7 @@ src/client/node_modules
 src/server/node_modules
 
 # Ignore bower_components
+src/client/app/vendor
 src/client/bower_components
 src/client/.bower-cache
 src/client/.bower-registry
