@@ -236,3 +236,18 @@ body {
 .tab ul .active:hover a {
 	color: rgb(6,179,6);
 }
+
+.results-list {
+  overflow-y: auto;
+}
+
+.results-list-item {
+  text-align: left;
+}
+
+.captioned-image {
+  font-size: 10px;
+  width: 1%;
+  display: table;
+  text-align: center;
+}

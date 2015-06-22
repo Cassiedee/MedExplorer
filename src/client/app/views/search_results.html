@@ -1,12 +1,480 @@
-<div class="jumbotron container-fluid push-spaces">
-  <h2 style="display:inline;">Search Results:</h2><h3 style="display:inline;"> {{searchTerm}}</h3>
-  <h4># of Results: {{resultsLength}}</h4>
-  <div class="list-group">
-    <a class="list-group-item" ng-repeat="result in results">
-      <h4 class="list-group-item-heading">Result #{{$index+1}}{{'\n'}}</h4>
-      <div class="list-group-item-text">
-        <div>{{result.indications_and_usage[0]}}</div>
-        <div>{{result.contraindications[0]}}</div>
+ <span ng-init="results = [
+    {
+      'indications_and_usage': [
+        'Uses temporarily: reduces fever relieves minor aches and pains due to: the common cold flu headache sore throat toothache'
+      ],
+      'keep_out_of_reach_of_children': [
+        'Keep out of reach of children.'
+      ],
+      'dosage_and_administration': [
+        'Directions for this project'
+      ],
+      'purpose': [
+        'Purpose Pain reliever/fever reducer'
+      ],
+      'storage_and_handling': [
+        'storage and handling'
+      ],
+      'version': '5',
+      'id': '2ba90e61-fe6b-487c-8fbc-847211595345',
+      'package_label_principal_display_panel': [
+        'package label principal display panel'
+      ],
+      'epoch': 1415995502.886253,
+      'openfda': {
+        'spl_id': [
+          '2ba90e61-fe6b-487c-8fbc-847211595345'
+        ],
+        'product_ndc': [
+          '50580-191'
+          ],
+        'is_original_packager': [
+          true
+        ],
+        'route': [
+          'ORAL'
+        ],
+        'substance_name': [
+          'ACETAMINOPHEN'
+        ],
+        'rxcui': [
+          '828555',
+          '307668'
+        ],
+        'spl_set_id': [
+          '0027e3a2-862a-474d-8c33-dda1a2264b27'
+        ],
+        'package_ndc': [
+          '50580-191-01',
+          '50580-191-02',
+          '50580-191-12'
+        ],
+        'product_type': [
+          'HUMAN OTC DRUG'
+        ],
+        'generic_name': [
+          'ACETAMINOPHEN'
+        ],
+        'manufacturer_name': [
+          'McNeil Consumer Healthcare Div. McNeil-PPC, Inc'
+        ],
+        'brand_name': [
+          'Infants TYLENOL'
+        ],
+        'application_number': [
+          'part343'
+        ]
+      },
+      'spl_product_data_elements': [
+        'Infants TYLENOL acetaminophen acetaminophen acetaminophen anhydrous citric acid butylparaben D&C red NO. 33 FD&C blue NO. 1 glycerin high fructose corn syrup cellulose, microcrystalline carboxymethylcellulose sodium propylene glycol water sodium benzoate sorbitol sucralose xanthan gum'
+      ],
+      'spl_unclassified_section': [
+        'Drug Facts'
+      ],
+      'warnings': [
+        'Warnings Liver warning This product contains acetaminophen. Severe liver damage may occur if your child takes more than 5 doses in 24 hours, which is the maximum daily amount with other drugs containing acetaminophen Sore throat warning if sore throat is severe, persists for more than 2 days, is accompanied or followed by fever, headache, rash, nausea, or vomiting, consult a doctor promptly. Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product Ask a doctor before use if your child has liver disease Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin When using this product do not exceed recommended dose (see overdose warning) Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition. Keep out of reach of children. Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'set_id': '0027e3a2-862a-474d-8c33-dda1a2264b27',
+      'stop_use': [
+        'Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition.'
+      ],
+      'ask_doctor': [
+        'Ask a doctor before use if your child has liver disease'
+      ],
+      'questions': [
+        'Questions or comments? call 1-877-895-3665 (toll-free) or 215-273-8755 (collect)'
+      ],
+      'ask_doctor_or_pharmacist': [
+        'Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin'
+      ],
+      'overdosage': [
+        'Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'do_not_use': [
+        'Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product'
+      ],
+      'inactive_ingredient': [
+        'Inactive ingredients anhydrous citric acid, butylparaben, D&C red no. 33, FD&C blue no. 1, flavors, glycerin, high fructose corn syrup, microcrystalline cellulose and carboxymethylcellulose sodium, propylene glycol, purified water, sodium benzoate, sorbitol solution, sucralose, xanthan gum'
+      ],
+      'active_ingredient': [
+        'Active ingredient (in each 5 mL) Acetaminophen 160 mg'
+      ],
+      'effective_time': '20140430',
+      'when_using': [
+        'When using this product do not exceed recommended dose (see overdose warning)'
+      ]
+    },
+{
+      'indications_and_usage': [
+        'Uses temporarily: reduces fever relieves minor aches and pains due to: the common cold flu headache sore throat toothache'
+      ],
+      'keep_out_of_reach_of_children': [
+        'Keep out of reach of children.'
+      ],
+      'dosage_and_administration': [
+        'Directions for this project'
+      ],
+      'purpose': [
+        'Purpose Pain reliever/fever reducer'
+      ],
+      'storage_and_handling': [
+        'storage and handling'
+      ],
+      'version': '5',
+      'id': '2ba90e61-fe6b-487c-8fbc-847211595345',
+      'package_label_principal_display_panel': [
+        'package label principal display panel'
+      ],
+      'epoch': 1415995502.886253,
+      'openfda': {
+        'spl_id': [
+          '2ba90e61-fe6b-487c-8fbc-847211595345'
+        ],
+        'product_ndc': [
+          '50580-191'
+          ],
+        'is_original_packager': [
+          true
+        ],
+        'route': [
+          'ORAL'
+        ],
+        'substance_name': [
+          'ACETAMINOPHEN'
+        ],
+        'rxcui': [
+          '828555',
+          '307668'
+        ],
+        'spl_set_id': [
+          '0027e3a2-862a-474d-8c33-dda1a2264b27'
+        ],
+        'package_ndc': [
+          '50580-191-01',
+          '50580-191-02',
+          '50580-191-12'
+        ],
+        'product_type': [
+          'HUMAN OTC DRUG'
+        ],
+        'generic_name': [
+          'ACETAMINOPHEN'
+        ],
+        'manufacturer_name': [
+          'McNeil Consumer Healthcare Div. McNeil-PPC, Inc'
+        ],
+        'brand_name': [
+          'Infants TYLENOL'
+        ],
+        'application_number': [
+          'part343'
+        ]
+      },
+      'spl_product_data_elements': [
+        'Infants TYLENOL acetaminophen acetaminophen acetaminophen anhydrous citric acid butylparaben D&C red NO. 33 FD&C blue NO. 1 glycerin high fructose corn syrup cellulose, microcrystalline carboxymethylcellulose sodium propylene glycol water sodium benzoate sorbitol sucralose xanthan gum'
+      ],
+      'spl_unclassified_section': [
+        'Drug Facts'
+      ],
+      'warnings': [
+        'Warnings Liver warning This product contains acetaminophen. Severe liver damage may occur if your child takes more than 5 doses in 24 hours, which is the maximum daily amount with other drugs containing acetaminophen Sore throat warning if sore throat is severe, persists for more than 2 days, is accompanied or followed by fever, headache, rash, nausea, or vomiting, consult a doctor promptly. Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product Ask a doctor before use if your child has liver disease Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin When using this product do not exceed recommended dose (see overdose warning) Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition. Keep out of reach of children. Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'set_id': '0027e3a2-862a-474d-8c33-dda1a2264b27',
+      'stop_use': [
+        'Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition.'
+      ],
+      'ask_doctor': [
+        'Ask a doctor before use if your child has liver disease'
+      ],
+      'questions': [
+        'Questions or comments? call 1-877-895-3665 (toll-free) or 215-273-8755 (collect)'
+      ],
+      'ask_doctor_or_pharmacist': [
+        'Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin'
+      ],
+      'overdosage': [
+        'Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'do_not_use': [
+        'Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product'
+      ],
+      'inactive_ingredient': [
+        'Inactive ingredients anhydrous citric acid, butylparaben, D&C red no. 33, FD&C blue no. 1, flavors, glycerin, high fructose corn syrup, microcrystalline cellulose and carboxymethylcellulose sodium, propylene glycol, purified water, sodium benzoate, sorbitol solution, sucralose, xanthan gum'
+      ],
+      'active_ingredient': [
+        'Active ingredient (in each 5 mL) Acetaminophen 160 mg'
+      ],
+      'effective_time': '20140430',
+      'when_using': [
+        'When using this product do not exceed recommended dose (see overdose warning)'
+      ]
+    },
+{
+      'indications_and_usage': [
+        'Uses temporarily: reduces fever relieves minor aches and pains due to: the common cold flu headache sore throat toothache'
+      ],
+      'keep_out_of_reach_of_children': [
+        'Keep out of reach of children.'
+      ],
+      'dosage_and_administration': [
+        'Directions for this project'
+      ],
+      'purpose': [
+        'Purpose Pain reliever/fever reducer'
+      ],
+      'storage_and_handling': [
+        'storage and handling'
+      ],
+      'version': '5',
+      'id': '2ba90e61-fe6b-487c-8fbc-847211595345',
+      'package_label_principal_display_panel': [
+        'package label principal display panel'
+      ],
+      'epoch': 1415995502.886253,
+      'openfda': {
+        'spl_id': [
+          '2ba90e61-fe6b-487c-8fbc-847211595345'
+        ],
+        'product_ndc': [
+          '50580-191'
+          ],
+        'is_original_packager': [
+          true
+        ],
+        'route': [
+          'ORAL'
+        ],
+        'substance_name': [
+          'ACETAMINOPHEN'
+        ],
+        'rxcui': [
+          '828555',
+          '307668'
+        ],
+        'spl_set_id': [
+          '0027e3a2-862a-474d-8c33-dda1a2264b27'
+        ],
+        'package_ndc': [
+          '50580-191-01',
+          '50580-191-02',
+          '50580-191-12'
+        ],
+        'product_type': [
+          'HUMAN OTC DRUG'
+        ],
+        'generic_name': [
+          'ACETAMINOPHEN'
+        ],
+        'manufacturer_name': [
+          'McNeil Consumer Healthcare Div. McNeil-PPC, Inc'
+        ],
+        'brand_name': [
+          'Infants TYLENOL'
+        ],
+        'application_number': [
+          'part343'
+        ]
+      },
+      'spl_product_data_elements': [
+        'Infants TYLENOL acetaminophen acetaminophen acetaminophen anhydrous citric acid butylparaben D&C red NO. 33 FD&C blue NO. 1 glycerin high fructose corn syrup cellulose, microcrystalline carboxymethylcellulose sodium propylene glycol water sodium benzoate sorbitol sucralose xanthan gum'
+      ],
+      'spl_unclassified_section': [
+        'Drug Facts'
+      ],
+      'warnings': [
+        'Warnings Liver warning This product contains acetaminophen. Severe liver damage may occur if your child takes more than 5 doses in 24 hours, which is the maximum daily amount with other drugs containing acetaminophen Sore throat warning if sore throat is severe, persists for more than 2 days, is accompanied or followed by fever, headache, rash, nausea, or vomiting, consult a doctor promptly. Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product Ask a doctor before use if your child has liver disease Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin When using this product do not exceed recommended dose (see overdose warning) Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition. Keep out of reach of children. Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'set_id': '0027e3a2-862a-474d-8c33-dda1a2264b27',
+      'stop_use': [
+        'Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition.'
+      ],
+      'ask_doctor': [
+        'Ask a doctor before use if your child has liver disease'
+      ],
+      'questions': [
+        'Questions or comments? call 1-877-895-3665 (toll-free) or 215-273-8755 (collect)'
+      ],
+      'ask_doctor_or_pharmacist': [
+        'Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin'
+      ],
+      'overdosage': [
+        'Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'do_not_use': [
+        'Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product'
+      ],
+      'inactive_ingredient': [
+        'Inactive ingredients anhydrous citric acid, butylparaben, D&C red no. 33, FD&C blue no. 1, flavors, glycerin, high fructose corn syrup, microcrystalline cellulose and carboxymethylcellulose sodium, propylene glycol, purified water, sodium benzoate, sorbitol solution, sucralose, xanthan gum'
+      ],
+      'active_ingredient': [
+        'Active ingredient (in each 5 mL) Acetaminophen 160 mg'
+      ],
+      'effective_time': '20140430',
+      'when_using': [
+        'When using this product do not exceed recommended dose (see overdose warning)'
+      ]
+    },
+{
+      'indications_and_usage': [
+        'Uses temporarily: reduces fever relieves minor aches and pains due to: the common cold flu headache sore throat toothache'
+      ],
+      'keep_out_of_reach_of_children': [
+        'Keep out of reach of children.'
+      ],
+      'dosage_and_administration': [
+        'Directions for this project'
+      ],
+      'purpose': [
+        'Purpose Pain reliever/fever reducer'
+      ],
+      'storage_and_handling': [
+        'storage and handling'
+      ],
+      'version': '5',
+      'id': '2ba90e61-fe6b-487c-8fbc-847211595345',
+      'package_label_principal_display_panel': [
+        'package label principal display panel'
+      ],
+      'epoch': 1415995502.886253,
+      'openfda': {
+        'spl_id': [
+          '2ba90e61-fe6b-487c-8fbc-847211595345'
+        ],
+        'product_ndc': [
+          '50580-191'
+          ],
+        'is_original_packager': [
+          true
+        ],
+        'route': [
+          'ORAL'
+        ],
+        'substance_name': [
+          'ACETAMINOPHEN'
+        ],
+        'rxcui': [
+          '828555',
+          '307668'
+        ],
+        'spl_set_id': [
+          '0027e3a2-862a-474d-8c33-dda1a2264b27'
+        ],
+        'package_ndc': [
+          '50580-191-01',
+          '50580-191-02',
+          '50580-191-12'
+        ],
+        'product_type': [
+          'HUMAN OTC DRUG'
+        ],
+        'generic_name': [
+          'ACETAMINOPHEN'
+        ],
+        'manufacturer_name': [
+          'McNeil Consumer Healthcare Div. McNeil-PPC, Inc'
+        ],
+        'brand_name': [
+          'Infants TYLENOL'
+        ],
+        'application_number': [
+          'part343'
+        ]
+      },
+      'spl_product_data_elements': [
+        'Infants TYLENOL acetaminophen acetaminophen acetaminophen anhydrous citric acid butylparaben D&C red NO. 33 FD&C blue NO. 1 glycerin high fructose corn syrup cellulose, microcrystalline carboxymethylcellulose sodium propylene glycol water sodium benzoate sorbitol sucralose xanthan gum'
+      ],
+      'spl_unclassified_section': [
+        'Drug Facts'
+      ],
+      'warnings': [
+        'Warnings Liver warning This product contains acetaminophen. Severe liver damage may occur if your child takes more than 5 doses in 24 hours, which is the maximum daily amount with other drugs containing acetaminophen Sore throat warning if sore throat is severe, persists for more than 2 days, is accompanied or followed by fever, headache, rash, nausea, or vomiting, consult a doctor promptly. Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product Ask a doctor before use if your child has liver disease Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin When using this product do not exceed recommended dose (see overdose warning) Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition. Keep out of reach of children. Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'set_id': '0027e3a2-862a-474d-8c33-dda1a2264b27',
+      'stop_use': [
+        'Stop use and ask a doctor if pain gets worse or lasts more than 5 days fever gets worse or lasts more than 3 days new symptoms occur redness or swelling is present These could be signs of a serious condition.'
+      ],
+      'ask_doctor': [
+        'Ask a doctor before use if your child has liver disease'
+      ],
+      'questions': [
+        'Questions or comments? call 1-877-895-3665 (toll-free) or 215-273-8755 (collect)'
+      ],
+      'ask_doctor_or_pharmacist': [
+        'Ask a doctor or pharmacist before use if your child is taking the blood thinning drug warfarin'
+      ],
+      'overdosage': [
+        'Overdose warning In case of overdose, get medical help or contact a Poison Control Center right away. (1-800-222-1222) Quick medical attention is critical for adults as well as for children even if you do not notice any signs or symptoms.'
+      ],
+      'do_not_use': [
+        'Do not use with any other drug containing acetaminophen (prescription or nonprescription). If you are not sure whether a drug contains acetaminophen, ask a doctor or pharmacist. if your child is allergic to acetaminophen or any of the inactive ingredients in this product'
+      ],
+      'inactive_ingredient': [
+        'Inactive ingredients anhydrous citric acid, butylparaben, D&C red no. 33, FD&C blue no. 1, flavors, glycerin, high fructose corn syrup, microcrystalline cellulose and carboxymethylcellulose sodium, propylene glycol, purified water, sodium benzoate, sorbitol solution, sucralose, xanthan gum'
+      ],
+      'active_ingredient': [
+        'Active ingredient (in each 5 mL) Acetaminophen 160 mg'
+      ],
+      'effective_time': '20140430',
+      'when_using': [
+        'When using this product do not exceed recommended dose (see overdose warning)'
+      ]
+    }
+    ]" />
+
+<script>
+var lazyListAutoHeight = _.debounce(function () {
+  max = $(window).height() - $('.results-list').offset().top;
+  $('.results-list').css('max-height', max - 75);
+}, 500);
+
+$(document).ready(function() {
+  $('.results-list').bind('DOMNodeInserted DOMNodeRemoved', lazyListAutoHeight);
+  $(window).resize(lazyListAutoHeight);
+});
+</script>
+
+<div class="container-fluid">
+  <h4>Results for: "{{searchTerm | title}}"</h4>
+  <div class="list-group results-list">
+    <a ui-sref="home.drugdetails({name: result.openfda.brand_name})" class="list-group-item jumbotron results-list-item" ng-repeat="result in results">
+      <h3 class="list-group-item-heading">{{result.openfda.brand_name[0] | title}}</h3>
+      <div class="row">
+        <div class="row col-md-9">
+          <p class="list-group-item-text">
+            <div class="row">
+              <span class="col-md-2">Active Ing:</span>
+            <span class="col-md-10"><h4>{{result.active_ingredient[0] | uppercase}}</h4></span>
+            </div>
+          </p>
+          <p class="list-group-item-text">
+            <div class="row">
+              <span class="col-md-2">Purpose:</span>
+              <span class="col-md-10">{{result.purpose[0] | sentence}}</span>
+            </div>
+          </p>
+          <p class="list-group-item-text">
+            <div class="row">
+              <span class="col-md-2">Conditions:</span>
+              <span class="col-md-10">{{result.indications_and_usage[0] | sentence}}</span>
+            </div>
+          </p>
+        </div>
+        <div class="row col-md-3">
+          <div class="row">
+            <span class="captioned-image">
+              <img src="images/logo.png" />
+              <span class="caption">Over the Counter</span>
+            </span>
+            <span class="captioned-image">
+              <img src="images/logo.png" />
+              <span class="caption">Oral Pill</span>
+            </span>
+            <span class="captioned-image">
+              <img src="images/logo.png" />
+              <span class="caption">Toddler</span>
+            </span>
+          </div>
+        </div>
       </div>
     </a>
   </div>
