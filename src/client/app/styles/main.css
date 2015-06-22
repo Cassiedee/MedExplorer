@@ -7,6 +7,7 @@
 
 body {
   padding: 0;
+  font-family: 'Roboto', Sans-serif;
 }
 
 a {
@@ -15,20 +16,19 @@ a {
 
 .trendingdrug {
 	padding:10px;
+	font-weight:100;
 }
 
 .trendingdrug a {
 	word-wrap: break-word;
 	font-size: 16pt;
-	font-family: "Roboto", Sans-serif;
 	font-style:normal;
-	font-weight:300;
+	font-weight:100;
 }
 
 .majorsiteinfo {
 	background-color: #0d283d;
 	color: white;
-	font-family: "Roboto", Sans-serif;
 }
 
 .pageheader {
@@ -60,6 +60,19 @@ a {
 	padding-top: 20px;
 	padding-bottom: 10px;
 	background-color:#eff2f5;
+}
+
+.btn-primary {
+	background-color: #4a555e;
+	border-width:0px;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+	background-color:#d86021;
+}
+
+#advancedsearch {
+	margin-right: 20px;
 }
 
 .disclaimer {
@@ -109,6 +122,7 @@ a {
 
 .container .jumbotron, .container-fluid .jumbotron {
   border-radius: 0px;
+  border-width: 1px;
   margin-top:50px;
 }
 
@@ -135,7 +149,6 @@ a {
 
 .searchbar{
 	max-width:50%;
-	
 	margin-right:auto;
 }
 
