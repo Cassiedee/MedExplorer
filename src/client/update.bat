@@ -6,6 +6,6 @@ set mytime=%mytime: =%
 mkdir ..\server\dist_old
 move ..\server\dist ..\server\dist_old\dist_%mydate%_%mytime%
 
-call grunt
+call grunt --force
 
 pause

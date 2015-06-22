@@ -40,7 +40,16 @@ angular
             templateUrl: 'views/search_results.html'
           }
         }
-      });
+      })      
+      .state('home.drugdetails', {
+          url: 'drugdetails?name',
+          views: {
+            'content@home': {
+              controller: 'DrugDetailsController',
+              templateUrl: 'views/drugdetails.html'
+            }
+          }
+        });
 
       $urlRouterProvider.otherwise('/');
   });
