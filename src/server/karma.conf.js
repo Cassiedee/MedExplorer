@@ -10,21 +10,22 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs'],
+    frameworks : ['mocha'],
 
 
     // list of files / patterns to load in the browser
     files: [
+      /*
       'test-main.js',
       {pattern: 'tests\*.test.js', included: false},
       {pattern: 'tests\*.js', included: false}
+      */
+      "tests/test.js"
     ],
-
 
     // list of files to exclude
     exclude: [
     ],
-
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -39,8 +40,15 @@ module.exports = function(config) {
 
 
     // web server port
-    port: 9876,
+    port: 8080,
 
+    // Continuous Integration mode
+    // if true, it capture browsers, run tests and exit
+    singleRun : true,
+    reporters : ['dots','junit'],
+    junitReporter : {
+        outputFile: 'test-results.xml'
+    },
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,
@@ -57,7 +65,14 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [],
+    browsers: ["PhantomJS"],
+
+    plugins : [
+      "karma-mocha",
+      "karma-junit-reporter",
+      "karma-phantomjs-launcher",
+      "karma-jasmine"
+    ],
 
 
     // Continuous Integration mode
