@@ -19,4 +19,9 @@ describe('Controller: HelloWorldController', function () {
   it('message should read "Hello World!"', function () {
     expect(scope.message).toBe('Hello World!');
   });
+
+  it('this is another test', function () {
+      assert.equal(1,1);
+  });
+
 });
