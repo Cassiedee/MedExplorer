@@ -8,12 +8,9 @@
  * Controller of the MedExplorer
  */
 angular.module('MedExplorer')
-  .controller('MainController', function ($scope, $location) {
-    $scope.message = '';
-    console.log($scope.message);
-    
+  .controller('MainController', ['$scope', '$state', function ($scope, $state) {
     $scope.update = function(search) {
-    	alert('button pressed: ' + $scope.search.value);
-    	$location.path('/search?value='+$scope.search.value);
+    	//alert('button pressed: ' + $scope.search.value);
+    	$state.go('home.search', {'value':$scope.search.value});
       };
-  });
+  }]);

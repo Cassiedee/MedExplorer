@@ -22,7 +22,7 @@ function search(req, res) {
     console.log('No field or value found!');
     return;
   }
-  datasource.simplesearch(req.query.field, req.query.value, function(status, data) {
+  datasource.simpleSearch(req.query.field, req.query.value, function(status, data) {
     res.json(data);
   });
 };

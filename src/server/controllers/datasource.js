@@ -10,7 +10,8 @@ exports.getTrendingDrugs = function(callback) {
       callback(err);
       return;
     }
-    callback(JSON.parse(data));
+    callback(data);
+    console.log(data);
   });
 };
 

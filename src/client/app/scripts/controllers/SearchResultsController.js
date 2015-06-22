@@ -9,10 +9,10 @@
  */
 angular.module('MedExplorer')
   .controller('SearchResultsController', ['$scope', '$http','$state', function($scope, $http, $state) {
-    $scope.results = 'temp';
-    console.log('called');
+    $scope.results = [];
     // Simple GET request example :
     $http.get('/REST/search?field=patient.drug.openfda.pharm_class_epc&value='+$state.params.value).success(function(data) {
-      $scope.results = data
+      $scope.results = data.results;
+      console.log($scope.results);
     });
   }]);
