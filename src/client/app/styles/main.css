@@ -89,7 +89,7 @@ a {
 
 /* Custom page footer */
 .footer {
-  position:absolute;
+  position:fixed;
   bottom:0;
   width:100%;
   background-color:#0d283d;
