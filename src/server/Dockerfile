@@ -19,8 +19,8 @@ ADD . /src
 
 RUN cd /src/; npm install
 
-EXPOSE 5000
+EXPOSE 80
 EXPOSE 10050
 
 #CMD ["npm", "start"]
-CMD PORT=5000 node /src/bin/www
+CMD PORT=80 node /src/bin/www

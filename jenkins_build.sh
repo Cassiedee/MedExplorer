@@ -27,4 +27,4 @@ node node_modules/mocha/bin/mocha tests/test.js --reporter mocha-junit-reporter
 echo 'deploying docker container'
 docker rm -f nodejs
 docker build -t eric/nodejs:centos6 .
-docker run -d -p 5000:5000 -p 10050:10050 --name nodejs eric/nodejs:centos6
+docker run -d -p 80:80 -p 10050:10050 --name nodejs eric/nodejs:centos6
