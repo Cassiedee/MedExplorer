@@ -80,6 +80,7 @@ a, a:focus, a:active {
 
 #advancedsearch {
 	margin-right: 20px;
+	margin-left:20px;
 }
 
 .disclaimer {
@@ -195,7 +196,7 @@ a, a:focus, a:active {
   }
   
   .searchbar {
-	margin-left:0;
+	margin-left:25px;
   }
   
   .logospace {
