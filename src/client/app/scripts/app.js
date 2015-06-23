@@ -39,6 +39,9 @@ angular
       .state('home.search', {
         url: 'search?value',
         views: {
+          'side-panel@home': {
+            template: ''
+          },
           'content@home': {
             controller: 'SearchResultsController',
             templateUrl: 'views/search_results.html'
@@ -48,6 +51,9 @@ angular
       .state('home.drugdetails', {
           url: 'drugdetails?name',
           views: {
+          'side-panel@home': {
+            template: ''
+          },
             'content@home': {
               controller: 'DrugDetailsController',
               templateUrl: 'views/drugdetails.html'

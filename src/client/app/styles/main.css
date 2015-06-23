@@ -11,7 +11,7 @@ body {
   font-weight: 400;
 }
 
-a {
+a, a:focus, a:active {
   outline: 0;
 }
 
@@ -22,6 +22,7 @@ a {
 }
 
 .trendingdrug a {
+	white-space:normal;
 	word-wrap: break-word;
 	font-weight:300;
 }
@@ -121,7 +122,8 @@ a {
   background-color:#f8fafa;
 }
 
-.jumbotron p {
+.jumbotron h3 {
+	text-align:left;
 	font-weight:300;
 }
 
@@ -185,6 +187,11 @@ a {
   }
   .titlespace {
     left: 90px;
+  }
+  
+  #recalls {
+	margin-right:25px;
+	margin-left:25px;
   }
 }
 
@@ -307,4 +314,12 @@ a {
   margin-right: 0px;
   margin-left: 0px;
   text-align: left;
+}
+
+input::-moz-focus-inner { 
+  border: 0; 
+}
+
+.ng-hide {
+  display: none!important;
 }
