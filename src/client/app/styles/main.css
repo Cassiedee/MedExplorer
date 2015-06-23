@@ -19,11 +19,8 @@ a, a:focus, a:active {
 	padding:10px;
 	font-size: 16pt;
 	font-style:normal;
-}
-
-.trendingdrug a {
-	white-space:normal;
 	word-wrap: break-word;
+	white-space:normal;
 	font-weight:300;
 }
 
