@@ -19,5 +19,4 @@ grunt --force
 # run tests for back-end (src/server)
 echo running back-end tests
 cd $DIR/src/server
-npm install unit.js
 mocha tests/test.js
