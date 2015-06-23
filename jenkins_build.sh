@@ -19,11 +19,12 @@ grunt --force
 
 # run tests for back-end (src/server)
 echo running back-end tests
- cd $DIR/src/server
+cd $DIR/src/server
 node node_modules/mocha/bin/mocha tests/test.js --reporter mocha-junit-reporter
 
 
 # deploy docker containers
+echo 'deploying docker container'
 docker rm -f nodejs
 docker build -t eric/nodejs:centos6 .
 docker run -d -p 5000:5000 -p 10050:10050 --name nodejs eric/nodejs:centos6
