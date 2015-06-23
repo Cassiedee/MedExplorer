@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" timestamp="2015-06-22T18:01:48" time="0" tests="1" failures="0">
-  <testsuite name="REST API Test Suite" timestamp="2015-06-22T18:01:48" tests="1" failures="0" time="0">
-    <testcase name="REST API Test Suite hello_test" time="0" className="hello_test">
+<testsuites name="Mocha Tests" timestamp="2015-06-23T16:02:06" time="0.001" tests="1" failures="0">
+  <testsuite name="REST API Test Suite" timestamp="2015-06-23T16:02:06" tests="1" failures="0" time="0.001">
+    <testcase name="REST API Test Suite hello_test" time="0.001" className="hello_test">
     </testcase>
   </testsuite>
 </testsuites>

@@ -19,4 +19,4 @@ npm install
 # run tests for back-end (src/server)
 echo running back-end tests
 # cd $DIR/src/server
-node node_modules/mocha/bin/mocha tests/test.js
+node node_modules/mocha/bin/mocha tests/test.js --reporter mocha-junit-reporter
