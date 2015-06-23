@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ngLodash'
   ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
@@ -37,7 +38,7 @@ angular
         }
       })
       .state('home.search', {
-        url: 'search?value',
+        url: 'search?source&type&field&value',
         views: {
           'side-panel@home': {
             template: ''
@@ -49,17 +50,44 @@ angular
         }
       })      
       .state('home.drugdetails', {
-          url: 'drugdetails?name',
-          views: {
-          'side-panel@home': {
-            template: ''
-          },
-            'content@home': {
-              controller: 'DrugDetailsController',
-              templateUrl: 'views/drugdetails.html'
-            }
+        url: 'drugdetails?name',
+        views: {
+        'side-panel@home': {
+          template: ''
+        },
+          'content@home': {
+            controller: 'DrugDetailsController',
+            templateUrl: 'views/drugdetails.html'
           }
-        });
+        },
+        params: {
+          drugDetails: null,
+        }
+      })
+      .state('home.recalldetails', {
+        url: 'recalldetails?id',
+        views: {
+          'side-panel@home': {
+          template: ''
+        },
+          'content@home': {
+            controller: 'RecallDetailsController',
+            templateUrl: 'views/recall_details.html'
+          }
+        }
+      })
+      .state('home.about', {
+        url: 'about',
+        views: {
+        'side-panel@home': {
+          template: ''
+        },
+          'content@home': {
+            controller: 'AboutController',
+            templateUrl: 'views/about.html'
+          }
+        }
+      });
 
       $urlRouterProvider.otherwise('/');
   });
