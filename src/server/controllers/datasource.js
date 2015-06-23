@@ -2,18 +2,6 @@ var http = require("http");
 var https = require("https");
 var fs = require('fs');
 
-var MongoClient = require('mongodb').MongoClient;
-
-var Db = require('mongodb').Db;
-var Server = require('mongodb').Server;
-var ReplSetServers = require('mongodb').ReplSetServers;
-var ObjectID = require('mongodb').ObjectID;
-var Binary = require('mongodb').Binary;
-var GridStore = require('mongodb').GridStore;
-var Grid = require('mongodb').Grid;
-var Code = require('mongodb').Code;
-//var BSON = require('mongodb').pure().BSON;
-var assert = require('assert');
 
 exports.getTrendingDrugs = function(callback) {
   //Read trending_drugs into memory
@@ -53,66 +41,54 @@ var options = {
  *    where the value of field matches value for each result
  */
 exports.search = function(datasource, type, field, value, terms, callback) {
-	try {
-		options.method = 'GET';
-		if(terms > 1) {
-			console.log(field);
-			field = JSON.parse(field);
-			console.log(value);
-			value = JSON.parse(value);
+        try {
+    options.method = 'GET';
+    if(terms > 1) {
+      console.log(field);
+      field = JSON.parse(field);
+      console.log(value);
+      value = JSON.parse(value);
 
-			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
-			for(var i = 0; i < field.length && i < value.length; i++) {
-				options.path += encodeURIComponent(field[i] + ':' + value[i]);
-				if(i < field.length - 1 && i < value.length - 1) {
-					options.path += '+AND+';
-				}
-			}
-		}
-		else {
-			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=25';
-		}
-		console.log(options.path);
+      options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
+      for(var i = 0; i < field.length && i < value.length; i++) {
+        options.path += encodeURIComponent(field[i] + ':' + value[i]);
+        if(i < field.length - 1 && i < value.length - 1) {
+          options.path += '+AND+';
+        }
+      }
+    }
+    else {
+    options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=25';
+    }
+    console.log(options.path);
+    var protocol = options.port == 443 ? https : http;
+    var req = protocol.request(options, function(res) {
+        var output = '';
+        res.setEncoding('utf8');
 
-		var result;
-		retriveFromCache(options.path, result);
-		if(result){
-			console.log('cache hit!!')
-			var status = 200;
-			callback(status, result)
-		} else {
-			var protocol = options.port == 443 ? https : http;
-			var req = protocol.request(options, function(res) {
-				var output = '';
-				res.setEncoding('utf8');
+        res.on('data', function (chunk) {
+            output += chunk;
+        });
 
-				res.on('data', function (chunk) {
-					output += chunk;
-				});
+        res.on('end', function() {
+            var obj = JSON.parse(output);
+            if(res.statusCode == 404) {
+              callback(200, null, obj);
+            }
+            else {
+              callback(res.statusCode, obj, null);
+            }
+        });
+    });
 
-				res.on('end', function() {
-					var obj = JSON.parse(output);
-					//put the object into the cache
-					insertIntoCache(options.path, obj);
-					if(res.statusCode == 404) {
-						callback(200, null, obj);
-					}
-					else {
-						callback(res.statusCode, obj, null);
-					}
-				});
-			});
+    req.on('error', function(err) {
+      req.send('error: ' + err.message);
+    });
 
-			req.on('error', function(err) {
-				req.send('error: ' + err.message);
-			});
-
-			req.end();
-		}
-	} catch(err) {
-		console.log(err);
-	}
-
+    req.end();
+          } catch(err) {
+        console.log(err);
+      }
 };
 
 function dateDecrement(yyyymmdd, num) {
@@ -205,48 +181,4 @@ exports.recentRecalls = function(num, callback) {
   }
 
   fetchloop();
-}
-
-var twentyFourHoursInMillis = 86400000;
-
-function retriveFromCache(query, result){
-	var db = new Db('test', new Server('localhost', 27017));
-	db.open(function(err, db) {
-		var collection = db.collection("medicine_explorer");
-
-		// Fetch the document
-		collection.findOne({ mongoKey: query }, function(err, item) {
-			var data = item;
-
-			//if data is more than 24 hours old clear the cache of all objects
-			//that are more than 24 hours old
-			if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis){
-				cleanCache(db);
-				data = null;
-			}
-
-			result.data = data;
-			db.close();
-		});
-});
-	
-}
-
-function cleanCache(db){
-	//delete all data that is more than 24 hours old
-	var twentyFourHoursAgo = new Date(new Date().getTime() - twentyFourHoursInMillis);
-	var mongoQuery = { insertTime: {$lt:twentyFourHoursAgo} };	    
-	db.remove(mongoQuery);
-}
-
-function insertIntoCache(query, result){
-	var db = new Db('test', new Server('localhost', 27017));
-	db.open(function(err, db) {
-		var collection = db.collection("medicine_explorer");
-
-		result.insertTime = new Date();
-		result.mongoKey = query;
-		collection.insert(result);
-		db.close();
-	});
 }
