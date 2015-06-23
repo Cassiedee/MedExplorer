@@ -28,7 +28,7 @@ angular
           },
           'side-panel@home': {
             controller: 'MostRecentRecallsController',
-            templateUrl: 'views/mostrecentrecalls.html'
+            templateUrl: 'views/most_recent_recalls.html'
           },
           'content@home': {
                 controller: 'TrendingTableController',

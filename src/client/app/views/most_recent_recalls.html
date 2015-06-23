@@ -16,7 +16,7 @@
       <div class="col-xs-12 trendingdrug" ng-repeat="recall in results track by $index">
         <a ui-sref="home.search({value: drug.name})" class="row">
           <span>{{recall.report_date | mmddyyyy_slashes}}</span>
-          <span>{{recall.openfda.brand_name[0]}}</span>
+          <span>{{recall.openfda.brand_name[0] | title}}</span>
         </a>
       </div>
     </div>

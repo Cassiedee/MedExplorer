@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('MedExplorer')
   //Capitalize the first character of a string and lowercase the rest.
   .filter('mmddyyyy_slashes', function() {
