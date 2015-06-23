@@ -1,18 +1,11 @@
-<script>
-	$('div.recall-background').each(function() {
-		$(this).height($(this).closest('.baseball-card').height());
-		console.log($(this).closest('.baseball-card').height());
-	});
-</script>
-
 <div class="container-fluid">
   <h4>Results for: "{{searchTerm | title}}"</h4>
   <div class="list-group results-list ">
     <a ui-sref="home.drugdetails({name:result.openfda.brand_name[0], drugDetails:result})"
-			class="list-group-item jumbotron results-list-item"
-			style="padding-left:0px; padding-top:0px;"
-			ng-repeat="result in results">
-	  <div class="row baseball-card">
+			class="list-group-item container-fluid jumbotron results-list-item"
+			style="padding-left:0px; padding-top:0px; padding-bottom:0px;"
+			ng-repeat="result in results" baseball-card="">
+	  <div class="row">
 	    <div class="col-xs-2">		  
 		  <div ng-show="result.has_ongoing_recalls" class="recall-background" style="display:table;">			
 			  <div style="transform: rotate(-90deg);
