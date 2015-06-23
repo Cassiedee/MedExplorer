@@ -4,7 +4,7 @@ DIR=$PWD
 
 # Set up server node modules
 echo Setting up server node modules
-cd %DIR%\src\server
+cd $DIR\src\server
 call npm install
 
 # Build front-end (src\client)
