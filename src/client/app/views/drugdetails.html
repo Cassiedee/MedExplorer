@@ -14,11 +14,12 @@
 		<a href ng-click="selectTab(3)">Reactions</a>
 	</li>
 </ul>
+</section>
 <br />
 <div ng-show="isSelected(1)">
 <div  ng-repeat="list in indicationListArray" class="tabDiv">
 {{list.header}}
-<ul class="tabList">
+<ul>
     <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
       {{item}}
     </li>
@@ -28,7 +29,7 @@
 <div ng-show="isSelected(2)">
 <div  ng-repeat="list in contraindicationListArray" class="tabDiv">
 {{list.header}}
-<ul class="tabList">
+<ul>
     <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
       {{item}}
     </li>
@@ -38,5 +39,5 @@
 <div ng-show="isSelected(3)"><div ng-bind-html="trustAdverseReactionsAsHtml()"></div></div>
 	
 </div>
-</section>
+
 </div>
