@@ -26,10 +26,14 @@ angular
             controller: 'MainController',
             templateUrl: 'views/main.html'
           },
-		  'content@home': {
-		        controller: 'TrendingTableController',
-			templateUrl: 'views/trendingtable.html'
-		  }
+          'side-panel@home': {
+            controller: 'MostRecentRecallsController',
+            templateUrl: 'views/mostrecentrecalls.html'
+          },
+          'content@home': {
+                controller: 'TrendingTableController',
+                templateUrl: 'views/trendingtable.html'
+          }
         }
       })
       .state('home.search', {

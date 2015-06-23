@@ -1,11 +1,20 @@
-<div class="jumbotron container-fluid push-spaces">
-	<p>The {{results.length}} most popular or trending topics.</p>
+<div class="jumbotron container-fluid trending-box">
+        <h3>Over the Counter - Top {{results.otc.length}} Most Searched Drugs:</h3>
 	<div class="row">
-		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 trendingdrug" ng-repeat="drug in results track by $index">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 trendingdrug" ng-repeat="drug in results.otc track by $index">
 			<a ui-sref="home.search({value: drug.name})">
 				{{drug.name}}
 			</a>
 		</div>
 	</div>
 </div>
-
+<div class="jumbotron container-fluid trending-box">
+        <h3>Perscription - Top {{results.prescription.length}} Most Searched Drugs:</h3>
+	<div class="row">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 trendingdrug" ng-repeat="drug in results.prescription track by $index">
+			<a ui-sref="home.search({value: drug.name})">
+				{{drug.name}}
+			</a>
+		</div>
+	</div>
+</div>

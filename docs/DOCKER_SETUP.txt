@@ -10,7 +10,7 @@ Docker setup:
 3. Once the VM finishes loading, you will be given a command prompt. In this prompt, navigate to 
    the "MedExplorer/src/server" directory. You should find Dockerfile inside of this directory.
 		
-4. Run the command:    docker build -rm -t <username>/nodejs:centos6 .
+4. Run the command:    docker build --rm -t <username>/nodejs:centos6 .
    
    Replace <username> with your username and note the dot at the end. This will build nodejs 
    application.

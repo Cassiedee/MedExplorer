@@ -26,7 +26,10 @@
 	</div>
 </div>
 
-<div ui-view="content"></div>
+<div class="row">
+  <div class="col-md-2" ui-view="side-panel"></div>
+  <div class="col-md-8" ui-view="content"></div>
+</div>
 <div class="footer majorsiteinfo">
 	<div class="container-fluid">
 		<div class="disclaimer">

@@ -6,7 +6,8 @@ var restFunctions = {
   'hello': testFunction,
   'search': search,
   'getTrendingDrugs': getTrendingDrugs,
-  'setTrendingDrugs': setTrendingDrugs
+  'setTrendingDrugs': setTrendingDrugs,
+  'recentRecalls': recentRecalls
 };
 
 function testFunction(req, res) {
@@ -42,6 +43,18 @@ function search(req, res) {
   }
 };
 
+router.get('/REST/recentRecalls', recentRecalls);
+function recentRecalls(req, res) {
+  if(!req.query.num)
+    req.query.num = 10;
+  datasource.recentRecalls(req.query.num, function(status, data, error) {
+    res.status(status).json({
+      'response': data,
+      'error': error
+    });
+  });
+}
+
 router.get('/REST/trendingDrugs', getTrendingDrugs);
 function getTrendingDrugs(req, res) {
   datasource.getTrendingDrugs(function(data) {
@@ -56,10 +69,6 @@ router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
   datasource.setTrendingDrugs(req.body, function() {
     getTrendingDrugs(req, res);
-    res.status(200).json({
-      'response': 'Done.',
-      'error':null
-    });
   });
 };
 

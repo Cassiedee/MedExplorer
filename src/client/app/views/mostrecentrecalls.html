@@ -1,0 +1,24 @@
+<span ng-init="results = ['2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name',
+'2015 06 14 - Drug Name']"/>
+
+<div class="container-fluid">
+  <div class="jumbotron" style="margin-right:25px; margin-left:25px;">
+    <h3>Most Recent Recalls:</h3>
+    <div class="row">
+      <div class="col-xs-12 trendingdrug" ng-repeat="recall in results track by $index">
+        <a ui-sref="home.search({value: drug.name})" class="row">
+          <span>{{recall.report_date | mmddyyyy_slashes}}</span>
+          <span>{{recall.openfda.brand_name[0]}}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

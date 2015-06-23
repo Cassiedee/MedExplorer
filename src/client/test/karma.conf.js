@@ -32,6 +32,7 @@ module.exports = function(config) {
       'app/vendor/angular-touch/angular-touch.js',
       'app/vendor/bootstrap/dist/js/bootstrap.js',
       'app/vendor/angular-ui-router/release/angular-ui-router.js',
+      'app/vendor/lodash/lodash.js',
       'app/vendor/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

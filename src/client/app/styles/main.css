@@ -154,7 +154,7 @@ a {
 @media screen and (max-width: 768px) {
   .container .jumbotron, .container-fluid .jumbotron {
     margin-left:25px;
-	margin-right:25px;
+    margin-right:25px;
   }
   
   .searchbar {
@@ -188,8 +188,8 @@ a {
     margin-bottom: 30px;
   }
   .container .jumbotron, .container-fluid .jumbotron {
-    margin-left:100px;
-	margin-right:100px;
+    margin-left:25px;
+    margin-right:25px;
   }
   .searchbar {
 	margin-left:auto;
@@ -275,4 +275,14 @@ a {
   width: 1%;
   display: table;
   text-align: center;
+}
+
+.trending-box {
+  text-align: left;
+}
+
+.recent-recalls-box {
+  margin-right: 0px;
+  margin-left: 0px;
+  text-align: left;
 }
