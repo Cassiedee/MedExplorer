@@ -1,3 +1,5 @@
+'use strict';
+
 //var test = require('unit.js');
 
 describe('Controller: HelloWorldController', function () {
