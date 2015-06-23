@@ -78,6 +78,11 @@ a, a:focus, a:active {
 	font-size:10pt;
 }
 
+.drugtitle {
+	padding-left:0px;
+	margin-left:0px;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
