@@ -11,6 +11,14 @@ body {
   font-weight: 400;
 }
 
+a {
+	color: #58626b;
+}
+
+a:focus, a:active, a:hover {
+	color:#81909b;
+}
+
 a, a:focus, a:active {
   outline: 0;
 }
@@ -62,12 +70,12 @@ a, a:focus, a:active {
 }
 
 .btn-primary {
-	background-color: #4a555e;
+	background-color: #58626b;
 	border-width:0px;
 }
 
 .btn-primary:hover, .btn-primary:focus {
-	background-color:#d86021;
+	background-color:#81909b;
 }
 
 #advancedsearch {
@@ -129,6 +137,12 @@ a, a:focus, a:active {
 	font-weight:300;
 }
 
+.recall-background {
+	background-image: repeating-linear-gradient(45deg, 
+		transparent, transparent 2px,
+		#d86021 2px, #d86021 12px);
+}
+
 .container .jumbotron, .container-fluid .jumbotron {
   border-radius: 0px;
   border-width: 1px;
@@ -159,6 +173,7 @@ a, a:focus, a:active {
 .searchbar{
 	max-width:50%;
 	margin-right:auto;
+	
 }
 
 .footerlink{
