@@ -47,7 +47,6 @@ exports.simpleSearch = function(datasource, type, field, value, callback) {
     var protocol = options.port == 443 ? https : http;
     var req = protocol.request(options, function(res) {
         var output = '';
-        console.log(options.host + ':' + res.statusCode);
         res.setEncoding('utf8');
 
         res.on('data', function (chunk) {
@@ -67,32 +66,39 @@ exports.simpleSearch = function(datasource, type, field, value, callback) {
     req.end();
 };
 
-function dateDecrement(yyyymmdd) {
-  var yyyy = parseInt(yyyymmdd.substring(0,4));
-  var mm = parseInt(yyyymmdd.substring(4,5));
-  var dd = parseInt(yyyymmdd.substring(5,7));
-  dd--;
-  if(dd === 0) {
-    mm--;
-    switch(mm) {
-      case 2:
-        dd = 28;
-        break;
-      case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-        dd = 31;
-        break;
-      case 4: case 6: case 7: case 9: case 11:
-        dd = 30;
-        break;
-      default:
-        mm = 12;
-        dd = 31;
-        yyyy--;
+function dateDecrement(yyyymmdd, num) {
+  var yyyy = parseInt(yyyymmdd.substring(0, 4));
+  var mm = parseInt(yyyymmdd.substring(4, 6));
+  var dd = parseInt(yyyymmdd.substring(6, 8));
+  num = Math.floor(num);
+  for(var i = 0; i < num; i++) {
+    dd--;
+    if(dd < 1) {
+      mm--;
+      switch(mm) {
+        case 2:
+          dd = 28;
+          break;
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+          dd = 31;
+          break;
+        case 4: case 6: case 7: case 9: case 11:
+          dd = 30;
+          break;
+        default:
+          mm = 12;
+          dd = 31;
+          yyyy--;
+      }
     }
   }
+  return dateFormat(yyyy, mm, dd);
+}
+
+function dateFormat(yyyy, mm, dd) {
   var yyyymmdd = '' + yyyy;
   if(mm < 10)
-    yyyymmdd +='0' + mm;
+    yyyymmdd += '0' + mm;
   else
     yyyymmdd += '' + mm;
   if(dd < 10)
@@ -103,23 +109,23 @@ function dateDecrement(yyyymmdd) {
 }
 
 exports.recentRecalls = function(num, callback) {
-  var recalls = [];
   options.method = 'GET';
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth() + 1;
   var yyyy = today.getFullYear();
-  var yyyymmdd = yyyy + '' + mm + '' + dd;
+  var yyyymmdd = dateFormat(yyyy, mm, dd);
+  var dateRange = 30;
   var protocol = options.port == 443 ? https : http;
   var req;
 
   function fetchloop() {
-    var dateRange = encodeURIComponent('[' + dateDecrement(yyyymmdd)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
-    options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRange + '+AND+_exists_:openfda.brand_name&limit=100';
-    console.log(options.path);
+    var recalls = [];
+    var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
+    options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
+    console.log(dateRangeQuery + ' ' + dateRange);
     req = protocol.request(options, function(res) {
         var output = '';
-        console.log(options.host + ':' + res.statusCode);
         res.setEncoding('utf8');
 
         res.on('data', function (chunk) {
@@ -129,13 +135,17 @@ exports.recentRecalls = function(num, callback) {
         res.on('end', function() {
             var obj = JSON.parse(output);
             if(obj.results)
-              recalls = recalls.concat(obj.results.sort(function(a, b) {return parseInt(a.report_data) - parseInt(b.report_data);}));
-            if(recalls.length < 20) {
-              yyyymmdd = dateDecrement(yyyymmdd);
+              recalls = obj.results;
+            if(recalls.length < num) {
+              dateRange *= 1.5;
+              fetchloop();
+            }
+            else if(recalls.length >= 100) {
+              dateRange *= 0.75;
               fetchloop();
             }
             else
-              callback(res.statusCode, recalls.slice(0, num), null);
+              callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
         });
     });
     req.on('error', function(err) {
