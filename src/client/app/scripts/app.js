@@ -74,6 +74,18 @@ angular
             templateUrl: 'views/recall_details.html'
           }
         }
+      })
+      .state('home.about', {
+        url: 'about',
+        views: {
+        'side-panel@home': {
+          template: ''
+        },
+          'content@home': {
+            controller: 'AboutController',
+            templateUrl: 'views/about.html'
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/');
