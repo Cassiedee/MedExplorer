@@ -1,7 +1,7 @@
 <div class="jumbotron container-fluid trending-box">
     <h3 class="trendingdrug">Over the Counter - Top {{results.otc.length}} Most Searched Drugs:</h3>
 	<div class="row">
-		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 trendingdrug" ng-repeat="drug in results.otc track by $index">
+		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 trendingdrug" ng-repeat="drug in results.otc track by $index">
 			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'brand_name', 'value': drug.name})">
 				<span class="trendingdrug">{{drug.name}}</span>
 			</a>
@@ -11,7 +11,7 @@
 <div class="jumbotron container-fluid trending-box">
     <h3 class="trendingdrug">Prescription - Top {{results.prescription.length}} Most Searched Drugs:</h3>
 	<div class="row">
-		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6" ng-repeat="drug in results.prescription track by $index">
+		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6" ng-repeat="drug in results.prescription track by $index">
 			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'brand_name', 'value': drug.name})">
 				<span class="trendingdrug">{{drug.name}}</span>
 			</a>

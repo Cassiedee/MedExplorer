@@ -15,7 +15,7 @@ Docker setup:
    Replace <username> with your username and note the dot at the end. This will build nodejs 
    application.
    
-5. Run the command:    docker run -d -p 8080:8080 -p 10050:10050 --name nodejs <username>/nodejs:centos6
+5. Run the command:    docker run -d -p 80:80 -p 10050:10050 --name nodejs <username>/nodejs:centos6
    
    Make sure <username> matches the <username> you use in the previous command. This will run the 
    application.
