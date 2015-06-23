@@ -13,7 +13,7 @@ cd $DIR/src/client
 npm install
 bower install
 cd $DIR/src/client
-./jenkins_update.bat
+#./jenkins_update.bat
 grunt --force
 
 # run tests for back-end (src/server)
