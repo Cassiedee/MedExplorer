@@ -37,7 +37,7 @@ angular
         }
       })
       .state('home.search', {
-        url: 'search?value',
+        url: 'search?source&type&field&value',
         views: {
           'side-panel@home': {
             template: ''
@@ -49,17 +49,32 @@ angular
         }
       })      
       .state('home.drugdetails', {
-          url: 'drugdetails?name',
-          views: {
-          'side-panel@home': {
-            template: ''
-          },
-            'content@home': {
-              controller: 'DrugDetailsController',
-              templateUrl: 'views/drugdetails.html'
-            }
+        url: 'drugdetails?name',
+        views: {
+        'side-panel@home': {
+          template: ''
+        },
+          'content@home': {
+            controller: 'DrugDetailsController',
+            templateUrl: 'views/drugdetails.html'
           }
-        });
+        },
+        params: {
+          drugDetails: null,
+        }
+      })
+      .state('home.recalldetails', {
+        url: 'recalldetails?id',
+        views: {
+          'side-panel@home': {
+          template: ''
+        },
+          'content@home': {
+            controller: 'RecallDetailsController',
+            templateUrl: 'views/recall_details.html'
+          }
+        }
+      });
 
       $urlRouterProvider.otherwise('/');
   });

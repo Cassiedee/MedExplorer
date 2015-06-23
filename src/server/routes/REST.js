@@ -24,7 +24,7 @@ router.get('/REST/hello/:name', restFunctions.hello);
 
 router.get('/REST/search', search);
 function search(req, res) {
-  if(!(req.query.datasource
+  if(!(req.query.source
         && req.query.type
         && req.query.field
         && req.query.value)) {
@@ -34,10 +34,10 @@ function search(req, res) {
     });
   }
   else {
-    datasource.simpleSearch(req.query.datasource, req.query.type, req.query.field, req.query.value, function(status, data) {
-      res.status(200).json({
+    datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, function(status, data, error) {
+      res.status(status).json({
         'response': data,
-        'error': null
+        'error': error
       });
     });
   }

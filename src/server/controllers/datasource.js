@@ -40,9 +40,26 @@ var options = {
  *  this search pass all results into the callback funciton,
  *    where the value of field matches value for each result
  */
-exports.simpleSearch = function(datasource, type, field, value, callback) {
+exports.search = function(datasource, type, field, value, terms, callback) {
+        try {
     options.method = 'GET';
+    if(terms > 1) {
+      console.log(field);
+      field = JSON.parse(field);
+      console.log(value);
+      value = JSON.parse(value);
+
+      options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
+      for(var i = 0; i < field.length && i < value.length; i++) {
+        options.path += encodeURIComponent(field[i] + ':' + value[i]);
+        if(i < field.length - 1 && i < value.length - 1) {
+          options.path += '+AND+';
+        }
+      }
+    }
+    else {
     options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=25';
+    }
     console.log(options.path);
     var protocol = options.port == 443 ? https : http;
     var req = protocol.request(options, function(res) {
@@ -55,7 +72,12 @@ exports.simpleSearch = function(datasource, type, field, value, callback) {
 
         res.on('end', function() {
             var obj = JSON.parse(output);
-            callback(res.statusCode, obj);
+            if(res.statusCode == 404) {
+              callback(200, null, obj);
+            }
+            else {
+              callback(res.statusCode, obj, null);
+            }
         });
     });
 
@@ -64,6 +86,9 @@ exports.simpleSearch = function(datasource, type, field, value, callback) {
     });
 
     req.end();
+          } catch(err) {
+        console.log(err);
+      }
 };
 
 function dateDecrement(yyyymmdd, num) {

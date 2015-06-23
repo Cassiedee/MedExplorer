@@ -17,46 +17,51 @@
 <div class="container-fluid">
   <h4>Results for: "{{searchTerm | title}}"</h4>
   <div class="list-group results-list">
-    <a ui-sref="home.drugdetails({name: result.openfda.brand_name})" class="list-group-item jumbotron results-list-item" ng-repeat="result in results">
-      <h3 class="list-group-item-heading">{{result.openfda.brand_name[0] | title}}</h3>
-      <div class="row">
-        <div class="row col-md-9">
-          <p class="list-group-item-text">
+    <div class="list-group-item jumbotron results-list-item row" ng-repeat="result in results">
+      <span class="col-xs-1" ng-show="result.has_ongoing_recalls">
+        <span class="recall-alert-bar">RECALL</span>
+      </span>
+      <a class="col-xs-11" ui-sref="home.drugdetails({name:result.openfda.brand_name[0], drugDetails:result})">
+        <h3 class="list-group-item-heading">{{result.openfda.brand_name[0] | title}}</h3>
+        <div class="row">
+          <div class="row col-md-9">
+            <p class="list-group-item-text">
+              <div class="row">
+                <span class="col-md-2">Active Ing:</span>
+              <span class="col-md-10"><h4>{{result.active_ingredient[0] | uppercase}}</h4></span>
+              </div>
+            </p>
+            <p class="list-group-item-text">
+              <div class="row">
+                <span class="col-md-2">Purpose:</span>
+                <span class="col-md-10">{{result.purpose[0] | sentence}}</span>
+              </div>
+            </p>
+            <p class="list-group-item-text">
+              <div class="row">
+                <span class="col-md-2">Conditions:</span>
+                <span class="col-md-10">{{result.indications_and_usage[0] | sentence}}</span>
+              </div>
+            </p>
+          </div>
+          <div class="row col-md-3">
             <div class="row">
-              <span class="col-md-2">Active Ing:</span>
-            <span class="col-md-10"><h4>{{result.active_ingredient[0] | uppercase}}</h4></span>
+              <span class="row col-xs-4 col-xs-height captioned-image">
+                <img src="images/logo.png" />
+                <span class="caption">Over the Counter</span>
+              </span>
+              <span class="row col-xs-4 col-xs-height captioned-image">
+                <img src="images/logo.png" />
+                <span class="caption">Oral Pill</span>
+              </span>
+              <span class="row col-xs-4 col-xs-height captioned-image">
+                <img src="images/logo.png" />
+                <span class="caption">Toddler</span>
+              </span>
             </div>
-          </p>
-          <p class="list-group-item-text">
-            <div class="row">
-              <span class="col-md-2">Purpose:</span>
-              <span class="col-md-10">{{result.purpose[0] | sentence}}</span>
-            </div>
-          </p>
-          <p class="list-group-item-text">
-            <div class="row">
-              <span class="col-md-2">Conditions:</span>
-              <span class="col-md-10">{{result.indications_and_usage[0] | sentence}}</span>
-            </div>
-          </p>
-        </div>
-        <div class="row col-md-3">
-          <div class="row-fixed">
-            <span class="row col-xs-4 col-xs-height captioned-image">
-              <img src="images/logo.png" />
-              <span class="caption">Over the Counter</span>
-            </span>
-            <span class="row col-xs-4 col-xs-height captioned-image">
-              <img src="images/logo.png" />
-              <span class="caption">Oral Pill</span>
-            </span>
-            <span class="row col-xs-4 col-xs-height captioned-image">
-              <img src="images/logo.png" />
-              <span class="caption">Toddler</span>
-            </span>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 </div>
