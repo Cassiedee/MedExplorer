@@ -23,4 +23,4 @@ EXPOSE 80
 EXPOSE 10050
 
 #CMD ["npm", "start"]
-CMD PORT=80 npm start
+CMD PORT=80 node www/bin

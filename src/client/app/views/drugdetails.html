@@ -1,6 +1,6 @@
 	
 <div class="jumbotron container-fluid push-spaces">
-  <h1>{{drugname}}</h1>
+<h1>{{drugname}}</h1>
 
 <section class="tab">
 <ul>
@@ -17,27 +17,24 @@
 </section>
 <br />
 <div ng-show="isSelected(1)">
-<div  ng-repeat="list in indicationListArray" class="tabDiv">
-{{list.header}}
-<ul>
-    <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
-      {{item}}
-    </li>
-  </ul>
-</div>
+  <div  ng-repeat="list in indicationListArray" class="tabDiv">
+    {{list.header}}
+    <ul>
+      <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
+        {{item}}
+      </li>
+    </ul>
+  </div>
 </div>
 <div ng-show="isSelected(2)">
-<div  ng-repeat="list in contraindicationListArray" class="tabDiv">
-{{list.header}}
-<ul>
-    <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
-      {{item}}
-    </li>
-  </ul>
-</div>
+  <div  ng-repeat="list in contraindicationListArray" class="tabDiv">
+    {{list.header}}
+    <ul>
+      <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
+        {{item}}
+      </li>
+    </ul>
+  </div>
 </div>
 <div ng-show="isSelected(3)"><div ng-bind-html="trustAdverseReactionsAsHtml()"></div></div>
-	
-</div>
-
 </div>

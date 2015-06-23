@@ -26,10 +26,4 @@ angular.module('MedExplorer')
         }
       }
     });
-
-    $scope.goToDrugDetails = function(index) {
-      $state.go('home.drugdetails', {
-        'drugDetails': $scope.results[index]
-      });
-    };
   }]);

@@ -1,22 +1,6 @@
-<script>
-    var lazyListAutoHeight = _.debounce(function () {
-      if($(window).width() >= 992) {
-        max = $(window).height() - $('.results-list').offset().top;
-        $('.results-list').css('max-height', max - 75);
-      }
-      else
-        $('.results-list').css('max-height', '');
-    }, 500);
-
-    $(document).ready(function() {
-      $('.results-list').bind('DOMNodeInserted DOMNodeRemoved', lazyListAutoHeight);
-      $(window).resize(lazyListAutoHeight);
-    });
-</script>
-
 <div class="container-fluid">
   <h4>Results for: "{{searchTerm | title}}"</h4>
-  <div class="list-group results-list">
+  <div class="list-group results-list" scrollable-div="992">
     <a ui-sref="home.drugdetails({name:result.openfda.brand_name[0], drugDetails:result})" class="list-group-item jumbotron results-list-item" ng-repeat="result in results">
           <span class="col-xs-1" ng-show="result.has_ongoing_recalls">
                 <span class="recall-alert-bar">RECALL</span>

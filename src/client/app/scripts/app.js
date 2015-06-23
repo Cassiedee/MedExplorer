@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ngLodash'
   ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
