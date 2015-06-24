@@ -1,15 +1,15 @@
 # Vision Statement
 
-_For_** general public and clinicians
+**_For_**general public and clinicians
 
-Who need information on pharmaceuticals performance
+**_Who_** need information on pharmaceuticals performance
 
-So they can make better health decisions
+**_So_** they can make better health decisions
 
-The product (Medicine Explorer) works on multiple devices
+**_The_** product (Medicine Explorer) works on multiple devices
 
-That provides searchable information and trends on pharmaceuticals and related adverse effects
+**_That_** provides searchable information and trends on pharmaceuticals and related adverse effects
 
-Unlike other similar sites
+**_Unlike_** other similar sites
 
-Our product provides authoritative, trustworthy, and objective information.
+**_Our_** product provides authoritative, trustworthy, and objective information.
