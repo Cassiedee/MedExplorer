@@ -22,6 +22,8 @@ Designers create [wireframes] (Wireframes) and low fidelity prototypes. Interact
 
 ### Design Ideas
 
+The design group processed the generative research and user stories to produce initial designs, interfaces that could be used to achieve the stated goals.  Designers also arrange and configure information and how it is displayed to make the most important data the most visible.
+
 ### Initial Wireframes
 
 We refined and combined our Design Ideas into a single draft wireframe that was reviewed by the entire team.  The initial wireframe is located at [Wireframes/Initial Wireframes] (Wireframes/Initial Wireframes/wireframe_v01_06202015.pdf).
