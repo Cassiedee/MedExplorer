@@ -1,6 +1,6 @@
 # Licensing Information
 
-License:
+#### License:
 
 Copyright (c) 2015 Northrop Grumman Systems Corporation.  All Rights Reserved.
 
@@ -20,7 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-Open Source Third Party Software Licenses:
+#### Open Source Third Party Software Licenses:
 
 Product | Version | License Type | License Source | Product Source | Used In
 :-------:|---------------|-------------------|----------------------|----------------------|---------------------
