@@ -14,7 +14,7 @@ npm install
 bower install
 #cd $DIR/src/client
 ##./jenkins_update.bat
-grunt --force
+sudo grunt --force
 sudo rm -rf ../server/dist
 sudo cp -r dist ../server/dist
 
