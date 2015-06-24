@@ -10,7 +10,7 @@ Front end research includes a review of existing documentation, user manuals, ac
 
 ## User Models
 
-User models include task flows, [personas] (Personas), scenarios, communication models, and mental models. These artifacts enable designers and developers to imagine what the users need operationally to accomplish the mission at hand.  We generated two personas for the MedExplorer project, [Kent Nelson, Doctor] (Personas/ADF_Doctor_Persona_06202015.pdf) and [Emma Jones, Consumer] (Personas/ADF_Consumer_Persona_06202015.pdf).
+User models include task flows, [personas] (Personas), scenarios, communication models, and mental models. These artifacts enable designers and developers to understand what the users need operationally to accomplish the mission at hand, and what information they need to make decisions and complete tasks. We generated two personas for the MedExplorer project, [Kent Nelson, Doctor] (Personas/ADF_Doctor_Persona_06202015.pdf) and [Emma Jones, Consumer] (Personas/ADF_Consumer_Persona_06202015.pdf).
 
 ## User Stories
 
