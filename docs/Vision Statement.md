@@ -1,6 +1,6 @@
 # Vision Statement
 
-**_For_**general public and clinicians
+**_For_** general public and clinicians
 
 **_Who_** need information on pharmaceuticals performance
 
