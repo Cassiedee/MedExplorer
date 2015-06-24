@@ -15,4 +15,4 @@
 **_Our_** product provides authoritative, trustworthy, and objective information.
 
 
-[Draft version](Pictures/Draft Vision Statement.jpg) 
+Draft vision statement...](Pictures/Draft Vision Statement.jpg)
