@@ -429,3 +429,15 @@ input::-moz-focus-inner {
 .recall-bar-link:hover {
   text-decoration: none;
 }
+
+.detail-hr{
+ border: none;
+    height: 5px;
+    width: 100%;
+    color: #cdd7e1; /* old IE */
+    background-color: #cdd7e1; /* Modern Browsers */
+}
+
+.collapse-button{
+	float: right;
+}

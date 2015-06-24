@@ -1,44 +1,212 @@
-	
-<div class="jumbotron container-fluid push-spaces">
-<h1>{{drugname}}</h1>
-
+<span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
 <section class="tab">
-<ul>
-	<li ng-class="{active:isSelected(1) }">
-		<a href ng-click="selectTab(1)">General</a>
-	</li>
-	<li ng-class="{active:isSelected(2)  }">
-		<a href ng-click="selectTab(2)">Warnings</a>
-	</li>
-	<li ng-class="{active:isSelected(3)}">
-		<a href ng-click="selectTab(3)">Reactions</a>
-	</li>
-</ul>
+  <ul>
+    <li ng-class="{active:isSelected(1) }"><a href ng-click="selectTab(1)">General Info</a></li>
+    <li ng-class="{active:isSelected(2)  }"><a href ng-click="selectTab(2)">Warnings</a></li>
+    <!--    <li ng-class="{active:isSelected(3)}"><a href ng-click="selectTab(3)">Reactions</a></li>  -->
+  </ul>
 </section>
 <br />
 <div ng-show="isSelected(1)">
-  <div  ng-repeat="list in indicationListArray" class="tabDiv">
+  <div>
+    <hr class="detail-hr">
+    <span>Dosage</span>
+    <button type="button" data-toggle="collapse" data-target="#dosage-detail" class="collapse-button"ng-click="toggleDosage = !toggleDosage">{{toggleDosageText}}</button>
+    <div id="dosage-detail" class="collapse in">{{result.dosage_and_administration[0] | sentence}}</div>
+    <div>
+    <hr class="detail-hr">
+      <span>Instructions</span>
+    <button type="button" data-toggle="collapse" data-target="#instructions-detail" class="collapse-button"ng-click="toggleInstructions = !toggleInstructions">{{toggleInstructionsText}}</button>
+    <div id="instructions-detail" class="collapse in">{{result.instructions_for_use[0] | sentence}}</div>
+    </div>
+    <div>
+    <hr class="detail-hr">
+      <span>Purpose</span>
+     <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"ng-click="togglePurpose = !togglePurpose">{{togglePurposeText}}</button>
+    <div id="purpose-detail" class="collapse in">{{result.purpose[0] | sentence}}</div>
+    </div>
+    <div>
+    <hr class="detail-hr">
+      <span>Active Ingredient</span>
+     <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"ng-click="toggleActiveIngredient = toggleActiveIngredient">{{toggleActiveIngredientText}}</button>
+    <div id="active-ingredient-detail" class="collapse in">{{result.active_ingredient[0] |sentence}}</div>
+    </div>
+    <div>
+    <hr class="detail-hr">
+      <span>Conditions</span>
+     <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"ng-click="toggleConditions = toggleConditions">{{toggleConditionsText}}</button>
+    <div id="conditions-detail" class="collapse in">{{result.indications_and_usage[0]| sentence}}</div>
+    </div>
+    <div>
+    <hr class="detail-hr">
+      <span>Description</span>
+     <button type="button" data-toggle="collapse" data-target="#description-detail" class="collapse-button"ng-click="toggleDescription = toggleDescription">{{toggleDescriptionText}}</button>
+    <div id="description-detail" class="collapse in">{{result.description[0] | sentence}}</div>
+    </div>
+
+    <!-- 
+  <div ng-repeat="list in indicationListArray" class="tabDiv">
     {{list.header}}
     <ul>
-      <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
-        {{item}}
-      </li>
+      <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type: disc">{{item}}</li>
     </ul>
   </div>
-</div>
-<div ng-show="isSelected(2)">
-  <!-- <div  ng-repeat="list in contraindicationListArray" class="tabDiv"> -->
-  <div  ng-repeat="list in abuseListArray" class="tabDiv">
-    {{list.header}}
-    <ul>
-      <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
-        {{item}}
-      </li>
-    </ul>
+   -->
   </div>
-</div>
-<div ng-show="isSelected(3)">
-<div ng-bind-html="trustAdverseReactionsAsHtml()"></div>
-<div>{{abuseListArray}}</div>
-</div>
-</div>
+
+  <!-- Tab 2 -->
+  <div ng-show="isSelected(2)">
+    <div class="container-fluid">
+      <div class="list-group results-list" scrollable-div="992">
+        <div class="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-10">
+            <div class="row">
+              <div class="row col-xs-8">
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Boxed Warnings: </span> <span class="col-xs-8 ">
+                    {{result.boxed_warning[0] | sentence}} </span>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Do Not Use If...:</span> <span class="col-xs-8">{{result.do_not_use_if[0]
+                    | sentence}}</span>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Contraindications:</span> <span class="col-xs-8">{{result.contraindications[0]
+                    | sentence}}</span>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Drug Interactions:</span> <span class="col-xs-8 ">{{result.drug_interactions[0]
+                    |sentence}}</span>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Adverse Reactions:</span> <span class="col-xs-8">{{result.adverse_reactions[0]
+                    | sentence}}</span>
+                </div>
+                </p>
+                <div ng-bind-html="trustAdverseReactionsAsHtml()"></div>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Stop Use:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.stop_use[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Ask a Doctor:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.ask_doctor[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Ask Pharmacist:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.ask_doctor_or_pharmacist[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Warnings:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.warnings[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Precautions:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.precautions[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <!-- Insert precautions table here -->
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Warnings and Precautions:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.warnings_and_precautions[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">General Precautions:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.general_precautions[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">Drug Abuse and Dependency:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.drug_abuse_and_dependency[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3">User Safety Warning:</span>
+                  <div>
+                    <span class="col-xs-8">{{result.user_safety_warnings[0] | sentence}}</span>
+                  </div>
+                </div>
+                </p>
+                <p class="list-group-item-text">
+                <div class="row">
+                  <span class="col-xs-3"> </span> <span class="col-xs-8"> </span>
+                </div>
+                </p>
+              </div>
+              <div class="row col-xs-4">
+                <div class="row-fixed">
+                  <span class="row col-xs-1 col-xs-height captioned-image"> <img src="images/logo.png" /> <span
+                    class="caption">Over the Counter</span>
+                  </span> <span class="row col-xs-1 col-xs-height captioned-image"> <img src="images/logo.png" /> <span
+                    class="caption">Oral Pill</span>
+                  </span> <span class="row col-xs-1 col-xs-height captioned-image"> <img src="images/logo.png" /> <span
+                    class="caption">Toddler</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+  <div ng-repeat="list in contraindicationListArray" class="tabDiv">
+    <div ng-repeat="list in abuseListArray" class="tabDiv">
+      {{list.header}}
+      <ul>
+        <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type: disc">{{item}}</li>
+      </ul>
+    </div>
+-->
+      </di
+                v>
+
+
+      <!-- Tab 3
+  <div ng-show="isSelected(3)">
+    <div ng-bind-html="trustAdverseReactionsAsHtml()"></div>
+    <div>{{abuseListArray}}</div>
+  </div>
+ -->
+
+    </div>

@@ -60,6 +60,36 @@ angular.module('MedExplorer')
                 return $sce.trustAsHtml($scope.result.adverse_reactions_table[0]); //html content is th binded content.
              }
          };
+         
+         $scope.toggleDosage = true;
+         $scope.$watch('toggleDosage', function(){
+             $scope.toggleDosageText = $scope.toggleDosage ? 'Collapse' : 'Expand';
+         })
+
+         $scope.toggleInstructions = true;
+         $scope.$watch('toggleInstructions', function(){
+             $scope.toggleInstructionsText = $scope.toggleInstructions ? 'Collapse' : 'Expand';
+         })
+
+         $scope.togglePurpose = true;
+         $scope.$watch('togglePurpose', function(){
+             $scope.togglePurposeText = $scope.togglePurpose ? 'Collapse' : 'Expand';
+         })
+
+         $scope.toggleActiveIngredient = true;
+         $scope.$watch('toggleActiveIngredient', function(){
+             $scope.toggleActiveIngredientText = $scope.toggleActiveIngredient ? 'Collapse' : 'Expand';
+         })
+
+         $scope.toggleConditions = true;
+         $scope.$watch('toggleConditions', function(){
+             $scope.toggleConditionsText = $scope.toggleConditions ? 'Collapse' : 'Expand';
+         })
+
+         $scope.toggleDescription = true;
+         $scope.$watch('toggleDescription', function(){
+             $scope.toggleDescriptionText = $scope.toggleDescription ? 'Collapse' : 'Expand';
+         })
       }
   }]);
 
@@ -88,3 +118,4 @@ function dataSplitter(toParse) {
     listArray.push(list);
     return listArray;
   };
+
