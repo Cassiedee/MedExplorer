@@ -70,7 +70,6 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 			result.data = data;
 			if(data){
 				console.log('cache hit!!');
-                                console.log(data);
                                 if(data.resStatusCode == 404) {
                                     callback(200, null, data);
                                 }
