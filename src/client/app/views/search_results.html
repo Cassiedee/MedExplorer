@@ -2,10 +2,12 @@
 <div class="container-fluid">
   <h4>Results for: "{{searchTerm | title}}"</h4>
   <div class="list-group results-list" scrollable-div="992">
+      <div dir-paginate="result in results | itemsPerPage: 10">
         <a ui-sref="home.drugdetails({name:result.openfda.brand_name[0], drugDetails:result})"
 			class="list-group-item container-fluid jumbotron results-list-item"
+			style="padding-left:0px; padding-top:0px; padding-bottom:0px;"
 			id="results-list-style"
-			baseball-card="" ng-repeat="result in results">
+			baseball-card="" >
 	  <div class="row">
 	    <div class="col-xs-2">		  
 		  <div ng-show="result.has_ongoing_recalls" class="recall-background" style="display:table;">			
@@ -75,5 +77,6 @@
 		</div>
 	  </div>
     </a>
+    <div>
   </div>
 </div>
