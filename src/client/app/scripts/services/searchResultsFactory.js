@@ -26,6 +26,9 @@ angular.module('MedExplorer')
                       + '&field=[\"openfda.spl_id\",\"status\"]'
                       + '&value=[\"\\\"' + searchResults.results[index].openfda.spl_id[0] + '\\\"\",\"Ongoing\"]&terms=2&limit='+ 100).success(function(recalls) {
                         searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results.length > 0;
+                        if(searchResults.results[index].has_ongoing_recalls) {
+                          searchResults.results[index].recall = recalls.response.results[0];
+                        }
                         $rootScope.$broadcast('searchResultsRetrieved', '');
                       });
                   }, 300 * drug, drug);

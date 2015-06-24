@@ -1,0 +1,31 @@
+<div class="jumbotron container-fluid">
+  <div>
+    <h3>{{recallDetails.voluntary_mandated}}</h2>
+    <div class="row">
+      <div class="col-md-2"/>
+      <div class="col-md-4">Recall Reported: {{recallDetails.report_date | mmddyyyy_slashes}}</div>
+      <div class="col-md=4">Recall Initiated: {{recallDetails.recall_initiation_date | mmddyyyy_slashes}}</div>
+      <div class="col-md-2"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">Product Description:</div>
+    <div class="col-md-10">{{recallDetails.product_description}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">Distribution Pattern:</div>
+    <div class="col-md-10">{{recallDetails.distribution_pattern}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">Amount:</div>
+    <div class="col-md-10">{{recallDetails.product_quantity}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">Reason for Recall:</div>
+    <div class="col-md-10">{{recallDetails.reason_for_recall}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">Package Identifiers:</div>
+    <div class="col-md-10">{{recallDetails.code_info}}</div>
+  </div>
+</div>

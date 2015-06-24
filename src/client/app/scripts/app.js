@@ -52,7 +52,7 @@ angular
         }
       })      
       .state('home.drugdetails', {
-        url: 'drugdetails?name',
+        url: 'drugdetails?spl_id',
         views: {
         'side-panel@home': {
           template: ''
@@ -67,7 +67,7 @@ angular
         }
       })
       .state('home.recalldetails', {
-        url: 'recalldetails?id',
+        url: 'recalldetails?event_id',
         views: {
           'side-panel@home': {
           template: ''
@@ -76,6 +76,9 @@ angular
             controller: 'RecallDetailsController',
             templateUrl: 'views/recall_details.html'
           }
+        },
+        params: {
+          recallDetails: null,
         }
       })
       .state('home.about', {
@@ -85,7 +88,7 @@ angular
           template: ''
         },
           'main@': {
-        	  controller: 'MainController',
+            controller: 'MainController',
             templateUrl: 'views/about.html'
           }
         }

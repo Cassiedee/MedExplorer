@@ -382,6 +382,7 @@ input::-moz-focus-inner {
   color: #fff;
   float: left;
   height: 100%;
+  border: 0;
 }
 
 #sidebar {
@@ -407,4 +408,8 @@ input::-moz-focus-inner {
 .noborder {
   border: 0;
   background-color: #F8FAFA;
+}
+
+.recall-bar-link:hover {
+  text-decoration: none;
 }
