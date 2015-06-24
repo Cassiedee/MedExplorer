@@ -70,7 +70,13 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 			result.data = data;
 			if(data){
 				console.log('cache hit!!');
-				callback(data.resStatusCode, data);
+                                console.log(data);
+                                if(data.resStatusCode == 404) {
+                                    callback(200, null, data);
+                                }
+                                else {
+                                  callback(data.resStatusCode, data, null);
+                                }
 			} else {
 				console.log('cache miss!!');
 				var protocol = options.port == 443 ? https : http;
@@ -92,7 +98,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 
 							if(res.statusCode == 404) {
 								callback(200, null, obj);
-							}
+                                                        }
 							else {
 								callback(obj.resStatusCode, obj, null);
 							}
@@ -174,8 +180,25 @@ exports.recentRecalls = function(num, callback) {
 //		console.log(dateRangeQuery + ' ' + dateRange);
 		retriveFromCache(options.path, function(data){
 			if(data){
-				console.log('fetchloop cache hit!!');
-				callback(data.resStatusCode, data);
+				console.log('cache hit!!');
+                                if(data.resStatusCode == 404) {
+                                    callback(200, null, data);
+                                }
+                                else {
+                                  if(data.results) {
+                                    if(data.results.length < num) {
+                                            dateRange *= 1.5;
+                                            fetchloop();
+                                    }
+                                    else if(data.results.length >= 100) {
+                                            dateRange *= 0.75;
+                                            fetchloop();
+                                    }
+                                    else {
+                                      callback(data.resStatusCode, data.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+                                    }
+                                  }
+                                }
 			} else {
 				console.log('fetchloop cache miss!!');
 				req = protocol.request(options, function(res) {
