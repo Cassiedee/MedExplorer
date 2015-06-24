@@ -24,14 +24,15 @@ Our continuous delivery and deployment processes using Jenkins to automated the 
 ## Continuous Monitoring
 
 As shown in our diagram we are using Zabbix to monitor our development/test and production environments.   Zabbix provides the ability to measure response time of the web server, CPU and memory utilization and other system measurements.  Below are pictures of the Zabbix dashbaord and some of the measurement graphs.
-*Zabbix Dashboard*
+
+:Zabbix Dashboard:
 ![Zabbix Dashboard] (../../Software Development/Screenshots/Continuous-Monitoring/dashboard.png)
 
-*Zabbix Disk Usage*
+:Zabbix Disk Usage:
 ![Zabbix Disk Usage] (../../Software Development/Screenshots/Continuous-Monitoring/diskUsage.png)
 
-*Zabbix Memory Usage*
+:Zabbix Memory Usage:
 ![Zabbix Memory Usage] (../../Software Development/Screenshots/Continuous-Monitoring/memoryUsage.png)
 
-*Zabbix Web Monitoring*
+:Zabbix Web Monitoring:
 ![Zabbix Web Monitoring] (../../Software Development/Screenshots/Continuous-Monitoring/webMonitoringPage.png)
