@@ -28,8 +28,8 @@ angular
             templateUrl: 'views/main.html'
           },
           'side-panel@home': {
-            controller: 'MostRecentRecallsController',
-            templateUrl: 'views/most_recent_recalls.html'
+            controller: 'SidebarRecentRecallsController',
+            templateUrl: 'views/sidebar_recent_recalls.html'
           },
           'content@home': {
                 controller: 'TrendingTableController',
@@ -38,10 +38,11 @@ angular
         }
       })
       .state('home.search', {
-        url: 'search?source&type&field&value',
+        url: 'search?source&type&field&value&limit',
         views: {
           'side-panel@home': {
-            template: ''
+            controller: 'SidebarSearchResultsController',
+            templateUrl: 'views/sidebar_search_results.html'
           },
           'content@home': {
             controller: 'SearchResultsController',

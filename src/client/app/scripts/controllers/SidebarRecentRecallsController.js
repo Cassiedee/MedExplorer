@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MedExplorer')
-  .controller('MostRecentRecallsController', ['$scope', '$http', function ($scope, $http) {
+  .controller('SidebarRecentRecallsController', ['$scope', '$http', function ($scope, $http) {
     $http.get('/REST/recentRecalls').success(function(data) {
       if(!data.error) {
         $scope.results = data.response;

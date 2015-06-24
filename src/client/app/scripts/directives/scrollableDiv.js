@@ -18,7 +18,7 @@ angular.module('MedExplorer')
           else
             element.css('max-height', '');
           scope.$apply();
-        }, 500);
+        }, 300);
 
         $document.ready(function() {
           lazyListAutoHeight();

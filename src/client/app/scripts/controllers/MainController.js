@@ -8,7 +8,8 @@ angular.module('MedExplorer')
           'source': 'drug',
           'type': 'label',
           'field': 'openfda.brand_name',
-          'value': $filter('title')($scope.search.value)
+          'value': $filter('title')($scope.search.value),
+          'limit': 25
         });
       };
   }]);

@@ -27,14 +27,15 @@ function search(req, res) {
   if(!(req.query.source
         && req.query.type
         && req.query.field
-        && req.query.value)) {
+        && req.query.value
+        && req.query.limit)) {
     res.status(400).json({
       'response': null,
       'error': 'Doesn\'t contain the required parameters!'
     });
   }
   else {
-    datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, function(status, data, error) {
+    datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
       res.status(status).json({
         'response': data,
         'error': error

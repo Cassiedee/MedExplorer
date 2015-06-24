@@ -8,13 +8,11 @@ angular.module('MedExplorer')
         minWidth: '=scrollableDiv'
       },
       link: function(scope, element, attrs) {
-        var w = angular.element($window);
-		element.bind('DOMNodeInserted DOMNodeRemoved DOMSubtreeModified', function() {
-			element.find('.recall-background').height(element.height()+"px");
-		});
-		w.bind('resize', function() {
-			element.find('.recall-background').height(element.height()+"px");
-		});
+        scope.$watch(function() {
+          return element.height(); 
+        }, function() {
+          element.find('.recall-background').height(element.height() + "px");
+        })
       }
     };
   });

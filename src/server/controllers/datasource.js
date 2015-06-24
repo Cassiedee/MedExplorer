@@ -42,13 +42,11 @@ var options = {
  *  this search pass all results into the callback funciton,
  *    where the value of field matches value for each result
  */
-exports.search = function(datasource, type, field, value, terms, callback) {
+exports.search = function(datasource, type, field, value, terms, limit, callback) {
 	try {
 		options.method = 'GET';
 		if(terms > 1) {
-			console.log(field);
 			field = JSON.parse(field);
-			console.log(value);
 			value = JSON.parse(value);
 
 			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
@@ -58,9 +56,10 @@ exports.search = function(datasource, type, field, value, terms, callback) {
 					options.path += '+AND+';
 				}
 			}
+                        options.path += '&limit=' + limit;
 		}
 		else {
-			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=25';
+			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
 		}
 //		console.log(options.path);
 
@@ -69,10 +68,11 @@ exports.search = function(datasource, type, field, value, terms, callback) {
 			result.data = data;
 				console.log('data in search object: ' + result.data);
 		if(result.data){
-			console.log('cache hit!!')
+			console.log('cache hit!!');
 			var status = 200;
 			callback(status, result.data)
 		} else {
+                        console.log('cache miss!!');
 			var protocol = options.port == 443 ? https : http;
 			var req = protocol.request(options, function(res) {
 				var output = '';
@@ -215,8 +215,7 @@ function retriveFromCache(query, callback){
 		var collection = db.collection("medicine_explorer");
 		// Fetch the document
 		collection.findOne({ mongoKey: query }, function(err, item) {
-			console.log( item.toString().substring(0,100) + " Item");
-//			console.log("Item: ");
+			console.log( JSON.stringify(item).substring(0,100) + " Item");
 			var data = item;
 
 			//if data is more than 24 hours old clear the cache of all objects
@@ -226,7 +225,7 @@ function retriveFromCache(query, callback){
 				data = null;
 			}
 
-			callback( data);
+			callback(data);
 			db.close();
 		});
 	});

@@ -33,6 +33,9 @@ module.exports = function(config) {
       'app/vendor/bootstrap/dist/js/bootstrap.js',
       'app/vendor/angular-ui-router/release/angular-ui-router.js',
       'app/vendor/lodash/lodash.js',
+      'app/vendor/ng-lodash/build/ng-lodash.js',
+      'app/vendor/d3/d3.js',
+      'app/vendor/angular-utils-pagination/dirPagination.js',
       'app/vendor/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
