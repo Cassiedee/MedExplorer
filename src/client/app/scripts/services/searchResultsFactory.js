@@ -15,7 +15,6 @@ angular.module('MedExplorer')
         + '&limit=' + limit).success(function(data) {
           if(!data.error) {
             searchResults.results = data.response.results;
-            console.log(searchResults.results);
             $rootScope.$broadcast('searchResultsRetrieved', '');
             if(searchResults.results && searchResults.results.length) {
               for(var drug in searchResults.results) {
@@ -26,7 +25,6 @@ angular.module('MedExplorer')
                       + '&type=enforcement'
                       + '&field=[\"openfda.spl_id\",\"status\"]'
                       + '&value=[\"\\\"' + searchResults.results[index].openfda.spl_id[0] + '\\\"\",\"Ongoing\"]&terms=2&limit='+ 100).success(function(recalls) {
-                        console.log(recalls);
                         searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results.length > 0;
                         $rootScope.$broadcast('searchResultsRetrieved', '');
                       });
