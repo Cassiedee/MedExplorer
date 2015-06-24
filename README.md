@@ -1,1 +1,8 @@
-# FDAExplorer
+# MedExplorer
+![Agile User Centered Approach](docs/Diagrams/Agile User Centered%20Approach.png)
+
+Our Agile User-Centered approach ensures ongoing collaboration between development team, users, and multiple stakeholders.  Todo:[Team picture]   To implement our framework we first identified the members of [our team and the roles](docs/MedExplorer Development Team.md) they would fulfil.  Our multidisciplinary team is comprised of experienced UX designers, product owner, software and test engineers, delivery manager, agile coach, and business owners. Our product, Medicine Explorer, is designed for the general public and clinicians who seek information on pharmaceutical performance so they can make better health decisions. Our product is a web-based service that provides searchable information and trends on pharmaceuticals and related adverse effects which is unlike other similar sites. Our product provides authoritative, trustworthy, and objective information.
+
+To kick off the initiative, the team collaborated to review the RFQ details to ensure we understood the requirements and to set expectations.
+
+One of the first activities for the team was to review and analyze the multiple data sets (Drugs, Devices, Foods) provided on [openFDA](http://open.FDA.gov) website. As part of our initial research we provided a summary of our analysis of the data to a couple members of our Northrop Grumman Corporate Medical Advisory Board for input as to which sets of information they would find more useful as clinicians. Following this we met with a domain expert working in the Health Care industry and representatives from the general public to understand what information would better met their needs. This lays the initial groundwork for understanding the user space and what information would be of value. Based on this feedback, we decided to focus on the data sets associated with Drugs (Adverse Events, Labeling, and Enforcement Reports).
