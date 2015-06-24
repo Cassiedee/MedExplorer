@@ -1,5 +1,5 @@
 # DevOps
-![Devops](docs/Diagrams/ADS_DevOps.png)
+![Devops](/MedExplorer/docs/Diagrams/ADS_DevOps.png)
 
 ## Source Code Management
 
@@ -25,10 +25,10 @@ Our continuous delivery and deployment processes using Jenkins to automated the 
 
 As shown in our diagram we are using Zabbix to monitor our development/test and production environments.   Zabbix provides the ability to measure response time of the web server, CPU and memory utilization and other system measurements.  Below are pictures of the Zabbix dashbaord and some of the measurement graphs.
 
-![Zabbix Dashboard] (docs/Software Development/Screenshots/Continuous-Monitoring/dashboard.png)
+![Zabbix Dashboard] (/MedExplorer/docs/Software Development/Screenshots/Continuous-Monitoring/dashboard.png)
 
-![Zabbix Disk Usage] (docs/Software Development/Screenshots/Continuous-Monitoring/diskUsage.png)
+![Zabbix Disk Usage] (/MedExplorer/docs/Software Development/Screenshots/Continuous-Monitoring/diskUsage.png)
 
-![Zabbix Memory Usage] (docs/Software Development/Screenshots/Continuous-Monitoring/memoryUsage.png)
+![Zabbix Memory Usage] (/MedExplorer/docs/Software Development/Screenshots/Continuous-Monitoring/memoryUsage.png)
 
-![Zabbix Web Monitoring] (docs/Software Development/Screenshots/Continuous-Monitoring/webMonitoringPage.png)
+![Zabbix Web Monitoring] (/MedExplorer/docs/Software Development/Screenshots/Continuous-Monitoring/webMonitoringPage.png)
