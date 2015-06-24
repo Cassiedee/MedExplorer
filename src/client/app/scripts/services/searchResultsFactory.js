@@ -16,8 +16,8 @@ angular.module('MedExplorer')
           if(!data.error) {
             searchResults.results = data.response.results;
                         $rootScope.$broadcast('searchResultsRetrieved', '');
-                        console.log('fired');
-                        console.log(searchResults.results);
+//                        console.log('fired');
+//                        console.log(searchResults.results);
             if(searchResults.results && searchResults.results.length) {
               for(var drug in searchResults.results) {
                 searchResults.results[drug].has_ongoing_recalls = false;

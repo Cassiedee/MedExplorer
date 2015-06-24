@@ -6,7 +6,7 @@ angular.module('MedExplorer')
     $scope.searchTerm = $stateParams.value;
 
     $scope.$on('searchResultsRetrieved', function() {
-      console.log('received');
+//      console.log('received');
       $scope.results = searchResultsFactory.results;
     });
   }]);

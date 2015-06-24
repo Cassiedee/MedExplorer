@@ -4,7 +4,7 @@ angular.module('MedExplorer')
   .controller('SidebarRecentRecallsController', ['$scope', '$http', function ($scope, $http) {
     $http.get('/REST/recentRecalls').success(function(data) {
       if(!data.error) {
-        console.log(data);
+//        console.log(data);
         $scope.results = data.response;
       }
       $scope.resultsLength = 0;
