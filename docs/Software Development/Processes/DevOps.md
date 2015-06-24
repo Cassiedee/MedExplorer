@@ -7,7 +7,7 @@ The MedExplorer development team is using an internally hosted Enterprise GitHub
 
 ## Continuous Integration
 
-Our continuous integration process using a Jenkins CI server which is connected to our GitHub source code repository.  It monitors the source files in GitHub and when there is update tot he repository, Jenkins builds and deploys new Docker containers to our development/test environment.  Jenkins then runs our automated tests.
+Our continuous integration process uses a Jenkins CI server which is connected to our GitHub source code repository.  It monitors the source files in GitHub and when there is update to the repository, Jenkins builds and deploys new Docker containers to our development/test environment.  Jenkins then runs our automated tests.
 
 ## Automated Test
 
@@ -19,7 +19,7 @@ SonarQube is being used to perform automated software quality checks on the base
 
 ## Continuous Delivery/Deployment
 
-Our continuous delivery and deployment processes using Jenkins to automated the creation and deployment of uspdated Docker containers to the production environment.
+Our continuous delivery and deployment processes uses Jenkins to automated the creation and deployment of uspdated Docker containers to the production environment.
 
 ## Continuous Monitoring
 
