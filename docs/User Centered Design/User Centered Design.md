@@ -28,10 +28,15 @@ The design group processed the generative research and user stories to produce i
 
 We refined and combined our Design Ideas into a single draft wireframe that was reviewed by the entire team. The initial wireframe is located at [Wireframes/Initial Wireframes] (Wireframes/Initial Wireframes/wireframe_v01_06202015.pdf).
 
-### Final Wireframes
-
 ## Evaluation
 
-UX testing is performed to verify user models and design decisions. Various evaluation methods include interviews, expectancy tests, A/B testing, and/or usability evaluations to measure efficiency, accuracy, and user satisfaction.
+We conducted usability studies with real users, to verify user models and design decisions. Various evaluation methods include interviews, expectancy tests, comparison testing, and focus groups to measure efficiency, accuracy, and user satisfaction.
+
+### Final Wireframes
+
+The user feedback and designs were shown to developers in ongoing discussions during each sprint to ensure the designs’ deliverability.  The designs were altered to meet the user expectations and to be executable within the sprint schedule, resulting in the Final Wireframes.
 
 ## Design Documentation
+
+Design documentation was produced to help the developers understand the design group decisions, how the product was meant to look, feel, and behave.  Color schemes, font choices, and design patterns are included in the project style guide and Design Documentation.
+
