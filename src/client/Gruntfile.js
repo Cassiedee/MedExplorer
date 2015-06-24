@@ -1,4 +1,4 @@
-// Generated on 2015-06-20 using generator-angular 0.11.1
+// Generated on 2015-06-24 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -25,11 +25,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     // Project settings
-    yeoman: {
-      // configurable paths
-      app: require('./bower.json').appPath || 'app',
-      dist: '../server/dist' 
-    },
+    yeoman: appConfig,
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -96,7 +92,7 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          port: 9002,
+          port: 9009,
           middleware: function (connect) {
             return [
               connect.static('.tmp'),

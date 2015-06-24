@@ -51,11 +51,8 @@ NOTE: nodemon will re-deploy the node server when any changes are made,
       from the node server, so these changes will not show up on
       "localhost:80" until you run "update.bat"
 
-
-
-OpenFDA API key: yTYnUvdcecwjxEgbECMYviNmByhA7bhZi8OgAUKK
-
-10) install mongodb with the command "npm install mongodb"
+10) cd to the src/server directory
+	install mongodb with the command "npm install mongodb"
 	This required me to install python 2.7.10 found here
 	https://www.python.org/downloads/
 	and set the PYTHON environment variable with the commands:
