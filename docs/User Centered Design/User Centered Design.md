@@ -14,7 +14,7 @@ User models include task flows, [personas] (Personas), scenarios, communication 
 
 ## User Stories
 
-User research ensures user stories are valid by identifying user priorities. As new information emerge, stories are refiend and re-prioritized.
+User research ensures user stories are valid by identifying user priorities. As new information emerges, stories are refined and re-prioritized. These stories will inform the product backlog for future Agile sprints, as well as completion criteria.
 
 ## Wireframes & Prototypes
 
