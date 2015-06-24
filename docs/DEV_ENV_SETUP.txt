@@ -51,8 +51,19 @@ NOTE: nodemon will re-deploy the node server when any changes are made,
       from the node server, so these changes will not show up on
       "localhost:80" until you run "update.bat"
 
-
-
-
-
-
+10) cd to the src/server directory
+	install mongodb with the command "npm install mongodb"
+	This required me to install python 2.7.10 found here
+	https://www.python.org/downloads/
+	and set the PYTHON environment variable with the commands:
+	"set PYTHONPATH=%PYTHONPATH%;C:\Python27"
+	"set PYTHON=C:\Python27\python.exe"
+	
+	and to install Microsoft .NET Framework 2.0 Software Development Kit found here
+	http://www.microsoft.com/en-US/Download/details.aspx?id=19988
+	
+	and to install Microsoft visual studio .net based on the instructions found here
+	https://github.com/TooTallNate/node-gyp/wiki/Visual-Studio-2010-Setup
+	this required me to log into as a microsoft user
+	
+	Don't forget to restart the cmd shell after installing software
