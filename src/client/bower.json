@@ -20,5 +20,8 @@
     "karma-junit-reporter": "~0.2.2"
   },
   "appPath": "app",
-  "moduleName": "MedExplorer"
+  "moduleName": "MedExplorer",
+  "resolutions": {
+    "d3": "~3.5.5"
+  }
 }
