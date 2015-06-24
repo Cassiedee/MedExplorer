@@ -13,3 +13,6 @@
 **_Unlike_** other similar sites
 
 **_Our_** product provides authoritative, trustworthy, and objective information.
+
+
+[Draft version](docs/Pictures/Draft Vision Statement.jpg) 
