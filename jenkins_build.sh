@@ -2,6 +2,8 @@
 
 DIR=$PWD
 
+git config --global url."https://".insteadOf git://
+
 # Set up server node modules
 echo Setting up server node modules
 cd $DIR/src/server
