@@ -32,6 +32,7 @@ ExpressJS | 4.12.4 | MIT Licensed | https://www.npmjs.com/package/express | http
 Docker | 1.7.0 | Apache License 2.0 | https://www.docker.com/components-licenses | https://www.docker.com/ | Container |
 Zabbix | 2.4.5 | Apache License 2.0 | http://www.zabbix.com/license.php | http://www.zabbix.com/ | Continuous Monitoring |
 jQuery | 2.1.4 | MIT Licensed | https://jquery.org/license/ | https://jquery.com/ | JavaScript Development |
+lodash | 3.9.3 | MIT Licensed | https://lodash.com/license | https://lodash.com/ | JavaScript Development |
 MongoDB | 3.0.4 | GNU Affero General Public License Version 3.0 | https://www.mongodb.org/about/licensing/ | https://www.mongodb.org/ | Caching |
 Git | 1.9.5 | Apache License 2.0 | https://git-scm.com/about/free-and-open-source | https://git-scm.com/ | Development |
 Jenkins | 1.617 | MIT Licensed | https://jenkins-ci.org/mit-license | https://jenkins-ci.org/ | Continuous Integrated Builds |
