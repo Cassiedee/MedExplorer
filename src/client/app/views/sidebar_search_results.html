@@ -2,20 +2,20 @@
 <div class="container-fluid">
   <div id="sidebar" class="jumbotron">
     <div class="sidebar">
-      <h4 class="trendingdrug">{{searchTerm}}</h4>
+      <h4 class="trendingdrug" style="padding-left:0px;">{{searchTerm}}</h4>
       <h5> Results: {{results.length}}</h5>
       <ul class="list-group">
         <li class="list-group-item noborder">
           <dir-pagination-controls direction-links="false" auto-hide="false" max-size="5" template-url="assets/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
         </li>
         <hr class="sidebar-divider">
-        <li class="list-group-item noborder">Distribution:
+        <li class="list-group-item noborder" style="padding-left:0px;">Distribution:
           <ul class="list-group">
             <li class="list-group-item noborder" ng-repeat="(key, prop) in distributionTypes">{{key | titlePreserveUpper}}: {{prop}}</li>
           </ul>
         </li>
         <hr class="sidebar-divider">
-        <li class="list-group-item noborder">Dosage Form:
+        <li class="list-group-item noborder" style="padding-left:0px;">Dosage Form:
           <ul class="list-group">
             <li class="list-group-item noborder" ng-repeat="(key, prop) in dosageForms">{{key | title}}: {{prop}}</li>
           </ul>
