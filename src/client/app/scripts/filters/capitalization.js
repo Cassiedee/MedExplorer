@@ -44,7 +44,7 @@ angular.module('MedExplorer')
     };
   })
   //Uppercase The First Character Of Each Word But DON'T Touch The REST
-  .filter('title-preserve-upper', function() {
+  .filter('titlePreserveUpper', function() {
     return function(input) {
       if(input) {
         var words = input.split(' '),

@@ -1,7 +1,22 @@
+<!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
 <div class="container-fluid">
   <div id="sidebar" class="jumbotron">
     <div class="sidebar">
-      <h4 class="trendingdrug">{{searchValue}}</h4>
+      <h4 class="trendingdrug">{{searchTerm}}</h4>
+      <h5> Results: {{results.length}}</h5>
+      <ul class="list-group">
+        <li class="list-group-item noborder">Distribution:
+          <ul class="list-group">
+            <li class="list-group-item noborder" ng-repeat="(key, prop) in distributionTypes">{{key | titlePreserveUpper}}: {{prop}}</li>
+          </ul>
+        </li>
+        <hr class="sidebar-divider">
+        <li class="list-group-item noborder">Dosage Form:
+          <ul class="list-group">
+            <li class="list-group-item noborder" ng-repeat="(key, prop) in dosageForms">{{key | title}}: {{prop}}</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
