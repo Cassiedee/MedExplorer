@@ -46,9 +46,9 @@ exports.search = function(datasource, type, field, value, terms, callback) {
 	try {
 		options.method = 'GET';
 		if(terms > 1) {
-			console.log(field);
+//			console.log(field);
 			field = JSON.parse(field);
-			console.log(value);
+//			console.log(value);
 			value = JSON.parse(value);
 
 			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
@@ -67,47 +67,47 @@ exports.search = function(datasource, type, field, value, terms, callback) {
 		var result = {};
 		retriveFromCache(options.path, function(data){
 			result.data = data;
-				console.log('data in search object: ' + result.data);
-		if(result.data){
-			console.log('cache hit!!')
-			var status = 200;
-			callback(status, result.data)
-		} else {
-			var protocol = options.port == 443 ? https : http;
-			var req = protocol.request(options, function(res) {
-				var output = '';
-				res.setEncoding('utf8');
+			if(data){
+				console.log('cache hit!!');
+				callback(data.resStatusCode, data);
+			} else {
+				console.log('cache miss!!');
+				var protocol = options.port == 443 ? https : http;
+				var req = protocol.request(options, function(res) {
+					var output = '';
+					res.setEncoding('utf8');
 
-				res.on('data', function (chunk) {
-					output += chunk;
-				});
+					res.on('data', function (chunk) {
+						output += chunk;
+					});
 
-				res.on('end', function() {
-					try{
-						var obj = JSON.parse(output);
-						//put the object into the cache
-						if(!obj.error){
+					res.on('end', function() {
+						try{
+							var obj = JSON.parse(output);
+
+							//put the object into the cache
+							obj.resStatusCode = res.statusCode;
 							insertIntoCache(options.path, obj);
+
+							if(res.statusCode == 404) {
+								callback(200, null, obj);
+							}
+							else {
+								callback(obj.resStatusCode, obj, null);
+							}
+						}catch(err){
+							console.log(err);
 						}
-						if(res.statusCode == 404) {
-							callback(200, null, obj);
-						}
-						else {
-							callback(res.statusCode, obj, null);
-						}
-					}catch(err){
-						console.log(err);
-					}
+					});
 				});
-			});
 
-			req.on('error', function(err) {
-				req.send('error: ' + err.message);
-			});
+				req.on('error', function(err) {
+					req.send('error: ' + err.message);
+				});
 
-			req.end();
-		}
-	});
+				req.end();
+			}
+		});
 	} catch(err) {
 		console.log(err);
 	}
@@ -170,36 +170,49 @@ exports.recentRecalls = function(num, callback) {
 		var recalls = [];
 		var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
 		options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-		console.log(dateRangeQuery + ' ' + dateRange);
-		req = protocol.request(options, function(res) {
-			var output = '';
-			res.setEncoding('utf8');
+//		console.log(dateRangeQuery + ' ' + dateRange);
+		retriveFromCache(options.path, function(data){
+			if(data){
+				console.log('fetchloop cache hit!!');
+				callback(data.resStatusCode, data);
+			} else {
+				console.log('fetchloop cache miss!!');
+				req = protocol.request(options, function(res) {
+					var output = '';
+					res.setEncoding('utf8');
 
-			res.on('data', function (chunk) {
-				output += chunk;
-			});
+					res.on('data', function (chunk) {
+						output += chunk;
+					});
 
-			res.on('end', function() {
-				var obj = JSON.parse(output);
-				if(obj.results)
-					recalls = obj.results;
-				if(recalls.length < num) {
-					dateRange *= 1.5;
-					fetchloop();
-				}
-				else if(recalls.length >= 100) {
-					dateRange *= 0.75;
-					fetchloop();
-				}
-				else
-					callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
-			});
+					res.on('end', function() {
+						var obj = JSON.parse(output);
+
+						//put the object into the cache
+						obj.resStatusCode = res.statusCode;
+						insertIntoCache(options.path, obj);
+
+						if(obj.results)
+							recalls = obj.results;
+						if(recalls.length < num) {
+							dateRange *= 1.5;
+							fetchloop();
+						}
+						else if(recalls.length >= 100) {
+							dateRange *= 0.75;
+							fetchloop();
+						}
+						else
+							callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+					});
+				});
+				req.on('error', function(err) {
+					req.callback(res.statusCode, null, err);
+				});
+
+				req.end();
+			}
 		});
-		req.on('error', function(err) {
-			req.callback(res.statusCode, null, err);
-		});
-
-		req.end();
 	}
 
 	fetchloop();
@@ -208,14 +221,13 @@ exports.recentRecalls = function(num, callback) {
 var twentyFourHoursInMillis = 86400000;
 
 function retriveFromCache(query, callback){
-	console.log('in retrieveFromCache');
-	console.log(query);
+//	console.log(query);
 	var db = new Db('test', new Server('localhost', 27017));
 	db.open(function(err, db) {
 		var collection = db.collection("medicine_explorer");
 		// Fetch the document
 		collection.findOne({ mongoKey: query }, function(err, item) {
-			console.log( item.toString().substring(0,100) + " Item");
+//			console.log( item.toString().substring(0,100) + " Item");
 //			console.log("Item: ");
 			var data = item;
 
@@ -225,8 +237,12 @@ function retriveFromCache(query, callback){
 				cleanCache(db);
 				data = null;
 			}
-
-			callback( data);
+			if(data){
+				if(!data.resStatusCode){
+					data.resStatusCode = 200;
+				}
+			}
+			callback(data);
 			db.close();
 		});
 	});

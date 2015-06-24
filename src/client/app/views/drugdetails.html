@@ -27,7 +27,8 @@
   </div>
 </div>
 <div ng-show="isSelected(2)">
-  <div  ng-repeat="list in contraindicationListArray" class="tabDiv">
+  <!-- <div  ng-repeat="list in contraindicationListArray" class="tabDiv"> -->
+  <div  ng-repeat="list in abuseListArray" class="tabDiv">
     {{list.header}}
     <ul>
       <li ng-repeat="item in list.list" class="tabListItem" style="list-style-type:disc">
