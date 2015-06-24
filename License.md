@@ -21,6 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 Open Source Third Party Software Licenses:
+
 Product | Version | License Type | License Source | Product Source | Used In
 :-------:|---------------|-------------------|----------------------|----------------------|---------------------
 Bootstrap | 3.2.0 | MIT Licensed - Copyright 2011-2015 Twitter, Inc. - Code licensed under MIT, documentation under CC BY 3.0. | http://getbootstrap.com/about/ | http://getbootstrap.com/ | Front End |
