@@ -25,11 +25,12 @@ a, a:focus, a:active {
 
 .trendingdrug {
 	padding:10px;
-	font-size: 16pt;
+	font-size: 14pt;
 	font-style:normal;
 	word-wrap: break-word;
 	white-space:normal;
 	font-weight:300;
+	font-family: "Roboto", Sans-serif;
 }
 
 .majorsiteinfo {
@@ -87,9 +88,29 @@ a, a:focus, a:active {
 	font-size:10pt;
 }
 
+#results-list-style {
+	padding-left:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+}
+
+.rotated-text {
+	transform: rotate(-90deg);
+	transform-origin: right, top;
+	-ms-transform: rotate(-90deg);
+	-ms-transform-origin:right, top;
+	-webkit-transform: rotate(-90deg);
+	-webkit-transform-origin:right, top;
+	color:white;
+}
+
 .drugtitle {
 	padding-left:0px;
 	margin-left:0px;
+}
+
+.row .list-group-item-heading {
+	padding-top:30px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -139,9 +160,17 @@ a, a:focus, a:active {
 }
 
 .recall-background {
-	background-image: repeating-linear-gradient(45deg, 
-		transparent, transparent 1px,
-		#d86021 1px, #d86021 12px);
+	background-image: repeating-linear-gradient(30deg, 
+		#8c3c18, #8c3c18 16px,
+		#d86021 17px, #d86021 32px,
+		#d86021 33px, #8c3c18 34px);
+}
+
+.recall-horizontal-background {
+	background-image: repeating-linear-gradient(-60deg, 
+		#8c3c18, #8c3c18 16px,
+		#d86021 17px, #d86021 32px,
+		#d86021 33px, #8c3c18 34px);
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
@@ -169,6 +198,10 @@ a, a:focus, a:active {
   padding-bottom: 0px;
   padding-left: 0px;
   background-size:18px 18px;
+}
+
+#search-form  input {
+	font-family: "Roboto", Sans-serif;
 }
 
 .searchbar{

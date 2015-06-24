@@ -5,6 +5,10 @@
       <h4 class="trendingdrug">{{searchTerm}}</h4>
       <h5> Results: {{results.length}}</h5>
       <ul class="list-group">
+        <li class="list-group-item noborder">
+          <dir-pagination-controls direction-links="false"></dir-pagination-controls>
+        </li>
+        <hr class="sidebar-divider">
         <li class="list-group-item noborder">Distribution:
           <ul class="list-group">
             <li class="list-group-item noborder" ng-repeat="(key, prop) in distributionTypes">{{key | titlePreserveUpper}}: {{prop}}</li>

@@ -12,7 +12,7 @@ angular.module('MedExplorer')
           return element.height(); 
         }, function() {
           element.find('.recall-background').height(element.height() + "px");
-        })
+        });
       }
     };
   });
