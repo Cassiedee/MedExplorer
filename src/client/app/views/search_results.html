@@ -2,81 +2,84 @@
 <div class="container-fluid">
   <h4>Results for: "{{searchTerm | title}}"</h4>
   <div class="list-group results-list" scrollable-div="992">
-      <div dir-paginate="result in results | itemsPerPage: 10">
-        <a ui-sref="home.drugdetails({name:result.openfda.brand_name[0], drugDetails:result})"
-			class="list-group-item container-fluid jumbotron results-list-item"
+	  <div dir-paginate="result in results | itemsPerPage: 10">
+		<div class="list-group-item container-fluid jumbotron results-list-item"
 			style="padding-left:0px; padding-top:0px; padding-bottom:0px;"
 			id="results-list-style"
 			baseball-card="" >
 	  <div class="row">
-	    <div class="col-xs-2">		  
-		  <div ng-show="result.has_ongoing_recalls" class="recall-background" style="display:table;">			
-			  <div class="rotated-text" style="display:table-cell; vertical-align:middle;">
-					<h3>
-				RECALL
-				</h3>
+		<a>
+			<div class="col-xs-2">		  
+			  <div ng-show="result.has_ongoing_recalls" class="recall-background" style="display:table;">			
+				  <div class="rotated-text" style="display:table-cell; vertical-align:middle;">
+						<h3>
+					RECALL
+					</h3>
+				  </div>
 			  </div>
-		  </div>
-		</div>
-	    <div class="col-xs-10">
-		  <div class="row list-group-item-heading">
-			<span class="drugtitle col-xs-12">
-			  <strong>
-				{{result.openfda.brand_name[0] | title}}
-			  </strong>
-			</span>
-		  </div>
-		  <div class="row">
-			<div class="row col-xs-12"><!--div class="row col-xs-8"-->
-			  <p class="list-group-item-text">
-				<div class="row">
-				  <span class="col-xs-3">
-					Active Ing:
-				  </span>
-				  <span class="col-xs-8 ">
-					{{result.active_ingredient[0] | uppercase}}
-				  </span>
-				</div>
-			  </p>
-			  <p class="list-group-item-text">
-				<div class="row">
-				  <span class="col-xs-3">Purpose:</span>
-				  <span class="col-xs-8">{{result.purpose[0] | sentence}}</span>
-				</div>
-			  </p>
-			  <p class="list-group-item-text">
-				<div class="row">
-				  <span class="col-xs-3">Conditions:</span>
-				  <span class="col-xs-8">{{result.indications_and_usage[0] | sentence}}</span>
-				</div>
-			  </p>
-			  <p class="list-group-item-text">
-				<div class="row">
-				  <span class="col-xs-3"> </span>
-				  <span class="col-xs-8"> </span>
-			    </div>
-			  </p>
 			</div>
-			<!--div class="row col-xs-4">
-			  <div class="row-fixed">
-				<span class="row col-xs-1 col-xs-height captioned-image">
-				  <img src="images/logo.png" />
-				  <span class="caption">Over the Counter</span>
-				</span>
-				<span class="row col-xs-1 col-xs-height captioned-image">
-				  <img src="images/logo.png" />
-				  <span class="caption">Oral Pill</span>
-				</span>
-				<span class="row col-xs-1 col-xs-height captioned-image">
-				  <img src="images/logo.png" />
-				  <span class="caption">Toddler</span>
+		</a>
+		<a ui-sref="home.drugdetails({name:result.openfda.brand_name[0], drugDetails:result})">
+			<div class="col-xs-10">
+			  <div class="row list-group-item-heading">
+				<span class="drugtitle col-xs-12">
+				  <strong>
+					{{result.openfda.brand_name[0] | title}}
+				  </strong>
 				</span>
 			  </div>
-			</div-->
-		  </div>
-		</div>
+			  <div class="row">
+				<div class="row col-xs-12"><!--div class="row col-xs-8"-->
+				  <p class="list-group-item-text">
+					<div class="row">
+					  <span class="col-xs-3">
+						Active Ing:
+					  </span>
+					  <span class="col-xs-8 ">
+						{{result.active_ingredient[0] | uppercase}}
+					  </span>
+					</div>
+				  </p>
+				  <p class="list-group-item-text">
+					<div class="row">
+					  <span class="col-xs-3">Purpose:</span>
+					  <span class="col-xs-8">{{result.purpose[0] | sentence}}</span>
+					</div>
+				  </p>
+				  <p class="list-group-item-text">
+					<div class="row">
+					  <span class="col-xs-3">Conditions:</span>
+					  <span class="col-xs-8">{{result.indications_and_usage[0] | sentence}}</span>
+					</div>
+				  </p>
+				  <p class="list-group-item-text">
+					<div class="row">
+					  <span class="col-xs-3"> </span>
+					  <span class="col-xs-8"> </span>
+					</div>
+				  </p>
+				</div>
+				<!--div class="row col-xs-4">
+				  <div class="row-fixed">
+					<span class="row col-xs-1 col-xs-height captioned-image">
+					  <img src="images/logo.png" />
+					  <span class="caption">Over the Counter</span>
+					</span>
+					<span class="row col-xs-1 col-xs-height captioned-image">
+					  <img src="images/logo.png" />
+					  <span class="caption">Oral Pill</span>
+					</span>
+					<span class="row col-xs-1 col-xs-height captioned-image">
+					  <img src="images/logo.png" />
+					  <span class="caption">Toddler</span>
+					</span>
+				  </div>
+				</div-->
+			  </div>
+			</div>
+		</a>
 	  </div>
-    </a>
+    </div>
     <div>
   </div>
 </div>
