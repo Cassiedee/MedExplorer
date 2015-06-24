@@ -26,7 +26,7 @@ The design group processed the generative research and user stories to produce i
 
 ### Initial Wireframes
 
-We refined and combined our Design Ideas into a single draft wireframe that was reviewed by the entire team.  The initial wireframe is located at [Wireframes/Initial Wireframes] (Wireframes/Initial Wireframes/wireframe_v01_06202015.pdf).
+We refined and combined our Design Ideas into a single draft wireframe that was reviewed by the entire team. The initial wireframe is located at [Wireframes/Initial Wireframes] (Wireframes/Initial Wireframes/wireframe_v01_06202015.pdf).
 
 ### Final Wireframes
 
