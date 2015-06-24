@@ -1,23 +1,11 @@
-# "ported" by Adam Miller <maxamillion@fedoraproject.org> from
-#   https://github.com/fedora-cloud/Fedora-Dockerfiles
-#
-# Originally written for Fedora-Dockerfiles by
-#   "Jason Clark" <jclark@redhat.com>
 
-FROM centos:centos6
+FROM jenkins-base:latest
 MAINTAINER The CentOS Project <cloud-ops@centos.org>
 
-RUN yum -y update; yum clean all
-RUN yum -y install epel-release; yum clean all
-RUN yum -y install nodejs npm; yum clean all
-RUN yum -y install zabbix-agent; yum clean all
-
 ADD . /src
+WORKDIR /src/
 
-RUN cd /src/; npm install
-
-EXPOSE 80
-EXPOSE 10050
+RUN npm install
 
 #CMD ["npm", "start"]
-CMD PORT=80 node /src/bin/www
+CMD PORT=80 node ./bin/www
