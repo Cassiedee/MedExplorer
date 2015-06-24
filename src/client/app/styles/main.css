@@ -109,6 +109,10 @@ a, a:focus, a:active {
 	margin-left:0px;
 }
 
+.row .list-group-item-heading {
+	padding-top:30px;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -156,10 +160,17 @@ a, a:focus, a:active {
 }
 
 .recall-background {
-	/*background-image: repeating-linear-gradient(45deg, 
-		transparent, transparent 1px,
-		#d86021 1px, #d86021 12px);*/
-	background-color:#d86021;
+	background-image: repeating-linear-gradient(30deg, 
+		#8c3c18, #8c3c18 16px,
+		#d86021 17px, #d86021 32px,
+		#d86021 33px, #8c3c18 34px);
+}
+
+.recall-horizontal-background {
+	background-image: repeating-linear-gradient(-60deg, 
+		#8c3c18, #8c3c18 16px,
+		#d86021 17px, #d86021 32px,
+		#d86021 33px, #8c3c18 34px);
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
