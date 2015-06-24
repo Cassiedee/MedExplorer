@@ -20,7 +20,8 @@ angular.module('MedExplorer')
               + '&type=enforcement'
               + '&field=[\"openfda.brand_name\",\"status\",\"classification\"]'
               + '&value=[\"' + $scope.results[index].openfda.brand_name[0] + '\",\"Ongoing\",\"Class I\"]&terms=2').success(function(recalls) {
-                $scope.results[index].has_ongoing_recalls = recalls.response && recalls.response.results.length > 0;
+            	  console.log(recalls.response);
+                $scope.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
               });
           }, 300 * drug, drug);          
         }

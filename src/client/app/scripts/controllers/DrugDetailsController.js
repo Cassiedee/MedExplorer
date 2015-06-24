@@ -18,6 +18,7 @@ angular.module('MedExplorer')
           $scope.resultLength = $scope.result.length;
           $scope.indicationListArray = dataSplitter($scope.result.indications_and_usage[0]);
           $scope.contraindicationListArray = dataSplitter($scope.result.contraindications[0]);
+          $scope.abuseListArray = $scope.result.drug_abuse_and_dependence[0];
           console.log($scope.indicationListArray);
         }
 
