@@ -10,16 +10,16 @@
 	<div class="row">
 		<div class="col-xs-0 col-sm-3"></div>
 		<div class="searchbar col-xs-7 col-sm-6">
-			<form novalidate class="simpleform" id="searchForm" ng-submit="update(search)">
+			<form novalidate class="simpleform" id="search-form" ng-submit="update(search)">
 				<div class="form-group has-feedback has-feedback-right">
-					<input type="text" class="form-control" placeholder="Enter a drug name..." ng-model="search.value" />
+					<input id="search-field" type="text" class="form-control input-lg" placeholder="Enter a drug name..." ng-model="search.value" />
 					<i class="glyphicon glyphicon-search form-control-feedback"></i>
 				</div>
 			</form>
 		</div>
 		<div class="col-xs-5 col-sm-3">
 			<div style="float:left;">
-				<a id="advancedsearch" href="advancedsearch" class="btn btn-primary" style="white-space:normal;">Advanced Search</a>
+				<a id="advancedsearch" href="advancedsearch" class="btn btn-lg btn-primary" style="white-space:normal;">Advanced Search</a>
 			</div>
 		</div>
 	</div>
