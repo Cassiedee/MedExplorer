@@ -16,7 +16,7 @@ bower install
 ##./jenkins_update.bat
 grunt --force
 rm -rf ../server/dist
-cp dist ../server/dist
+cp -r dist ../server/dist
 
 # run tests for back-end (src/server)
 echo running back-end tests
