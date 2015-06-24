@@ -17,10 +17,10 @@ RUN yum -y install zabbix-agent; yum clean all
 
 ADD . /src
 
-RUN cd /src; npm install
+RUN cd /src/; npm install
 
 EXPOSE 80
 EXPOSE 10050
 
 #CMD ["npm", "start"]
-CMD PORT=80 node www/bin
+CMD PORT=80 node /src/bin/www

@@ -185,6 +185,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath:  /\.\.\//
       },
+      /*
       test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
@@ -201,6 +202,7 @@ module.exports = function (grunt) {
             }
           }
       }
+      */
     },
 
     // Renames files for browser caching purposes
@@ -380,12 +382,14 @@ module.exports = function (grunt) {
     },
 
     // Test settings
+    /*
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
     }
+    */
   });
 
 

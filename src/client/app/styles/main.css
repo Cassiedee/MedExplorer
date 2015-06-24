@@ -140,8 +140,8 @@ a, a:focus, a:active {
 
 .recall-background {
 	background-image: repeating-linear-gradient(45deg, 
-		transparent, transparent 2px,
-		#d86021 2px, #d86021 12px);
+		transparent, transparent 1px,
+		#d86021 1px, #d86021 12px);
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
