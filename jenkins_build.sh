@@ -14,8 +14,9 @@ npm install
 bower install
 #cd $DIR/src/client
 ##./jenkins_update.bat
-mkdir ../server/dist_old
 grunt --force
+rm -rf ../server/dist
+cp dist ../server/dist
 
 # run tests for back-end (src/server)
 echo running back-end tests
