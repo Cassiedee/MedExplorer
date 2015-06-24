@@ -19,7 +19,7 @@ SonarQube is being used to perform automated software quality checks on the base
 
 ## Continuous Delivery/Deployment
 
-Our continuous delivery and deployment processes uses Jenkins to automated the creation and deployment of uspdated Docker containers to the production environment.
+Our continuous delivery and deployment processes uses Jenkins to automate the creation and deployment of updated Docker containers to the production environment.
 
 ## Continuous Monitoring
 
