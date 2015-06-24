@@ -6,7 +6,7 @@ Our User Centered Design approach has 6 elements to its process.
 
 ## Research
 
-Front end research includes a review of existing documentation, user manuals, academic research, etc. It lays the ground work for establishing requirements based on users' needs. Research provides the foundation for user stories.  Generative UX Research is an ongoing process. Methods may include interviews, focus groups, cognitive-walkthroughs, and/or heuristic. evaluations.
+Front end research includes a review of existing documentation, user manuals, academic research, etc. It lays the ground work for designs and establishing requirements based on users' needs. Generative UX Research is an ongoing process. Methods may include interviews, focus groups, cognitive-walkthroughs, and/or heuristic evaluations.
 
 ## User Models
 
