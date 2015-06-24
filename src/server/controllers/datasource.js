@@ -9,9 +9,9 @@ exports.getTrendingDrugs = function(callback) {
 	//Read trending_drugs into memory
 	fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
 		if(err)
-			callback(err);
+			callback(500, null, err);
 		else
-			callback(JSON.parse(data));
+			callback(200, JSON.parse(data), null);
 	});
 };
 

@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ngLodash'
+    'ngLodash',
+    'angularUtils.directives.dirPagination'
   ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

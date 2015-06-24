@@ -58,10 +58,10 @@ function recentRecalls(req, res) {
 
 router.get('/REST/trendingDrugs', getTrendingDrugs);
 function getTrendingDrugs(req, res) {
-  datasource.getTrendingDrugs(function(data) {
-    res.status(200).json({
+  datasource.getTrendingDrugs(function(status, data, error) {
+    res.status(status).json({
       'response': data,
-      'error': null
+      'error': error
     });
   });
 };
