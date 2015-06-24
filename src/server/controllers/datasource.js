@@ -53,16 +53,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 
 			options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
 			for(var i = 0; i < field.length && i < value.length; i++) {
-                                if(value[i] instanceof Array) {
-                                  for(var j = 0; j < value[i].length; j++) {
-                                    options.path += encodeURIComponent(field[i] + ':' + value[i][j]);
-                                    if(j < value[i].length - 1)
-                                      options.path += "+";
-                                  }
-                                }
-                                else {
-				  options.path += encodeURIComponent(field[i] + ':' + value[i]);
-                                }
+				options.path += encodeURIComponent(field[i] + ':' + value[i]);
 				if(i < field.length - 1 && i < value.length - 1) {
 					options.path += '+AND+';
 				}

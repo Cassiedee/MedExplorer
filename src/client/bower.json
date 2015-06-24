@@ -15,7 +15,6 @@
     "lodash": "~3.9.3",
     "ng-lodash": "~0.2.3",
     "d3": "~3.5.5",
-    "angular-utils-pagination": "~0.8.2",
     "c3": "~0.4.10"
   },
   "devDependencies": {
