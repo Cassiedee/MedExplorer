@@ -83,8 +83,8 @@ angular
         'side-panel@home': {
           template: ''
         },
-          'content@home': {
-            controller: 'AboutController',
+          'main@': {
+        	  controller: 'MainController',
             templateUrl: 'views/about.html'
           }
         }
