@@ -29,3 +29,6 @@ echo 'deploying docker container'
 docker rm -f nodejs
 docker build -t eric/nodejs:centos6 .
 docker run -d -p 80:80 -p 10050:10050 --name nodejs eric/nodejs:centos6
+
+
+sudo chmod 777 -R $DIR
