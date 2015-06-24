@@ -8,8 +8,6 @@ angular.module('MedExplorer')
         $stateParams.type, $stateParams.field, $stateParams.value, $stateParams.limit);
 
     $scope.$on('searchResultsRetrieved', function(event, data) {
-      console.log('Search results came back??');
-      console.log(searchResultsFactory.results);
       $scope.results = searchResultsFactory.results;
     });
   }]);
