@@ -1,6 +1,6 @@
 # User Centered Design
 
-Our User Centered Design approach has 6 elements to it's process.
+Our User Centered Design approach has 6 elements to its process.
 
 [TODO: Insert diagrams]
 

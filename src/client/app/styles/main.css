@@ -109,6 +109,22 @@ a, a:focus, a:active {
 	margin-left:0px;
 }
 
+.pagination > .active > a {
+	background-color:#58626b !important;
+	border:1px solid #58626b !important;
+}
+
+.pagination > li > a {
+	background-color:#f8fafa;
+	color: #58626b;
+}
+
+.pagination > li > a:hover {
+	background-color:#81909b !important;
+	color:#f8fafa !important;
+	border:1px solid #81909b !important;
+}
+
 .row .list-group-item-heading {
 	padding-top:30px;
 }
