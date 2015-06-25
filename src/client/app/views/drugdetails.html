@@ -362,9 +362,21 @@
           <div class="col-xs-1"></div>
         </div>
       </div>
-<br />
-<div c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
-    </div>
+
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Common Adverse Events By Drug</span>
+          <div class=col-xs-6>
+          </div>
+          <div id="chartText">
+            <div ng-show="pieChartDataIsHere()">
+              <div class="col-xs-12">Percent of adverse events of drug with {{result.openfda.brand_name[0] | title}}</div>
+              <div class="col-xs-12" c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
+            </div>
+            <div class="col-xs-12" ng-hide="pieChartDataIsHere()">
+              <progressbar class="progress-striped active" type="warning">Loading...</progressbar>
+            </div>
+        </div>
 
     <!-- 
   <div ng-repeat="list in contraindicationListArray" class="tabDiv">

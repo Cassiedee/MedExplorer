@@ -183,7 +183,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath:  /\.\.\//
       },
-      test: {
+      /*test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
         ignorePath:  /\.\.\//,
@@ -198,7 +198,7 @@ module.exports = function (grunt) {
               }
             }
           }
-      }
+      }*/
     },
 
     // Renames files for browser caching purposes

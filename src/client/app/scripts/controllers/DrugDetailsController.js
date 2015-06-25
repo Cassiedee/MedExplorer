@@ -13,6 +13,9 @@ angular.module('MedExplorer')
         $scope.drugname = $state.params.name;
         $scope.commonDrugsDuringAdverseEvent = {};
         $scope.commonDrugsPieChartData = [];
+        $scope.pieChartDataIsHere = function() {
+          return $scope.commonDrugsPieChartData.length > 0;
+        }
 
         if($stateParams.drugDetails) {
           $scope.result = $stateParams.drugDetails;
@@ -190,7 +193,6 @@ angular.module('MedExplorer')
         $scope.$watch('toggleUserSafetyWarning', function(){
             $scope.toggleUserSafetyWarningText = $scope.toggleUserSafetyWarning ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
         });
-
 
         }
 

@@ -76,9 +76,7 @@ function getTrendingDrugs(req, res) {
 /* test that trending drugs are set correctly */
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
-  datasource.setTrendingDrugs(req.body, function() {
-    getTrendingDrugs(req, res);
-  });
+  datasource.setTrendingDrugs(req.body, function() {});
 };
 
 module.exports = router;
