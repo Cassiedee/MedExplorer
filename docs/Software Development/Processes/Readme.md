@@ -32,4 +32,4 @@ During sprint execution we implemented: the user stories and other backlog items
 ### Sprint Review
 During the sprint review we conducted a demonstration of completed work items against defined acceptance criteria, received feedback from the stakeholders, and conducted a retrospective to improve the process and how we are working together. At each sprint review we reviewed the number of stories completed for each sprint and discussed our overall progress. We had daily goals which were discussed at each Sprint review with the team and stakeholders. Concerns or risks in meeting those goals were discussed with actions taken. Feedback sometimes resulted in capturing additional product backlog items which were added to the product backlog for refinement and prioritization.
 
-Example __product backlog items/stories can be found here__.
+Example [product backlog items/stories can be found here](../User-Stories/Sample MedExplorer User Stories.xlsx).
