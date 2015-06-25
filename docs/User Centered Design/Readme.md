@@ -12,13 +12,13 @@ Front end research includes a review of existing documentation, user manuals, ac
 
 User models include [task flows](Research Findings/Initial_Research_Findings.pdf), [personas] (Personas), [scenarios](Scenarios), communication models, and mental models. These artifacts enable designers and developers to understand what the users need operationally to accomplish the mission at hand, and what information they need to make decisions and complete tasks. We generated two personas for the MedExplorer project, [Kent Nelson, Doctor] (Personas/Persona_Clinician.png) and [Emma Jones, Consumer] (Personas/Persona_General_Public.png).
 
-![General Consumer Persona] ((Personas/Persona_General_Public.png)
+![General Consumer Persona] (Personas/Persona_General_Public.png)
 
 ### User Stories
 
 User research ensures user stories are valid by identifying user priorities. As new information emerges, [experience maps](Experience Map/Experience Map.png) are generated and stories are refined and re-prioritized. These stories will inform the product backlog for future Agile sprints, as well as completion criteria. Our initial interviews were parsed into [user stories](../Software Development/User-Stories) for each consumer and incorporated into the project backlog.
 
-![Experience Maps] Experience Map/Experience Map.png)
+![Experience Maps] (Experience Map/Experience Map.png)
 
 ## Wireframes & Prototypes
 

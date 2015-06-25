@@ -166,7 +166,7 @@ angular.module('MedExplorer')
 
          $scope.togglePrecautions = true;
          $scope.$watch('togglePrecautions', function(){
-             $scope.togglePrecautionsnText = $scope.togglePrecautions ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+             $scope.togglePrecautionsText = $scope.togglePrecautions ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
          });
 
         $scope.toggleWarningsAndPrecautions = true;
