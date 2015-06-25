@@ -16,20 +16,21 @@ describe('REST API Test Suite', function()
   });
 
 
-  it('search_test', function()
-  {
-    /* configure mock response object */
-    var res = {responseObj:null}; 
-    res.json = function(res) {this.responseObj = res;}
-    
-    var req = {'query' : {'source' : 'sourcehere', 'type' : 'typehere', 'field':'fieldhere','value':123,'limit':123}};
-
-    rest.functions.search(req,res);
-
-    test.assert.equal(res.status, undefined);
-    test.assert.equal(res.response, null);
-    test.assert.equal(res.error, undefined);
-  });
+  //it('search_test', function()
+  //{
+//
+//    /* configure mock response object */
+//    var res = {responseObj:null}; 
+//    res.json = function(res) {this.responseObj = res;}
+//    
+//    var req = {'query' : {'source' : 'sourcehere', 'type' : 'typehere', 'field':'fieldhere','value':123,'limit':123}};
+//
+//    rest.functions.search(req,res);
+//
+//    test.assert.equal(res.status, undefined);
+//    test.assert.equal(res.response, null);
+//    test.assert.equal(res.error, undefined);
+//  });
 
   it('getTrendingDrugs_test', function()
   {
