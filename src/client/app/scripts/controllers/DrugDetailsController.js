@@ -54,7 +54,7 @@ angular.module('MedExplorer')
               onDrugEventsArrived();
             }
 
-            console.log('indications: ' + $scope.result.indications_and_usage[0])
+   //         console.log('indications: ' + $scope.result.indications_and_usage[0])
             $scope.indicationListArray = dataSplitter($scope.result.indications_and_usage[0]);
             if($scope.result.contraindications){
             $scope.contraindicationListArray = dataSplitter($scope.result.contraindications[0]);
@@ -66,6 +66,10 @@ angular.module('MedExplorer')
             console.log($scope.indicationListArray);
             } else {
               $scope.abuseListArray = {};
+            }
+            
+            if(!$scope.result.active_ingredient || $scope.result.active_ingredient.length < 1){
+            	$scope.result.active_ingredient = $scope.result.openfda.substance_name;
             }
           }
 
@@ -82,9 +86,13 @@ angular.module('MedExplorer')
              }
          };
          
+         $scope.toggleDescription = true;
+         $scope.$watch('toggleDescription', function(){
+             $scope.toggleDescriptionText = $scope.toggleDescription ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+         })
+
          $scope.toggleDosage = true;
          $scope.$watch('toggleDosage', function(){
-//             $scope.toggleDosageText = $scope.toggleDosage ? 'Collapse' : 'Expand';
              $scope.toggleDosageText = $scope.toggleDosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
          })
 
@@ -108,13 +116,6 @@ angular.module('MedExplorer')
              $scope.toggleConditionsText = $scope.toggleConditions ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
          })
 
-         
-         
-         
-         
-         
-         
-         
          $scope.toggleBoxedWarning = true;
          $scope.$watch('toggleBoxedWarning', function(){
              $scope.toggleBoxedWarningText = $scope.toggleBoxedWarning ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';

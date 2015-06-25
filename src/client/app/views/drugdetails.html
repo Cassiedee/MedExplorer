@@ -2,12 +2,13 @@
   <div class="row drugdetailheader">
     <span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
   </div>
+
   <div class="row tab-row">
     <div class="tab col-xs-12" id="general-info-tab">
       <ul class="nav nav-tabs">
-        <li ng-class="{active:isSelected(1), general-info-tab-li-border:isSelected(1)}" class="general-info-tab-li"
+        <li ng-class="{active:isSelected(1), 'general-info-tab-li-border':isSelected(1)}" class="general-info-tab-li"
           id="general-info-tab1"><a href ng-click="selectTab(1)">General Info</a></li>
-        <li ng-class="{active:isSelected(2), general-info-tab-li-border:isSelected(2)  }" class="general-info-tab-li"
+        <li ng-class="{active:isSelected(2), 'general-info-tab-li-border':isSelected(2)}" class="general-info-tab-li"
           id="general-info-tab2"><a href ng-click="selectTab(2)">Warnings</a></li>
       </ul>
     </div>
@@ -17,6 +18,57 @@
 
     <!-- Tab 1 -->
     <div ng-show="isSelected(1)" class="general-tab-content">
+  <div class="row drugdetailheader">
+    <span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
+  </div>
+      <div ng-show="result.active_ingredient[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Active Ingredient</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"
+              ng-click="toggleActiveIngredient = !toggleActiveIngredient">
+              <span ng-class="toggleActiveIngredientText"></span>
+            </button>
+          </div>
+          <div id="active-ingredient-detail" class="collapse in col-xs-11">{{result.active_ingredient[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.purpose[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Purpose</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"
+              ng-click="togglePurpose = !togglePurpose">
+              <span ng-class="togglePurposeText"></span>
+            </button>
+          </div>
+          <div id="purpose-detail" class="collapse in col-xs-11">{{result.purpose[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+      
+      
+      <div ng-show="result.indications_and_usage[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Conditions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"
+              ng-click="toggleConditions = !toggleConditions">
+              <span ng-class="toggleConditionsText"></span>
+            </button>
+          </div>
+          <div id="conditions-detail" class="collapse in col-xs-11">{{result.indications_and_usage[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+      
+      
       <div ng-show="result.dosage_and_administration[0]">
         <div class="row">
           <hr class="detail-hr" class="col-xs-12">
@@ -48,52 +100,6 @@
         </div>
       </div>
 
-      <div ng-show="result.purpose[0]">
-        <div class="row">
-          <hr class="detail-hr" class="col-xs-12">
-          <span class="col-xs-6 tab-section-header-span">Purpose</span>
-          <div class=col-xs-6>
-            <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"
-              ng-click="togglePurpose = !togglePurpose">
-              <span ng-class="togglePurposeText"></span>
-            </button>
-          </div>
-          <div id="purpose-detail" class="collapse in col-xs-11">{{result.purpose[0] | sentence}}</div>
-          <div class="col-xs-1"></div>
-        </div>
-      </div>
-
-      <div ng-show="result.active_ingredient[0]">
-        <div class="row">
-          <hr class="detail-hr" class="col-xs-12">
-          <span class="col-xs-6 tab-section-header-span">Active Ingredient</span>
-          <div class=col-xs-6>
-            <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"
-              ng-click="toggleActiveIngredient = !toggleActiveIngredient">
-              <span ng-class="toggleActiveIngredientText"></span>
-            </button>
-          </div>
-          <div id="active-ingredient-detail" class="collapse in col-xs-11">{{result.active_ingredient[0] |
-            sentence}}</div>
-          <div class="col-xs-1"></div>
-        </div>
-      </div>
-
-      <div ng-show="result.indications_and_usage[0]">
-        <div class="row">
-          <hr class="detail-hr" class="col-xs-12">
-          <span class="col-xs-6 tab-section-header-span">Conditions</span>
-          <div class=col-xs-6>
-            <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"
-              ng-click="toggleConditions = !toggleConditions">
-              <span ng-class="toggleConditionsText"></span>
-            </button>
-          </div>
-          <div id="conditions-detail" class="collapse in col-xs-11">{{result.indications_and_usage[0] | sentence}}</div>
-          <div class="col-xs-1"></div>
-        </div>
-      </div>
-
       <div ng-show="result.description[0]">
         <div class="row">
           <hr class="detail-hr" class="col-xs-12">
@@ -104,7 +110,7 @@
               <span ng-class="toggleDescriptionText"></span>
             </button>
           </div>
-          <div id="-detail" class="collapse in col-xs-11">{{result.description[0] | sentence}}</div>
+          <div id="description-detail" class="collapse in col-xs-11">{{result.description[0] | sentence}}</div>
           <div class="col-xs-1"></div>
         </div>
       </div>
@@ -356,7 +362,8 @@
           <div class="col-xs-1"></div>
         </div>
       </div>
-
+<br />
+<div c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
     </div>
 
     <!-- 
@@ -380,5 +387,4 @@
 
 </div>
 
-<br />
-<div c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
+

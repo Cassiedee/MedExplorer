@@ -25,7 +25,7 @@ angular.module('MedExplorer')
                       + '&type=enforcement'
                       + '&field=[\"openfda.spl_id\",\"status\"]'
                       + '&value=[\"\\\"' + searchResults.results[index].openfda.spl_id[0] + '\\\"\",\"Ongoing\"]&terms=2&limit='+ 30).success(function(recalls) {
-                        searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results.length > 0;
+                        searchResults.results[index].has_ongoing_recalls = recalls.response&& recalls.response.results && recalls.response.results.length > 0;
                         if(searchResults.results[index].has_ongoing_recalls) {
                           searchResults.results[index].recalls = recalls.response.results;
                         }

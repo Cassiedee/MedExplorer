@@ -410,7 +410,6 @@ input::-moz-focus-inner {
 	/*margin-left: 100px;*/
 	margin-bottom: 15px;
 	margin-top: 15px;
-	/*margin-right: 25px;*/
 }
 
 .tab-row{
@@ -425,14 +424,17 @@ input::-moz-focus-inner {
 
 .general-info-tab-li{
 	margin-right: 50px;
+	background-color:#f8fafa;
+	border-top: solid 1px #b8bfc4;	
+	border-left: solid 1px #b8bfc4;	
+	border-right: solid 1px #b8bfc4;	
 }
 .general-info-tab-li-border{
-	border-bottom: solid 5px #d86021;	
+	border-bottom: solid 2px #d86021;	
 }
 
 .general-tab-content {
-	/*margin-right: 50px;*/
-	/*margin-left: 50px;*/
+	padding-left: 50px;
 }
 
 #tab-jumbotron {
