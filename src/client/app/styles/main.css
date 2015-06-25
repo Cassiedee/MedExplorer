@@ -316,55 +316,6 @@ div .recall-background:hover{
 .ng-enter-active .ng-leave-active{
 	opacity: 1;
 }
-.tab {
-	margin: 10px 0px;
-	width: 100%;
-	float: left;
-}
-.tab ul li {
-	background-color: rgb(234, 234, 234);
-	padding: 5px 10px;
-	float: left;
-	margin-left: 2px;
-	list-style: none;
-	
-}
-.tab ul li:nth-child(1) {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-.tab ul li:nth-child(3) {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-.tab ul li a {
-	color: rgb(6,179,6);
-	float: left;
-	text-decoration: none;
-}
-.tab ul .active {
-	background-color: rgb(6,179,6);
-	padding: 5px 10px;
-	float: left;
-	margin-left: 2px;
-	list-style: none;
-}
-.tab ul .active:nth-child(1) {
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-.tab ul .active:nth-child(3) {
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-.tab ul .active a {
-	color: white;
-	float: left;
-	text-decoration: none;
-}
-.tab ul .active:hover a {
-	color: rgb(6,179,6);
-}
 
 .tabDiv{
 	text-align: left;
@@ -442,14 +393,86 @@ input::-moz-focus-inner {
   text-decoration: none;
 }
 
-.detail-hr{
- border: none;
-    height: 5px;
-    width: 100%;
-    color: #cdd7e1; /* old IE */
-    background-color: #cdd7e1; /* Modern Browsers */
+.detail-hr {
+	border: none;
+	height: 5px;
+	width: 100%;
+	color: #cdd7e1; /* old IE */
+	background-color: #cdd7e1; /* Modern Browsers */
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
-.collapse-button{
-	float: right;
+
+
+.drugdetailheader {
+	text-align: left;
+	/*margin-left: 100px;*/
+	margin-bottom: 15px;
+	margin-top: 15px;
+	/*margin-right: 25px;*/
 }
+
+.tab-row{
+	padding-left: 0px;
+/*	margin-left: 100px;*/
+	/*margin-right: 25px;*/
+}
+
+#general-info-tab{
+	padding-left: 0px;
+}
+
+.general-info-tab-li{
+	margin-right: 50px;
+}
+.general-info-tab-li-border{
+	border-bottom: solid 5px #d86021;	
+}
+
+.general-tab-content {
+	/*margin-right: 50px;*/
+	/*margin-left: 50px;*/
+}
+
+#tab-jumbotron {
+	margin-left: -15px;
+	margin-right: -15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: left;
+}
+
+.tab-section-header-span {
+	padding-left: 0px;
+	font-weight: bold;
+}
+
+.tab-container {
+	padding-left: 0px;
+	margin-left: 115px;
+	margin-right: 115px;
+}
+
+.collapse-button {
+	float: right;
+	padding-right: 0px;
+	text-align: center;
+	border-style: none background-color: transparent;
+	color: #cdd7e1;
+	padding: 0;
+	border: none;
+	background: none;
+	margin-right: -15px;
+}
+
+.collapse-button:active {
+outline: none;
+border: none;
+}
+
+.collapse-button:focus {outline:0;}
