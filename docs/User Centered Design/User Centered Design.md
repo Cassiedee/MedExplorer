@@ -3,7 +3,6 @@
 Our User Centered Design approach has 6 elements to its process.
 
 ![User Centered Design...](../../docs/Diagrams/User_Centered_Design_Process.png)
-[TODO: Insert diagrams]
 
 ## Research
 
