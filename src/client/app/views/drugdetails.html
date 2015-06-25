@@ -1,47 +1,67 @@
-<span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
-<section class="tab">
-  <ul>
-    <li ng-class="{active:isSelected(1) }"><a href ng-click="selectTab(1)">General Info</a></li>
-    <li ng-class="{active:isSelected(2)  }"><a href ng-click="selectTab(2)">Warnings</a></li>
-    <!--    <li ng-class="{active:isSelected(3)}"><a href ng-click="selectTab(3)">Reactions</a></li>  -->
-  </ul>
-</section>
-<br />
-<div ng-show="isSelected(1)">
-  <div>
-    <hr class="detail-hr">
-    <span>Dosage</span>
-    <button type="button" data-toggle="collapse" data-target="#dosage-detail" class="collapse-button"ng-click="toggleDosage = !toggleDosage">{{toggleDosageText}}</button>
-    <div id="dosage-detail" class="collapse in">{{result.dosage_and_administration[0] | sentence}}</div>
-    <div>
-    <hr class="detail-hr">
+<div class="container-fluid">
+  <div class="row">
+    <span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
+  </div>
+  <div class="row">
+    <section class="tab col-xs-12">
+      <ul>
+        <li ng-class="{active:isSelected(1) }"><a href ng-click="selectTab(1)">General Info</a></li>
+        <li ng-class="{active:isSelected(2)  }"><a href ng-click="selectTab(2)">Warnings</a></li>
+        <!--    <li ng-class="{active:isSelected(3)}"><a href ng-click="selectTab(3)">Reactions</a></li>  -->
+      </ul>
+    </section>
+  </div>
+  <br />
+
+  <!-- Tab 1 -->
+  <div ng-show="isSelected(1)" class="row">
+    <div ng-show="result.dosage_and_administration[0]" class="row">
+      <hr class="detail-hr" class="col-xs-12">
+      <div class="row">
+        <span class="col-xs-6">Dosage</span>
+        <div class=col-xs-6>
+          <button type="button" data-toggle="collapse" data-target="#dosage-detail" class="collapse-button"
+            ng-click="toggleDosage = !toggleDosage">{{toggleDosageText}}</button>
+        </div>
+      </div>
+      <div id="dosage-detail" class="collapse in col-xs-12">
+        {{result.dosage_and_administration[0] | sentence}}
+      </div>
+    </div>
+    <div ng-show="result.instructions_for_use[0]">
+      <hr class="detail-hr">
       <span>Instructions</span>
-    <button type="button" data-toggle="collapse" data-target="#instructions-detail" class="collapse-button"ng-click="toggleInstructions = !toggleInstructions">{{toggleInstructionsText}}</button>
-    <div id="instructions-detail" class="collapse in">{{result.instructions_for_use[0] | sentence}}</div>
+      <button type="button" data-toggle="collapse" data-target="#instructions-detail" class="collapse-button"
+        ng-click="toggleInstructions = !toggleInstructions">{{toggleInstructionsText}}</button>
+      <div id="instructions-detail" class="collapse in">{{result.instructions_for_use[0] | sentence}}</div>
     </div>
-    <div>
-    <hr class="detail-hr">
+    <div ng-show="result.purpose[0]">
+      <hr class="detail-hr">
       <span>Purpose</span>
-     <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"ng-click="togglePurpose = !togglePurpose">{{togglePurposeText}}</button>
-    <div id="purpose-detail" class="collapse in">{{result.purpose[0] | sentence}}</div>
+      <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"
+        ng-click="togglePurpose = !togglePurpose">{{togglePurposeText}}</button>
+      <div id="purpose-detail" class="collapse in">{{result.purpose[0] | sentence}}</div>
     </div>
-    <div>
-    <hr class="detail-hr">
+    <div ng-show="result.active_ingredient[0]">
+      <hr class="detail-hr">
       <span>Active Ingredient</span>
-     <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"ng-click="toggleActiveIngredient = toggleActiveIngredient">{{toggleActiveIngredientText}}</button>
-    <div id="active-ingredient-detail" class="collapse in">{{result.active_ingredient[0] |sentence}}</div>
+      <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"
+        ng-click="toggleActiveIngredient = !toggleActiveIngredient">{{toggleActiveIngredientText}}</button>
+      <div id="active-ingredient-detail" class="collapse in">{{result.active_ingredient[0] |sentence}}</div>
     </div>
-    <div>
-    <hr class="detail-hr">
+    <div ng-show="result.indications_and_usage[0]">
+      <hr class="detail-hr">
       <span>Conditions</span>
-     <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"ng-click="toggleConditions = toggleConditions">{{toggleConditionsText}}</button>
-    <div id="conditions-detail" class="collapse in">{{result.indications_and_usage[0]| sentence}}</div>
+      <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"
+        ng-click="toggleConditions = toggleConditions">{{toggleConditionsText}}</button>
+      <div id="conditions-detail" class="collapse in">{{result.indications_and_usage[0]| sentence}}</div>
     </div>
-    <div>
-    <hr class="detail-hr">
+    <div ng-show="result.description[0]">
+      <hr class="detail-hr">
       <span>Description</span>
-     <button type="button" data-toggle="collapse" data-target="#description-detail" class="collapse-button"ng-click="toggleDescription = toggleDescription">{{toggleDescriptionText}}</button>
-    <div id="description-detail" class="collapse in">{{result.description[0] | sentence}}</div>
+      <button type="button" data-toggle="collapse" data-target="#description-detail" class="collapse-button"
+        ng-click="toggleDescription = toggleDescription">{{toggleDescriptionText}}</button>
+      <div id="description-detail" class="collapse in">{{result.description[0] | sentence}}</div>
     </div>
 
     <!-- 
@@ -210,3 +230,5 @@
  -->
 
     </div>
+  </div>
+</div>
