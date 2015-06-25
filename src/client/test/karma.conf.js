@@ -37,6 +37,7 @@ module.exports = function(config) {
       'app/vendor/d3/d3.js',
       'app/vendor/c3/c3.js',
       'app/vendor/angular-mocks/angular-mocks.js',
+      'app/assets/angular-utils-pagination/dirPagination.js',
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
