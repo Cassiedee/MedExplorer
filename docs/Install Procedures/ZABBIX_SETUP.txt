@@ -11,9 +11,9 @@ Replace the <EXTERNAL_IP_OF_SERVER> with the external IP address of the server.
    and then click on 'Port Forwarding'. Create a new port and set both 'Host Port' and 'Guest Port'
    to the port mapped to 9001. The rest of the fields can be left to there default values.
    
-5. Ensure that Zabbix is started by running the following command "docker ps". An entry for Zabbix should be listed.
+4. Ensure that Zabbix is started by running the following command "docker ps". An entry for Zabbix should be listed.
    
-4. Go to the Zabbix server (http://localhost:9001/zabbix). Note that the URL is case sensitive (lower case zabbix).
+5. Go to the Zabbix server (http://localhost:9001/zabbix). Note that the URL is case sensitive (lower case zabbix).
 The default credentials for Zabbix are username: Admin and password: zabbix. Both username and password are case sensitive.
 
 If the Zabbix site does not display in the browser, make sure that port 9001 (or the port specified when Zabbix was installed) is not blocked.
