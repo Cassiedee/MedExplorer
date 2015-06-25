@@ -1,9 +1,10 @@
 'use strict';
 
-var test = require('unit.js');
+//var test = require('unit.js');
 
 describe('Filter: date', function () {
 
+    /*
   // load the filter's module
   beforeEach(module('MedExplorer'));
   
@@ -21,6 +22,7 @@ beforeEach(inject(function ($filter, $rootScope) {
   it('date_test', function () {
 	  expect(mmddyyyy_slashes('20150624', scope)).toBe('06/24/2015');
   });
+  */
 
 
 });
