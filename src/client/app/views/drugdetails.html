@@ -199,9 +199,12 @@
               <span ng-class="toggleAdverseReactionsText"></span>
             </button>
           </div>
-          <div id="adverse-reactions-detail" class="collapse in col-xs-11">{{result.adverse_reactions[0] |
+          <div id="adverse-reactions-detail">
+          <div class="collapse in col-xs-11">{{result.adverse_reactions[0] |
             sentence}}</div>
           <div class="col-xs-1"></div>
+          <div ng-bind-html="trustAdverseReactionsAsHtml()" class="col-xs-12"></div>
+          </div>
         </div>
       </div>
 
