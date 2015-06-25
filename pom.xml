@@ -22,7 +22,7 @@
 
         <sonar.exclusions>
         </sonar.exclusions>
-        <!--<sonar.sources>MedExplorer</sonar.sources>-->
+        <sonar.sources>src</sonar.sources>
     </properties>
 
     
