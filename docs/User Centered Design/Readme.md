@@ -20,6 +20,8 @@ User research ensures user stories are valid by identifying user priorities. As 
 
 ![Experience Maps] (Experience Map/Experience Map.png)
 
+![Task Models](Task Model/Task_Model.png)
+
 ## Wireframes & Prototypes
 
 Designers create [wireframes] (Wireframes) and low fidelity prototypes. Interaction designs are produced and regularly are brought into the scrums to facilitate feasibility conversations with developers.
