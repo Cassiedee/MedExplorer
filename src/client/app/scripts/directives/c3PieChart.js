@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MedExplorer')
-  .directive('c3PieChart', function() {
+  .directive('c3PieChart', ['$state', function($state) {
     return {
       restrict: 'EA',
       scope: {
@@ -14,7 +14,15 @@ angular.module('MedExplorer')
             data: {
                 columns: scope.data,
                 type : 'pie',
-                onclick: function (d, i) { }
+                onclick: function (d, i) {
+                  $state.go('home.search', {
+                    'source': 'drug',
+                    'type': 'label',
+                    'field': 'generic_name',
+                    'value': d.name,
+                    'limit': 30
+                  }); 
+                }
             },
             pie: {
                 label: {
@@ -35,5 +43,4 @@ angular.module('MedExplorer')
         });
       }
     };
-  });
-
+  }]);

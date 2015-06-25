@@ -31,6 +31,16 @@
 			  </div>
 			  <div class="row">
 				<div class="row col-xs-12"><!--div class="row col-xs-8"-->
+                                  <p class="list-group-item-text">
+					<div class="row">
+					  <span class="col-xs-3">
+						Distribution:
+					  </span>
+					  <span class="col-xs-8 ">
+                                            <div ng-repeat="type in result.openfda.product_type">{{type | title | replaceOTC}}</div>
+					  </span>
+					</div>
+				  </p>
 				  <p class="list-group-item-text">
 					<div class="row">
 					  <span class="col-xs-3">
