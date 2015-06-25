@@ -37,6 +37,7 @@ module.exports = function(config) {
       'app/vendor/d3/d3.js',
       'app/vendor/c3/c3.js',
       'app/vendor/angular-mocks/angular-mocks.js',
+      'app/assets/angular-utils-pagination/dirPagination.js',
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
@@ -59,13 +60,13 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-        'PhantomJS2'
+        'PhantomJS'
     ],
 
     // Which plugins to enable
     plugins: [
       "karma-junit-reporter",
-      "karma-phantomjs2-launcher",
+      "karma-phantomjs-launcher",
       "karma-jasmine"
     ],
 

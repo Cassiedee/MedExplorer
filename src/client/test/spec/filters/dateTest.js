@@ -2,27 +2,24 @@
 
 //var test = require('unit.js');
 
+
 describe('Filter: date', function () {
 
-    /*
-  // load the filter's module
-  beforeEach(module('MedExplorer'));
-  
-  var mmddyyyy_slashes;
-  var scope;
+	var mmddyyyy_slashes;
+	
+	// load the filter's module
+	beforeEach(module('MedExplorer'));
+	
+	beforeEach(inject(function($injector){
+      mmddyyyy_slashes = $injector.get('$filter')('mmddyyyy_slashes');
+    }));
 
-// Initialize the filter and a mock scope
-beforeEach(inject(function ($filter, $rootScope) {
-  mmddyyyy_slashes = $filter();
-  scope = $rootScope.$new();
-  
-}));
+	it('has a mmddyyyy_slashes date filter', inject(function($filter) {
+		expect($filter('mmddyyyy_slashes')).not.toBeNull();
+	}));
 
-
-  it('date_test', function () {
-	  expect(mmddyyyy_slashes('20150624', scope)).toBe('06/24/2015');
-  });
-  */
-
-
+	it('convert mmddyyyy_slashes', function () {
+		  expect(mmddyyyy_slashes('20150625', null)).toBe('06/25/2015');
+	});
+	
 });
