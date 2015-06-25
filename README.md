@@ -19,8 +19,9 @@ Sprint planning was a time to focus on the goal(s) for the sprint. During sprint
 
 
 
-
+***
 OLD TEXT
+
 Our Agile User-Centered approach ensures ongoing collaboration between development team, users, and multiple stakeholders.  Todo:[Team picture]   To implement our framework we first identified the members of [our team and the roles](docs/MedExplorer Development Team.md) they would fulfil.  Our multidisciplinary team is comprised of experienced User Experience (UX) designers, product manager, software and test engineers, delivery manager, agile coach, and business owners. Our product, Medicine Explorer, is designed for the general public and clinicians who seek information on pharmaceutical (prescription and over the counter drugs) performance so they can make better health decisions. Our product supports multiple device platforms and provides searchable information and trends on pharmaceuticals and related adverse effects which is unlike other similar sites. Our product provides authoritative, trustworthy, and objective information.
 
 To kick off the initiative, the team collaborated to review the RFQ details to ensure we understood the requirements and to set expectations.
