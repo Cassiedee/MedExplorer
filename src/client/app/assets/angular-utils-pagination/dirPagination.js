@@ -261,10 +261,13 @@
                 total: 1
             };
 
+            scope.pageButtonLabel = function(start, finish) {
+                return '' + start + ' - ' + (finish < paginationService.getCollectionLength(paginationId) ? finish : paginationService.getCollectionLength(paginationId));
+            };
+
             scope.$watch(function() {
                 return (paginationService.getCollectionLength(paginationId) + 1) * paginationService.getItemsPerPage(paginationId);
             }, function(length) {
-                scope.collectionLength = paginationService.getCollectionLength(paginationId);
                 if (0 < length) {
                     generatePagination();
                 }

@@ -1,12 +1,11 @@
-"use strict";
+'use strict';
 
 angular.module('MedExplorer')
   .directive('c3PieChart', function() {
     return {
       restrict: 'EA',
       scope: {
-        data: '=c3PieChart',
-        type: '=type'
+        data: '=c3PieChart'
       },
       link: function(scope, element, attrs) {
         scope.id = scope.id;
@@ -15,7 +14,7 @@ angular.module('MedExplorer')
             data: {
                 columns: scope.data,
                 type : 'pie',
-                onclick: function (d, i) { console.log("onclick", d, i); }
+                onclick: function (d, i) { }
             },
             pie: {
                 label: {
