@@ -1,8 +1,5 @@
 'use strict';
 
-//var test = require('unit.js');
-
-
 describe('Filter: date', function () {
 
 	var mmddyyyy_slashes;

@@ -55,6 +55,8 @@ function recentRecalls(req, res) {
   if(!req.query.num)
     req.query.num = 10;
   datasource.recentRecalls(req.query.num, function(status, data, error) {
+    console.log(data);
+    console.log(error);
     res.status(status).json({
       'response': data,
       'error': error
@@ -76,9 +78,7 @@ function getTrendingDrugs(req, res) {
 /* test that trending drugs are set correctly */
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
-  datasource.setTrendingDrugs(req.body, function() {
-    getTrendingDrugs(req, res);
-  });
+  datasource.setTrendingDrugs(req.body, function() {});
 };
 
 module.exports = router;

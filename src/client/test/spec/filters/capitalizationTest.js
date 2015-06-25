@@ -7,7 +7,7 @@ describe('Filter: capitalization', function () {
   
   var sentence, uppercase, lowercase, title, titlePreserveUpper;
 
-  // Initialize the filter and a mock scope
+  // Initialize the filter
   beforeEach(inject(function($injector){
       sentence = $injector.get('$filter')('sentence');
       uppercase = $injector.get('$filter')('uppercase');
@@ -29,7 +29,7 @@ describe('Filter: capitalization', function () {
 	  expect(sentence('this is a sentence')).toBe('This is a sentence');
   });
   
-  it('uppercase', function () {
+  it('uppercase_test', function () {
 	  expect(uppercase('this is a sentence')).toBe('THIS IS A SENTENCE');
   });
   

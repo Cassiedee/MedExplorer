@@ -1,0 +1,43 @@
+Zabbix setup
+
+1. Deploy the Zabbix docker image by running the command
+"docker run -d -p 10051:10051 -p 10052:10052 -p 9001:80 -p 2812:2812 --name zabbix  berngp/docker-zabbix".
+
+
+NOTE: If Zabbix is to be run on a public facing internet site, update the following section "-p 9001:80" to be in the
+following format "-p <EXTERNAL_IP_OF_SERVER>:9001:80". Replace the <EXTERNAL_IP_OF_SERVER> with the external IP
+address of the server.
+
+2. Get local 80 port mapping by running "docker ps -f name=zabbix"  Find the port that is mapped to 80 for this container.
+
+3. If VirtualBox is installed, open VirtualBox and open the settings for the boot2docker-vm. On the sidebar, click 'Network', 
+   and then click on 'Port Forwarding'. Create a new port and set both 'Host Port' and 'Guest Port'
+   to the port mapped to 9001. The rest of the fields can be left to there default values.
+   
+4. Ensure that Zabbix is started by running the following command "docker ps". An entry for Zabbix should be listed.
+   
+5. Go to the Zabbix server (http://localhost:9001/zabbix). Note that the URL is case sensitive (lower case zabbix).
+The default credentials for Zabbix are username: Admin and password: zabbix. Both username and password are case sensitive.
+
+If the Zabbix site does not display in the browser, make sure that port 9001 (or the port specified when Zabbix was installed)
+is not blocked.
+
+
+
+To monitor a URL:
+1. At the top of the Zabix site, go to Configuration -> Hosts -> click on Zabbix Server -> Web scenarios.
+2. At the "Configuration of Web Monitoring" page, click the "Create Scenario" button on the top right corner.
+3. Enter scenario name, "MedExplorer", and select application, "General". Change update interval, if necessary.
+4. Click the "Add" button at the bottom of the page.
+5. Click the "Steps" tab.
+6. Inside the steps box, click the "Add" link.
+7. Enter the necessary information for the URL to listen to and specify the url to listen to. Example http://localhost:9000/.
+Click the "Add" button.
+
+8. Add any other steps to monitor a URL.
+9. Click update to save the scenario.
+
+To view the web monitor:
+1. Click Monitoring, Web.
+2. Select the web monitor created earlier.
+3. The web monitor page, displaying the speed and response time is displayed.

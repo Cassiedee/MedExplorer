@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ui.router',
     'ngLodash',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ui.bootstrap'
   ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {

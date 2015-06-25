@@ -6,24 +6,60 @@ var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
 
 exports.getTrendingDrugs = function(callback) {
-	//Read trending_drugs into memory
-	fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
-		if(err)
-			callback(500, null, err);
-		else
-			callback(200, JSON.parse(data), null);
-	});
+  //Read trending_drugs into memory
+  var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
+  db.open(function(err, db) {
+    var collection = db.collection('trending_drugs');
+    collection.count(function (err, count) {
+      if (!err && count === 0) {
+        fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
+          data = JSON.parse(data.toLowerCase());
+          if(err)
+                  callback(500, null, err);
+          else
+                  callback(200, data, null);
+          var array = [];
+          for(var prop in data.prescription) {
+            data.prescription[prop].type = 'prescription';
+            array.push(data.prescription[prop]);
+          }
+          for(var prop in data.otc) {
+            data.otc[prop].type = 'otc';
+            array.push(data.otc[prop]);
+          }
+          collection.insert(array);
+          db.close();
+        });
+      }
+      else if(!err & count != 0) {
+        var results = {};
+        collection.find({type: 'otc'}).toArray(function(err, items1) {
+          results.otc = items1.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
+          collection.find({type: 'prescription'}).toArray(function(err, items2) {
+            results.prescription = items2.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
+            callback(200, results, null);
+          });
+        });
+      }
+    });
+  });
 };
 
 
-exports.setTrendingDrugs = function(data, callback) {
-	//Write trending_drugs 
-	fs.writeFile('data/trending_drugs.json', JSON.stringify(data), function(err) {
-		if(err)
-			callback(err);
-		else
-			callback();
-	});
+exports.setTrendingDrugs = function(body) {
+  console.log(body); //body = { name: 'advil', type: 'otc'}
+  var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
+  db.open(function(err, db) {
+    var collection = db.collection('trending_drugs');
+    collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
+      if(!item) {
+        collection.insert({'type': body.type, 'name': body.name, 'count': 0});
+      }
+      collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
+        db.close();
+      });
+    });
+  });
 };
 
 var API_KEY = 'w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g';
@@ -91,16 +127,18 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 						try{
 							var obj = JSON.parse(output);
 
-							//put the object into the cache
-							obj.resStatusCode = res.statusCode;
-							insertIntoCache(options.path, obj);
-
-							if(res.statusCode == 404) {
-								callback(200, null, obj);
+							
+							
+							
+                                                        obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
+							if(obj.resStatusCode == 404) {
+								callback(obj.resStatusCode, null, obj);
                                                         }
 							else {
 								callback(obj.resStatusCode, obj, null);
 							}
+                                                        //put the object into the cache
+                                                        insertIntoCache(options.path, obj);
 						}catch(err){
 							console.log(err);
 						}
@@ -108,7 +146,8 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 				});
 
 				req.on('error', function(err) {
-					req.send('error: ' + err.message);
+                                        console.log(err);
+					callback(500, null, err);
 				});
 
 				req.end();
@@ -210,11 +249,9 @@ exports.recentRecalls = function(num, callback) {
 
 					res.on('end', function() {
 						var obj = JSON.parse(output);
-
-						//put the object into the cache
-						obj.resStatusCode = res.statusCode;
-						insertIntoCache(options.path, obj);
-
+                                                console.log(obj);
+						
+						obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
 						if(obj.results)
 							recalls = obj.results;
 						if(recalls.length < num) {
@@ -225,12 +262,17 @@ exports.recentRecalls = function(num, callback) {
 							dateRange *= 0.75;
 							fetchloop();
 						}
-						else
+						else {   
 							callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+                                                        console.log(recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
+                                                }
+                                                //put the object into the cache
+                                                insertIntoCache(options.path, obj);
 					});
 				});
 				req.on('error', function(err) {
-					req.callback(res.statusCode, null, err);
+                                        console.log(err);
+					callback(500, null, err);
 				});
 
 				req.end();
@@ -280,13 +322,15 @@ function cleanCache(db){
 }
 
 function insertIntoCache(query, result){
-	var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
-	db.open(function(err, db) {
-		var collection = db.collection("medicine_explorer");
+        if(result.resStatusCode < 400) {
+          var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
+          db.open(function(err, db) {
+                  var collection = db.collection("medicine_explorer");
 
-		result.insertTime = new Date();
-		result.mongoKey = query;
-		collection.insert(result);
-		db.close();
-	});
+                  result.insertTime = new Date();
+                  result.mongoKey = query;
+                  collection.insert(result);
+                  db.close();
+          });
+        }
 }
