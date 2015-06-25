@@ -1,70 +1,115 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid tab-container">
+  <div class="row drugdetailheader">
     <span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
   </div>
-  <div class="row">
-    <section class="tab col-xs-12">
-      <ul>
-        <li ng-class="{active:isSelected(1) }"><a href ng-click="selectTab(1)">General Info</a></li>
-        <li ng-class="{active:isSelected(2)  }"><a href ng-click="selectTab(2)">Warnings</a></li>
-        <!--    <li ng-class="{active:isSelected(3)}"><a href ng-click="selectTab(3)">Reactions</a></li>  -->
+  <div class="row tab-row">
+    <div class="tab col-xs-12" id="general-info-tab">
+      <ul class="nav nav-tabs">
+        <li ng-class="{active:isSelected(1), general-info-tab-li-border:isSelected(1)}" class="general-info-tab-li"
+          id="general-info-tab1"><a href ng-click="selectTab(1)">General Info</a></li>
+        <li ng-class="{active:isSelected(2), general-info-tab-li-border:isSelected(2)  }" class="general-info-tab-li"
+          id="general-info-tab2"><a href ng-click="selectTab(2)">Warnings</a></li>
       </ul>
-    </section>
+    </div>
   </div>
-  <br />
-  <div c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
-  <!-- Tab 1 -->
-  <div ng-show="isSelected(1)" class="row">
-    <div ng-show="result.dosage_and_administration[0]" class="row">
-      <hr class="detail-hr" class="col-xs-12">
-      <div class="row">
-        <span class="col-xs-6">Dosage</span>
-        <div class=col-xs-6>
-          <button type="button" data-toggle="collapse" data-target="#dosage-detail" class="collapse-button"
-            ng-click="toggleDosage = !toggleDosage">{{toggleDosageText}}</button>
+
+  <div class="jumbotron" id="tab-jumbotron">
+
+    <!-- Tab 1 -->
+    <div ng-show="isSelected(1)" class="general-tab-content">
+      <div ng-show="result.dosage_and_administration[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Dosage</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#dosage-detail" class="collapse-button"
+              ng-click="toggleDosage = !toggleDosage">
+              <span ng-class="toggleDosageText"></span>
+            </button>
+          </div>
+          <div id="dosage-detail" class="collapse in col-xs-11">{{result.dosage_and_administration[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
         </div>
       </div>
-      <div id="dosage-detail" class="collapse in col-xs-12">
-        {{result.dosage_and_administration[0] | sentence}}
-      </div>
-    </div>
-    <div ng-show="result.instructions_for_use[0]">
-      <hr class="detail-hr">
-      <span>Instructions</span>
-      <button type="button" data-toggle="collapse" data-target="#instructions-detail" class="collapse-button"
-        ng-click="toggleInstructions = !toggleInstructions">{{toggleInstructionsText}}</button>
-      <div id="instructions-detail" class="collapse in">{{result.instructions_for_use[0] | sentence}}</div>
-    </div>
-    <div ng-show="result.purpose[0]">
-      <hr class="detail-hr">
-      <span>Purpose</span>
-      <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"
-        ng-click="togglePurpose = !togglePurpose">{{togglePurposeText}}</button>
-      <div id="purpose-detail" class="collapse in">{{result.purpose[0] | sentence}}</div>
-    </div>
-    <div ng-show="result.active_ingredient[0]">
-      <hr class="detail-hr">
-      <span>Active Ingredient</span>
-      <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"
-        ng-click="toggleActiveIngredient = !toggleActiveIngredient">{{toggleActiveIngredientText}}</button>
-      <div id="active-ingredient-detail" class="collapse in">{{result.active_ingredient[0] |sentence}}</div>
-    </div>
-    <div ng-show="result.indications_and_usage[0]">
-      <hr class="detail-hr">
-      <span>Conditions</span>
-      <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"
-        ng-click="toggleConditions = toggleConditions">{{toggleConditionsText}}</button>
-      <div id="conditions-detail" class="collapse in">{{result.indications_and_usage[0]| sentence}}</div>
-    </div>
-    <div ng-show="result.description[0]">
-      <hr class="detail-hr">
-      <span>Description</span>
-      <button type="button" data-toggle="collapse" data-target="#description-detail" class="collapse-button"
-        ng-click="toggleDescription = toggleDescription">{{toggleDescriptionText}}</button>
-      <div id="description-detail" class="collapse in">{{result.description[0] | sentence}}</div>
-    </div>
 
-    <!-- 
+      <div ng-show="result.instructions_for_use[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Instructions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#instructions-detail" class="collapse-button"
+              ng-click="toggleInstructions = !toggleInstructions">
+              <span ng-class="toggleInstructionsText"></span>
+            </button>
+          </div>
+          <div id="instructions-detail" class="collapse in col-xs-11">{{result.instructions_for_use[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.purpose[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Purpose</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#purpose-detail" class="collapse-button"
+              ng-click="togglePurpose = !togglePurpose">
+              <span ng-class="togglePurposeText"></span>
+            </button>
+          </div>
+          <div id="purpose-detail" class="collapse in col-xs-11">{{result.purpose[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.active_ingredient[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Active Ingredient</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#active-ingredient-detail" class="collapse-button"
+              ng-click="toggleActiveIngredient = !toggleActiveIngredient">
+              <span ng-class="toggleActiveIngredientText"></span>
+            </button>
+          </div>
+          <div id="active-ingredient-detail" class="collapse in col-xs-11">{{result.active_ingredient[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.indications_and_usage[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Conditions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#conditions-detail" class="collapse-button"
+              ng-click="toggleConditions = !toggleConditions">
+              <span ng-class="toggleConditionsText"></span>
+            </button>
+          </div>
+          <div id="conditions-detail" class="collapse in col-xs-11">{{result.indications_and_usage[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.description[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Description</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#description-detail" class="collapse-button"
+              ng-click="toggleDescription = !toggleDescription">
+              <span ng-class="toggleDescriptionText"></span>
+            </button>
+          </div>
+          <div id="-detail" class="collapse in col-xs-11">{{result.description[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <!-- 
   <div ng-repeat="list in indicationListArray" class="tabDiv">
     {{list.header}}
     <ul>
@@ -72,144 +117,249 @@
     </ul>
   </div>
    -->
-  </div>
+    </div>
 
-  <!-- Tab 2 -->
-  <div ng-show="isSelected(2)">
-    <div class="container-fluid">
-      <div class="list-group results-list" scrollable-div="992">
+    <!-- Tab 2 -->
+    <div ng-show="isSelected(2)" class="general-tab-content">
+      <div ng-show="result.boxed_warning[0]">
         <div class="row">
-          <div class="col-xs-1"></div>
-          <div class="col-xs-10">
-            <div class="row">
-              <div class="row col-xs-8">
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Boxed Warnings: </span> <span class="col-xs-8 ">
-                    {{result.boxed_warning[0] | sentence}} </span>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Do Not Use If...:</span> <span class="col-xs-8">{{result.do_not_use_if[0]
-                    | sentence}}</span>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Contraindications:</span> <span class="col-xs-8">{{result.contraindications[0]
-                    | sentence}}</span>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Drug Interactions:</span> <span class="col-xs-8 ">{{result.drug_interactions[0]
-                    |sentence}}</span>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Adverse Reactions:</span> <span class="col-xs-8">{{result.adverse_reactions[0]
-                    | sentence}}</span>
-                </div>
-                </p>
-                <div ng-bind-html="trustAdverseReactionsAsHtml()"></div>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Stop Use:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.stop_use[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Ask a Doctor:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.ask_doctor[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Ask Pharmacist:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.ask_doctor_or_pharmacist[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Warnings:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.warnings[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Precautions:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.precautions[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <!-- Insert precautions table here -->
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Warnings and Precautions:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.warnings_and_precautions[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">General Precautions:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.general_precautions[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">Drug Abuse and Dependency:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.drug_abuse_and_dependency[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3">User Safety Warning:</span>
-                  <div>
-                    <span class="col-xs-8">{{result.user_safety_warnings[0] | sentence}}</span>
-                  </div>
-                </div>
-                </p>
-                <p class="list-group-item-text">
-                <div class="row">
-                  <span class="col-xs-3"> </span> <span class="col-xs-8"> </span>
-                </div>
-                </p>
-              </div>
-              <div class="row col-xs-4">
-                <div class="row-fixed">
-                  <span class="row col-xs-1 col-xs-height captioned-image"> <img src="images/logo.png" /> <span
-                    class="caption">Over the Counter</span>
-                  </span> <span class="row col-xs-1 col-xs-height captioned-image"> <img src="images/logo.png" /> <span
-                    class="caption">Oral Pill</span>
-                  </span> <span class="row col-xs-1 col-xs-height captioned-image"> <img src="images/logo.png" /> <span
-                    class="caption">Toddler</span>
-                  </span>
-                </div>
-              </div>
-            </div>
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Boxed Warning</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#boxed-warning-detail" class="collapse-button"
+              ng-click="toggleBoxedWarning = !toggleBoxedWarning">
+              <span ng-class="toggleBoxedWarningText"></span>
+            </button>
           </div>
+          <div id="boxed-warning-detail" class="collapse in col-xs-11">{{result.boxed_warning[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
         </div>
       </div>
 
-      <!-- 
+      <div ng-show="result.do_not_use_if[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Do Not Use If...</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#do-not-use-if-detail" class="collapse-button"
+              ng-click="toggleDoNotUseIf = !toggleDoNotUseIf">
+              <span ng-class="toggleDoNotUseIfText"></span>
+            </button>
+          </div>
+          <div id="do-not-use-if-detail" class="collapse in col-xs-11">{{result.do_not_use_if[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.contraindications[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Contraindications</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#contraindications-detail" class="collapse-button"
+              ng-click="toggleContraindications = !toggleContraindications">
+              <span ng-class="toggleContraindicationsText"></span>
+            </button>
+          </div>
+          <div id="contraindications-detail" class="collapse in col-xs-11">{{result.contraindications[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.drug_interactions[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Drug Interactions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#drug-interactions-detail" class="collapse-button"
+              ng-click="toggleDrugInteractions = !toggleDrugInteractions">
+              <span ng-class="toggleDrugInteractionsText"></span>
+            </button>
+          </div>
+          <div id="drug-interactions-detail" class="collapse in col-xs-11">{{result.drug_interactions[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.adverse_reactions[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Adverse Reactions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#adverse-reactions-detail" class="collapse-button"
+              ng-click="toggleAdverseReactions = !toggleAdverseReactions">
+              <span ng-class="toggleAdverseReactionsText"></span>
+            </button>
+          </div>
+          <div id="adverse-reactions-detail" class="collapse in col-xs-11">{{result.adverse_reactions[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <!-- TODO make this work                 <div ng-bind-html="trustAdverseReactionsAsHtml()"></div> -->
+
+      <div ng-show="result.stop_use[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Stop Use</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#stop-use-detail" class="collapse-button"
+              ng-click="toggleStopUse = !toggleStopUse">
+              <span ng-class="toggleStopUseText"></span>
+            </button>
+          </div>
+          <div id="stop-use-detail" class="collapse in col-xs-11">{{result.stop_use[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.ask_doctor[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Ask a Doctor</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#ask-a-doctor-detail" class="collapse-button"
+              ng-click="toggleAskADoctor = !toggleAskADoctor">
+              <span ng-class="toggleAskADoctorText"></span>
+            </button>
+          </div>
+          <div id="ask-a-doctor-detail" class="collapse in col-xs-11">{{result.ask_doctor[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.ask_doctor_or_pharmacist[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Ask Pharmacist</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#ask-pharmacist-detail" class="collapse-button"
+              ng-click="toggleAskPharmacist = !toggleAskPharmacist">
+              <span ng-class="toggleAskPharmacistText"></span>
+            </button>
+          </div>
+          <div id="ask-pharmacist-detail" class="collapse in col-xs-11">{{result.ask_doctor_or_pharmacist[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.warnings[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Warnings</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#warnings-detail" class="collapse-button"
+              ng-click="toggleWarnings = !toggleWarnings">
+              <span ng-class="toggleWarningsText"></span>
+            </button>
+          </div>
+          <div id="warnings-detail" class="collapse in col-xs-11">{{result.warnings[0] | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.precautions[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Precautions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#precautions-detail" class="collapse-button"
+              ng-click="togglePrecautions = !togglePrecautions">
+              <span ng-class="togglePrecautionsText"></span>
+            </button>
+          </div>
+          <div id="precautions-detail" class="collapse in col-xs-11">{{result.precautions[0]| sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.warnings_and_precautions[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Warnings and Precautions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#warnings-and-precautions-detail"
+              class="collapse-button" ng-click="toggleWarningsAndPrecautions = !toggleWarningsAndPrecautions">
+              <span ng-class="toggleWarningsAndPrecautionsText"></span>
+            </button>
+          </div>
+          <div id="warnings-and-precautions-detail" class="collapse in col-xs-11">{{result.warnings_and_precautions[0]|
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.general_precautions[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">General Precautions</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#general-precautions-detail"
+              class="collapse-button" ng-click="toggleGeneralPrecautions = !toggleGeneralPrecautions">
+              <span ng-class="toggleGeneralPrecautionsText"></span>
+            </button>
+          </div>
+          <div id="general-precautions-detail" class="collapse in col-xs-11">{{result.general_precautions[0]|
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.drug_abuse_and_dependency[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Drug Abuse and Dependency</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#drug-abuse-and-dependency-detail"
+              class="collapse-button" ng-click="toggleDrugAbuseAndDependency = !toggleDrugAbuseAndDependency">
+              <span ng-class="toggleDrugAbuseAndDependencyText"></span>
+            </button>
+          </div>
+          <div id="drug-abuse-and-dependency-detail" class="collapse in col-xs-11">{{result.drug_abuse_and_dependency[0]
+            | sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.user_safety_warnings[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">User Safety Warning</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#user-safety-warning-detail"
+              class="collapse-button" ng-click="toggleUserSafetyWarning = !toggleUserSafetyWarning">
+              <span ng-class="toggleUserSafetyWarningText"></span>
+            </button>
+          </div>
+          <div id="user-safety-warning-detail" class="collapse in col-xs-11">{{result.user_safety_warnings[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+      <div ng-show="result.user_safety_warnings[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">User Safety Warning</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#user-safety-warning-detail"
+              class="collapse-button" ng-click="toggleUserSafetyWarning = !toggleUserSafetyWarning">
+              <span ng-class="toggleUserSafetyWarningText"></span>
+            </button>
+          </div>
+          <div id="user-safety-warning-detail" class="collapse in col-xs-11">{{result.user_safety_warnings[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 
   <div ng-repeat="list in contraindicationListArray" class="tabDiv">
     <div ng-repeat="list in abuseListArray" class="tabDiv">
       {{list.header}}
@@ -218,17 +368,17 @@
       </ul>
     </div>
 -->
-      </di
-                v>
+  </div>
 
 
-      <!-- Tab 3
+  <!-- Tab 3
   <div ng-show="isSelected(3)">
     <div ng-bind-html="trustAdverseReactionsAsHtml()"></div>
     <div>{{abuseListArray}}</div>
   </div>
  -->
 
-    </div>
-  </div>
 </div>
+
+<br />
+<div c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
