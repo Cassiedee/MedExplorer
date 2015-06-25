@@ -91,16 +91,18 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 						try{
 							var obj = JSON.parse(output);
 
-							//put the object into the cache
-							obj.resStatusCode = res.statusCode;
-							insertIntoCache(options.path, obj);
-
-							if(res.statusCode == 404) {
-								callback(200, null, obj);
+							
+							
+							
+                                                        obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
+							if(obj.resStatusCode == 404) {
+								callback(obj.resStatusCode, null, obj);
                                                         }
 							else {
 								callback(obj.resStatusCode, obj, null);
 							}
+                                                        //put the object into the cache
+                                                        insertIntoCache(options.path, obj);
 						}catch(err){
 							console.log(err);
 						}
@@ -211,10 +213,8 @@ exports.recentRecalls = function(num, callback) {
 					res.on('end', function() {
 						var obj = JSON.parse(output);
 
-						//put the object into the cache
-						obj.resStatusCode = res.statusCode;
-						insertIntoCache(options.path, obj);
-
+						
+						obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
 						if(obj.results)
 							recalls = obj.results;
 						if(recalls.length < num) {
@@ -225,8 +225,11 @@ exports.recentRecalls = function(num, callback) {
 							dateRange *= 0.75;
 							fetchloop();
 						}
-						else
+						else {   
 							callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+                                                }
+                                                //put the object into the cache
+                                                insertIntoCache(options.path, obj);
 					});
 				});
 				req.on('error', function(err) {
@@ -280,13 +283,15 @@ function cleanCache(db){
 }
 
 function insertIntoCache(query, result){
-	var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
-	db.open(function(err, db) {
-		var collection = db.collection("medicine_explorer");
+        if(result.resStatusCode < 400) {
+          var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
+          db.open(function(err, db) {
+                  var collection = db.collection("medicine_explorer");
 
-		result.insertTime = new Date();
-		result.mongoKey = query;
-		collection.insert(result);
-		db.close();
-	});
+                  result.insertTime = new Date();
+                  result.mongoKey = query;
+                  collection.insert(result);
+                  db.close();
+          });
+        }
 }
