@@ -1,6 +1,7 @@
 # Licensing Information
 
 #### License:
+The MIT License (MIT)
 
 Copyright (c) 2015 Northrop Grumman Systems Corporation.  All Rights Reserved.
 
