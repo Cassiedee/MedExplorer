@@ -7,16 +7,16 @@ The __Agile team__ was a multidisciplinary and collaborative team comprised of a
 
 Once the team was identified and collocated we created a backlog of Sprint 0 activities (picture) for the first couple days. These activities provided the groundwork for identifying our users, product vision, and stakeholders. Some of the tasks during [Sprint 0](../../Pictures/Sprint0activities.jpg) included:
 
-•	Identify draft vision/problem statement
-•	Start capturing personas
-•	Research – what information already exists?
-•	Engage company stakeholders and security engineer
-•	User scenarios
-•	Review the  19 evaluation criteria (add to backlog and definition of done)
-•	Create Definition of Done and define level of quality
-•	Set up infrastructure
-•	Develop 
-•	Create initial backlog items and prioritize
+* Identify draft vision/problem statement
+* Start capturing personas
+* Research – what information already exists?
+* Engage company stakeholders and security engineer
+* User scenarios
+* Review the  19 evaluation criteria (add to backlog and definition of done)
+* Create Definition of Done and define level of quality
+* Set up infrastructure
+* Develop 
+* Create initial backlog items and prioritize
 
 ### Our Sprint Cycles
 We defined our sprints as five-hour time boxes occurring twice per day. Each sprint included a brief planning session (about 30 minutes), periodic standups to synchronize on activities, and a sprint review (about ~30 minutes). Scrum was selected as our approach because it provides regular synchronization points, __demonstrations__, and opportunities to __inspect and improve the process__. We implemented Extreme Programming practices as we began to agree upon our engineering practices such as continuous integration, user stories, small iterations, giving the team a collaborative, dedicated work space, and implementing a simple architecture and design to easily manage changing needs and priorities.
