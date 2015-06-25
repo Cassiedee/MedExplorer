@@ -186,6 +186,14 @@ a, a:focus, a:active {
 		#d86021 33px, #8c3c18 34px);
 }
 
+/*~10% brighter than normal*/
+div .recall-background:hover{
+	background-image: repeating-linear-gradient(30deg, 
+		#a65632, #a65632 16px,
+		#f27a3b 17px, #f27a3b 32px,
+		#f27a3b 33px, #a65632 34px);
+}
+
 .recall-horizontal-background {
 	background-image: repeating-linear-gradient(-60deg, 
 		#8c3c18, #8c3c18 16px,
