@@ -195,6 +195,12 @@ angular.module('MedExplorer')
             $scope.toggleUserSafetyWarningText = $scope.toggleUserSafetyWarning ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
         });
 
+        $scope.toggleAdverseEventChart = true;
+        $scope.$watch('toggleAdverseEventChart', function(){
+            $scope.toggleAdverseEventChartText = $scope.toggleAdverseEventChart ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+        });
+
+        
         }
 
         function onDrugEventsArrived() {

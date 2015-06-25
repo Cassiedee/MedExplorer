@@ -20,6 +20,8 @@ User research ensures user stories are valid by identifying user priorities. As 
 
 ![Experience Maps] (Experience Map/Experience Map.png)
 
+![Task Models](Task Model/Task_Model.png)
+
 ## Wireframes & Prototypes
 
 Designers create [wireframes] (Wireframes) and low fidelity prototypes. Interaction designs are produced and regularly are brought into the scrums to facilitate feasibility conversations with developers.
@@ -30,7 +32,7 @@ The design group processed the [generative research](Research Findings/Generativ
 
 ### Initial Wireframes
 
-We refined and combined our Design Ideas into a single draft wireframe that was reviewed by the entire team. Designers also arranged and configured the available information to make the most important data the most visible.  The initial wireframe is located at [Wireframes/Initial Wireframes] (Wireframes/Initial Wireframes/wireframe_v01_06202015.pdf). They were shown to users for the initial [expectancy tests](Research Findings/Expectancy_Tests.pdf).  We iterated through a number of version of wireframes as we refined our wireframes, examples are shown here ([Wireframe v1](Wireframes/Initial Wireframes/Wireframe_v01.pdf), [Wireframe v4](Wireframes/Initial Wireframes/Wireframe_v04.pdf), [Wireframe v5](Wireframes/Initial Wireframes/Wireframe_v05.pdf), [Wireframe v9](Wireframes/Initial Wireframes/Wireframe_v09.pdf))
+We refined and combined our Design Ideas into a single draft wireframe that was reviewed by the entire team. Designers also arranged and configured the available information to make the most important data the most visible.  The initial wireframe is located at [Wireframes/Initial Wireframes] (Wireframes/Initial Wireframes/wireframe_v01_06202015.pdf). They were shown to users for the initial [expectancy tests](Research Findings/Expectancy_Tests.pdf).  We iterated through a number of version of wireframes as we refined our wireframes, examples are shown here ([Wireframe v1](Wireframes/Initial Wireframes/Wireframe_v01.pdf), [Wireframe v4](Wireframes/Initial Wireframes/Wireframe_v04.pdf), [Wireframe v7](Wireframes/Initial Wireframes/Wireframe_v07.pdf), [Wireframe v9](Wireframes/Initial Wireframes/Wireframe_v09.pdf))
 
 ## Evaluation
 
