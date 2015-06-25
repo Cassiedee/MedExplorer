@@ -1,11 +1,19 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="PhantomJS 1.9.8 (Windows 7 0.0.0)" package="" timestamp="2015-06-25T14:34:39" id="0" hostname="MOngoDB3" tests="2" errors="0" failures="0" time="0.002">
+  <testsuite name="PhantomJS 1.9.8 (Windows 7 0.0.0)" package="" timestamp="2015-06-25T15:55:32" id="0" hostname="MOngoDB3" tests="10" errors="0" failures="0" time="0.086">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
     </properties>
     <testcase name="this is a test" time="0.002" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: HelloWorldController"/>
-    <testcase name="this is another test (which should NOT fail)" time="0" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: HelloWorldController"/>
+    <testcase name="this is another test (which should NOT fail)" time="0.001" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: HelloWorldController"/>
+    <testcase name="filters not null" time="0.031" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="sentence_test" time="0.012" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="uppercase" time="0.005" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="lowercase_test" time="0.005" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="title_test" time="0.005" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="titlePreserveUpper_test" time="0.005" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="has a mmddyyyy_slashes date filter" time="0.006" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: date"/>
+    <testcase name="convert mmddyyyy_slashes" time="0.014" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: date"/>
     <system-out><![CDATA[
 ]]></system-out>
     <system-err/>
