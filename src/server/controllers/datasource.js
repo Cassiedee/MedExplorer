@@ -249,7 +249,7 @@ exports.recentRecalls = function(num, callback) {
 
 					res.on('end', function() {
 						var obj = JSON.parse(output);
-
+                                                console.log(obj);
 						
 						obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
 						if(obj.results)
@@ -264,6 +264,7 @@ exports.recentRecalls = function(num, callback) {
 						}
 						else {   
 							callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+                                                        console.log(recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
                                                 }
                                                 //put the object into the cache
                                                 insertIntoCache(options.path, obj);

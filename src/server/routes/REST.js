@@ -55,6 +55,8 @@ function recentRecalls(req, res) {
   if(!req.query.num)
     req.query.num = 10;
   datasource.recentRecalls(req.query.num, function(status, data, error) {
+    console.log(data);
+    console.log(error);
     res.status(status).json({
       'response': data,
       'error': error
