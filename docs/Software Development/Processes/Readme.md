@@ -5,6 +5,11 @@ Using our Agile framework, which is built upon Scrum, Extreme Programming, and u
 
 The [Agile team](../../MedExplorer Development Team.md) was a [multidisciplinary and collaborative team](../../Diagrams/AgileTeam.png) comprised of a Product Manager, Agile Coach, Technical architect, UX designers, web engineers, DevOps engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
 
+
+| Multidisciplinary and Collaborative Team | |
+| ------------- |:-----------:|
+| ![Backlog](../../Diagrams/AgileTeam.png) | | 
+
 Once the team was identified and collocated we created a backlog of Sprint 0 activities (picture) for the first couple days. These activities provided the groundwork for identifying our users, product vision, and stakeholders. Some of the tasks during [Sprint 0](../../Pictures/Sprint0activities.jpg) included:
 
 * Identify draft vision/problem statement
