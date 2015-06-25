@@ -146,7 +146,8 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
 				});
 
 				req.on('error', function(err) {
-					req.send('error: ' + err.message);
+                                        console.log(err);
+					callback(500, null, err);
 				});
 
 				req.end();
@@ -269,7 +270,8 @@ exports.recentRecalls = function(num, callback) {
 					});
 				});
 				req.on('error', function(err) {
-					req.callback(res.statusCode, null, err);
+                                        console.log(err);
+					callback(500, null, err);
 				});
 
 				req.end();

@@ -8,6 +8,7 @@
           <span class="trendingdrug">
                 {{recall.report_date | mmddyyyy_slashes}} {{recall.openfda.brand_name[0] | title}}
           </span>
+          <hr ng-show="{$index < results.length - 1}">
         </a>
       </span>
     </div>
