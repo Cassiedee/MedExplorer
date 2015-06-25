@@ -8,7 +8,7 @@
 
 ### Continuous Integration
 
-### Continuuous Delivery/Deployment
+### Continuous Delivery/Deployment
 
 ### Continuous Monitoring
 
