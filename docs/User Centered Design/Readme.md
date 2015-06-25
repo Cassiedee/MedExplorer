@@ -18,7 +18,7 @@ User models include [task flows](Research Findings/Initial_Research_Findings.pdf
 
 User research ensures user stories are valid by identifying user priorities. As new information emerges, [experience maps](Experience Map/Experience Map.png) are generated and stories are refined and re-prioritized. These stories will inform the product backlog for future Agile sprints, as well as completion criteria. Our initial interviews were parsed into [user stories](../Software Development/User-Stories) for each consumer and incorporated into the project backlog.
 
-![Experience Maps] Experience Map/Experience Map.png)
+![Experience Maps] (Experience Map/Experience Map.png)
 
 ## Wireframes & Prototypes
 
