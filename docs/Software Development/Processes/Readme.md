@@ -3,7 +3,12 @@
 
 Using our Agile framework, which is built upon Scrum, Extreme Programming, and user-centered design techniques, we were able to develop the product in an iterative fashion while receiving regular, timely feedback from users and stakeholders. Our initial kick-off was defined as Sprint 0. During this time we reviewed the project (RFQ) requirements and, based upon those needs, identified our Agile Team and the supporting company stakeholders who would need to be involved in the approval process of the release of the product.
 
-The [Agile team](../../MedExplorer Development Team.md) was a multidisciplinary and collaborative team comprised of a Product Manager, Agile Coach, Technical architect, UX designers, web engineers, DevOps engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
+The [Agile team](../../MedExplorer Development Team.md) was a [multidisciplinary and collaborative team](../../Diagrams/AgileTeam.png) comprised of a Product Manager, Agile Coach, Technical architect, UX designers, web engineers, DevOps engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
+
+
+| Multidisciplinary and Collaborative Team | |
+| ------------- |:-----------:|
+| ![Backlog](../../Diagrams/AgileTeam.png) | | 
 
 Once the team was identified and collocated we created a backlog of Sprint 0 activities (picture) for the first couple days. These activities provided the groundwork for identifying our users, product vision, and stakeholders. Some of the tasks during [Sprint 0](../../Pictures/Sprint0activities.jpg) included:
 
@@ -26,7 +31,9 @@ Having two sprints per day was necessary if we wanted regular input from our sta
 ### Sprint Planning
 During sprint planning the team reviewed the product backlog, pulled in the next highest value items, and identified tasks. To assist in release planning we had a [roadmap of the backlog items](../../Pictures/Sprint3_roadmap planning.jpg) assigned to specific sprints. For each sprint planning we pulled the items from the roadmap onto the [Scrum board for current sprint planning](../../Pictures/Task Board.jpg). In addition, as the product backlog of stories continued to grow the team created a [product roadmap for release 1 and release 2](../../Diagrams/MedExplorer Product Roadmap.png) (if there were to be a second release). This helped the team with the product owner in deciding what the minimum viable product features were and which could be moved to the second release for future refinement. 
 
-| ![Backlog](../../Pictures/Sprint3_roadmap planning.jpg)| ![Scrum board](../../Pictures/Task Board.jpg) | 
+| Backlog Items | Scrum Board |
+| ------------- |:-----------:|
+| ![Backlog](../../Pictures/Sprint3_roadmap planning.jpg) | ![Scrum board](../../Pictures/Task Board.jpg) | 
 
 ### Sprint Execution
 During sprint execution we implemented: the user stories and other backlog items (such as research items), continuous integration, feature and usability testing, unit testing, and documentation updates. UX members with the Product Manager elicit user needs and translate needs into backlog items for prioritization to support the next round of sprint planning. Wireframes and style guides were enhanced during each sprint and were used to support the development of the features. 
