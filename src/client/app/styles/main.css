@@ -46,6 +46,10 @@ a, a:focus, a:active {
 	font-weight:700;
 }
 
+.recall-foreground {
+	color:#d86021;
+}
+
 .search-result {
 	font-size:14pt  !important;
 }

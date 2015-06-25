@@ -1,7 +1,7 @@
 <div class="jumbotron container-fluid" ng-repeat="recallDetails in recallList | orderBy:'-report_date'"
-	style="margin-top:0px; padding-top:0px;padding-left:15px; padding-right:15px;">
+	style="margin-top:0px; padding-top:0px;padding-left:0px; padding-right:0px;">
   <div class="row" style="margin-top:0;">
-	<div class="recall-text col-xs-12 recall-horizontal-background" style="height:20px">
+	<div class="recall-text col-xs-12 recall-horizontal-background" style="height:20px;">
 		<strong>
 			RECALL
 		</strong>
@@ -17,7 +17,7 @@
 							<img src="images/icon_recall_box.svg" style="position: relative; top: 0; left: 0;"/>
 							<img src="images/icon_recall_R.svg" style="position: absolute; top:0; left: 0;"/>
 						</span>
-						<span>
+						<span class="recall-foreground">
 							{{recallDetails.voluntary_mandated}}
 						</span>
 					</div>
