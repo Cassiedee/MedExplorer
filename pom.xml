@@ -3,17 +3,29 @@
     
 	<modelVersion>1.0.0</modelVersion>
     <name>MedExplorer</name>
-    <groupId>com.ngc.irad.cafka</groupId>
+    <groupId>MedExplorer</groupId>
     <artifactId>MedExplorer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <sonar.language>js</sonar.language>
+
+        <sonar.inclusions>
+            src/client/app/scripts/**/*.js,
+            src/*.js,
+            src/server/controllers/**/*.js,
+            src/server/routes/**/*.js,
+            src/server/tests/**/*.js
+        </sonar.inclusions>
+
+        <sonar.exclusions>
+        </sonar.exclusions>
+        <sonar.sources>MedExplorer</sonar.sources>
+    </properties>
 
     
-    <modules>
-      <module>Source</module>     
-	  <module>Source/datasource-api</module> 
-      <module>Source/datasource-paradigm</module>	 
-      <module>Source/datasource-scad</module>
-	  <module>Source/datasource-acled</module>
-    </modules>    
+
+
 </project>

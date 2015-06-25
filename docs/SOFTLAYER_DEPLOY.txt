@@ -7,9 +7,9 @@ SoftLayer (208.43.120.198)
 
 2. Write the docker image to disk by running the following command:
 
-    docker save -o ME_IMAGE IMAGE_ID
+    docker save -o ME_IMAGE <IMAGE_ID>
 
-   Replace IMAGE_ID with the image id for eric/nodejs
+   Replace <IMAGE_ID> with the image id for eric/nodejs
 
 
 3. Send the file to the SoftLayer server by running the following command:
@@ -19,6 +19,14 @@ SoftLayer (208.43.120.198)
 4. Log onto the Softlayer server.
 
 5. cd into the directory /home/sstulga
+
+6. Load the image with the following command:
+
+    sudo docker load -i ME_IMAGE
+
+   and tag it with:
+
+    sudo docker tag <IMAGE_ID> eric/nodejs:centos6
 
 6. If the MongoDB container is NOT running on the SoftLayer server, run it by entering:
 
