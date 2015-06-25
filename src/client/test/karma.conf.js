@@ -35,7 +35,7 @@ module.exports = function(config) {
       'app/vendor/lodash/lodash.js',
       'app/vendor/ng-lodash/build/ng-lodash.js',
       'app/vendor/d3/d3.js',
-      'app/vendor/angular-utils-pagination/dirPagination.js',
+      'app/vendor/c3/c3.js',
       'app/vendor/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
@@ -59,11 +59,13 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
+        'PhantomJS'
     ],
 
     // Which plugins to enable
     plugins: [
       "karma-junit-reporter",
+      'karma-phantomjs-launcher',
       "karma-jasmine"
     ],
 

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 43.0.2357 (Windows 7 0.0.0)" package="" timestamp="2015-06-24T00:26:51" id="0" hostname="MOngoDB3" tests="2" errors="0" failures="0" time="0.004">
+  <testsuite name="PhantomJS 1.9.8 (Windows 7 0.0.0)" package="" timestamp="2015-06-25T13:16:03" id="0" hostname="MOngoDB3" tests="2" errors="0" failures="0" time="0.002">
     <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36"/>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
     </properties>
-    <testcase name="this is a test" time="0.003" classname="Chrome 43.0.2357 (Windows 7 0.0.0).Controller: HelloWorldController"/>
-    <testcase name="this is another test (which should NOT fail)" time="0.001" classname="Chrome 43.0.2357 (Windows 7 0.0.0).Controller: HelloWorldController"/>
+    <testcase name="this is a test" time="0.002" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: HelloWorldController"/>
+    <testcase name="this is another test (which should NOT fail)" time="0" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: HelloWorldController"/>
     <system-out><![CDATA[
 ]]></system-out>
     <system-err/>

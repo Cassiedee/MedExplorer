@@ -62,6 +62,7 @@ function recentRecalls(req, res) {
   });
 }
 
+/* test that trending drugs are returned */
 router.get('/REST/trendingDrugs', getTrendingDrugs);
 function getTrendingDrugs(req, res) {
   datasource.getTrendingDrugs(function(status, data, error) {
@@ -72,6 +73,7 @@ function getTrendingDrugs(req, res) {
   });
 };
 
+/* test that trending drugs are set correctly */
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
   datasource.setTrendingDrugs(req.body, function() {

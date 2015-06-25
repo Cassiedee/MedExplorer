@@ -30,6 +30,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/**/*.js': ['coverage']
     },
 
 
@@ -70,12 +71,28 @@ module.exports = function(config) {
     plugins : [
       "karma-mocha",
       "karma-junit-reporter",
-      "karma-jasmine"
+      "karma-jasmine",
+      "karma-coverage"
     ],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+
+
+    junitReporter: {
+        outputFile: 'results/Test-units.xml',
+        suite:''
+    },
+
+    coverageReporter: {
+        type: 'lcov',
+        dir: 'results/',
+        subdir: '.'
+    }
+
+
   });
 };
