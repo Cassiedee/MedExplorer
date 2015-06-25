@@ -1,9 +1,12 @@
 Zabbix setup
 
-1. Deploy the Zabbix docker image by running the command "docker run -d -p 10051:10051 -p 10052:10052 -p 9001:80 -p 2812:2812 --name zabbix  berngp/docker-zabbix".
+1. Deploy the Zabbix docker image by running the command
+"docker run -d -p 10051:10051 -p 10052:10052 -p 9001:80 -p 2812:2812 --name zabbix  berngp/docker-zabbix".
 
-NOTE: If Zabbix is to be run on a public facing internet site, update the following section "-p 9001:80" to be in the following format "-p <EXTERNAL_IP_OF_SERVER>:9001:80".
-Replace the <EXTERNAL_IP_OF_SERVER> with the external IP address of the server.
+
+NOTE: If Zabbix is to be run on a public facing internet site, update the following section "-p 9001:80" to be in the
+following format "-p <EXTERNAL_IP_OF_SERVER>:9001:80". Replace the <EXTERNAL_IP_OF_SERVER> with the external IP
+address of the server.
 
 2. Get local 80 port mapping by running "docker ps -f name=zabbix"  Find the port that is mapped to 80 for this container.
 
@@ -16,7 +19,8 @@ Replace the <EXTERNAL_IP_OF_SERVER> with the external IP address of the server.
 5. Go to the Zabbix server (http://localhost:9001/zabbix). Note that the URL is case sensitive (lower case zabbix).
 The default credentials for Zabbix are username: Admin and password: zabbix. Both username and password are case sensitive.
 
-If the Zabbix site does not display in the browser, make sure that port 9001 (or the port specified when Zabbix was installed) is not blocked.
+If the Zabbix site does not display in the browser, make sure that port 9001 (or the port specified when Zabbix was installed)
+is not blocked.
 
 
 
@@ -27,7 +31,9 @@ To monitor a URL:
 4. Click the "Add" button at the bottom of the page.
 5. Click the "Steps" tab.
 6. Inside the steps box, click the "Add" link.
-7. Enter the necessary information for the URL to listen to and specify the url to listen to: (http://10.2.101.113:9000/). Click the "Add" button.
+7. Enter the necessary information for the URL to listen to and specify the url to listen to. Example http://localhost:9000/.
+Click the "Add" button.
+
 8. Add any other steps to monitor a URL.
 9. Click update to save the scenario.
 
