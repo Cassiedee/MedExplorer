@@ -19,4 +19,5 @@ describe('Filter: date', function () {
 	it('convert mmddyyyy_slashes', function () {
 		  expect(mmddyyyy_slashes('20150625', null)).toBe('06/25/2015');
 	});
+	
 });

@@ -45,5 +45,4 @@ describe('Filter: capitalization', function () {
 	  expect(titlePreserveUpper('this is a testTitle')).toBe('This Is A TestTitle');
   });
 
-
 });
