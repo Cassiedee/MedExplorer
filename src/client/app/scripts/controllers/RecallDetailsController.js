@@ -18,7 +18,7 @@ angular.module('MedExplorer')
         + '&field=openfda.spl_id'
         + '&value=' + $stateParams.spl_id
         + '&limit=100').success(function(data) {
-          if(data.response.results && data.response.results.length > 0) {
+          if(data.response && data.response.results && data.response.results.length > 0) {
             $scope.recallList = data.response.results;
             console.log($scope.recallList);
           }

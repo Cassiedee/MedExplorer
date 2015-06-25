@@ -17,6 +17,11 @@
     "serve-favicon": "~2.2.1"
   },
   "devDependencies": {
+    "karma": "^0.12.37",
+    "karma-coverage": "^0.4.2",
+    "karma-jasmine": "^0.3.5",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-mocha": "^0.2.0",
     "mocha": "^2.2.5",
     "mocha-junit-reporter": "^1.5.0",
     "mongodb": "2.0.35",
