@@ -7,18 +7,12 @@ describe('REST API Test Suite', function()
   it('hello_test', function()
   {
     /* configure mock response object */
-    var res = {responseObj:null}; 
-    res.json = function(res) {this.responseObj = res;}
+	    var res = {responseObj:null}; 
+	    res.json = function(res) {this.responseObj = res;}
 
-    //var req = {'params' : {'name' : 'Eric'}};
-
-    var req = {'query' : {'type' : 'typehere', 'field':'fieldhere','value':123,'limit':123}};
-
-    rest.functions.search(req,res);
-
-
-    test.assert.equal(req.responseObj.response,"Hello, Eric");
-    //expect(res.responseObj.response).toEqual("Hello, Eric");
+	    var req = {'params' : {'name' : 'Eric'}};
+	    rest.functions.hello(req,res);
+	    test.assert.equal(res.responseObj.response,"Hello, Eric");
   });
 
 
@@ -27,25 +21,29 @@ describe('REST API Test Suite', function()
     /* configure mock response object */
     var res = {responseObj:null}; 
     res.json = function(res) {this.responseObj = res;}
+    
+    var req = {'query' : {'source' : 'sourcehere', 'type' : 'typehere', 'field':'fieldhere','value':123,'limit':123}};
 
-    var req = {'params' : {'name' : 'Eric'}};
-    rest.functions.hello(req,res);
+    rest.functions.search(req,res);
 
-
-    test.assert.equal(res.responseObj.response,"Hello, Eric");
+    test.assert.equal(res.status, undefined);
+    test.assert.equal(res.response, null);
+    test.assert.equal(res.error, undefined);
   });
 
   it('getTrendingDrugs_test', function()
   {
     /* configure mock response object */
-    var res = {responseObj:null}; 
-    res.json = function(res) {this.responseObj = res;}
+	    var res = {responseObj:null}; 
+	    res.json = function(res) {this.responseObj = res;}
+	    
+	    var req = {};
 
-    var req = {'params' : {'name' : 'Eric'}};
-    rest.functions.hello(req,res);
-    test.assert.equal(res.responseObj.response,"Hello, Eric");
+	    rest.functions.getTrendingDrugs(req,res);
 
-    //expect(res.responseObj.response).toEqual("Hello, Eric");
+	    test.assert.equal(res.status, undefined);
+	    test.assert.equal(res.response, null);
+	    test.assert.equal(res.error, undefined);
   });
 
   it('setTrendingDrugs_test', function()
@@ -54,21 +52,28 @@ describe('REST API Test Suite', function()
     var res = {responseObj:null}; 
     res.json = function(res) {this.responseObj = res;}
 
-    var req = {'params' : {'name' : 'Eric'}};
-    rest.functions.hello(req,res);
-    test.assert.equal(res.responseObj.response,"Hello, Eric");
+    var req = {'body' : ''};
+    rest.functions.setTrendingDrugs(req,res);
+
+    test.assert.equal(res.status, undefined);
+    test.assert.equal(res.response, null);
+    test.assert.equal(res.error, undefined);
   });
 
   /* test the fetch loop here (complex) */
   it('recentRecalls_test', function()
   {
-    /* configure mock response object */
-    var res = {responseObj:null}; 
-    res.json = function(res) {this.responseObj = res;}
+	  /* configure mock response object */
+	    var res = {responseObj:null}; 
+	    res.json = function(res) {this.responseObj = res;}
+	    
+	    var req = {'query' : {'num':15}};
 
-    var req = {'params' : {'name' : 'Eric'}};
-    rest.functions.hello(req,res);
-    test.assert.equal(res.responseObj.response,"Hello, Eric");
+	    //rest.functions.recentRecalls(req,res);
+
+/*	    test.assert.equal(res.status, undefined);
+	    test.assert.equal(res.response, null);
+	    test.assert.equal(res.error, undefined);*/
   });
 
 });
