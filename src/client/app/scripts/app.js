@@ -67,7 +67,7 @@ angular
         }
       })
       .state('home.recalldetails', {
-        url: 'recalldetails?event_id',
+        url: 'recalldetails?spl_id',
         views: {
           'side-panel@home': {
           template: ''
@@ -78,7 +78,7 @@ angular
           }
         },
         params: {
-          recallDetails: null,
+          recallList: null,
         }
       })
       .state('home.about', {

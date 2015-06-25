@@ -36,6 +36,12 @@ function search(req, res) {
   }
   else {
     datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
+      if(status != 200) {
+        console.log({
+          'response': data,
+          'error': error
+        });
+      }
       res.status(status).json({
         'response': data,
         'error': error

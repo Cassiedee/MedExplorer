@@ -4,7 +4,7 @@
     <h3 class="trendingdrug">Most Recent Recalls:</h3>
     <div class="row" id="recalls">
       <span class="col-lg-12" ng-repeat="recall in results track by $index">
-        <a ui-sref="home.recalldetails({'event_id': recall.event_id, 'recallDetails': recall})" class="row">
+        <a ui-sref="home.recalldetails({'spl_id': recall.openfda.spl_id, 'recallList': results})" class="row">
           <span class="trendingdrug">
                 {{recall.report_date | mmddyyyy_slashes}} {{recall.openfda.brand_name[0] | title}}
           </span>

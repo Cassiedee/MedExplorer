@@ -26,7 +26,7 @@ exports.setTrendingDrugs = function(data, callback) {
 	});
 };
 
-var API_KEY = 'yTYnUvdcecwjxEgbECMYviNmByhA7bhZi8OgAUKK';
+var API_KEY = 'w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g';
 
 var options = {
 		host: 'api.fda.gov',

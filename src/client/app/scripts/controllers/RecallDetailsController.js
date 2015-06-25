@@ -8,23 +8,19 @@
  * Controller of the MedExplorer
  */
 angular.module('MedExplorer')
-  .controller('RecallDetailsController', ['$scope', '$http','$state', '$stateParams', '$sce', function($scope, $http, $state, $stateParams, $sce) {
-    $scope.recallDetails = $stateParams.recallDetails;
-    console.log($stateParams);
-
-    if($stateParams.drugDetails) {
-      $scope.recallDetails = $stateParams.recallDetails;
+  .controller('RecallDetailsController', ['$scope', '$http','$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+    if($stateParams.recallDetails) {
+      $scope.recallList = $stateParams.recallList;
     }
     else {
       $http.get('/REST/search?source=drug'
         + '&type=enforcement'
-        + '&field=event_id'
-        + '&value=' + $stateParams.event_id
+        + '&field=openfda.spl_id'
+        + '&value=' + $stateParams.spl_id
         + '&limit=100').success(function(data) {
-          console.log(data);
           if(data.response.results && data.response.results.length > 0) {
-            $scope.recallDetails = data.response.results[0];
-            
+            $scope.recallList = data.response.results;
+            console.log($scope.recallList);
           }
         });
     }
