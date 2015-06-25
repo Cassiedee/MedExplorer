@@ -11,6 +11,8 @@ angular.module('MedExplorer')
   .controller('DrugDetailsController', ['$scope', '$http','$state', '$stateParams', '$sce', function($scope, $http, $state, $stateParams, $sce) {
         $scope.tab = 1;
         $scope.drugname = $state.params.name;
+        $scope.commonDrugsDuringAdverseEvent = {};
+        $scope.commonDrugsPieChartData = [];
 
         if($stateParams.drugDetails) {
           $scope.result = $stateParams.drugDetails;
@@ -27,24 +29,43 @@ angular.module('MedExplorer')
                 onDrugDetailsArrived();
               }
             });
+
         }
 
         function onDrugDetailsArrived() {
           console.log('detail result ');
           console.log($scope.result);
-          if($scope.result ){
+
+          if($scope.result ) {
+            if(!$scope.events) {
+              $http.get('/REST/search?source=drug'
+                + '&type=event'
+                + '&field=patient.drug.openfda.spl_id'
+                + '&value=' + $stateParams.spl_id
+                + '&limit=100').success(function(data) {
+                  //console.log(data);
+                  if(data.response && data.response.results && data.response.results.length > 0) {
+                    $scope.events = data.response.results;
+                    onDrugEventsArrived();
+                  }
+                });
+            }
+            else {
+              onDrugEventsArrived();
+            }
+
             console.log('indications: ' + $scope.result.indications_and_usage[0])
             $scope.indicationListArray = dataSplitter($scope.result.indications_and_usage[0]);
             if($scope.result.contraindications){
             $scope.contraindicationListArray = dataSplitter($scope.result.contraindications[0]);
             } else {
-                    $scope.contraindicationListArray = [];
+              $scope.contraindicationListArray = [];
             }
             if( $scope.result.drug_abuse_and_dependence){
             $scope.abuseListArray = $scope.result.drug_abuse_and_dependence[0];
             console.log($scope.indicationListArray);
             } else {
-                    $scope.abuseListArray = {};
+              $scope.abuseListArray = {};
             }
           }
 
@@ -90,7 +111,49 @@ angular.module('MedExplorer')
          $scope.$watch('toggleDescription', function(){
              $scope.toggleDescriptionText = $scope.toggleDescription ? 'Collapse' : 'Expand';
          })
-      }
+        }
+
+
+
+        function onDrugEventsArrived() {
+          //console.log($scope.events);
+          for(var eventIndex in $scope.events) {
+            var event = $scope.events[eventIndex];
+            //console.log(event);
+            for(var drugIndex in event.patient.drug) {
+              var drug = event.patient.drug[drugIndex];
+              if(drug.openfda && drug.openfda.generic_name) {
+                //console.log(drug);
+                for(var genericNameIndex in drug.openfda.generic_name) {
+                  var genericName = drug.openfda.generic_name[genericNameIndex];
+                  //console.log(genericName);
+                  if(!$scope.commonDrugsDuringAdverseEvent[genericName]) {
+                    $scope.commonDrugsDuringAdverseEvent[genericName] = 1;
+                  }
+                  else {
+                    $scope.commonDrugsDuringAdverseEvent[genericName]++;
+                  }
+                }
+              }
+            }
+          }
+
+          $scope.commonDrugsDuringAdverseEvent[$scope.result.openfda.generic_name] = null;
+          var temp = [];
+          for(var name in $scope.commonDrugsDuringAdverseEvent) {
+            if($scope.commonDrugsDuringAdverseEvent.hasOwnProperty(name)) {
+              temp.push([
+                name,
+                $scope.commonDrugsDuringAdverseEvent[name]
+              ]);
+            }
+          }
+
+          $scope.commonDrugsPieChartData = temp.sort(function(a, b) {
+            return b[1] - a[1];
+          }).slice(0, 10);
+        }
+
   }]);
 
 function dataSplitter(toParse) {	
