@@ -90,6 +90,7 @@ module.exports = function (grunt) {
           }
         }
       },
+      /*
       test: {
         options: {
           port: 9009,
@@ -106,6 +107,7 @@ module.exports = function (grunt) {
           }
         }
       },
+      */
       dist: {
         options: {
           open: true,
@@ -376,12 +378,14 @@ module.exports = function (grunt) {
     },
 
     // Test settings
+    /*
     karma: {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
     }
+    */
   });
 
 
@@ -411,7 +415,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    //'karma'
   ]);
 
   grunt.registerTask('build', [
