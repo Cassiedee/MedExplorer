@@ -1,31 +1,74 @@
 <div class="jumbotron container-fluid">
   <div>
-    <h3>{{recallDetails.voluntary_mandated}}</h2>
-    <div class="row">
-      <div class="col-md-2"/>
-      <div class="col-md-4">Recall Reported: {{recallDetails.report_date | mmddyyyy_slashes}}</div>
-      <div class="col-md=4">Recall Initiated: {{recallDetails.recall_initiation_date | mmddyyyy_slashes}}</div>
-      <div class="col-md-2"/>
-    </div>
+	<p>
+		<h3>
+			<img class="img-responsive center-block" src="images/icon_recall_R.svg"/>
+			<span>{{recallDetails.voluntary_mandated}}</span>
+		</h3>
+	</p>
+	<p>
+		<h4>{{recallDetails.classification}} - 
+		  <span ng-show="recallDetails.classification == 'Class I'">
+			Dangerous or defective product that predictably could cause serious health problems or death
+		  </span>
+		  <span ng-show="recallDetails.classification == 'Class II'">
+			Product might cause a temporary health problem, or pose only a slight threat of a serious nature
+		  </span>
+		  <span ng-show="recallDetails.classification == 'Class III'">
+			Product is unlikely to cause any adverse health reaction, but violates FDA labeling or manufacturing laws
+		  </span>
+		</h4>
+	</p>
+	<p>
+		<div class="row">
+			<span ng-show="recallDetails.classification == 'Class I'" class="col-xs-12">
+				<img class="img-responsive center-block" src="images/icon_recall_1.svg"/>
+			</span>
+			<span ng-show="recallDetails.classification == 'Class II'" class="col-xs-12">
+				<img class="img-responsive center-block" src="images/icon_recall_2.svg"/>
+			</span>
+			<span ng-show="recallDetails.classification == 'Class III'" class="col-xs-12">
+				<img class="img-responsive center-block" src="images/icon_recall_3.svg"/>
+			</span>
+		</div>
+	</p>
+	<p>
+		<div class="row">
+		  <div class="col-md-2"/>
+		  <div class="col-md-4">Recall Reported: {{recallDetails.report_date | mmddyyyy_slashes}}</div>
+		  <div class="col-md=4">Recall Initiated: {{recallDetails.recall_initiation_date | mmddyyyy_slashes}}</div>
+		  <div class="col-md-2"/>
+		</div>
+	</p>
   </div>
-  <div class="row">
-    <div class="col-md-2">Product Description:</div>
-    <div class="col-md-10">{{recallDetails.product_description}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Distribution Pattern:</div>
-    <div class="col-md-10">{{recallDetails.distribution_pattern}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Amount:</div>
-    <div class="col-md-10">{{recallDetails.product_quantity}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Reason for Recall:</div>
-    <div class="col-md-10">{{recallDetails.reason_for_recall}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-2">Package Identifiers:</div>
-    <div class="col-md-10">{{recallDetails.code_info}}</div>
-  </div>
+  <p>
+	  <div class="row">
+		<div class="col-md-2 text-left">Product Description:</div>
+		<div class="col-md-10 text-left">{{recallDetails.product_description}}</div>
+	  </div>
+  </p>
+  <p>
+	  <div class="row">
+		<div class="col-md-2 text-left">Distribution Pattern:</div>
+		<div class="col-md-10 text-left">{{recallDetails.distribution_pattern}}</div>
+	  </div>
+  </p>
+  <p>
+	  <div class="row">
+		<div class="col-md-2 text-left">Amount:</div>
+		<div class="col-md-10 text-left">{{recallDetails.product_quantity}}</div>
+	  </div>
+  </p>
+  <p>
+	  <div class="row">
+		<div class="col-md-2 text-left">Reason for Recall:</div>
+		<div class="col-md-10 text-left">{{recallDetails.reason_for_recall}}</div>
+	  </div>
+  </p>
+  <p>
+	  <div class="row">
+		<div class="col-md-2 text-left">Package Identifiers:</div>
+		<div class="col-md-10 text-left">{{recallDetails.code_info}}</div>
+	  </div>
+  </p>
 </div>
