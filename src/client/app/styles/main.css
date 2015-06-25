@@ -23,6 +23,11 @@ a, a:focus, a:active {
   outline: 0;
 }
 
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
 .trendingdrug {
 	padding:10px;
 	font-size: 16pt !important;
@@ -39,6 +44,10 @@ a, a:focus, a:active {
 
 .search-result-header {
 	font-weight:700;
+}
+
+.recall-foreground {
+	color:#d86021;
 }
 
 .search-result {
@@ -61,11 +70,11 @@ a, a:focus, a:active {
 
 .logospace {
 	position: absolute;
-	left: 75px;
+	left: 15px;
 	top:0px;
 	z-index:2;
 	border-radius:50%;
-	left: 15px;
+	vertical-align:middle
 }
 
 .titlespace {
@@ -279,7 +288,7 @@ div .recall-background:hover{
 	height:60px;
   }
   .titlespace {
-    left: 90px;
+    padding-left: 90px;
   }
   
   #recalls {
@@ -313,7 +322,7 @@ div .recall-background:hover{
 	margin-left:auto;
   }
   .titlespace {
-    left: 110px;
+    padding-left: 110px;
   }
 }
 

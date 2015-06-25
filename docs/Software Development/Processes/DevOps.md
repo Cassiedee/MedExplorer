@@ -5,9 +5,13 @@
 
 The MedExplorer development team is using an internally hosted Enterprise GitHub repository.  The development team is continuously updating the source code baseline as they do their development.
 
+![GitHub Screenshot](../Screenshots/GitHub.png)
+
 ## Continuous Integration
 
 Our continuous integration process uses a Jenkins CI server which is connected to our GitHub source code repository.  It monitors the source files in GitHub and when there is update to the repository, Jenkins builds and deploys new Docker containers to our development/test environment.  Jenkins then runs our automated tests.
+
+![Jenkins Screenshot](../Screenshots/Jenkins.png)
 
 ## Automated Test
 
@@ -25,18 +29,6 @@ Our continuous delivery and deployment processes uses Jenkins to automate the cr
 
 As shown in our diagram we are using Zabbix to monitor our development/test and production environments.   Zabbix provides the ability to measure response time of the web server, CPU and memory utilization and other system measurements.  Below are pictures of the Zabbix dashbaord and some of the measurement graphs.
 
-###Zabbix Dashboard
+###MedExplorer Zabbix Dashboard
 
-![Zabbix Dashboard] (../../Software Development/Screenshots/Continuous-Monitoring/dashboard.png)
-
-###Zabbix Disk Usage
-
-![Zabbix Disk Usage] (../../Software Development/Screenshots/Continuous-Monitoring/diskUsage.png)
-
-### Zabbix Memory Usage
-
-![Zabbix Memory Usage] (../../Software Development/Screenshots/Continuous-Monitoring/memoryUsage.png)
-
-### Zabbix Web Monitoring
-
-![Zabbix Web Monitoring] (../../Software Development/Screenshots/Continuous-Monitoring/webMonitoringPage.png)
+![Zabbix Dashboard] (../../Software Development/Screenshots/Continuous-Monitoring/MedExplorer_Zabbix_Monitoring.png)
