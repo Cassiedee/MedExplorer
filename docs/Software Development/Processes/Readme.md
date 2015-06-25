@@ -1,5 +1,5 @@
 # Agile Process
-![Agile User Centered Approach](../../../Agile User Centered%20Approach.png)
+![Agile User Centered Approach](../../../Diagrams/Agile User Centered%20Approach.png)
 
 Using our Agile framework, which is built upon Scrum, Extreme Programming, and user-centered design techniques, we were able to develop the product in an iterative fashion while receiving regular, timely feedback from users and stakeholders. Our initial kick-off was defined as Sprint 0. During this time we reviewed the project (RFQ) requirements and, based upon those needs, identified our Agile Team and the supporting company stakeholders who would need to be involved in the approval process of the release of the product.
 
