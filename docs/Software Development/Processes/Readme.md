@@ -26,8 +26,8 @@ Having two sprints per day was necessary if we wanted regular input from our sta
 ### Sprint Planning
 During sprint planning the team reviewed the product backlog, pulled in the next highest value items, and identified tasks. To assist in release planning we had a [roadmap of the backlog items](../../Pictures/Sprint3_roadmap planning.jpg) assigned to specific sprints. For each sprint planning we pulled the items from the roadmap onto the [Scrum board for current sprint planning](../../Pictures/Task Board.jpg). In addition, as the product backlog of stories continued to grow the team created a [product roadmap for release 1 and release 2](../../Diagrams/MedExplorer Product Roadmap.png) (if there were to be a second release). This helped the team with the product owner in deciding what the minimum viable product features were and which could be moved to the second release for future refinement. 
 
-| Backlog | Scrum Board |
-| ------- |:-----------:|
+| Backlog Items | Scrum Board |
+| ------------- |:-----------:|
 | ![Backlog](../../Pictures/Sprint3_roadmap planning.jpg) | ![Scrum board](../../Pictures/Task Board.jpg) | 
 
 ### Sprint Execution
