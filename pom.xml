@@ -13,7 +13,7 @@
         <sonar.language>js</sonar.language>
 
         <sonar.inclusions>
-            src/client/app/scripts/**/*.js,
+            src/client/app/scripts/app.js,
             src/*.js,
             src/server/controllers/**/*.js,
             src/server/routes/**/*.js,
