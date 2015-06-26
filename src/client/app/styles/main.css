@@ -576,6 +576,10 @@ border: none;
   margin-top: 5px;
 }
 
+.breadcrumb {
+  margin-bottom: 0px;
+}
+
 .breadcrumb-div{
 	float:left;
 }

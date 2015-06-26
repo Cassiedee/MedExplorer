@@ -23,17 +23,16 @@
 </div>
 <div class="container-fluid">
   <div class="row">
+    <div ui-view="breadcrumbs"></div>
     <div class="col-xs-12">
-      <p style="margin:10px; color:#0d283d;">
-	    Medicine Explorer is a tool for the general public to search for information on pharmaceuticals performance so they can make better health decisions.  We provide searchable information and trends on pharmaceuticals and adverse effects.  Simply enter the name of your drug into the search field above to begin.
-      </p>
+      <div class="jumbotron" style="padding:0px; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px; color:#0d283d; text-align:center; max-width:1000px;">
+	    Medicine Explorer is a tool for the general public to search for information on pharmaceuticals performance so they can make better health decisions.  We provide searchable information and trends on pharmaceuticals and adverse effects. Simply enter the name of your drug into the search field above to begin.
+      </div>
     </div>
   </div>
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div ui-view="breadcrumbs"></div>
-
     <div ui-view="side-panel"></div>
     <div ui-view="content"></div>
   </div>

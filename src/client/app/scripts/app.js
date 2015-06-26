@@ -68,7 +68,7 @@ angular
         }
       })      
       .state('home.drugdetails', {
-        url: 'drugdetails?spl_id',
+        url: 'drugdetails?spl_id&tabName',
         views: {
         'side-panel@home': {
           template: ''
