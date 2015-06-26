@@ -641,6 +641,7 @@ border: none;
   border-bottom-color: transparent;
 }
 
+<<<<<<< HEAD
 .no-padding {
   padding: 0px !important;
 }
@@ -662,4 +663,8 @@ border: none;
 
 .form-group {
   margin-bottom: 0px;
+}
+
+.extra-bottom-margin {
+  margin-bottom: 50px;
 }

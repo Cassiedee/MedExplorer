@@ -3,6 +3,7 @@
 # docker run -d --name mongoDB mongo
 
 docker rm -f nodejs
+docker rmi -f eric/nodejs:centos6
 docker build --rm -t eric/nodejs:centos6 .
 docker run -d -p 80:80 -p 10050:10050 --link mongoDB:mdb --name nodejs eric/nodejs:centos6
 

@@ -23,4 +23,9 @@ describe('Controller: SearchResultsController', function () {
 		expect(SearchResultsController).not.toBeNull();
 	});
 
+  it('scope values should be not null', function () {
+	    expect(scope.results).not.toBeNull();
+	    expect(scope.searchTerm).not.toBeNull();
+	    expect(scope.on).not.toBeNull();
+	  });
 });
