@@ -37,6 +37,7 @@ module.exports = function(config) {
       'app/vendor/c3/c3.js',
       'app/vendor/angular-mocks/angular-mocks.js',
       'app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+      'app/assets/alv-ch-ng.text-truncate/dist/alv-ch-ng.textTruncate.js',
       'app/assets/angular-utils-pagination/dirPagination.js',
       // endbower
       "app/scripts/**/*.js",
