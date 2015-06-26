@@ -13,11 +13,18 @@
         <sonar.language>js</sonar.language>
 
         <sonar.inclusions>
+            <!-- client-side code -->
             src/client/app/scripts/app.js,
-            src/*.js,
-            src/server/controllers/**/*.js,
-            src/server/routes/**/*.js,
-            src/server/tests/**/*.js
+            src/client/app/scripts/controllers/*.js,
+            src/client/app/scripts/directives/*.js,
+            src/client/app/scripts/filters/*.js,
+            src/client/app/scripts/services/*.js,
+
+            <!-- server-side code -->
+            src/server.app.js,
+            src/server/controllers/datasource.js,
+            src/server/routes/REST.js,
+            src/server/tests/*.js
         </sonar.inclusions>
 
         <sonar.exclusions>
