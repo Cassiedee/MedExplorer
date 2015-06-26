@@ -207,78 +207,70 @@ exports.recentRecalls = function(num, callback) {
 	var mm = today.getMonth() + 1;
 	var yyyy = today.getFullYear();
 	var yyyymmdd = dateFormat(yyyy, mm, dd);
-	var dateRange = 30;
 	var protocol = options.port == 443 ? https : http;
 	var req;
 
-	function fetchloop() {
+        fetchloop(30, 0);
+	function fetchloop(dateRange, counter) {
 		var recalls = [];
 		var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
 		options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-//		console.log(dateRangeQuery + ' ' + dateRange);
+                console.log(options.path);
 		retriveFromCache(options.path, function(data){
-			if(data){
-				console.log('fetchloop cache hit!!');
-				if(data.resStatusCode == 404) {
-					callback(200, null, data);
-				}
-				else {
-				  if(data.results) {
-					if(data.results.length < num) {
-							dateRange *= 1.5;
-							fetchloop();
-					}
-					else if(data.results.length >= 100) {
-							dateRange *= 0.75;
-							fetchloop();
-					}
-					else {
-					  callback(data.resStatusCode, data.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
-					}
-				  }
-				}
-			} else {
-				console.log('fetchloop cache miss!!');
-				req = protocol.request(options, function(res) {
-					var output = '';
-					res.setEncoding('utf8');
+                  if(data) {
+                    console.log('fetchloop cache hit!!');
+                    resultCheck(data.resStatusCode, data);
+                  }
+                  else {
+                    console.log('fetchloop cache miss!!');
+                    req = protocol.request(options, function(res) {
+                      var output = '';
+                      res.setEncoding('utf8');
 
-					res.on('data', function (chunk) {
-						output += chunk;
-					});
+                      res.on('data', function (chunk) {
+                        output += chunk;
+                      });
 
-					res.on('end', function() {
-						var obj = JSON.parse(output);
-						
-						obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
-						if(obj.results)
-							recalls = obj.results;
-						if(recalls.length < num) {
-							dateRange *= 1.5;
-							fetchloop();
-						}
-						else if(recalls.length >= 100) {
-							dateRange *= 0.75;
-							fetchloop();
-						}
-						else {   
-							callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
-                                                }
-                                                //put the object into the cache
-                                                insertIntoCache(options.path, obj);
-					});
-				});
-				req.on('error', function(err) {
-                                        console.log(err);
-					callback(500, null, err);
-				});
+                      res.on('end', function() {
+                        var obj = JSON.parse(output);
+                        obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
+                        insertIntoCache(options.path, obj)
+                        resultCheck(obj.resStatusCode, obj);
+                      });
+                    });
+                    req.on('error', function(err) {
+                      console.log(err);
+                      callback(500, null, err);
+                    });
 
-				req.end();
-			}
+                    req.end();
+                  }
+
+                  function resultCheck(statusCode, results) {
+                    if(results.results) {
+                      if(counter < 25) {
+                        if(results.results.length < num) {
+                          fetchloop(dateRange * 1.5, counter + 1);
+                        }
+                        else if(results.results.length >= 100) {
+                          fetchloop(dateRange * 0.75, counter + 1);
+                        }
+                        else {
+                          callback(results.resStatusCode, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+                        }
+                      }
+                      else {
+                        if(results.results) {
+                          callback(200, null, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
+                        }
+                        else {
+                          callback(404, null, 'None found');
+                        }
+                      }
+                    }
+                  };
 		});
-	}
-
-	fetchloop();
+	};
 }
 
 var twentyFourHoursInMillis = 86400000;
@@ -289,6 +281,7 @@ function retriveFromCache(query, callback){
 	db.open(function(err, db) {
 		var collection = db.collection("medicine_explorer");
 		// Fetch the document
+                console.log(query);
 		collection.findOne({ mongoKey: query }, function(err, item) {
 //			console.log( JSON.stringify(item).substring(0,100) + " Item");
 //			console.log("Item: ");
@@ -297,8 +290,9 @@ function retriveFromCache(query, callback){
 			//if data is more than 24 hours old clear the cache of all objects
 			//that are more than 24 hours old
 			if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis){
+                                console.log('Record found but too old');
 				cleanCache(db);
-				data = null;
+                                data = null;
 			}
 			if(data){
 				if(!data.resStatusCode){
