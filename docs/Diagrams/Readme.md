@@ -1,7 +1,7 @@
 # Diagrams
 
 ## Agile User Centered Approach
-This diagrams shows the Agile User Centered Appraoch that we used to develop the MedExplorer project.
+This diagram shows the Agile User Centered Appraoch that we used to develop the MedExplorer project.
 
 ![Agile User Centered Approach.png](Agile User Centered Approach.png)
 
