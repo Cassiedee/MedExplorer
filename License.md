@@ -46,3 +46,4 @@ Karma-Junit-Reporter | 0.2.2 | MIT License | https://github.com/karma-runner/kar
 Karma-Chrome-Launcher | 0.1 | MIT License | https://github.com/karma-runner/karma-chrome-launcher/blob/master/LICENSE | https://github.com/karma-runner/karma-chrome-launcher | JavaScript Testing |
 UnitJS | 2.0.0 | GNU Affero General Public License Version 3.0 | https://www.npmjs.com/package/unit.js |  https://nodejs.org/ | JavaScript Testing |
 Mocha | 2.2.5 | MIT License | https://jquery.org/license/ |  https://www.npmjs.com/package/mocha | JavaScript Testing |
+
