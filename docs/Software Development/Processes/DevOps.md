@@ -16,7 +16,8 @@ Our continuous integration process uses a Jenkins CI server which is connected t
 
 ## Automated Test
 
-The MedExplorer team is using UnitJS for unit testing the MedExplorer baseline.
+The MedExplorer team set up used automated unit testing for the MedExplorer baseline. There are two separate testing frameworks used: one for the front-end code and another for the back-end code. The front-end is using the Jasmine testing
+framework, which is run by the Karma test-runner. The back-end code is tested using the UnitJS testing framework and is run by mocha. 
 
 ## Automated Software Quality
 
