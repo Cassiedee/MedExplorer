@@ -289,8 +289,7 @@ div .recall-background:hover{
 
 @media screen and (max-width: 768px) {
   .container .jumbotron, .container-fluid .jumbotron {
-    margin-left:25px;
-    margin-right:25px;
+    margin: 0px;
   }
   
   .searchbar {
