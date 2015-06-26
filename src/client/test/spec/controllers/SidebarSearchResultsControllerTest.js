@@ -23,4 +23,9 @@ describe('Controller: SidebarSearchResultsController', function () {
 		expect(SidebarSearchResultsController).not.toBeNull();
 	});
 
+  it('scope values should be not null', function () {
+	    expect(scope.results).not.toBeNull();
+	    expect(scope.searchTerm).not.toBeNull();
+	  });
+  
 });
