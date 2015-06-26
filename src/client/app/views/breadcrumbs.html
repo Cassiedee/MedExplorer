@@ -1,0 +1,6 @@
+<ol class="breadcrumb" ng-show="value">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="home.search({'source': source, 'type': type, 'field': field, 'value': value, 'limit': limit})">
+  {{value | title}}</a></li>
+  <li class="active" ng-show"tabName">{{tabName}}</li>
+</ol>

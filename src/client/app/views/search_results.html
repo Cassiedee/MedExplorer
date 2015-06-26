@@ -8,7 +8,7 @@
       <div class="list-group results-list" scrollable-div="992">
         <div dir-paginate="result in results | itemsPerPage: 10">
           <div class="list-group-item container-fluid jumbotron results-list-item" style="padding-left:0px; padding-top:0px; padding-bottom:0px;" id="results-list-style">
-            <a style="margin-top:0px; margin-bottom:0px;" ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result})">
+            <a style="margin-top:0px; margin-bottom:0px;" ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result, tabName:'General Info'})">
               <div style="margin-top:0px; margin-bottom:0px; padding:3px;" class="jumbotron-title majorsiteinfo" style="padding-left:25px;padding-right:25px;">
                 <h3 style="margin-top:0px; margin-bottom:0px;">{{result.openfda.brand_name[0] | title}}</h3>
               </div>

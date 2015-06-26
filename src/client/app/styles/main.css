@@ -575,6 +575,10 @@ border: none;
   margin-top: 5px;
 }
 
+.breadcrumb-div{
+	float:left;
+}
+
 .breadcrumb > li + li:before {
     color: #CCCCCC;
     content: "> ";
