@@ -225,6 +225,10 @@ div .recall-background:hover{
 		#f27a3b 33px, #a65632 34px);
 }
 
+.majorsiteinfolink:hover{
+	background-color:#1D384D
+}
+
 .recall-horizontal-background {
 	background-image: repeating-linear-gradient(-60deg, 
 		#8c3c18, #8c3c18 16px,
