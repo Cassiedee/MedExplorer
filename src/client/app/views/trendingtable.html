@@ -17,7 +17,7 @@
     <div class="titlebox">
       <h3 class="trendingdrug jumbotron-title">Prescription - Top {{results.prescription.length}} Most Searched Drugs:</h3>
     </div>
-	<div class="row">
+	<div class="row extra-bottom-margin">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6" ng-repeat="drug in results.prescription track by $index">
 			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': drug.name, 'limit': 30})">
                           <span class="trendingdrug">{{drug.name | title}}</span>
