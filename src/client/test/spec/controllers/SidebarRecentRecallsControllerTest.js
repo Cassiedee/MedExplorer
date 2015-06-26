@@ -1,3 +1,4 @@
+// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
 'use strict';
 
 describe('Controller: SidebarRecentRecallsController', function () {
