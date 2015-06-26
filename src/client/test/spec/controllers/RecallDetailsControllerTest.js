@@ -1,4 +1,4 @@
-// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
+// # Copyright (c) 2015 Northrop Grumman Systems Corporation. All Rights Reserved.
 'use strict';
 
 describe('Controller: RecallDetailsController', function () {
@@ -22,5 +22,9 @@ describe('Controller: RecallDetailsController', function () {
   it('has a RecallDetailsController', function() {
 		expect(RecallDetailsController).not.toBeNull();
 	});
+  
+  it('scope values should be not null', function () {
+	    expect(scope.recallList).not.toBeNull();
+	  });
 
 });

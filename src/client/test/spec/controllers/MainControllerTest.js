@@ -1,4 +1,4 @@
-// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
+// # Copyright (c) 2015 Northrop Grumman Systems Corporation. All Rights Reserved.
 'use strict';
 
 describe('Controller: MainController', function () {
@@ -7,14 +7,15 @@ describe('Controller: MainController', function () {
   beforeEach(module('MedExplorer'));
 
   var MainController,
-    scope;
+    scope, state;
 
   // Initialize the controller and a mock scope
 
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $state) {
     scope = $rootScope.$new();
     MainController = $controller('MainController', {
-      $scope: scope
+      $scope: scope,
+      state : $state
     });
   }));
 
@@ -24,7 +25,8 @@ describe('Controller: MainController', function () {
   
   it('scope values should be not null', function () {
 	    expect(scope.update).not.toBeNull();
-	    expect(scope.update.state).not.toBeNull();
+	    expect(state).not.toBeNull();
+	    
 	  });
 
 });

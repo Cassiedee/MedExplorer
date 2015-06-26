@@ -1,4 +1,4 @@
-// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
+// # Copyright (c) 2015 Northrop Grumman Systems Corporation. All Rights Reserved.
 'use strict';
 
 describe('Controller: SidebarSearchResultsController', function () {
@@ -23,4 +23,9 @@ describe('Controller: SidebarSearchResultsController', function () {
 		expect(SidebarSearchResultsController).not.toBeNull();
 	});
 
+  it('scope values should be not null', function () {
+	    expect(scope.results).not.toBeNull();
+	    expect(scope.searchTerm).not.toBeNull();
+	  });
+  
 });

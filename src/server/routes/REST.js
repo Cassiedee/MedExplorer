@@ -1,4 +1,4 @@
-// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
+// # Copyright (c) 2015 Northrop Grumman Systems Corporation. All Rights Reserved.
 var express = require('express');
 var datasource = require('../controllers/datasource');
 var router = express.Router();

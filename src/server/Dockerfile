@@ -1,4 +1,4 @@
-# Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
+# Copyright (c) 2015 Northrop Grumman Systems Corporation. All Rights Reserved.
 FROM jenkins-base:latest
 MAINTAINER The CentOS Project <cloud-ops@centos.org>
 

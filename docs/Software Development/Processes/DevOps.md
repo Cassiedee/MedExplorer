@@ -11,15 +11,20 @@ The MedExplorer development team is using an internally hosted Enterprise GitHub
 
 Our continuous integration process uses a Jenkins CI server which is connected to our GitHub source code repository.  It monitors the source files in GitHub and when there is update to the repository, Jenkins builds and deploys new Docker containers to our development/test environment.  Jenkins then runs our automated tests.
 
+### Jenkins Screenshot
 ![Jenkins Screenshot](../Screenshots/Jenkins.png)
 
 ## Automated Test
 
-The MedExplorer team is using UnitJS for unit testing the MedExplorer baseline.
+The MedExplorer team set up used automated unit testing for the MedExplorer baseline. There are two separate testing frameworks used: one for the front-end code and another for the back-end code. The front-end is using the Jasmine testing
+framework, which is run by the Karma test-runner. The back-end code is tested using the UnitJS testing framework and is run by mocha. 
 
 ## Automated Software Quality
 
-SonarQube is being used to perform automated software quality checks on the baseline.  SonarQube checks the code against the coding standards and languages specific coding issues and provides an automated quality score and an estimate of technical debt for the code baseline.
+SonarQube is being used to perform automated software quality checks on the baseline.  SonarQube checks the code against the coding standards and languages specific coding issues and provides an automated quality score and an estimate of technical debt for the code baseline.  We used SonarQube to identify any Blocking and/or Critical coding errors and ensured that all were removed prior to delivery.  We also worked off the Major issues as time permitted.
+
+### SonarQube Dashboard
+![MedExplorer SonarQube Dashboard](../Screenshots/MedExplorer_SonarQube_Dashboard.png)
 
 ## Continuous Delivery/Deployment
 

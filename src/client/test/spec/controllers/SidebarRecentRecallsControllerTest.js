@@ -1,4 +1,4 @@
-// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
+// # Copyright (c) 2015 Northrop Grumman Systems Corporation. All Rights Reserved.
 'use strict';
 
 describe('Controller: SidebarRecentRecallsController', function () {
@@ -22,5 +22,9 @@ describe('Controller: SidebarRecentRecallsController', function () {
   it('has a SidebarRecentRecallsController', function() {
 		expect(SidebarRecentRecallsController).not.toBeNull();
 	});
-
+  
+  it('scope values should be not null', function () {
+	    expect(scope.results).not.toBeNull();
+	    expect(scope.resultsLength).not.toBeNull();
+	  });
 });
