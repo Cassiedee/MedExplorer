@@ -1,13 +1,17 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
 <div class="col-md-3">
-<div class="container-fluid sidebar">
-  <div class="jumbotron">
-    <h3 class="trendingdrug">Most Recent Recalls:</h3>
+<div class="container-fluid jumbotron">
+  <div class="sidebar">
+    <div class="titlebox">
+      <div class="recall-horizontal-background">
+        <h3 class="trendingdrug jumbotron-title">Most Recent Recalls:</h3>
+      </div>
+    </div>
     <div class="row" id="recalls">
       <span class="col-lg-12" ng-repeat="recall in results track by $index">
         <a ui-sref="home.recalldetails({'spl_id': recall.openfda.spl_id, 'recallList': results})" class="row">
           <span class="trendingdrug">
-                {{recall.report_date | mmddyyyy_slashes}} {{recall.openfda.brand_name[0] | title}}
+                {{recall.report_date | mmddyyyy_slashes}} / {{recall.openfda.brand_name[0] | title}}
           </span>
           <hr>
         </a>

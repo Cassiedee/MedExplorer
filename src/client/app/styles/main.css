@@ -190,6 +190,10 @@ a, a:focus, a:active {
 
 /* Main marketing message and sign up button */
 .jumbotron {
+  padding-top:0px;
+  padding-right:0px;
+  padding-left:0px;
+  padding-bottom:30px;
   text-align: center;
   border-style:solid;
   border-color:#b8bfc4;
@@ -208,6 +212,13 @@ a, a:focus, a:active {
 		#d86021 33px, #8c3c18 34px);
 }
 
+.not-recall-background {
+	background-image: repeating-linear-gradient(30deg, 
+		#0D283D , #0D283D 16px,
+		#0D306D 17px, #0D306D 32px,
+		#0D306D 33px, #0D283D 34px);
+}
+
 /*~10% brighter than normal*/
 div .recall-background:hover{
 	background-image: repeating-linear-gradient(30deg, 
@@ -224,23 +235,26 @@ div .recall-background:hover{
 }
 
 .container .jumbotron, .container-fluid .jumbotron {
+  padding-top:0px;
+  padding-right:0px;
+  padding-left:0px;
   border-radius: 0px;
   border-width: 1px;
-  margin-top:50px;
+  margin-top:12px;
 }
 
 .jumbotron .btn {
   font-size: 21px;
-  padding: 14px 24px;
+  padding: 7px 12px;
 }
 
 /* Supporting marketing content */
 .marketing {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 .marketing p + h4 {
-  margin-top: 28px;
+  margin-top: 14px;
 }
 
 .searchbutton{
@@ -316,8 +330,8 @@ div .recall-background:hover{
     margin-bottom: 30px;
   }
   .container .jumbotron, .container-fluid .jumbotron {
-    margin-left:25px;
-    margin-right:25px;
+    margin-left:10px;
+    margin-right:10px;
   }
   .searchbar {
 	margin-left:auto;
@@ -389,16 +403,9 @@ input::-moz-focus-inner {
   border: 0;
 }
 
-#sidebar {
-  padding: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  height: 100%;
-}
-
 .sidebar {
   text-align: left;
-  padding: 10px;
+  padding: 0px;
 }
 
 .sidebar-divider {
@@ -505,3 +512,29 @@ border: none;
 }
 
 .collapse-button:focus {outline:0;}
+
+.titlebox {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  background: #0D283D;
+}
+
+.jumbotron-title {
+  margin-top: 0px;
+  color:#fff;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.baseball-card-content {
+  margin-left: -31px;
+  border-right: 31px;
+}
+
+.sidebar-content {
+  padding-left: 8px;
+  padding-right: 8px;
+}

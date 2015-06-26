@@ -48,7 +48,6 @@ exports.getTrendingDrugs = function(callback) {
 
 
 exports.setTrendingDrugs = function(body) {
-  console.log(body); //body = { name: 'advil', type: 'otc'}
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     var collection = db.collection('trending_drugs');
@@ -250,7 +249,6 @@ exports.recentRecalls = function(num, callback) {
 
 					res.on('end', function() {
 						var obj = JSON.parse(output);
-                                                console.log(obj);
 						
 						obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
 						if(obj.results)
@@ -265,7 +263,6 @@ exports.recentRecalls = function(num, callback) {
 						}
 						else {   
 							callback(res.statusCode, recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
-                                                        console.log(recalls.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
                                                 }
                                                 //put the object into the cache
                                                 insertIntoCache(options.path, obj);

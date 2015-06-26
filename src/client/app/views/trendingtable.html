@@ -1,7 +1,9 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
 <div class="col-md-9">
 <div class="jumbotron container-fluid trending-box">
-    <h3 class="trendingdrug">Over the Counter - Top {{results.otc.length}} Most Searched Drugs:</h3>
+    <div class="titlebox">
+      <h3 class="trendingdrug jumbotron-title">Over the Counter - Top {{results.otc.length}} Most Searched Drugs:</h3>
+    </div>
 	<div class="row">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 trendingdrug" ng-repeat="drug in results.otc track by $index">
 			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': drug.name, 'limit': 30})">
@@ -11,7 +13,9 @@
 	</div>
 </div>
 <div class="jumbotron container-fluid trending-box">
-    <h3 class="trendingdrug">Prescription - Top {{results.prescription.length}} Most Searched Drugs:</h3>
+    <div class="titlebox">
+      <h3 class="trendingdrug jumbotron-title">Prescription - Top {{results.prescription.length}} Most Searched Drugs:</h3>
+    </div>
 	<div class="row">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6" ng-repeat="drug in results.prescription track by $index">
 			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': drug.name, 'limit': 30})">
