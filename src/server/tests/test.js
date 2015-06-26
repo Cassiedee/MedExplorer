@@ -23,9 +23,9 @@ describe('REST API Test Suite', function()
     var res = {responseObj:null}; 
     res.json = function(res) {this.responseObj = res;}
     
-    var req = {'query' : {'source' : 'sourcehere', 'type' : 'typehere', 'field':'fieldhere','value':123,'limit':123}};
+    var req = {'query' : {'source' : 'drug', 'type' : 'label', 'field':'openfda.brand_name','value':'Tylenol','limit':30}};
 
-   //rest.functions.search(req,res);
+    rest.functions.search(req,res);
 
     test.assert.equal(res.status, undefined);
     test.assert.equal(res.response, null);
@@ -40,7 +40,7 @@ describe('REST API Test Suite', function()
 	    
 	    var req = {};
 
-	    //rest.functions.getTrendingDrugs(req,res);
+	    rest.functions.getTrendingDrugs(req,res);
 
 	    test.assert.equal(res.status, undefined);
 	    test.assert.equal(res.response, null);
@@ -54,7 +54,7 @@ describe('REST API Test Suite', function()
     res.json = function(res) {this.responseObj = res;}
 
     var req = {'body' : ''};
-    //rest.functions.setTrendingDrugs(req,res);
+    rest.functions.setTrendingDrugs(req,res);
 
     test.assert.equal(res.status, undefined);
     test.assert.equal(res.response, null);
@@ -70,11 +70,11 @@ describe('REST API Test Suite', function()
 	    
 	    var req = {'query' : {'num':15}};
 
-	    //rest.functions.recentRecalls(req,res);
+	    rest.functions.recentRecalls(req,res);
 
-/*	    test.assert.equal(res.status, undefined);
+	    test.assert.equal(res.status, undefined);
 	    test.assert.equal(res.response, null);
-	    test.assert.equal(res.error, undefined);*/
+	    test.assert.equal(res.error, undefined);
   });
 
 });
