@@ -1,105 +1,81 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
 <div class="col-md-9">
-<div class="container-fluid">
-  <h4>Results for: "{{searchTerm | title}}"</h4>
-  <div class="list-group results-list" scrollable-div="992">
-	  <div dir-paginate="result in results | itemsPerPage: 10">
-		<div class="list-group-item container-fluid jumbotron results-list-item"
-			style="padding-left:0px; padding-top:0px; padding-bottom:0px;"
-			id="results-list-style"
-			baseball-card="" >
-	  <div class="row">
-        <div class="col-xs-1" style="padding-left:0px;">
-			<a class="recall-bar-link" ng-show="result.has_ongoing_recalls"  ui-sref="home.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})">		  
-			  <div class="recall-background" style="display:table;">			
-				  <div class="recall-text rotated-text" style="display:table-cell; vertical-align:middle;">
-					<h3>
-						RECALL
-					</h3>
-				  </div>
+  <div class="container-fluid">
+    <div class="jumbotron jumbotron-no-padding">
+      <div class="titlebox">
+        <h3 class="trendingdrug jumbotron-title">Results for: "{{searchTerm | title}}"</h3>
+      </div>
+      <div class="list-group results-list" scrollable-div="992">
+        <div dir-paginate="result in results | itemsPerPage: 10">
+          <div class="list-group-item container-fluid jumbotron results-list-item" style="padding-left:0px; padding-top:0px; padding-bottom:0px;" id="results-list-style">
+			<a class="recall-bar-link" ng-show="result.has_ongoing_recalls" ui-sref="home.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})">
+			  <div class="jumbotron-title recall-background" style="padding-left:25px;padding-right:25px;">
+			    <h3 style="margin-top:0px;">{{result.openfda.brand_name[0] | title}}</h3>
 			  </div>
 			</a>
-		</div >
-		<a ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result})">
-			<div class="col-xs-11">
-			  <div class="row list-group-item-heading">
-				<span class="drugtitle col-xs-12 baseball-card-title search-result-header">
-					{{result.openfda.brand_name[0] | title}}
-				</span>
-			  </div>
-			  <div class="row">
-				<div class="row col-xs-12">
-                  <p class="list-group-item-text">
-					<div class="row">
-					  <span class="col-xs-3">
-						<h5 class="search-result-header">
-						  Distribution:
-						</h5>
-					  </span>
-					  <span class="col-xs-8 search-result">
-                        <div ng-repeat="type in result.openfda.product_type">
-							<h5>
-								{{type | title | replaceOTC}}
-							</h5>
-						</div>
-					  </span>
-					</div>
-				  </p>
-				  <p class="list-group-item-text">
-					<div class="row">
-					  <span class="col-xs-3 search-result-header search-result">
-						<h5 class="search-result-header">
-							Active Ing:
-						</h5>
-					  </span>
-					  <span class="col-xs-8 search-result">
-						<h5>
-							{{result.active_ingredient[0] | uppercase}}
-						</h5>
-					  </span>
-					</div>
-				  </p>
-				  <p class="list-group-item-text">
-					<div class="row">
-					  <span class="col-xs-3 search-result-header search-result">
-						  <h5 class="search-result-header">
-							Purpose:
-						  </h5>
-					  </span>
-					  <span class="col-xs-8 search-result">
-						  <h5>
-							{{result.purpose[0] | sentence}}
-						  </h5>
-					  </span>
-					</div>
-				  </p>
-				  <p class="list-group-item-text">
-					<div class="row">
-					  <span class="col-xs-3 search-result-header search-result">
-						  <h5 class="search-result-header">
-							Conditions:
-						  </h5>
-					  </span>
-					  <span class="col-xs-8 search-result">
-						  <h5>
-							{{result.indications_and_usage[0] | sentence}}
-						  </h5>
-					  </span>
-					</div>
-				  </p>
-				  <p class="list-group-item-text">
-					<div class="row">
-					  <span class="col-xs-3"> </span>
-					  <span class="col-xs-8"> </span>
-					</div>
-				  </p>
-				</div>
-			  </div>
+			<div class="jumbotron-title majorsiteinfo" style="padding-left:25px;padding-right:25px;" ng-hide="result.has_ongoing_recalls">
+				<h3 style="margin-top:0px;">{{result.openfda.brand_name[0] | title}}</h3>
 			</div>
-		</a>
-	  </div>
+            <div class="row" style="padding-left:25px;padding-right:25px;">
+              <a ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result})">
+                <div class="col-xs-12">
+                  <div class="row">
+                    <div class="row col-xs-12">
+                      <p class="list-group-item-text">
+                        <div class="row">
+                          <span class="col-xs-4">
+                            <h5 class="search-result-header">Distribution:</h5>
+                          </span>
+                          <span class="col-xs-8 search-result">
+                            <div ng-repeat="type in result.openfda.product_type">
+                              <h5>{{type | title | replaceOTC}}</h5>
+                            </div>
+                          </span>
+                        </div>
+                      </p>
+                      <p class="list-group-item-text">
+                        <div class="row">
+                          <span class="col-xs-4 search-result-header search-result">
+                            <h5 class="search-result-header">Active Ing:</h5>
+                          </span>
+                          <span class="col-xs-8 search-result">
+                            <h5>{{result.active_ingredient[0] | uppercase}}</h5>
+                          </span>
+                        </div>
+                      </p>
+                      <p class="list-group-item-text">
+                        <div class="row">
+                          <span class="col-xs-4 search-result-header search-result">
+                            <h5 class="search-result-header">Purpose:</h5>
+                          </span>
+                          <span class="col-xs-8 search-result">
+                            <h5>{{result.purpose[0] | sentence}}</h5>
+                          </span>
+                        </div>
+                      </p>
+                      <p class="list-group-item-text">
+                        <div class="row">
+                          <span class="col-xs-4 search-result-header search-result">
+                            <h5 class="search-result-header">Conditions:</h5>
+                          </span>
+                          <span class="col-xs-8 search-result">
+                            <h5>{{result.indications_and_usage[0] | sentence}}</h5>
+                          </span>
+                        </div>
+                      </p>
+                      <p class="list-group-item-text">
+                        <div class="row">
+                          <span class="col-xs-4"> </span>
+                          <span class="col-xs-8"> </span>
+                        </div>
+                      </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
   </div>
-</div>
 </div>

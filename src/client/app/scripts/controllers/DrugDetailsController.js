@@ -77,8 +77,10 @@ angular.module('MedExplorer')
             }
           }
 
-          $scope.selectTab = function (setTab){
+          $scope.tabName = 'General Info';
+          $scope.selectTab = function (setTab, tabName){
               $scope.tab = setTab;
+              $scope.tabName = tabName;
           };
           $scope.isSelected = function(checkTab) {
               return $scope.tab === checkTab;
