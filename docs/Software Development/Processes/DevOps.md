@@ -19,7 +19,9 @@ The MedExplorer team is using UnitJS for unit testing the MedExplorer baseline.
 
 ## Automated Software Quality
 
-SonarQube is being used to perform automated software quality checks on the baseline.  SonarQube checks the code against the coding standards and languages specific coding issues and provides an automated quality score and an estimate of technical debt for the code baseline.
+SonarQube is being used to perform automated software quality checks on the baseline.  SonarQube checks the code against the coding standards and languages specific coding issues and provides an automated quality score and an estimate of technical debt for the code baseline.  We used SonarQube to identify any Blocking and/or Critical coding errors and ensured that all were removed prior to delivery.  We also worked off the Major issues as time permitted.
+
+![MedExplorer SonarQube Dashboard](../Screenshots/MedExplorer_SonarQube_Dashboard.png)
 
 ## Continuous Delivery/Deployment
 
