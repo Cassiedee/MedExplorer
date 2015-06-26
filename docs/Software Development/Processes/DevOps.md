@@ -16,7 +16,7 @@ Our continuous integration process uses a Jenkins CI server which is connected t
 
 ## Automated Test
 
-The MedExplorer team set up used automated unit testing for the MedExplorer baseline. There are two separate testing frameworks used: one for the front-end code and another for the back-end code. The front-end is using the Jasmine testing
+The MedExplorer team set up automated unit testing for the MedExplorer baseline. There are two separate testing frameworks used: one for the front-end code and another for the back-end code. The front-end is using the Jasmine testing
 framework, which is run by the Karma test-runner. The back-end code is tested using the UnitJS testing framework and is run by mocha. 
 
 ## Automated Software Quality
@@ -29,6 +29,9 @@ SonarQube is being used to perform automated software quality checks on the base
 ## Continuous Delivery/Deployment
 
 Our continuous delivery and deployment processes uses Jenkins to automate the creation and deployment of updated Docker containers to the production environment.
+
+### Docker Screenshot
+![Docker Screenshot] (../Screenshots/DOCKER.png)
 
 ## Continuous Monitoring
 
