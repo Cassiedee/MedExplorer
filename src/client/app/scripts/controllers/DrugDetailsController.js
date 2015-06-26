@@ -77,10 +77,12 @@ angular.module('MedExplorer')
             }
           }
 
-          $scope.tabName = 'General Info';
+          $scope.tabName = $state.params.tabName?$state.params.tabName:'General Info';
+          $scope.tab = $scope.tabName=='General Info'?1:2;
           $scope.selectTab = function (setTab, tabName){
               $scope.tab = setTab;
               $scope.tabName = tabName;
+              $state.go('home.drugdetails', {'tabName':tabName},{'inherit':true});
           };
           $scope.isSelected = function(checkTab) {
               return $scope.tab === checkTab;

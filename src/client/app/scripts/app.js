@@ -31,15 +31,28 @@ angular
             controller: 'MainController',
             templateUrl: 'views/main.html'
           },
-          'side-panel@home': {
-            controller: 'SidebarRecentRecallsController',
-            templateUrl: 'views/sidebar_recent_recalls.html'
-          },
+          'breadcrumbs@home': {
+              controller: 'BreadCrumbsController',
+              templateUrl: 'views/breadcrumbs.html'
+            },
+            'side-panel@home': {
+                controller: 'SidebarRecentRecallsController',
+                templateUrl: 'views/sidebar_recent_recalls.html'
+              },
           'content@home': {
                 controller: 'TrendingTableController',
                 templateUrl: 'views/trendingtable.html'
           }
         }
+      ,
+      params: {
+    	  value: null,
+      source: null,
+      type: null,
+      field: null,
+      limit: null,
+      tabName: null
+      }
       })
       .state('home.search', {
         url: 'search?source&type&field&value&limit',

@@ -37,6 +37,8 @@ module.exports = function(config) {
       'app/vendor/d3/d3.js',
       'app/vendor/c3/c3.js',
       'app/vendor/angular-mocks/angular-mocks.js',
+      'app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+      'app/assets/alv-ch-ng.text-truncate/dist/alv-ch-ng.textTruncate.js',
       'app/assets/angular-utils-pagination/dirPagination.js',
       // endbower
       "app/scripts/**/*.js",
@@ -60,13 +62,13 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-        'Chrome'
+        'PhantomJS'
     ],
 
     // Which plugins to enable
     plugins: [
       "karma-junit-reporter",
-      "karma-chrome-launcher",
+      "karma-phantomjs-launcher-nonet",
       "karma-jasmine"
     ],
 
@@ -75,11 +77,17 @@ module.exports = function(config) {
     singleRun : true,
     //reporters : ['dots','junit'],
 
-    /*
     junitReporter : {
         outputFile: 'test-results.xml'
     },
-    */
+
+
+    phantomjsLauncher: {
+      cmd: {
+        linux: '/usr/local/bin/phantomjs'
+      }
+    },
+    
 
 
     colors: true,
