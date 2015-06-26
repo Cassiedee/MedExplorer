@@ -23,7 +23,6 @@ module.exports = function(config) {
     files: [
       // bower:js
       'app/vendor/jquery/dist/jquery.js',
-      'app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'app/vendor/angular/angular.js',
       'app/vendor/angular-animate/angular-animate.js',
       'app/vendor/angular-cookies/angular-cookies.js',
