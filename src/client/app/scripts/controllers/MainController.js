@@ -10,7 +10,7 @@ angular.module('MedExplorer')
           'type': 'label',
           'field': 'openfda.brand_name',
           'value': $filter('title')($scope.search.value),
-          'limit': 30
+          'limit': 25
         });
       };
   }]);

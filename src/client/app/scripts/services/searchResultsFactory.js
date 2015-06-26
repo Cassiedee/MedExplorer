@@ -9,8 +9,8 @@ angular.module('MedExplorer')
     };
 
     function executeSearch(source, type, field, value, limit) {
-      console.log('field ' + field);
-      console.log('value ' + value);
+      //console.log('field ' + field);
+      //console.log('value ' + value);
       $http.get('/REST/search?source=' + source
         + '&type=' + type
         + '&field=' + field
@@ -32,7 +32,7 @@ angular.module('MedExplorer')
                   }
                 }
               }
-              console.log(drug_name);
+              //console.log(drug_name);
               if(drug_name) {
                 var otc = 0;
                 var prescription = 0;
@@ -40,7 +40,7 @@ angular.module('MedExplorer')
                 for(var drug in searchResults.results) {
                   if(searchResults.results[drug].openfda) {
                     for(var type in searchResults.results[drug].openfda.product_type) {
-                      console.log(searchResults.results[drug].openfda.product_type[type]);
+                      //console.log(searchResults.results[drug].openfda.product_type[type]);
                       if(searchResults.results[drug].openfda.product_type[type] == 'HUMAN OTC DRUG') {
                         otc++;
                       }
@@ -56,7 +56,7 @@ angular.module('MedExplorer')
                 else if(otc > prescription) {
                   type = 'otc';
                 }
-                console.log(type);
+                //console.log(type);
                 if(type) {
                   $http.post('/REST/trendingDrugs', {
                     'name': drug_name.toLowerCase(),

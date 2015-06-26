@@ -43,16 +43,15 @@ angular
                 controller: 'TrendingTableController',
                 templateUrl: 'views/trendingtable.html'
           }
-        }
-      ,
-      params: {
+        },
+        params: {
     	  value: null,
-      source: null,
-      type: null,
-      field: null,
-      limit: null,
-      tabName: null
-      }
+          source: null,
+          type: null,
+          field: null,
+          limit: null,
+          tabName: null
+        }
       })
       .state('home.search', {
         url: 'search?source&type&field&value&limit',
