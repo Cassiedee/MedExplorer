@@ -7,11 +7,13 @@
         <h3 class="trendingdrug jumbotron-title">Most Recent Recalls:</h3>
       </div>
     </div>
-    <div class="row" id="recalls">
+    <div class="row sidebar-content" id="recalls">
       <span class="col-lg-12" ng-repeat="recall in results track by $index">
         <a ui-sref="home.recalldetails({'spl_id': recall.openfda.spl_id, 'recallList': results})" class="row">
           <span class="trendingdrug">
-                {{recall.report_date | mmddyyyy_slashes}} / {{recall.openfda.brand_name[0] | title}}
+                {{recall.report_date | mmddyyyy_slashes}}
+                <br>
+                {{recall.openfda.brand_name[0] | title}}
           </span>
           <hr>
         </a>
