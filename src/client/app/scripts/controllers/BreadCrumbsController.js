@@ -3,7 +3,6 @@
 
 angular.module('MedExplorer')
 .controller('BreadCrumbsController', ['$scope', '$stateParams', function($scope, $stateParams) {	
-	console.log('In breadcrumbs contoller');
 	if($stateParams.value)
 		$scope.value = $stateParams.value;
 	if($stateParams.source)
@@ -16,10 +15,4 @@ angular.module('MedExplorer')
 		$scope.limit = $stateParams.limit;
 	if($stateParams.tabName)
 		$scope.tabName = $stateParams.tabName;
-	console.log('value ' + $scope.value);
-	console.log('source ' + $scope.source);
-	console.log('type ' + $scope.type);
-	console.log('field ' + $scope.field);
-	console.log('limit ' + $scope.limit);
-	console.log('tabName ' + $scope.tabName);
 }]);
