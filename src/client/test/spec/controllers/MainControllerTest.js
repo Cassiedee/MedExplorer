@@ -17,10 +17,10 @@ describe('Controller: MainController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a MainController', function() {
+		expect(MainController).not.toBeNull();
+	});
 
 });

@@ -17,10 +17,10 @@ describe('Controller: SidebarSearchResultsController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a SidebarSearchResultsController', function() {
+		expect(SidebarSearchResultsController).not.toBeNull();
+	});
 
 });
