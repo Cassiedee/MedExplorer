@@ -21,7 +21,6 @@ describe('Controller: BreadCrumbsController', function () {
 		expect(BreadCrumbsController).not.toBeNull();
 	});
 
-
   it('value should be not null', function () {
     expect(scope.value).not.toBeNull();
     expect(scope.source).not.toBeNull();
