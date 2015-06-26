@@ -8,71 +8,57 @@
       <div class="list-group results-list" scrollable-div="992">
         <div dir-paginate="result in results | itemsPerPage: 10">
           <div class="list-group-item container-fluid jumbotron results-list-item" style="padding-left:0px; padding-top:0px; padding-bottom:0px;" id="results-list-style">
-			<a class="recall-bar-link" ng-show="result.has_ongoing_recalls" ui-sref="home.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})">
-			  <div class="jumbotron-title recall-background" style="padding-left:25px;padding-right:25px;">
-			    <h3 style="margin-top:0px;">{{result.openfda.brand_name[0] | title}}</h3>
-			  </div>
-			</a>
-			<div class="jumbotron-title majorsiteinfo" style="padding-left:25px;padding-right:25px;" ng-hide="result.has_ongoing_recalls">
-				<h3 style="margin-top:0px;">{{result.openfda.brand_name[0] | title}}</h3>
-			</div>
-            <div class="row" style="padding-left:25px;padding-right:25px;">
-              <a ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result})">
-                <div class="col-xs-12">
-                  <div class="row">
-                    <div class="row col-xs-12">
-                      <p class="list-group-item-text">
-                        <div class="row">
-                          <span class="col-xs-4">
-                            <h5 class="search-result-header">Distribution:</h5>
-                          </span>
-                          <span class="col-xs-8 search-result">
-                            <div ng-repeat="type in result.openfda.product_type">
-                              <h5>{{type | title | replaceOTC}}</h5>
-                            </div>
-                          </span>
-                        </div>
-                      </p>
-                      <p class="list-group-item-text">
-                        <div class="row">
-                          <span class="col-xs-4 search-result-header search-result">
-                            <h5 class="search-result-header">Active Ing:</h5>
-                          </span>
-                          <span class="col-xs-8 search-result">
-                            <h5>{{result.active_ingredient[0] | uppercase}}</h5>
-                          </span>
-                        </div>
-                      </p>
-                      <p class="list-group-item-text">
-                        <div class="row">
-                          <span class="col-xs-4 search-result-header search-result">
-                            <h5 class="search-result-header">Purpose:</h5>
-                          </span>
-                          <span class="col-xs-8 search-result">
-                            <h5>{{result.purpose[0] | sentence}}</h5>
-                          </span>
-                        </div>
-                      </p>
-                      <p class="list-group-item-text">
-                        <div class="row">
-                          <span class="col-xs-4 search-result-header search-result">
-                            <h5 class="search-result-header">Conditions:</h5>
-                          </span>
-                          <span class="col-xs-8 search-result">
-                            <h5>{{result.indications_and_usage[0] | sentence}}</h5>
-                          </span>
-                        </div>
-                      </p>
-                      <p class="list-group-item-text">
-                        <div class="row">
-                          <span class="col-xs-4"> </span>
-                          <span class="col-xs-8"> </span>
-                        </div>
-                      </p>
-                  </div>
-                </div>
+            <a style="margin-top:0px; margin-bottom:0px;" ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result})">
+              <div style="margin-top:0px; margin-bottom:0px; padding:3px;" class="jumbotron-title majorsiteinfo" style="padding-left:25px;padding-right:25px;">
+                <h3 style="margin-top:0px; margin-bottom:0px;">{{result.openfda.brand_name[0] | title}}</h3>
               </div>
             </a>
+            <a class="recall-bar-link" ng-show="result.has_ongoing_recalls" ui-sref="home.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})">
+              <div style="margin-top:0px;" class="jumbotron-title recall-background" style="padding-left:25px;padding-right:25px;">
+                <h3 style="margin-top:0px; text-align:center;">RECALL</h3>
+              </div>
+            </a>
+            <div>
+              <div class="col-xs-12">
+                <div class="row" style="padding-left:25px;padding-right:25px;">
+                  <div class="row col-xs-12">
+                    <p class="list-group-item-text">
+                      <div class="row">
+                        <span class="col-xs-4"><h5 class="search-result-header">Distribution:</h5></span>
+                        <span class="col-xs-8 search-result">
+                          <div ng-repeat="type in result.openfda.product_type">
+                            <h5 ng-text-truncate="type | title | replaceOTC" ng-tt-chars-threshold="120" ng-tt-more-label=" More" ng-tt-less-label=" Less"></h5>
+                          </div>
+                        </span>
+                      </div>
+                    </p>
+                    <p class="list-group-item-text">
+                      <div class="row">
+                        <span class="col-xs-4 search-result-header search-result"><h5 class="search-result-header">Active Ing:</h5></span>
+                        <span class="col-xs-8 search-result"><h5 ng-text-truncate="result.active_ingredient[0] | uppercase" ng-tt-chars-threshold="120" ng-tt-more-label=" More" ng-tt-less-label=" Less"></h5></span>
+                      </div>
+                    </p>
+                    <p class="list-group-item-text">
+                      <div class="row">
+                        <span class="col-xs-4 search-result-header search-result"><h5 class="search-result-header">Purpose:</h5></span>
+                        <span class="col-xs-8 search-result"><h5 ng-text-truncate="result.purpose[0] | sentence" ng-tt-chars-threshold="120" ng-tt-more-label=" More" ng-tt-less-label=" Less"></h5></span>
+                      </div>
+                    </p>
+                    <p class="list-group-item-text">
+                      <div class="row">
+                        <span class="col-xs-4 search-result-header search-result"><h5 class="search-result-header">Conditions:</h5></span>
+                        <span class="col-xs-8 search-result"><h5 ng-text-truncate="result.indications_and_usage[0] | sentence" ng-tt-chars-threshold="120" ng-tt-more-label=" More" ng-tt-less-label=" Less"></h5></span>
+                      </div>
+                    </p>
+                    <p class="list-group-item-text">
+                      <div class="row">
+                        <span class="col-xs-4"> </span>
+                        <span class="col-xs-8"> </span>
+                      </div>
+                    </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
