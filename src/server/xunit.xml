@@ -1,3 +1,0 @@
-<testsuite name="Mocha Tests" tests="1" failures="0" errors="0" skipped="0" timestamp="Thu, 25 Jun 2015 00:01:44 GMT" time="0.008">
-<testcase classname="REST API Test Suite" name="hello_test" time="0.001"/>
-</testsuite>
