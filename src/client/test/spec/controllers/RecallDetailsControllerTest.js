@@ -17,10 +17,10 @@ describe('Controller: RecallDetailsController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a RecallDetailsController', function() {
+		expect(RecallDetailsController).not.toBeNull();
+	});
 
 });

@@ -17,10 +17,10 @@ describe('Controller: DrugDetailsController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a DrugDetailsController', function() {
+		expect(DrugDetailsController).not.toBeNull();
+	});
 
 });

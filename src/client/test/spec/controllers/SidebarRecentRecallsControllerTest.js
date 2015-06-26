@@ -17,10 +17,10 @@ describe('Controller: SidebarRecentRecallsController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a SidebarRecentRecallsController', function() {
+		expect(SidebarRecentRecallsController).not.toBeNull();
+	});
 
 });

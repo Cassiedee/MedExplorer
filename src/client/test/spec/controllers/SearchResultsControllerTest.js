@@ -17,10 +17,10 @@ describe('Controller: SearchResultsController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a SearchResultsController', function() {
+		expect(SearchResultsController).not.toBeNull();
+	});
 
 });

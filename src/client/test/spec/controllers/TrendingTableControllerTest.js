@@ -17,10 +17,10 @@ describe('Controller: TrendingTableController', function () {
       $scope: scope
     });
   }));
-/**
-  it('message should read "Hello World!"', function () {
-    expect(scope.message).toBe('Hello World!');
-  });
-  */
+
+
+  it('has a TrendingTableController', function() {
+		expect(TrendingTableController).not.toBeNull();
+	});
 
 });
