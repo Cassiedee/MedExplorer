@@ -68,7 +68,7 @@ angular.module('MedExplorer')
                 if(searchResults.results[drug].openfda.brand_name) {
                   searchResults.results[drug].has_ongoing_recalls = false;
                   setTimeout(function hasRecall(index) {
-                    if(searchResults.results[index].openfda) {
+                    if(searchResults.results && searchResults.results[index] && searchResults.results[index].openfda) {
                       $http.get('/REST/search?source=drug'
                         + '&type=enforcement'
                         + '&field=[\"openfda.spl_id\",\"status\"]'

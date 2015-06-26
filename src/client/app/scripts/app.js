@@ -20,7 +20,8 @@ angular
     'ui.router',
     'ngLodash',
     'angularUtils.directives.dirPagination',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'alv-ch-ng.text-truncate'
   ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
