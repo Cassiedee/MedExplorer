@@ -92,6 +92,12 @@ a, a:focus, a:active {
 	background-color:#eff2f5;
 }
 
+/* Aligning about information with the search bar*/
+.aboutspace {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
 .btn-primary {
 	background-color: #58626b;
 	border-width:0px;
