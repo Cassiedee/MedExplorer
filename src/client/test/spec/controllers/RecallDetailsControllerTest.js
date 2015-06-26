@@ -22,5 +22,9 @@ describe('Controller: RecallDetailsController', function () {
   it('has a RecallDetailsController', function() {
 		expect(RecallDetailsController).not.toBeNull();
 	});
+  
+  it('scope values should be not null', function () {
+	    expect(scope.recallList).not.toBeNull();
+	  });
 
 });

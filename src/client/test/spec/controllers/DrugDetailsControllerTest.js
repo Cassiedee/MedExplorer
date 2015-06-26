@@ -22,5 +22,15 @@ describe('Controller: DrugDetailsController', function () {
   it('has a DrugDetailsController', function() {
 		expect(DrugDetailsController).not.toBeNull();
 	});
+  
+  it('scope values should be not null', function () {
+	    expect(scope.tab).not.toBeNull();
+	    expect(scope.tab).toBe(1);
+	    expect(scope.drugname).not.toBeNull();
+	    expect(scope.commonDrugsDuringAdverseEvent).not.toBeNull();
+	    expect(scope.commonDrugsPieChartData).not.toBeNull();
+	    expect(scope.pieChartDataIsHere).not.toBeNull();
+	    expect(scope.result).not.toBeNull();
+	  });
 
 });
