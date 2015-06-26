@@ -65,7 +65,7 @@ angular
           }
         },
         params: {
-          drugDetails: null,
+          drugDetails: null
         }
       })
       .state('home.recalldetails', {
@@ -80,7 +80,7 @@ angular
           }
         },
         params: {
-          recallList: null,
+          recallList: null
         }
       })
       .state('home.about', {

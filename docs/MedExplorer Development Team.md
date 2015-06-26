@@ -3,6 +3,11 @@
 Our development team was a multi-disciplinary, cross-functional, collaborative development team where team members filled multiple roles 
 during the course of the rapid development of our application. The table below describes the team roles and responsibilities.
 
+![Agile Team](Diagrams/AgileTeam.png)
+
+****
+## Team Roles and Descriptions
+
 Category | Category Name | Team Members | Description
 :-------:|---------------|-------------------|----------------------
 1  | Product Manager | Ray R. |<ul><li>Led our multi-disciplinary team in delivering the MedExplorer applications using an [Agile](Software Development/Processes/Readme.md) User-Centered Design approach.</li><li>Gathered user requirements based on collaboration with the User Experience team, the software developers, users and other stakeholders.</li><li>Obtained buy-in for development and delivery approach from stakeholders</li><li>Actively participated in the Sprint Planning and Sprint Reviews</li><li>Communicated across the multi-disciplinary development team and stakeholders</li><li>Responsible and accountable for the quality of the delivered prototype</li></ul> |

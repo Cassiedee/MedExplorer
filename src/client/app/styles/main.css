@@ -31,7 +31,6 @@ a, a:focus, a:active {
 
 .trendingdrug {
 	padding:10px;
-	font-size: 16pt !important;
 	font-style:normal !important;
 	word-wrap: break-word;
 	white-space:normal;
@@ -83,7 +82,6 @@ a, a:focus, a:active {
 	top:0px;
 	width: 100%;
 	height:40px;
-	font-size:24pt !important;
 }
 
 .searchspace {
@@ -293,6 +291,17 @@ div .recall-background:hover{
 	padding-right:0px;
 }
 
+@media screen and (max-width: 370px) {
+  .titlespace {
+    font-size:18pt !important;
+  }
+}
+@media screen and (min-width: 370px) {
+  .titlespace {
+    font-size:24pt !important;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .container .jumbotron, .container-fluid .jumbotron {
     margin: 0px;
@@ -313,6 +322,10 @@ div .recall-background:hover{
   #recalls {
 	margin-right:25px;
 	margin-left:25px;
+  }
+  
+  .trendingdrug {
+	font-size: 12pt !important;
   }
 }
 
@@ -342,6 +355,10 @@ div .recall-background:hover{
   }
   .titlespace {
     padding-left: 110px;
+  }
+  
+  .trendingdrug {
+	font-size: 16pt !important;
   }
 }
 
@@ -464,10 +481,14 @@ input::-moz-focus-inner {
 	background-color:#f8fafa;
 	border-top: solid 1px #b8bfc4;	
 	border-left: solid 1px #b8bfc4;	
-	border-right: solid 1px #b8bfc4;	
+	border-right: solid 1px #b8bfc4;
 	font-size: 18px;
+	width: 150px;
+	height: 50px;
+	text-align: center;
 }
-.general-info-tab-li-border{
+
+.general-info-tab-li-border {
 	border-bottom: solid 2px #d86021;	
 }
 
@@ -479,7 +500,7 @@ input::-moz-focus-inner {
 	margin-left: 0px;
 	margin-right: 0px;
 	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-bottom: 50px;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	padding-left: 15px;
@@ -553,3 +574,10 @@ border: none;
   padding: 10px;
   margin-top: 5px;
 }
+
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "> ";
+    padding: 0 5px;
+}
+
