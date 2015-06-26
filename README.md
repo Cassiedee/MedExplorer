@@ -25,13 +25,6 @@ Sprint planning was a time to focus on the goal(s) for the sprint. During sprint
 
 |4|used at least three "human-centered design" techniques or tools | Our [User Centered Design](docs/User%20Centered%20Design/User%20Centered%20Design.md) approach used a number of techniques and tools, including interviews, focus groups, expectancy tests, generative research, and usability tests.
 <BR><BR>__Digital Playbook#3__ Make it simple and intuitive |
-
-
-
-
-
-
-"Our User Centered Design approach used a number of techniques and tools, including interviews, focus groups, expectancy tests, generative research, and usability tests. <BR>__Digital Playbook #3__ Make it simple and intuitive"|[docs/User%20Centered%20Design/User%20Centered%20Design.md](docs/User%20Centered%20Design/User%20Centered%20Design.md) |
 |5|created or used a design style guide and/or a pattern library|"Our UX team created a design style guide to provide guidance for the web front end developers. <BR>__Digital Playbook #3__ Make it simple and intuitive"| [docs/Software%20Development/User-Stories](docs/Software%20Development/User-Stories) |
 |6|performed usability tests with people|"Our UX team performed a number of usabiilty tests with users and provided feedback to the development staff. <BR>__Digital Playbook #4__ Build the service using agile and iterative practices"| [docs/User%20Centered%20Design/Research%20Findings/Generative_Research.pdf](docs/User%20Centered%20Design/Research%20Findings/Generative_Research.pdf)
 |7|used an iterative approach, where feedback informed subsequent work or versions of the prototype|"Our UX team performed a number of usabiilty tests with users and provided feedback to the development staff. Digital Playbook#4 Build the service using agile and iterative practices"|(docs/User%20Centered%20Design/Research%20Findings/Generative_Research.pdf)
