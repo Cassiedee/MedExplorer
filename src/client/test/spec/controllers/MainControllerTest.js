@@ -18,9 +18,13 @@ describe('Controller: MainController', function () {
     });
   }));
 
-
   it('has a MainController', function() {
 		expect(MainController).not.toBeNull();
 	});
+  
+  it('scope values should be not null', function () {
+	    expect(scope.update).not.toBeNull();
+	    expect(scope.update.state).not.toBeNull();
+	  });
 
 });

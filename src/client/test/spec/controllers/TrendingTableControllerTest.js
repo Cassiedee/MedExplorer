@@ -22,5 +22,9 @@ describe('Controller: TrendingTableController', function () {
   it('has a TrendingTableController', function() {
 		expect(TrendingTableController).not.toBeNull();
 	});
+  
+  it('results should be not null', function () {
+	    expect(scope.results).not.toBeNull();
+	});
 
 });
