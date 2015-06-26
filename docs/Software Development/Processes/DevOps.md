@@ -33,6 +33,11 @@ Our continuous delivery and deployment processes uses Jenkins to automate the cr
 ### Docker Screenshot
 ![Docker Screenshot] (../Screenshots/DOCKER.png)
 
+### SoftLayer IaaS
+We used IBM's SoftLayer IaaS infrastructure for hosting the virtual machine that contains our three docker containers.
+
+![SoftLayer] (../Screenshots/softlayer.png)
+
 ## Continuous Monitoring
 
 As shown in our diagram we are using Zabbix to monitor our development/test and production environments.   Zabbix provides the ability to measure response time of the web server, CPU and memory utilization and other system measurements.  Below are pictures of the Zabbix dashbaord and some of the measurement graphs.
