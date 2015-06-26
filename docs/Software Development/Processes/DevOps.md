@@ -7,7 +7,7 @@ The MedExplorer development team is using an internally hosted Enterprise GitHub
 
 ![GitHub Screenshot](../Screenshots/GitHub.png)
 
-## Continuous Integration
+##Continuous Integration
 
 Our continuous integration process uses a Jenkins CI server which is connected to our GitHub source code repository.  It monitors the source files in GitHub and when there is update to the repository, Jenkins builds and deploys new Docker containers to our development/test environment.  Jenkins then runs our automated tests.
 
