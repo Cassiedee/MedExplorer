@@ -1,3 +1,4 @@
+// # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved.
 var test = require('unit.js');
 var rest = require('../routes/REST.js');
 
