@@ -60,13 +60,13 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-        'Chrome'
+        'PhantomJS'
     ],
 
     // Which plugins to enable
     plugins: [
       "karma-junit-reporter",
-      "karma-chrome-launcher",
+      "karma-phantomjs-launcher-nonet",
       "karma-jasmine"
     ],
 
@@ -75,11 +75,17 @@ module.exports = function(config) {
     singleRun : true,
     //reporters : ['dots','junit'],
 
-    /*
     junitReporter : {
         outputFile: 'test-results.xml'
     },
-    */
+
+
+    phantomjsLauncher: {
+      cmd: {
+        linux: '/usr/local/bin/phantomjs'
+      }
+    },
+    
 
 
     colors: true,
