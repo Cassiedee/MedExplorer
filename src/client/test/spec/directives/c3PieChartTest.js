@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: baseballCard', function () {
+describe('Directive: c3PieChart', function () {
 
 	var baseballCard, element, scope;
 	
