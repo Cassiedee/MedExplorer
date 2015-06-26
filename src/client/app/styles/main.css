@@ -84,12 +84,6 @@ a, a:focus, a:active {
 	height:40px;
 }
 
-.searchspace {
-	padding-top: 20px;
-	padding-bottom: 10px;
-	background-color:#eff2f5;
-}
-
 /* Aligning about information with the search bar*/
 .aboutspace {
 	padding-top: 20px;
@@ -273,8 +267,31 @@ div .recall-background:hover{
 	font-family: "Roboto", Sans-serif !important;
 }
 
-.searchbar{
-	margin-right:auto;
+@media screen and (min-width: 768px) {
+  .searchbar{
+    width: 66.7%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .searchspace {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color:#eff2f5;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .searchbar{
+    width: 100%;
+  }
+
+  .searchspace {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color:#eff2f5;
+  }
 }
 
 .footerlink{
@@ -440,6 +457,8 @@ input::-moz-focus-inner {
 .noborder {
   border: 0;
   background-color: #F8FAFA;
+  margin-top:0px;
+  margin-bottom:0px;
 }
 
 .recall-bar-link:hover {
@@ -564,10 +583,11 @@ border: none;
 .sidebar-content {
   padding-left: 8px;
   padding-right: 8px;
+  margin-bottom:0px;
 }
 
 #jumbotron-no-padding {
-  padding: 0px;
+  padding: 0px !important;
   margin-bottom: 15px;
 }
 
@@ -615,4 +635,27 @@ border: none;
   background-color: #0D283D;
   border: 1px solid #0D283D;
   border-bottom-color: transparent;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.no-top-bottom-margin {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.list-group: {
+  margin-bottom:0px;
+}
+
+@media screen and (min-width: 370px) {
+  .titlespace {
+    font-size:24pt !important;
+  }
+}
+
+.form-group {
+  margin-bottom: 0px;
 }

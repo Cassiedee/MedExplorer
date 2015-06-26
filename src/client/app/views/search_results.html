@@ -1,16 +1,16 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
 <div class="col-md-9">
   <div class="container-fluid">
-    <div class="jumbotron jumbotron-no-padding">
+    <div id="jumbotron-no-padding" class="jumbotron">
       <div class="titlebox">
         <h3 class="trendingdrug jumbotron-title">Results for: "{{searchTerm | title}}"</h3>
       </div>
-      <div class="list-group results-list" scrollable-div="992">
+      <div class="list-group results-list no-padding" scrollable-div="992">
         <div dir-paginate="result in results | itemsPerPage: 10">
           <div class="list-group-item container-fluid jumbotron results-list-item" style="padding-left:0px; padding-top:0px; padding-bottom:0px;" id="results-list-style">
-            <a style="margin-top:0px; margin-bottom:0px;" ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result, tabName:'General Info'})">
-              <div style="margin-top:0px; margin-bottom:0px; padding:3px;" class="jumbotron-title majorsiteinfo" style="padding-left:25px;padding-right:25px;">
-                <h3 style="margin-top:0px; margin-bottom:0px;">{{result.openfda.brand_name[0] | title}}</h3>
+            <a class="no-top-bottom-margin" ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result, tabName:'General Info'})">
+              <div style="padding:3px;" class="jumbotron-title majorsiteinfo no-top-bottom-margin" style="padding-left:25px;padding-right:25px;">
+                <h3 class="no-top-bottom-margin">{{result.openfda.brand_name[0] | title}}</h3>
               </div>
             </a>
             <a class="recall-bar-link" ng-show="result.has_ongoing_recalls" ui-sref="home.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})">
