@@ -2,15 +2,15 @@
 <div class="pageheader majorsiteinfo">
 	<div class="logospace majorsiteinfo">
 		<a ui-sref="home">
-			<img class="img-responsive" src="images/icon_logo_medex_banner_caplet.svg" style="vertical-align:middle" />
+			<img class="img-responsive" src="images/icon_logo_medex_banner_caplet.svg" style="vertical-align:middle" alt="Medicine Explorer logo" title="Medicine Explorer logo"/>
 		</a>
 	</div>
 	<div class="titlespace">Medicine Explorer</div>
 </div>
 <div class="searchspace">
 	<div class="row">
-		<div class="col-xs-0 col-sm-3"></div>
-		<div class="searchbar col-xs-12 col-sm-9">
+		<div class="col-xs-2"></div>
+		<div class="searchbar col-xs-8">
 			<form novalidate class="simpleform" id="search-form" ng-submit="update(search)">
 				<div class="form-group has-feedback has-feedback-right">
 					<input id="search-field" type="text" class="form-control input-lg" placeholder="Enter a drug name..." ng-model="search.value" />
@@ -18,6 +18,7 @@
 				</div>
 			</form>
 		</div>
+		<div class="col-xs-2"></div>
 	</div>
 </div>
 <div class="container-fluid">

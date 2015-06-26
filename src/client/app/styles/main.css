@@ -270,7 +270,6 @@ div .recall-background:hover{
 }
 
 .searchbar{
-	max-width:50%;
 	margin-right:auto;
 }
 
@@ -295,7 +294,7 @@ div .recall-background:hover{
   }
   
   .searchbar {
-	margin-left:25px;
+	margin-left:0px;
   }
   
   .logospace {
