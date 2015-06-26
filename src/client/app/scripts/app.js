@@ -94,6 +94,18 @@ angular
             templateUrl: 'views/about.html'
           }
         }
+      })
+       .state('home.license', {
+        url: 'liense',
+        views: {
+        'side-panel@home': {
+          template: ''
+        },
+          'main@': {
+            controller: 'MainController',
+            templateUrl: 'views/license.html'
+          }
+        }
       });
 
       $urlRouterProvider.otherwise('/');
