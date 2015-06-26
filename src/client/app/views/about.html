@@ -1,214 +1,209 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 5px;
-}
-th {
-    text-align: left;
-}
-</style>
-
-
 <div class="pageheader majorsiteinfo">
 	<div class="logospace majorsiteinfo">
-		<a ui-sref="home">
-			<img class="img-responsive" src="images/icon_logo_medex_banner_caplet.svg" style="vertical-align:middle" alt="Medicine Explorer logo" title="Medicine Explorer logo"/>
+		<a ui-sref="home"> <img class="img-responsive"
+			src="images/icon_logo_medex_banner_caplet.svg"
+			style="vertical-align: middle" alt="Medicine Explorer logo"
+			title="Medicine Explorer logo" />
 		</a>
 	</div>
 	<div class="titlespace">Medicine Explorer</div>
 </div>
 <div class="searchspace">
 	<div class="row">
-		<div class="col-xs-0 col-sm-3"></div>
-		<div class="searchbar col-xs-7 col-sm-6">
-			<form novalidate class="simpleform" id="searchForm" ng-submit="update(search)">
+		<div class="col-xs-2"></div>
+		<div class="searchbar col-xs-8">
+			<form novalidate class="simpleform" id="search-form"
+				ng-submit="update(search)">
 				<div class="form-group has-feedback has-feedback-right">
-					<input type="text" class="form-control" placeholder="Enter a drug name..." ng-model="search.value" />
-					<i class="glyphicon glyphicon-search form-control-feedback"></i>
+					<input id="search-field" type="text" class="form-control input-lg"
+						placeholder="Enter a drug name..." ng-model="search.value" /> <i
+						class="glyphicon glyphicon-search form-control-feedback"></i>
 				</div>
 			</form>
 		</div>
-		<div class="col-xs-5 col-sm-3">
-			<div style="float:left;">
-				<a id="advancedsearch" href="advancedsearch" class="btn btn-primary" style="white-space:normal;">Advanced Search</a>
-			</div>
-		</div>
+		<div class="col-xs-2"></div>
 	</div>
 </div>
 
-<div class="">
-<div class="container-fluid">
-  <h3>About Medicine Explorer:</h3>
-  <div class="body">
-    <p>The Medicine Explorer Application is a Beta Research Project Prototype and not for clinical use. </p>
-  </div>
-  
-  <div class="body">
-  <h3>License:</h3>
-  	Copyright (c) 2015 Northrop Grumman Systems Corporation.  All Rights Reserved.
-<br />
-<br />
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files  (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-<br />
-<br />
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND  NONINFRINGEMENT.   IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-  	
-  
-  </div>
-  
-  
-  <div class = "body">
-  <br />
-	  <h3>Open Source Third Party Software Licenses:</h3>
-	  
-	  <table style="width:100%">
-	  <tr>
-	    <th>Product</th>
-	    <th>Version</th> 
-	    <th>License Type</th>
-	    <th>License Source</th>
-	    <th>Product Source</th> 
-	    <th>Used In</th>
-	  </tr>
-	  <tr>
-	    <td>Bootstrap</td>
-	    <td>3.2.0</td> 
-	    <td>MIT Licensed - Copyright 2011-2015 Twitter, Inc. - Code licensed under MIT, documentation under CC BY 3.0.</td>
-	    <td>http://getbootstrap.com/about/</td>
-	    <td>http://getbootstrap.com</td> 
-	    <td>Front End</td>
-	  </tr>
-	  <tr>
-	    <td>AngularJS</td>
-	    <td>1.4.1</td> 
-	    <td>MIT Licensed - AngularJS v1.4.1 - (c) 2010-2015 Google, Inc. </td>
-	    <td>https://angularjs.org/</td>
-	    <td>https://angularjs.org/</td> 
-	    <td>Front End</td>
-	  </tr>
-	  <tr>
-	    <td>C3</td>
-	    <td>0.4.10</td> 
-	    <td>MIT Licensed</td>
-	    <td>http://c3js.org/</td>
-	    <td>http://c3js.org/</td> 
-	    <td>Front End - Graphs/Charts</td>
-	  </tr>
-	  <tr>
-	    <td>NodeJS</td>
-	    <td>0.12.4</td> 
-	    <td>MIT Licensed</td>
-	    <td>https://nodejs.org/download/</td>
-	    <td>https://nodejs.org</td> 
-	    <td>Application Server</td>
-	  </tr>
-	  <tr>
-	    <td>ExpressJS</td>
-	    <td>4.12.4</td> 
-	    <td>MIT Licensed</td>
-	    <td>https://www.npmjs.com/package/express</td>
-	    <td>https://www.npmjs.com/package/express</td> 
-	    <td>MVC Web Application Framework for NodeJS</td>
-	  </tr>
-	  <tr>
-	    <td>Docker</td>
-	    <td>1.7.0</td> 
-	    <td>Apache License 2.0</td>
-	    <td>https://www.docker.com/components-licenses</td>
-	    <td>https://www.docker.com/</td> 
-	    <td>Container</td>
-	  </tr>
-	  <tr>
-	    <td>Zabbix</td>
-	    <td>2.4.5</td> 
-	    <td>GNU General Public License version 2.0</td>
-	    <td>http://www.zabbix.com/license.php</td>
-	    <td>http://www.zabbix.com/</td> 
-	    <td>Continuous Monitoring</td>
-	  </tr>
-	  <tr>
-	    <td>jQuery</td>
-	    <td>3.2.0</td> 
-	    <td>MIT Licensed</td>
-	    <td>https://jquery.org/license/</td>
-	    <td>https://jquery.com/</td> 
-	    <td>JavaScript Development</td>
-	  </tr>
-	  <tr>
-	    <td>lodash</td>
-	    <td>3.9.3</td> 
-	    <td>MIT Licensed</td>
-	    <td>https://lodash.com/license</td>
-	    <td>https://lodash.com/</td> 
-	    <td>JavaScript Development</td>
-	  </tr>
-	  <tr>
-	    <td>MongoDB</td>
-	    <td>3.0.4</td> 
-	    <td>GNU Affero General Public License Version 3.0</td>
-	    <td>https://www.mongodb.org/about/licensing/</td>
-	    <td>https://www.mongodb.org/</td> 
-	    <td>Caching</td>
-	  </tr>
-	  <tr>
-	    <td>Git</td>
-	    <td>1.9.5</td> 
-	    <td>GNU General Public License version 2.0</td>
-	    <td>https://git-scm.com/about/free-and-open-source/</td>
-	    <td>https://git-scm.com/</td> 
-	    <td>Development</td>
-	  </tr>
-	  <tr>
-	    <td>Jenkins</td>
-	    <td>1.617</td> 
-	    <td>MIT Licensed</td>
-	    <td>https://jenkins-ci.org/mit-license</td>
-	    <td>https://jenkins-ci.org/</td> 
-	    <td>Continuous Integrated Builds</td>
-	  </tr>
-	  <tr>
-	    <td>SonarQube</td>
-	    <td>5.1.1</td> 
-	    <td>GNU Lesser GPL License, Version 3</td>
-	    <td>http://www.gnu.org/licenses/lgpl.txt</td>
-	    <td>http://www.sonarqube.org/</td> 
-	    <td>Code Quality Scan</td>
-	  </tr>
-	</table>
-	  
+<div class="aboutspace">
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8">
+			<h3>About Medicine Explorer:</h3>
+			<div class="body">
+				<p>The Medicine Explorer Application is a Beta Research Project
+					Prototype and not for clinical use.</p>
+			</div>
+
+			<div class="body">
+				<h3>License:</h3>
+				The MIT License (MIT) <br /> <br /> Copyright (c) 2015 Northrop
+				Grumman Systems Corporation. All Rights Reserved. <br /> <br />
+				Permission is hereby granted, free of charge, to any person
+				obtaining a copy of this software and associated documentation files
+				(the "Software"), to deal in the Software without restriction,
+				including without limitation the rights to use, copy, modify, merge,
+				publish, distribute copies of the Software, and to permit persons to
+				whom the Software is furnished to do so, subject to the following
+				conditions: The above copyright notice and this permission notice
+				shall be included in all copies or substantial portions of the
+				Software. <br /> <br /> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+				WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+				TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+				PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+				COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+				LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+				ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+				OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+			</div>
+
+
+			<div class="body">
+				<br />
+				<h3>Open Source Third Party Software Licenses:</h3>
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<tr>
+							<th>Product</th>
+							<th>Version</th>
+							<th>License Type</th>
+							<th>License Source</th>
+							<th>Product Source</th>
+							<th>Used In</th>
+						</tr>
+						<tr>
+							<td>Bootstrap</td>
+							<td>3.2.0</td>
+							<td>MIT Licensed - Copyright 2011-2015 Twitter, Inc. - Code
+								licensed under MIT, documentation under CC BY 3.0.</td>
+							<td>http://getbootstrap.com/about/</td>
+							<td>http://getbootstrap.com</td>
+							<td>Front End</td>
+						</tr>
+						<tr>
+							<td>AngularJS</td>
+							<td>1.4.1</td>
+							<td>MIT Licensed - AngularJS v1.4.1 - (c) 2010-2015 Google,
+								Inc.</td>
+							<td>https://angularjs.org/</td>
+							<td>https://angularjs.org/</td>
+							<td>Front End</td>
+						</tr>
+						<tr>
+							<td>C3</td>
+							<td>0.4.10</td>
+							<td>MIT Licensed</td>
+							<td>http://c3js.org/</td>
+							<td>http://c3js.org/</td>
+							<td>Front End - Graphs/Charts</td>
+						</tr>
+						<tr>
+							<td>NodeJS</td>
+							<td>0.12.4</td>
+							<td>MIT Licensed</td>
+							<td>https://nodejs.org/download/</td>
+							<td>https://nodejs.org</td>
+							<td>Application Server</td>
+						</tr>
+						<tr>
+							<td>ExpressJS</td>
+							<td>4.12.4</td>
+							<td>MIT Licensed</td>
+							<td>https://www.npmjs.com/package/express</td>
+							<td>https://www.npmjs.com/package/express</td>
+							<td>MVC Web Application Framework for NodeJS</td>
+						</tr>
+						<tr>
+							<td>Docker</td>
+							<td>1.7.0</td>
+							<td>Apache License 2.0</td>
+							<td>https://www.docker.com/components-licenses</td>
+							<td>https://www.docker.com/</td>
+							<td>Container</td>
+						</tr>
+						<tr>
+							<td>Zabbix</td>
+							<td>2.4.5</td>
+							<td>GNU General Public License version 2.0</td>
+							<td>http://www.zabbix.com/license.php</td>
+							<td>http://www.zabbix.com/</td>
+							<td>Continuous Monitoring</td>
+						</tr>
+						<tr>
+							<td>jQuery</td>
+							<td>3.2.0</td>
+							<td>MIT Licensed</td>
+							<td>https://jquery.org/license/</td>
+							<td>https://jquery.com/</td>
+							<td>JavaScript Development</td>
+						</tr>
+						<tr>
+							<td>lodash</td>
+							<td>3.9.3</td>
+							<td>MIT Licensed</td>
+							<td>https://lodash.com/license</td>
+							<td>https://lodash.com/</td>
+							<td>JavaScript Development</td>
+						</tr>
+						<tr>
+							<td>MongoDB</td>
+							<td>3.0.4</td>
+							<td>GNU Affero General Public License Version 3.0</td>
+							<td>https://www.mongodb.org/about/licensing/</td>
+							<td>https://www.mongodb.org/</td>
+							<td>Caching</td>
+						</tr>
+						<tr>
+							<td>Git</td>
+							<td>1.9.5</td>
+							<td>GNU General Public License version 2.0</td>
+							<td>https://git-scm.com/about/free-and-open-source/</td>
+							<td>https://git-scm.com/</td>
+							<td>Development</td>
+						</tr>
+						<tr>
+							<td>Jenkins</td>
+							<td>1.617</td>
+							<td>MIT Licensed</td>
+							<td>https://jenkins-ci.org/mit-license</td>
+							<td>https://jenkins-ci.org/</td>
+							<td>Continuous Integrated Builds</td>
+						</tr>
+						<tr>
+							<td>SonarQube</td>
+							<td>5.1.1</td>
+							<td>GNU Lesser GPL License, Version 3</td>
+							<td>http://www.gnu.org/licenses/lgpl.txt</td>
+							<td>http://www.sonarqube.org/</td>
+							<td>Code Quality Scan</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-2"></div>
 	</div>
-	<br/>
-	<br/>
-	<br/>
 </div>
+<br />
+<br />
+<br />
 
 
 <div class="footer majorsiteinfo">
-	<div class="container-fluid">
+	<div class="container-fluid"
+		style="padding-left: 10px; padding-right: 10px;">
 		<div class="row">
-			<div class="disclaimer col-xs-11">
-				We're in beta! Medicine Explorer is a beta research project and not for clinical use.
-			</div>
-			<div class="col-xs-1">
-				<a ui-sref="home.about" class="footerlink">About</a>
+			<div class="disclaimer col-xs-10 col-md-11">We're in beta!
+				Medicine Explorer is a beta research project and not for clinical
+				use.</div>
+			<div class="col-xs-2 col-md-1 pull-right">
+				<a ui-sref="home.about" class="footerlink"> <span
+					style="text-align: right"> About </span>
+				</a>
 			</div>
 		</div>
 	</div>
-</div>
 </div>

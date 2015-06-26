@@ -2,7 +2,6 @@
 // http://karma-runner.github.io/0.12/config/configuration-file.html
 // Generated on 2015-06-20 using
 // generator-karma 1.0.0
-
 module.exports = function(config) {
   'use strict';
 
@@ -37,6 +36,7 @@ module.exports = function(config) {
       'app/vendor/d3/d3.js',
       'app/vendor/c3/c3.js',
       'app/vendor/angular-mocks/angular-mocks.js',
+      'app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'app/assets/angular-utils-pagination/dirPagination.js',
       // endbower
       "app/scripts/**/*.js",
