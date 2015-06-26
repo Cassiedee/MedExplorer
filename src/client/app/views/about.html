@@ -1,5 +1,5 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
-<div class="pageheader majorsiteinfo">
+<div class="pageheader majorsiteinfo"> 
 	<div class="logospace majorsiteinfo">
 		<a ui-sref="home"> <img class="img-responsive"
 			src="images/icon_logo_medex_banner_caplet.svg"
@@ -9,180 +9,51 @@
 	</div>
 	<div class="titlespace">Medicine Explorer</div>
 </div>
-<div class="searchspace">
-	<div class="row">
-		<div class="col-xs-2"></div>
-		<div class="searchbar col-xs-8">
-			<form novalidate class="simpleform" id="search-form"
-				ng-submit="update(search)">
-				<div class="form-group has-feedback has-feedback-right">
-					<input id="search-field" type="text" class="form-control input-lg"
-						placeholder="Enter a drug name..." ng-model="search.value" /> <i
-						class="glyphicon glyphicon-search form-control-feedback"></i>
-				</div>
-			</form>
-		</div>
-		<div class="col-xs-2"></div>
-	</div>
-</div>
 
 <div class="aboutspace">
 	<div class="row">
 		<div class="col-xs-2"></div>
 		<div class="col-xs-8">
-			<h3>About Medicine Explorer:</h3>
 			<div class="body">
-				<p>The Medicine Explorer Application is a Beta Research Project
-					Prototype and not for clinical use.</p>
+				<h1 class="page-header">About Medicine Explorer</h1>
 			</div>
+			<p>
+				Medicine Explorer is for the general public and clinicians
+					who seek drug information (over the counter and prescription) for
+					making better health decisions. The site uses datasets from <strong><u><a
+					href="https://open.fda.gov/">openFDA</a></u></strong> to provide easy access to
+					public data relating to adverse events, product labeling, and
+					recall enforcement reports.
+			</p>
+<br/>
 
-			<div class="body">
-				<h3>License:</h3>
-				The MIT License (MIT) <br /> <br /> Copyright (c) 2015 Northrop
-				Grumman Systems Corporation. All Rights Reserved. <br /> <br />
-				Permission is hereby granted, free of charge, to any person
-				obtaining a copy of this software and associated documentation files
-				(the "Software"), to deal in the Software without restriction,
-				including without limitation the rights to use, copy, modify, merge,
-				publish, distribute copies of the Software, and to permit persons to
-				whom the Software is furnished to do so, subject to the following
-				conditions: The above copyright notice and this permission notice
-				shall be included in all copies or substantial portions of the
-				Software. <br /> <br /> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
-				WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-				TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-				PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-				COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-				LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-				ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
-				OR OTHER DEALINGS IN THE SOFTWARE.
+			<p>
+			<h3>General Public example use</h3>
+				<em>You pick up a decongestant
+					from the pharmacy but remember that some may interact negatively
+					with your high blood pressure prescription. With Medicine Explorer,
+					you can easily search on your blood pressure medication and
+					navigate to the drug interaction information and scan the results
+					for interaction with over the counter medications. Also, you can
+					see the potential side effects of the medications to make an
+					informed decision.</em>
+			</p>
+<br/>
+			<p>
+			<h3>Clinician example use</h3>
+				<em>As a doctor, use Medicine Explorer
+					to help decide which over the counter medications would be safe for
+					your patients to take. Through the site, you have the option to
+					view adverse reaction data regarding medications. While reviewing
+					reported issues, you also have the capability to inspect At Risk
+					Population data and see if a drug is safe to prescribe to patients
+					who are pregnant. Allowing you to be assure that the medicine is
+					safe with low risk of complications for your patients. </em>
+			</p>
+<br/><br/>
+			<h3> Disclaimer: The Medicine Explorer Application is a
+				Beta Research Project Prototype and not for clinical use.</h3>
 
-
-			</div>
-
-
-			<div class="body">
-				<br />
-				<h3>Open Source Third Party Software Licenses:</h3>
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<tr>
-							<th>Product</th>
-							<th>Version</th>
-							<th>License Type</th>
-							<th>License Source</th>
-							<th>Product Source</th>
-							<th>Used In</th>
-						</tr>
-						<tr>
-							<td>Bootstrap</td>
-							<td>3.2.0</td>
-							<td>MIT Licensed - Copyright 2011-2015 Twitter, Inc. - Code
-								licensed under MIT, documentation under CC BY 3.0.</td>
-							<td>http://getbootstrap.com/about/</td>
-							<td>http://getbootstrap.com</td>
-							<td>Front End</td>
-						</tr>
-						<tr>
-							<td>AngularJS</td>
-							<td>1.4.1</td>
-							<td>MIT Licensed - AngularJS v1.4.1 - (c) 2010-2015 Google,
-								Inc.</td>
-							<td>https://angularjs.org/</td>
-							<td>https://angularjs.org/</td>
-							<td>Front End</td>
-						</tr>
-						<tr>
-							<td>C3</td>
-							<td>0.4.10</td>
-							<td>MIT Licensed</td>
-							<td>http://c3js.org/</td>
-							<td>http://c3js.org/</td>
-							<td>Front End - Graphs/Charts</td>
-						</tr>
-						<tr>
-							<td>NodeJS</td>
-							<td>0.12.4</td>
-							<td>MIT Licensed</td>
-							<td>https://nodejs.org/download/</td>
-							<td>https://nodejs.org</td>
-							<td>Application Server</td>
-						</tr>
-						<tr>
-							<td>ExpressJS</td>
-							<td>4.12.4</td>
-							<td>MIT Licensed</td>
-							<td>https://www.npmjs.com/package/express</td>
-							<td>https://www.npmjs.com/package/express</td>
-							<td>MVC Web Application Framework for NodeJS</td>
-						</tr>
-						<tr>
-							<td>Docker</td>
-							<td>1.7.0</td>
-							<td>Apache License 2.0</td>
-							<td>https://www.docker.com/components-licenses</td>
-							<td>https://www.docker.com/</td>
-							<td>Container</td>
-						</tr>
-						<tr>
-							<td>Zabbix</td>
-							<td>2.4.5</td>
-							<td>GNU General Public License version 2.0</td>
-							<td>http://www.zabbix.com/license.php</td>
-							<td>http://www.zabbix.com/</td>
-							<td>Continuous Monitoring</td>
-						</tr>
-						<tr>
-							<td>jQuery</td>
-							<td>3.2.0</td>
-							<td>MIT Licensed</td>
-							<td>https://jquery.org/license/</td>
-							<td>https://jquery.com/</td>
-							<td>JavaScript Development</td>
-						</tr>
-						<tr>
-							<td>lodash</td>
-							<td>3.9.3</td>
-							<td>MIT Licensed</td>
-							<td>https://lodash.com/license</td>
-							<td>https://lodash.com/</td>
-							<td>JavaScript Development</td>
-						</tr>
-						<tr>
-							<td>MongoDB</td>
-							<td>3.0.4</td>
-							<td>GNU Affero General Public License Version 3.0</td>
-							<td>https://www.mongodb.org/about/licensing/</td>
-							<td>https://www.mongodb.org/</td>
-							<td>Caching</td>
-						</tr>
-						<tr>
-							<td>Git</td>
-							<td>1.9.5</td>
-							<td>GNU General Public License version 2.0</td>
-							<td>https://git-scm.com/about/free-and-open-source/</td>
-							<td>https://git-scm.com/</td>
-							<td>Development</td>
-						</tr>
-						<tr>
-							<td>Jenkins</td>
-							<td>1.617</td>
-							<td>MIT Licensed</td>
-							<td>https://jenkins-ci.org/mit-license</td>
-							<td>https://jenkins-ci.org/</td>
-							<td>Continuous Integrated Builds</td>
-						</tr>
-						<tr>
-							<td>SonarQube</td>
-							<td>5.1.1</td>
-							<td>GNU Lesser GPL License, Version 3</td>
-							<td>http://www.gnu.org/licenses/lgpl.txt</td>
-							<td>http://www.sonarqube.org/</td>
-							<td>Code Quality Scan</td>
-						</tr>
-					</table>
-				</div>
-			</div>
 		</div>
 		<div class="col-xs-2"></div>
 	</div>
@@ -196,14 +67,17 @@
 	<div class="container-fluid"
 		style="padding-left: 10px; padding-right: 10px;">
 		<div class="row">
-			<div class="disclaimer col-xs-10 col-md-11">We're in beta!
-				Medicine Explorer is a beta research project and not for clinical
-				use.</div>
-			<div class="col-xs-2 col-md-1 pull-right">
-				<a ui-sref="home.about" class="footerlink"> <span
-					style="text-align: right"> About </span>
-				</a>
+			<div class="disclaimer col-xs-12">
+				We're in beta! Medicine Explorer is a beta research project and not
+				for clinical use.
+
+				<div class="pull-right">
+					<a ui-sref="home.about" class="footerlink">About this site</a>
+					&nbsp;&nbsp;| <a ui-sref="home.license" class="footerlink">License</a>
+				</div>
+
 			</div>
+
 		</div>
 	</div>
 </div>

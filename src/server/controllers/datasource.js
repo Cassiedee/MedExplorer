@@ -218,25 +218,25 @@ exports.recentRecalls = function(num, callback) {
 //		console.log(dateRangeQuery + ' ' + dateRange);
 		retriveFromCache(options.path, function(data){
 			if(data){
-				console.log('cache hit!!');
-                                if(data.resStatusCode == 404) {
-                                    callback(200, null, data);
-                                }
-                                else {
-                                  if(data.results) {
-                                    if(data.results.length < num) {
-                                            dateRange *= 1.5;
-                                            fetchloop();
-                                    }
-                                    else if(data.results.length >= 100) {
-                                            dateRange *= 0.75;
-                                            fetchloop();
-                                    }
-                                    else {
-                                      callback(data.resStatusCode, data.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
-                                    }
-                                  }
-                                }
+				console.log('fetchloop cache hit!!');
+				if(data.resStatusCode == 404) {
+					callback(200, null, data);
+				}
+				else {
+				  if(data.results) {
+					if(data.results.length < num) {
+							dateRange *= 1.5;
+							fetchloop();
+					}
+					else if(data.results.length >= 100) {
+							dateRange *= 0.75;
+							fetchloop();
+					}
+					else {
+					  callback(data.resStatusCode, data.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+					}
+				  }
+				}
 			} else {
 				console.log('fetchloop cache miss!!');
 				req = protocol.request(options, function(res) {

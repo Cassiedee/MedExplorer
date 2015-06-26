@@ -1,16 +1,21 @@
 <!-- # Copyright (c) 2015 Norhtrop Grumman Systems Corporation. All Rights Reserved. -->
 <div class="container-fluid tab-container">
+<ol class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': result.openfda.brand_name[0], 'limit': 30})">
+  {{result.openfda.brand_name[0] | title}}</a></li>
+  <li class="active">{{tabName}}</li>
+</ol>
   <div class="row drugdetailheader">
-    <span class="drugtitle col-xs-12"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
   </div>
 
   <div class="row tab-row">
     <div class="tab col-xs-12" id="general-info-tab">
       <ul class="nav nav-tabs">
         <li ng-class="{active:isSelected(1), 'general-info-tab-li-border':isSelected(1)}" class="general-info-tab-li"
-          id="general-info-tab1"><a href ng-click="selectTab(1)">General Info</a></li>
+          id="general-info-tab1"><a href ng-click="selectTab(1, 'General Info')">General Info</a></li>
         <li ng-class="{active:isSelected(2), 'general-info-tab-li-border':isSelected(2)}" class="general-info-tab-li"
-          id="general-info-tab2"><a href ng-click="selectTab(2)">Warnings</a></li>
+          id="general-info-tab2"><a href ng-click="selectTab(2, 'Warnings')">Warnings</a></li>
       </ul>
     </div>
   </div>

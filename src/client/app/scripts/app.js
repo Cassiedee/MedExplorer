@@ -66,7 +66,7 @@ angular
           }
         },
         params: {
-          drugDetails: null,
+          drugDetails: null
         }
       })
       .state('home.recalldetails', {
@@ -81,7 +81,7 @@ angular
           }
         },
         params: {
-          recallList: null,
+          recallList: null
         }
       })
       .state('home.about', {
@@ -93,6 +93,18 @@ angular
           'main@': {
             controller: 'MainController',
             templateUrl: 'views/about.html'
+          }
+        }
+      })
+       .state('home.license', {
+        url: 'liense',
+        views: {
+        'side-panel@home': {
+          template: ''
+        },
+          'main@': {
+            controller: 'MainController',
+            templateUrl: 'views/license.html'
           }
         }
       });

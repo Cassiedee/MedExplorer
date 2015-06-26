@@ -23,23 +23,34 @@
 </div>
 <div class="container-fluid">
   <div class="row">
+    <div class="col-xs-12">
+      <p style="margin:10px; color:#0d283d;">
+	    Medicine Explorer is a tool for the general public to search for information on pharmaceuticals performance so they can make better health decisions.  We provide searchable information and trends on pharmaceuticals and adverse effects.  Simply enter the name of your drug into the search field above to begin.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
     <div ui-view="side-panel"></div>
     <div ui-view="content"></div>
   </div>
 </div>
 <div class="footer majorsiteinfo">
-	<div class="container-fluid" style="padding-left:10px;padding-right:10px;">
+	<div class="container-fluid"
+		style="padding-left: 10px; padding-right: 10px;">
 		<div class="row">
-			<div class="disclaimer col-xs-10 col-md-11">
-				We're in beta! Medicine Explorer is a beta research project and not for clinical use.
+			<div class="disclaimer col-xs-12">
+				We're in beta! Medicine Explorer is a beta research project and not
+				for clinical use.
+
+				<div class="pull-right">
+					<a ui-sref="home.about" class="footerlink">About this site</a>
+					&nbsp;&nbsp;| <a ui-sref="home.license" class="footerlink">License</a>
+				</div>
+
 			</div>
-			<div class="col-xs-2 col-md-1 pull-right">
-				<a ui-sref="home.about" class="footerlink">
-					<span style="text-align:right">
-						About
-					</span>
-				</a>
-			</div>
+
 		</div>
 	</div>
 </div>
