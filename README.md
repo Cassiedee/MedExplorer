@@ -1,4 +1,4 @@
-Publicly-available URL to prototype: Publicly-available URL to prototype: <a href="http://medexplorer.northropgrumman.com" target="_blank">http://medexplorer.northropgrumman.com</a>
+Publicly-available URL to prototype: (<a href="http://medexplorer.northropgrumman.com" target="_blank">http://medexplorer.northropgrumman.com</a>)
 # ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
 ![Agile User Centered Approach](docs/Diagrams/Agile User Centered%20Approach.png)
 
