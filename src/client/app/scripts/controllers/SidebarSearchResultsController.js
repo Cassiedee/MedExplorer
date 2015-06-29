@@ -12,38 +12,41 @@ angular.module('MedExplorer')
       $scope.distributionTypes = {};
       var unknown_dosage_form = 0;
       var unknown_dist_type = 0;
-      $scope.results.forEach(function(drug) {
-        var dosage_forms = drug.openfda.dosage_form;
-        if(dosage_forms) {
-          dosage_forms.forEach(function(form) {
-            if(!$scope.dosageForms[form]) {
-              $scope.dosageForms[form] = 1;
-            }
-            else {
-              $scope.dosageForms[form]++;
-            }
-          });
-        }
-        else {
-          unknown_dosage_form++;
-        }
+	  if($scope.results){
+		$scope.results.forEach(function(drug) {
+			var dosage_forms = drug.openfda.dosage_form;
+			if(dosage_forms) {
+			  dosage_forms.forEach(function(form) {
+				if(!$scope.dosageForms[form]) {
+				  $scope.dosageForms[form] = 1;
+				}
+				else {
+				  $scope.dosageForms[form]++;
+				}
+			  });
+			}
+			else {
+			  unknown_dosage_form++;
+			}
 
-        var product_type = drug.openfda.product_type;
-        if(product_type) {
-          product_type.forEach(function(type) {
-            type = type.toLowerCase().replace('otc', 'OTC');
-            if(!$scope.distributionTypes[type]) {
-              $scope.distributionTypes[type] = 1;
-            }
-            else {
-              $scope.distributionTypes[type]++;
-            }
-          });
-        }
-        else {
-          unknown_dist_type++;
-        }
-      });
+			var product_type = drug.openfda.product_type;
+			if(product_type) {
+			  product_type.forEach(function(type) {
+				type = type.toLowerCase().replace('otc', 'OTC');
+				if(!$scope.distributionTypes[type]) {
+				  $scope.distributionTypes[type] = 1;
+				}
+				else {
+				  $scope.distributionTypes[type]++;
+				}
+			  });
+			}
+			else {
+			  unknown_dist_type++;
+			}
+		  });
+	  }
+      
       $scope.dosageForms['Unknown'] = unknown_dosage_form;
       $scope.distributionTypes['Unknown'] = unknown_dist_type;
     });

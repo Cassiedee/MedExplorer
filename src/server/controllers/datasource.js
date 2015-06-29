@@ -19,7 +19,7 @@ exports.getTrendingDrugs = function(callback) {
         if(err) {
           console.log(err);
         }
-        else if (db != 'undefined')
+        else if (db === 'undefined') {
           console.log("WARNING: db is undefined!");
         }
         else {
@@ -90,7 +90,7 @@ exports.setTrendingDrugs = function(body) {
     if(err) {
       console.log(err);
     }
-    else if (db != 'undefined')
+    else if (db === 'undefined') {
       console.log("WARNING: db is undefined!");
     }
     else {
@@ -334,7 +334,7 @@ function retriveFromCache(query, callback) {
     if (err) {
         console.log(err);
     } 
-    else if (db != 'undefined')
+    else if (db === 'undefined') {
       console.log("WARNING: db is undefined!");
     }
     else {
@@ -382,7 +382,7 @@ function insertIntoCache(query, result) {
       if(err) {
         console.log(err);
       }
-      else if (db != 'undefined') {
+      else if (db === 'undefined') {
         console.log("WARNING: db is undefined!");
       }
       else {
