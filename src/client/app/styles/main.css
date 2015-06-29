@@ -218,7 +218,7 @@ a, a:focus, a:active {
 }
 
 /*~10% brighter than normal*/
-div .recall-background:hover{
+/*div .recall-background:hover{
 	background-image: repeating-linear-gradient(30deg, 
 		#a65632, #a65632 16px,
 		#f27a3b 17px, #f27a3b 32px,
@@ -227,7 +227,7 @@ div .recall-background:hover{
 
 .majorsiteinfolink:hover{
 	background-color:#1D384D
-}
+}*/
 
 .recall-horizontal-background {
 	background-image: repeating-linear-gradient(-60deg, 
@@ -667,4 +667,9 @@ border: none;
 
 .extra-bottom-margin {
   margin-bottom: 50px;
+}
+
+.btn-group .btn {
+  font-size: 12px;
+  margin-bottom:5px;
 }

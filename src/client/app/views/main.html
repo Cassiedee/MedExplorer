@@ -25,7 +25,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div ui-view="breadcrumbs"></div>
+    <div ncy-breadcrumb></div>
   </div>
   <div class="row">
     <div ui-view="side-panel"></div>
@@ -41,8 +41,8 @@
 				for clinical use.
 
 				<div class="pull-right">
-					<a ui-sref="home.about" class="footerlink">About this site</a>
-					&nbsp;&nbsp;| <a ui-sref="home.license" class="footerlink">License</a>
+                                  <a ui-sref="home.about({'breadCrumbName': 'About'})" class="footerlink">About this site</a>
+                                  &nbsp;&nbsp;| <a ui-sref="home.license({'breadCrumbName': 'License'})" class="footerlink">License</a>
 				</div>
 
 			</div>

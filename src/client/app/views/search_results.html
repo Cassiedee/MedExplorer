@@ -5,19 +5,19 @@
       <div class="titlebox">
         <h3 class="trendingdrug jumbotron-title">Results for: "{{searchTerm | title}}"</h3>
       </div>
-      <div class="list-group results-list no-padding" scrollable-div="992">
+      <div class="list-group results-list no-padding"><!-- scrollable-div="992"-->
         <div dir-paginate="result in results | itemsPerPage: 10">
           <div class="list-group-item container-fluid jumbotron results-list-item" style="padding-left:0px; padding-top:0px; padding-bottom:0px;" id="results-list-style">
-            <a class="no-top-bottom-margin" ui-sref="home.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result, tabName:'General Info'})">
+            <div class="no-top-bottom-margin">
               <div style="padding:3px;" class="jumbotron-title majorsiteinfo majorsiteinfolink no-top-bottom-margin" style="padding-left:25px;padding-right:25px;">
                 <h3 class="no-top-bottom-margin">{{result.openfda.brand_name[0] | title}}</h3>
               </div>
-            </a>
-            <a class="recall-bar-link" ng-show="result.has_ongoing_recalls" ui-sref="home.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})">
+            </div>
+            <div class="recall-bar-link" ng-show="result.has_ongoing_recalls">
               <div style="margin-top:0px;" class="jumbotron-title recall-background" style="padding-left:25px;padding-right:25px;">
                 <h3 style="margin-top:0px; text-align:center;">RECALL</h3>
               </div>
-            </a>
+            </div>
             <div>
               <div class="col-xs-12">
                 <div class="row" style="padding-left:25px;padding-right:25px;">
@@ -50,12 +50,10 @@
                         <span class="col-xs-8 search-result"><h5 ng-text-truncate="result.indications_and_usage[0] | sentence" ng-tt-chars-threshold="120" ng-tt-more-label=" More" ng-tt-less-label=" Less"></h5></span>
                       </div>
                     </p>
-                    <p class="list-group-item-text">
-                      <div class="row">
-                        <span class="col-xs-4"> </span>
-                        <span class="col-xs-8"> </span>
-                      </div>
-                    </p>
+                    <div class="btn-group">
+                      <a class="btn btn-default btn-sm" ui-sref="home.search.drugdetails({spl_id:result.openfda.spl_id, drugDetails:result, tabName:'General Info'})">More details</a>
+                      <a class="btn btn-danger btn-sm" ui-sref="home.search.recalldetails({spl_id:result.openfda.spl_id, recallList:result.recalls})" ng-if="result.has_ongoing_recalls">See recalls</a> 
+                    </div>
                 </div>
               </div>
             </div>

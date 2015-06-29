@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('MedExplorer')
-  .controller('SearchResultsController', ['$scope', '$rootScope', '$stateParams', 'searchResultsFactory', function($scope, $rootScope, $stateParams, searchResultsFactory) {
+  .controller('SearchResultsController', ['$scope', '$rootScope', '$filter', '$stateParams', 'searchResultsFactory', function($scope, $rootScope, $filter, $stateParams, searchResultsFactory) {
+    $scope.value = $filter('title')($stateParams.value);
     $scope.results = [];
     $scope.searchTerm = $stateParams.value;
     searchResultsFactory.executeSearch($stateParams.source,

@@ -2,7 +2,8 @@
 'use strict';
 
 angular.module('MedExplorer')
-  .controller('MainController', ['$scope', '$state', '$filter', function ($scope, $state, $filter) {
+  .controller('MainController', ['$scope', '$state', '$stateParams', '$filter', function ($scope, $state, $stateParams, $filter) {
+    $stateParams.breadCrumbName = 'Home';
     $scope.update = function() {
     	//alert('button pressed: ' + $scope.search.value);
     	$state.go('home.search', {
@@ -10,7 +11,8 @@ angular.module('MedExplorer')
           'type': 'label',
           'field': 'openfda.brand_name',
           'value': $filter('title')($scope.search.value),
-          'limit': 25
+          'limit': 25,
+          'breadCrumbName': $filter('title')($scope.search.value)
         });
       };
   }]);

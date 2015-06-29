@@ -10,39 +10,44 @@ exports.getTrendingDrugs = function(callback) {
   //Read trending_drugs into memory
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
-    var collection = db.collection('trending_drugs');
-    collection.count(function (err, count) {
-      if (!err && count === 0) {
-        fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
-          data = JSON.parse(data.toLowerCase());
-          if(err)
-            callback(500, null, err);
-          else
-            callback(200, data, null);
-          var array = [];
-          for(var prop in data.prescription) {
-            data.prescription[prop].type = 'prescription';
-            array.push(data.prescription[prop]);
-          }
-          for(var prop in data.otc) {
-            data.otc[prop].type = 'otc';
-            array.push(data.otc[prop]);
-          }
-          collection.insert(array);
-          db.close();
-        });
-      }
-      else if(!err & count != 0) {
-        var results = {};
-        collection.find({type: 'otc'}).toArray(function(err, items1) {
-          results.otc = items1.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
-          collection.find({type: 'prescription'}).toArray(function(err, items2) {
-            results.prescription = items2.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
-            callback(200, results, null);
+    if(err) {
+      console.log(err);
+    }
+    else {
+      var collection = db.collection('trending_drugs');
+      collection.count(function (err, count) {
+        if (!err && count === 0) {
+          fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
+            data = JSON.parse(data.toLowerCase());
+            if(err)
+              callback(500, null, err);
+            else
+              callback(200, data, null);
+            var array = [];
+            for(var prop in data.prescription) {
+              data.prescription[prop].type = 'prescription';
+              array.push(data.prescription[prop]);
+            }
+            for(var prop in data.otc) {
+              data.otc[prop].type = 'otc';
+              array.push(data.otc[prop]);
+            }
+            collection.insert(array);
+            db.close();
           });
-        });
-      }
-    });
+        }
+        else if(!err & count != 0) {
+          var results = {};
+          collection.find({type: 'otc'}).toArray(function(err, items1) {
+            results.otc = items1.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
+            collection.find({type: 'prescription'}).toArray(function(err, items2) {
+              results.prescription = items2.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
+              callback(200, results, null);
+            });
+          });
+        }
+      });
+    }
   });
 };
 
@@ -50,15 +55,20 @@ exports.getTrendingDrugs = function(callback) {
 exports.setTrendingDrugs = function(body) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
-    var collection = db.collection('trending_drugs');
-    collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
-      if(!item) {
-        collection.insert({'type': body.type, 'name': body.name, 'count': 0});
-      }
-      collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
-        db.close();
+    if(err) {
+      console.log(err);
+    }
+    else {
+      var collection = db.collection('trending_drugs');
+      collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
+        if(!item) {
+          collection.insert({'type': body.type, 'name': body.name, 'count': 0});
+        }
+        collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
+          db.close();
+        });
       });
-    });
+    }
   });
 };
 
@@ -270,27 +280,31 @@ var twentyFourHoursInMillis = 86400000;
 function retriveFromCache(query, callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
-    var collection = db.collection("medicine_explorer");
-    // Fetch the document
-    console.log(query);
-    collection.findOne({ mongoKey: query }, function(err, item) {
-      var data = item;
+    if (err) {
+        console.log(err);
+    } else {
+      var collection = db.collection("medicine_explorer");
+      // Fetch the document
+      console.log(query);
+      collection.findOne({ mongoKey: query }, function(err, item) {
+        var data = item;
 
-      //if data is more than 24 hours old clear the cache of all objects
-      //that are more than 24 hours old
-      if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
-        console.log('Record found but too old');
-        cleanCache(collection);
-        data = null;
-      }
-      if(data){
-        if(!data.resStatusCode) {
-          data.resStatusCode = 200;
+        //if data is more than 24 hours old clear the cache of all objects
+        //that are more than 24 hours old
+        if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
+          console.log('Record found but too old');
+          cleanCache(collection);
+          data = null;
         }
-      }
-      callback(data);
-      db.close();
-    });
+        if(data){
+          if(!data.resStatusCode) {
+            data.resStatusCode = 200;
+          }
+        }
+        callback(data);
+        db.close();
+      });
+    }
   });
 };
 
@@ -305,12 +319,17 @@ function insertIntoCache(query, result) {
   if(result.resStatusCode < 400) {
     var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
     db.open(function(err, db) {
-      var collection = db.collection("medicine_explorer");
+      if(err) {
+        console.log(err);
+      }
+      else {
+        var collection = db.collection("medicine_explorer");
 
-      result.insertTime = new Date();
-      result.mongoKey = query;
-      collection.insert(result);
-      db.close();
+        result.insertTime = new Date();
+        result.mongoKey = query;
+        collection.insert(result);
+        db.close();
+      }
     });
   }
 };

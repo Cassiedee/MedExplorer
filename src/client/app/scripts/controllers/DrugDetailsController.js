@@ -9,14 +9,15 @@
  * Controller of the MedExplorer
  */
 angular.module('MedExplorer')
-  .controller('DrugDetailsController', ['$scope', '$http','$state', '$stateParams', '$sce', function($scope, $http, $state, $stateParams, $sce) {
+  .controller('DrugDetailsController', ['$scope', '$http', '$filter', '$state', '$stateParams', '$sce', function($scope, $http, $filter, $state, $stateParams, $sce) {
         $scope.tab = 1;
         $scope.drugname = $state.params.name;
+        $scope.value = $filter('title')($stateParams.value);
         $scope.commonDrugsDuringAdverseEvent = {};
         $scope.commonDrugsPieChartData = [];
         $scope.pieChartDataIsHere = function() {
           return $scope.commonDrugsPieChartData.length > 0;
-        }
+        };
 
         if($stateParams.drugDetails) {
           $scope.result = $stateParams.drugDetails;
@@ -37,8 +38,8 @@ angular.module('MedExplorer')
         }
 
         function onDrugDetailsArrived() {
-          console.log('detail result ');
-          console.log($scope.result);
+          //console.log('detail result ');
+          //console.log($scope.result);
 
           if($scope.result ) {
             if(!$scope.events) {
@@ -58,7 +59,7 @@ angular.module('MedExplorer')
               onDrugEventsArrived();
             }
 
-   //         console.log('indications: ' + $scope.result.indications_and_usage[0])
+            //console.log('indications: ' + $scope.result.indications_and_usage[0])
             $scope.indicationListArray = dataSplitter($scope.result.indications_and_usage[0]);
             if($scope.result.contraindications){
             $scope.contraindicationListArray = dataSplitter($scope.result.contraindications[0]);
@@ -67,7 +68,7 @@ angular.module('MedExplorer')
             }
             if( $scope.result.drug_abuse_and_dependence){
             $scope.abuseListArray = $scope.result.drug_abuse_and_dependence[0];
-            console.log($scope.indicationListArray);
+            //console.log($scope.indicationListArray);
             } else {
               $scope.abuseListArray = {};
             }
@@ -79,11 +80,7 @@ angular.module('MedExplorer')
 
           $scope.tabName = $state.params.tabName?$state.params.tabName:'General Info';
           $scope.tab = $scope.tabName=='General Info'?1:2;
-          $scope.selectTab = function (setTab, tabName){
-              $scope.tab = setTab;
-              $scope.tabName = tabName;
-              $state.go('home.drugdetails', {'tabName':tabName},{'inherit':true});
-          };
+
           $scope.isSelected = function(checkTab) {
               return $scope.tab === checkTab;
           };

@@ -9,7 +9,8 @@
  * Controller of the MedExplorer
  */
 angular.module('MedExplorer')
-  .controller('RecallDetailsController', ['$scope', '$http','$state', '$stateParams', function($scope, $http, $state, $stateParams) {
+  .controller('RecallDetailsController', ['$scope', '$http', '$filter', '$state', '$stateParams', function($scope, $http, $filter, $state, $stateParams) {
+    $scope.value = $filter('title')($stateParams.value);
     if($stateParams.recallDetails) {
       $scope.recallList = $stateParams.recallList;
     }

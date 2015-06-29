@@ -21,7 +21,8 @@ angular
     'ngLodash',
     'angularUtils.directives.dirPagination',
     'ui.bootstrap',
-    'alv-ch-ng.text-truncate'
+    'alv-ch-ng.text-truncate',
+    'ncy-angular-breadcrumb'
   ]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
@@ -31,26 +32,17 @@ angular
             controller: 'MainController',
             templateUrl: 'views/main.html'
           },
-          'breadcrumbs@home': {
-              controller: 'BreadCrumbsController',
-              templateUrl: 'views/breadcrumbs.html'
-            },
-            'side-panel@home': {
+          'side-panel@home': {
                 controller: 'SidebarRecentRecallsController',
                 templateUrl: 'views/sidebar_recent_recalls.html'
-              },
+          },
           'content@home': {
                 controller: 'TrendingTableController',
                 templateUrl: 'views/trendingtable.html'
           }
         },
-        params: {
-    	  value: null,
-          source: null,
-          type: null,
-          field: null,
-          limit: null,
-          tabName: null
+        ncyBreadcrumb: {
+            label: 'Home'
         }
       })
       .state('home.search', {
@@ -64,29 +56,35 @@ angular
             controller: 'SearchResultsController',
             templateUrl: 'views/search_results.html'
           }
+        },
+        ncyBreadcrumb: {
+          label: '{{value}}'
         }
       })      
-      .state('home.drugdetails', {
+      .state('home.search.drugdetails', {
         url: 'drugdetails?spl_id&tabName',
         views: {
-        'side-panel@home': {
-          template: ''
-        },
+          'side-panel@home': {
+            template: ''
+          },
           'content@home': {
             controller: 'DrugDetailsController',
             templateUrl: 'views/drugdetails.html'
           }
         },
         params: {
-          drugDetails: null
+          drugDetails: null,
+        },
+        ncyBreadcrumb: {
+          label: '{{tabName}}'
         }
       })
-      .state('home.recalldetails', {
+      .state('home.search.recalldetails', {
         url: 'recalldetails?spl_id',
         views: {
           'side-panel@home': {
-          template: ''
-        },
+            template: ''
+          },
           'content@home': {
             controller: 'RecallDetailsController',
             templateUrl: 'views/recall_details.html'
@@ -94,30 +92,55 @@ angular
         },
         params: {
           recallList: null
+        },
+        ncyBreadcrumb: {
+          label: 'Recalls'
+        }
+      })
+      .state('home.recalldetails', {
+        url: 'recalldetails?spl_id',
+        views: {
+          'side-panel@home': {
+            template: ''
+          },
+          'content@home': {
+            controller: 'RecallDetailsController',
+            templateUrl: 'views/recall_details.html'
+          }
+        },
+        params: {
+          recallList: null
+        },
+        ncyBreadcrumb: {
+          label: 'Recalls'
         }
       })
       .state('home.about', {
         url: 'about',
         views: {
-        'side-panel@home': {
-          template: ''
-        },
-          'main@': {
-            controller: 'MainController',
+          'side-panel@home': {
+            template: ''
+          },
+          'content@home': {
             templateUrl: 'views/about.html'
           }
+        },
+        ncyBreadcrumb: {
+            label: 'About'
         }
       })
        .state('home.license', {
-        url: 'liense',
+        url: 'license',
         views: {
-        'side-panel@home': {
-          template: ''
-        },
-          'main@': {
-            controller: 'MainController',
+          'side-panel@home': {
+            template: ''
+          },
+          'content@home': {
             templateUrl: 'views/license.html'
           }
+        },
+        ncyBreadcrumb: {
+          label: 'License'
         }
       });
 
