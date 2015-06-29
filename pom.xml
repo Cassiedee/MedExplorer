@@ -30,6 +30,9 @@
         <sonar.exclusions>
         </sonar.exclusions>
         <sonar.sources>src</sonar.sources>
+        <sonar.javascript.lcov.reportPath>
+            src/server/coverage/lcov.info
+        </sonar.javascript.lcov.reportPath>
     </properties>
 
     

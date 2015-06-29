@@ -54,3 +54,12 @@ describe('REST API Test Suite', function()
 	    test.assert.equal(res.error, undefined);
   });
 });
+
+/*
+describe('controllers test suite', function()
+{
+
+  it('search_test', function() {}
+  
+});
+ */
