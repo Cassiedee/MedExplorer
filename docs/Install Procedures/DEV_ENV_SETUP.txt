@@ -1,4 +1,4 @@
-1)  clone git project from git.triad.local/NorthropGrumman/FDAExplorer
+1)  clone git project from git.triad.local/NorthropGrumman/MedExplorer
 
 2)  install node from https://nodejs.org
       -- this will install node and npm (node package manager)
@@ -26,30 +26,23 @@
 
 7)  cd to the "src/client" directory and run "npm install && bower install"
 
-8)  to build the front end, you must cd to the "src/client" directory
-    and run "grunt"
+8)  to build/update the front end, you must cd to the "src/client" directory
+    and run "quick_update.bat"
       -- this will compile all of the front end files into the
           "src/server/dist" folder
 
 9)  to run the node server, cd to the "src/server" directory and
-    run "nodemon app.js". Then visit "http://localhost:80" in your browser.
+    run "start_node.bat". Then visit "http://localhost:3000" in your browser.
       -- this starts the node server, which hosts the front end out of the
           "src/server/dist" folder onto localhost over port 3000
 
 NOTE: nodemon will re-deploy the node server when any changes are made,
       automatically
       
-      while developing the client, you can use grunt to host and update any
-      changes you make to the front end code, automatically. To do this, cd
-      to the "src/client" directory and run "grunt serve". This should open
-      a window in your browser at "localhost:9000". This window will
-      automatically refresh when changes are made! When you are finished
-      developing,  run "update.bat" to update your front-end changes on 
-      the node server.
-
-      "grunt serve" hosts the client on "localhost:9000" completely separate
-      from the node server, so these changes will not show up on
-      "localhost:80" until you run "update.bat"
+      While developing the client, you can use grunt to host and update any
+      changes you make to the front end code. To do this, cd
+      to the "src/client" directory and run "quick_update.bat" to update
+	  your front-end changes on the node server.
 
 10) cd to the src/server directory
 	install mongodb with the command "npm install mongodb"
