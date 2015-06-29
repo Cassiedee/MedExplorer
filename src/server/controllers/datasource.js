@@ -12,12 +12,15 @@ exports.getTrendingDrugs = function(callback) {
   db.open(function(err, db) {
     if(err) {
       console.log(err);
-    }
+    } 
     else {
       var collection = db.collection('trending_drugs');
       collection.count(function (err, count) {
         if(err) {
           console.log(err);
+        }
+        else if (db != 'undefined')
+          console.log("WARNING: db is undefined!");
         }
         else {
           if (count === 0) {
@@ -87,6 +90,9 @@ exports.setTrendingDrugs = function(body) {
     if(err) {
       console.log(err);
     }
+    else if (db != 'undefined')
+      console.log("WARNING: db is undefined!");
+    }
     else {
       var collection = db.collection('trending_drugs');
       collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
@@ -120,11 +126,11 @@ var options = {
 };
 
 /*
-*  datasource should be drug, device, or food
-*  type should be event, label, or enforcement
-*  this search pass all results into the callback funciton,
-*    where the value of field matches value for each result
-*/
+ *  datasource should be drug, device, or food
+ *  type should be event, label, or enforcement
+ *  this search pass all results into the callback function,
+ *  where the value of field matches value for each result
+ */
 exports.search = function(datasource, type, field, value, terms, limit, callback) {
   try {
     options.method = 'GET';
@@ -144,7 +150,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
     else {
       options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
     }
-    //console.log(options.path);
+    console.log('options.path: ' + options.path);
 
     var result = {};
     retriveFromCache(options.path, function(data){
@@ -260,7 +266,7 @@ exports.recentRecalls = function(num, callback) {
   function fetchloop(dateRange, counter) {
     var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
     options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-    //console.log(options.path);
+    console.log('options.path: ' + options.path);
     retriveFromCache(options.path, function(data) {
       if(data) {
         console.log('fetchloop cache hit!!');
@@ -326,9 +332,14 @@ function retriveFromCache(query, callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if (err) {
-      console.log(err);
+        console.log(err);
+    } 
+    else if (db != 'undefined')
+      console.log("WARNING: db is undefined!");
     }
     else {
+      
+      console.log('type of db: ' + typeof db);
       var collection = db.collection("medicine_explorer");
       // Fetch the document
       console.log(query);
@@ -371,6 +382,9 @@ function insertIntoCache(query, result) {
       if(err) {
         console.log(err);
       }
+      else if (db != 'undefined') {
+        console.log("WARNING: db is undefined!");
+      }
       else {
         var collection = db.collection("medicine_explorer");
 
@@ -382,3 +396,7 @@ function insertIntoCache(query, result) {
     });
   }
 };
+
+
+module.exports.retriveFromCache = retriveFromCache;
+module.exports.insertIntoCache = insertIntoCache;

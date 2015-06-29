@@ -2,6 +2,8 @@
 var test = require('unit.js');
 var rest = require('../routes/REST.js');
 
+var controller = require('../controllers/datasource.js');
+
 
 describe('REST API Test Suite', function()
 {
@@ -82,5 +84,29 @@ describe('REST API Test Suite', function()
 	    test.assert.equal(res.status, undefined);
 	    test.assert.equal(res.response, null);
 	    test.assert.equal(res.error, undefined);
+  });
+});
+
+
+
+describe('controllers test suite', function()
+{
+
+  it('retriveFromCache_test', function() {
+      //just call it to make sure it executes right
+
+      var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
+      var callback = function(data) {};
+
+      controller.retriveFromCache(query,callback);
+  });
+
+  it('retriveFromCache_test', function() {
+      //just call it to make sure it executes right
+
+      var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
+      var callback = function(data) {};
+
+      controller.insertIntoCache(query,callback);
   });
 });
