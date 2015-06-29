@@ -73,7 +73,7 @@ angular
           }
         },
         params: {
-          drugDetails: null,
+          drugDetails: null
         },
         ncyBreadcrumb: {
           label: '{{tabName}}'

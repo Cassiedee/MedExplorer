@@ -39,6 +39,7 @@ module.exports = function(config) {
       'app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
       'app/assets/alv-ch-ng.text-truncate/dist/alv-ch-ng.textTruncate.js',
       'app/assets/angular-utils-pagination/dirPagination.js',
+      "angular-breadcrumb": "~0.4.0",
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",

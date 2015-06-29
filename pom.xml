@@ -30,6 +30,14 @@
         <sonar.exclusions>
         </sonar.exclusions>
         <sonar.sources>src</sonar.sources>
+
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+
+        <sonar.javascript.jstest.reportsPath>
+            src/client/test-results.xml,
+            src/server/test-results.xml
+        </sonar.javascript.jstest.reportsPath>
+
         <sonar.javascript.lcov.reportPath>
             src/server/coverage/lcov.info
         </sonar.javascript.lcov.reportPath>
