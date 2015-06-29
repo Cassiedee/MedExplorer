@@ -31,7 +31,7 @@
         </sonar.exclusions>
         <sonar.sources>src</sonar.sources>
 
-        <sonar.dynamicAnalysis>reuseReports<sonar.dynamicAnalysis>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 
         <sonar.javascript.jstest.reportsPath>
             src/client/test-results.xml,
