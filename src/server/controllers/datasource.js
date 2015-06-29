@@ -83,11 +83,11 @@ var options = {
 };
 
 /*
-*  datasource should be drug, device, or food
-*  type should be event, label, or enforcement
-*  this search pass all results into the callback funciton,
-*    where the value of field matches value for each result
-*/
+ *  datasource should be drug, device, or food
+ *  type should be event, label, or enforcement
+ *  this search pass all results into the callback function,
+ *  where the value of field matches value for each result
+ */
 exports.search = function(datasource, type, field, value, terms, limit, callback) {
   try {
     options.method = 'GET';
@@ -107,7 +107,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
     else {
       options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
     }
-    console.log(options.path);
+    console.log('options.path: ' + options.path);
 
     var result = {};
     retriveFromCache(options.path, function(data){
@@ -283,6 +283,8 @@ function retriveFromCache(query, callback) {
     if (err) {
         console.log(err);
     } else {
+      
+      console.log('type of db: ' + typeof db);
       var collection = db.collection("medicine_explorer");
       // Fetch the document
       console.log(query);
@@ -322,6 +324,9 @@ function insertIntoCache(query, result) {
       if(err) {
         console.log(err);
       }
+      else if (db != 'undefined') {
+        console.log("WARNING: db is undefined!");
+      }
       else {
         var collection = db.collection("medicine_explorer");
 
@@ -333,3 +338,7 @@ function insertIntoCache(query, result) {
     });
   }
 };
+
+
+module.exports.retriveFromCache = retriveFromCache;
+module.exports.insertIntoCache = insertIntoCache;
