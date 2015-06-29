@@ -66,3 +66,6 @@ src/server/npm-debug.log
 .metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
 .metadata/version.ini
 .project
+
+# Ignore coverage reports
+src/server/coverage
