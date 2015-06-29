@@ -326,14 +326,16 @@ function retriveFromCache(query, callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if (err) {
-        console.log(err);
-    } else {
+      console.log(err);
+    }
+    else {
       var collection = db.collection("medicine_explorer");
       // Fetch the document
       console.log(query);
       collection.findOne({ mongoKey: query }, function(err, item) {
         if(err) {
           console.log(err);
+        }
         else {
           var data = item;
 
