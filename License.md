@@ -44,6 +44,6 @@ Karma | 0.12.36 | MIT License | https://github.com/karma-runner/karma/blob/maste
 Karma-Jasmine | 0.3.5 | MIT License | https://github.com/karma-runner/karma-jasmine/blob/master/LICENSE | https://github.com/karma-runner/karma-jasmine | JavaScript Testing |
 Karma-Junit-Reporter | 0.2.2 | MIT License | https://github.com/karma-runner/karma-junit-reporter/blob/master/LICENSE | https://github.com/karma-runner/karma-junit-reporter | JavaScript Testing |
 Karma-Chrome-Launcher | 0.1 | MIT License | https://github.com/karma-runner/karma-chrome-launcher/blob/master/LICENSE | https://github.com/karma-runner/karma-chrome-launcher | JavaScript Testing |
-UnitJS | 2.0.0 | GNU Affero General Public License Version 3.0 | https://www.npmjs.com/package/unit.js |  https://nodejs.org/ | JavaScript Testing |
-Mocha | 2.2.5 | MIT License | https://jquery.org/license/ |  https://www.npmjs.com/package/mocha | JavaScript Testing |
+UnitJS | 2.0.0 | GNU Affero General Public License Version 3.0 | https://www.npmjs.com/package/unit.js | https://nodejs.org/ | JavaScript Testing |
+Mocha | 2.2.5 | MIT License | https://www.npmjs.com/package/mocha | https://nodejs.org/ | JavaScript Testing |
 

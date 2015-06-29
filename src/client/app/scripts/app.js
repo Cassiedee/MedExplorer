@@ -109,7 +109,7 @@ angular
         }
       })
        .state('home.license', {
-        url: 'liense',
+        url: 'license',
         views: {
         'side-panel@home': {
           template: ''
