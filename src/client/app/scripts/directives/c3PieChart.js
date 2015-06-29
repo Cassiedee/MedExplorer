@@ -8,14 +8,14 @@ angular.module('MedExplorer')
       scope: {
         data: '=c3PieChart'
       },
-      link: function(scope, element, attrs) {
+      link: function(scope, element) {
         scope.id = scope.id;
         var chart = c3.generate({
             bindto: element.id,
             data: {
                 columns: scope.data,
                 type : 'pie',
-                onclick: function (d, i) {
+                onclick: function (d) {
                   $state.go('home.search', {
                     'source': 'drug',
                     'type': 'label',
@@ -27,17 +27,23 @@ angular.module('MedExplorer')
             },
             pie: {
                 label: {
-                    format: function (value, ratio, id) { return value; }
+                    format: function (value) {
+                      return value;
+                    }
                 }
             },
             tooltip: {
                 format: {
-                    value: function (value, ratio, id) { return value; }
+                    value: function (value) {
+                      return value;
+                    }
                 }
             }
         });
 
-        scope.$watch(function() { return scope.data; }, function() {
+        scope.$watch(function() {
+          return scope.data;
+        }, function() {
           chart.load({
             columns: scope.data
           });

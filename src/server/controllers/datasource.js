@@ -12,39 +12,71 @@ exports.getTrendingDrugs = function(callback) {
   db.open(function(err, db) {
     if(err) {
       console.log(err);
-    }
+    } 
     else {
       var collection = db.collection('trending_drugs');
       collection.count(function (err, count) {
-        if (!err && count === 0) {
-          fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
-            data = JSON.parse(data.toLowerCase());
-            if(err)
-              callback(500, null, err);
-            else
-              callback(200, data, null);
-            var array = [];
-            for(var prop in data.prescription) {
-              data.prescription[prop].type = 'prescription';
-              array.push(data.prescription[prop]);
-            }
-            for(var prop in data.otc) {
-              data.otc[prop].type = 'otc';
-              array.push(data.otc[prop]);
-            }
-            collection.insert(array);
-            db.close();
-          });
+        if(err) {
+          console.log(err);
         }
-        else if(!err & count != 0) {
-          var results = {};
-          collection.find({type: 'otc'}).toArray(function(err, items1) {
-            results.otc = items1.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
-            collection.find({type: 'prescription'}).toArray(function(err, items2) {
-              results.prescription = items2.sort(function(a, b) { return b.count - a.count; }).slice(0, 20);
-              callback(200, results, null);
+        else if (db != 'undefined')
+          console.log("WARNING: db is undefined!");
+        }
+        else {
+          if (count === 0) {
+            fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
+              data = JSON.parse(data.toLowerCase());
+              if(err) {
+                callback(500, null, err);
+              }
+              else {
+                callback(200, data, null);
+              }
+              var array = [];
+              if(data && data.prescription) {
+                for(var prop in data.prescription) {
+                  if(data.prescription.hasOwnProperty(prop)) {
+                    data.prescription[prop].type = 'prescription';
+                    array.push(data.prescription[prop]);
+                  }
+                }
+              }
+              if(data && data.otc) {
+                for(var prop in data.otc) {
+                  if(data.otc.hasOwnProperty(prop)) {
+                    data.otc[prop].type = 'otc';
+                    array.push(data.otc[prop]);
+                  }
+                }
+              }
+              collection.insert(array);
+              db.close();
             });
-          });
+          }
+          else if(count !== 0) {
+            var results = {};
+            collection.find({type: 'otc'}).toArray(function(err, items1) {
+              if(err) {
+                console.log(err);
+              }
+              else {
+                results.otc = items1.sort(function(a, b) {
+                  return b.count - a.count;
+                }).slice(0, 20);
+                collection.find({type: 'prescription'}).toArray(function(err, items2) {
+                  if(err) {
+                    console.log(err);
+                  }
+                  else {
+                    results.prescription = items2.sort(function(a, b) {
+                      return b.count - a.count;
+                    }).slice(0, 20);
+                    callback(200, results, null);
+                  }
+                });
+              }
+            });
+          }
         }
       });
     }
@@ -58,15 +90,26 @@ exports.setTrendingDrugs = function(body) {
     if(err) {
       console.log(err);
     }
+    else if (db != 'undefined')
+      console.log("WARNING: db is undefined!");
+    }
     else {
       var collection = db.collection('trending_drugs');
       collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
-        if(!item) {
-          collection.insert({'type': body.type, 'name': body.name, 'count': 0});
+        if(err) {
+          console.log(err);
         }
-        collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
-          db.close();
-        });
+        else {
+          if(!item) {
+            collection.insert({'type': body.type, 'name': body.name, 'count': 0});
+          }
+          collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
+            if(err) {
+              console.log(err);
+            }
+            db.close();
+          });
+        }
       });
     }
   });
@@ -114,7 +157,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
       result.data = data;
       if(data){
         console.log('cache hit!!');
-        if(data.resStatusCode == 404) {
+        if(data.resStatusCode === 404) {
           callback(200, null, data);
         }
         else {
@@ -123,7 +166,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
       }
       else {
         console.log('cache miss!!');
-        var protocol = options.port == 443 ? https : http;
+        var protocol = options.port === 443 ? https : http;
         var req = protocol.request(options, function(res) {
           var output = '';
           res.setEncoding('utf8');
@@ -135,8 +178,8 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
           res.on('end', function() {
           try {
             var obj = JSON.parse(output);
-            obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
-            if(obj.resStatusCode == 404) {
+            obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+            if(obj.resStatusCode === 404) {
               callback(obj.resStatusCode, null, obj);
             }
             else {
@@ -194,14 +237,18 @@ function dateDecrement(yyyymmdd, num) {
 
 function dateFormat(yyyy, mm, dd) {
   var yyyymmdd = '' + yyyy;
-  if(mm < 10)
+  if(mm < 10) {
     yyyymmdd += '0' + mm;
-  else
+  }
+  else {
     yyyymmdd += '' + mm;
-  if(dd < 10)
+  }
+  if(dd < 10) {
     yyyymmdd += '0' + dd;
-  else
+  }
+  else {
     yyyymmdd += '' + dd;
+  }
   return yyyymmdd;
 }
 
@@ -212,7 +259,7 @@ exports.recentRecalls = function(num, callback) {
   var mm = today.getMonth() + 1;
   var yyyy = today.getFullYear();
   var yyyymmdd = dateFormat(yyyy, mm, dd);
-  var protocol = options.port == 443 ? https : http;
+  var protocol = options.port === 443 ? https : http;
   var req;
 
   fetchloop(30, 0);
@@ -223,7 +270,7 @@ exports.recentRecalls = function(num, callback) {
     retriveFromCache(options.path, function(data) {
       if(data) {
         console.log('fetchloop cache hit!!');
-        resultCheck(data.resStatusCode, data);
+        resultCheck(data);
       }
       else {
         console.log('fetchloop cache miss!!');
@@ -237,9 +284,9 @@ exports.recentRecalls = function(num, callback) {
 
           res.on('end', function() {
             var obj = JSON.parse(output);
-            obj.resStatusCode = res.statusCode == 404 ? 200 : res.statusCode;
-            insertIntoCache(options.path, obj)
-            resultCheck(obj.resStatusCode, obj);
+            obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+            insertIntoCache(options.path, obj);
+            resultCheck(obj);
           });
         });
         req.on('error', function(err) {
@@ -251,21 +298,25 @@ exports.recentRecalls = function(num, callback) {
       }
     });
 
-    function resultCheck(statusCode, results) {
+    function resultCheck(results) {
       if(counter < 25) {
-        if(results.results == undefined || results.results.length < num) {
+        if(results.results === undefined || results.results.length < num) {
           fetchloop(dateRange * 1.5, counter + 1);
         }
         else if(results.results.length >= 100) {
           fetchloop(dateRange * 0.75, counter + 1);
         }
         else {
-          callback(results.resStatusCode, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+          callback(results.resStatusCode, results.results.sort(function(a, b) {
+            return parseInt(b.report_date) - parseInt(a.report_date);
+          }).slice(0, num), null);
         }
       }
       else {
         if(results.results) {
-          callback(200, null, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
+          callback(200, null, results.results.sort(function(a, b) {
+            return parseInt(b.report_date) - parseInt(a.report_date);
+          }).slice(0, num));
         }
         else {
           callback(404, null, 'None found');
@@ -273,7 +324,7 @@ exports.recentRecalls = function(num, callback) {
       }
     };
   };
-}
+};
 
 var twentyFourHoursInMillis = 86400000;
 
@@ -282,29 +333,36 @@ function retriveFromCache(query, callback) {
   db.open(function(err, db) {
     if (err) {
         console.log(err);
-    } else {
+    } 
+    else if (db != 'undefined')
+      console.log("WARNING: db is undefined!");
+    }
+    else {
       
       console.log('type of db: ' + typeof db);
       var collection = db.collection("medicine_explorer");
       // Fetch the document
       console.log(query);
       collection.findOne({ mongoKey: query }, function(err, item) {
-        var data = item;
-
-        //if data is more than 24 hours old clear the cache of all objects
-        //that are more than 24 hours old
-        if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
-          console.log('Record found but too old');
-          cleanCache(collection);
-          data = null;
+        if(err) {
+          console.log(err);
         }
-        if(data){
-          if(!data.resStatusCode) {
+        else {
+          var data = item;
+
+          //if data is more than 24 hours old clear the cache of all objects
+          //that are more than 24 hours old
+          if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
+            console.log('Record found but too old');
+            cleanCache(collection);
+            data = null;
+          }
+          if(data && !data.resStatusCode) {
             data.resStatusCode = 200;
           }
+          callback(data);
+          db.close();
         }
-        callback(data);
-        db.close();
       });
     }
   });

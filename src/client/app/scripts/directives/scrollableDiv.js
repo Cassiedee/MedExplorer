@@ -8,7 +8,7 @@ angular.module('MedExplorer')
       scope: {
         minWidth: '=scrollableDiv'
       },
-      link: function(scope, element, attrs) {
+      link: function(scope, element) {
         var w = angular.element($window);
 
         var lazyListAutoHeight = lodash.debounce(function () {
@@ -16,8 +16,9 @@ angular.module('MedExplorer')
             var max = w.height() - element.offset().top;
             element.css('max-height', max - 75 + 'px');
           }
-          else
+          else {
             element.css('max-height', '');
+          }
           scope.$apply();
         }, 300);
 

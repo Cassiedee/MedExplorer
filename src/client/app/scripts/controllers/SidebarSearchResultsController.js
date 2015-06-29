@@ -6,7 +6,7 @@ angular.module('MedExplorer')
     $scope.results = [];
     $scope.searchTerm = $stateParams.value;
 
-    $scope.$on('searchResultsRetrieved', function(event, data) {
+    $scope.$on('searchResultsRetrieved', function() {
       $scope.results = searchResultsFactory.results;
       $scope.dosageForms = {};
       $scope.distributionTypes = {};
@@ -16,10 +16,12 @@ angular.module('MedExplorer')
         var dosage_forms = drug.openfda.dosage_form;
         if(dosage_forms) {
           dosage_forms.forEach(function(form) {
-            if(!$scope.dosageForms[form])
+            if(!$scope.dosageForms[form]) {
               $scope.dosageForms[form] = 1;
-            else
+            }
+            else {
               $scope.dosageForms[form]++;
+            }
           });
         }
         else {
@@ -30,10 +32,12 @@ angular.module('MedExplorer')
         if(product_type) {
           product_type.forEach(function(type) {
             type = type.toLowerCase().replace('otc', 'OTC');
-            if(!$scope.distributionTypes[type])
+            if(!$scope.distributionTypes[type]) {
               $scope.distributionTypes[type] = 1;
-            else
+            }
+            else {
               $scope.distributionTypes[type]++;
+            }
           });
         }
         else {

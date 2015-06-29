@@ -26,13 +26,9 @@ function search(req, res) {
     });
   }
   else {
-    datasource.search(req.query.source, 
-            req.query.type, 
-            req.query.field, 
-            req.query.value, 
-            req.query.terms, 
-            req.query.limit, function(status, data, error) {
-      if(status != 200) {
+
+    datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
+      if(status !== 200) {
         console.log({
           'response': data,
           'error': error
@@ -48,8 +44,9 @@ function search(req, res) {
 
 router.get('/REST/recentRecalls', recentRecalls);
 function recentRecalls(req, res) {
-  if(!req.query.num)
+  if(!req.query.num) {
     req.query.num = 10;
+  }
   datasource.recentRecalls(req.query.num, function(status, data, error) {
     res.status(status).json({
       'response': data,
@@ -73,6 +70,7 @@ function getTrendingDrugs(req, res) {
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
   datasource.setTrendingDrugs(req.body, function() {});
+  res.status(200).send('Done.');
 };
 
 module.exports = router;

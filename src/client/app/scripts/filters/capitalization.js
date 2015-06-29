@@ -31,14 +31,17 @@ angular.module('MedExplorer')
   .filter('title', function() {
     return function(input) {
       if(input) {
-        input = input.toLowerCase();
+        input = input.toLowerCase().split('\"').join('');;
         var words = input.split(' '),
             output = '';
-        for(var i in words) {
-            output += words[i].substring(0,1).toUpperCase() + words[i].substring(1);
+        if(words) {
+          for(var i = 0; i < words.length; i++) {
+            var word = words[i];
+            output += word.substring(0,1).toUpperCase() + word.substring(1);
             if(i < words.length - 1) {
               output += ' ';
             }
+          }
         }
         return output;
       }
@@ -48,13 +51,17 @@ angular.module('MedExplorer')
   .filter('titlePreserveUpper', function() {
     return function(input) {
       if(input) {
+        input = input.split('\"').join('');
         var words = input.split(' '),
             output = '';
-        for(var i in words) {
-            output += words[i].substring(0,1).toUpperCase() + words[i].substring(1);
+        if(words) {
+          for(var i = 0; i < words.length; i++) {
+            var word = words[i];
+            output += word.substring(0,1).toUpperCase() + word.substring(1);
             if(i < words.length - 1) {
               output += ' ';
             }
+          }
         }
         return output;
       }
