@@ -19,7 +19,7 @@ exports.getTrendingDrugs = function(callback) {
         if(err) {
           console.log(err);
         }
-        else if (db != 'undefined') {
+        else if (db === 'undefined') {
           console.log("WARNING: db is undefined!");
         }
         else {
@@ -90,7 +90,7 @@ exports.setTrendingDrugs = function(body) {
     if(err) {
       console.log(err);
     }
-    else if (db != 'undefined') {
+    else if (db === 'undefined') {
       console.log("WARNING: db is undefined!");
     }
     else {
@@ -266,7 +266,7 @@ exports.recentRecalls = function(num, callback) {
   function fetchloop(dateRange, counter) {
     var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
     options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-    console.log(options.path);
+    console.log('options.path: ' + options.path);
     retriveFromCache(options.path, function(data) {
       if(data) {
         console.log('fetchloop cache hit!!');
@@ -334,7 +334,7 @@ function retriveFromCache(query, callback) {
     if (err) {
         console.log(err);
     } 
-    else if (db != 'undefined') {
+    else if (db === 'undefined') {
       console.log("WARNING: db is undefined!");
     }
     else {
@@ -382,7 +382,7 @@ function insertIntoCache(query, result) {
       if(err) {
         console.log(err);
       }
-      else if (db != 'undefined') {
+      else if (db === 'undefined') {
         console.log("WARNING: db is undefined!");
       }
       else {

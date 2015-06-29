@@ -19,7 +19,7 @@
               </div>
             </div>
             <div>
-              <div class="col-xs-12">
+              <div class="col-xs-11">
                 <div class="row" style="padding-left:25px;padding-right:25px;">
                   <div class="row col-xs-12">
                     <p class="list-group-item-text">
@@ -57,6 +57,12 @@
                 </div>
               </div>
             </div>
+			<div ng-show="result.openfda.product_type[0] === 'HUMAN OTC DRUG'" class="col-xs-1">
+				<img src="images/otc-small.png" style="margin-top:20px;margin-left:-30px" alt="Over the counter" title="Over the counter">
+			</div>
+			<div ng-show="result.openfda.product_type[0] === 'HUMAN PRESCRIPTION DRUG'" class="col-xs-1">
+				<img src="images/rx-small.png" style="margin-top:20px;margin-left:-30px" alt="Over the counter" title="Over the counter">
+			</div>
           </div>
         </div>
       </div>
