@@ -8,9 +8,21 @@ describe('REST API Test Suite', function()
   it('search_test', function()
   {
     /* configure mock response object */
-    var res = {responseObj:null}; 
-    res.json = function(res) {this.responseObj = res;}
-    var req = {'query' : {'source' : 'drug', 'type' : 'label', 'field':'openfda.brand_name','value':'Tylenol','limit':30}};
+    var res = {
+      responseObj: null
+    }; 
+    res.json = function(res) {
+      this.responseObj = res;
+    };
+    var req = {
+      'query' : {
+        'source': 'drug',
+        'type': 'label',
+        'field': 'openfda.brand_name',
+        'value':'Tylenol',
+        'limit':30
+      }
+    };
     rest.functions.search(req,res);
     test.assert.equal(res.status, undefined);
     test.assert.equal(res.response, null);
@@ -20,8 +32,12 @@ describe('REST API Test Suite', function()
   it('getTrendingDrugs_test', function()
   {
     /* configure mock response object */
-	    var res = {responseObj:null}; 
-	    res.json = function(res) {this.responseObj = res;}
+	    var res = {
+              responseObj: null
+            }; 
+	    res.json = function(res) {
+              this.responseObj = res;
+            };
 	    var req = {};
 	    rest.functions.getTrendingDrugs(req,res);
 	    test.assert.equal(res.status, undefined);
@@ -32,9 +48,15 @@ describe('REST API Test Suite', function()
   it('setTrendingDrugs_test', function()
   {
     /* configure mock response object */
-    var res = {responseObj:null}; 
-    res.json = function(res) {this.responseObj = res;}
-    var req = {'body' : ''};
+    var res = {
+      responseObj: null
+    }; 
+    res.json = function(res) {
+      this.responseObj = res;
+    };
+    var req = {
+      'body': ''
+    };
     rest.functions.setTrendingDrugs(req,res);
     test.assert.equal(res.status, undefined);
     test.assert.equal(res.response, null);
@@ -45,21 +67,20 @@ describe('REST API Test Suite', function()
   it('recentRecalls_test', function()
   {
 	  /* configure mock response object */
-	    var res = {responseObj:null}; 
-	    res.json = function(res) {this.responseObj = res;}
-	    var req = {'query' : {'num':15}};
+	    var res = {
+              responseObj :null
+            }; 
+	    res.json = function(res) {
+              this.responseObj = res;
+            };
+	    var req = {
+              'query': {
+                'num': 15
+              }
+            };
 	    rest.functions.recentRecalls(req,res);
 	    test.assert.equal(res.status, undefined);
 	    test.assert.equal(res.response, null);
 	    test.assert.equal(res.error, undefined);
   });
 });
-
-/*
-describe('controllers test suite', function()
-{
-
-  it('search_test', function() {}
-  
-});
- */

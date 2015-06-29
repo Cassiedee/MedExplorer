@@ -9,8 +9,6 @@ angular.module('MedExplorer')
     };
 
     function executeSearch(source, type, field, value, limit) {
-      //console.log('field ' + field);
-      //console.log('value ' + value);
       $http.get('/REST/search?source=' + source
         + '&type=' + type
         + '&field=' + field
@@ -21,42 +19,41 @@ angular.module('MedExplorer')
             $rootScope.$broadcast('searchResultsRetrieved', '');
             if(searchResults.results && searchResults.results.length) {
               var drug_name;
-              if(field == 'openfda.brand_name' || field == 'openfda.generic_name') {
+              if(field === 'openfda.brand_name' || field === 'openfda.generic_name') {
                 drug_name = value;
               }
               else if(field instanceof Array && field.length) {
                 for(var i = 0; i < field.length; i++) {
-                  if(field[i] == 'openfda.brand_name' || field[i] == 'openfda.generic_name') {
+                  if(field[i] === 'openfda.brand_name' || field[i] === 'openfda.generic_name') {
                     drug_name = value[i];
                     break;
                   }
                 }
               }
-              //console.log(drug_name);
               if(drug_name) {
                 var otc = 0;
                 var prescription = 0;
-                var type;
-                for(var drug in searchResults.results) {
-                  if(searchResults.results[drug].openfda) {
-                    for(var type in searchResults.results[drug].openfda.product_type) {
-                      //console.log(searchResults.results[drug].openfda.product_type[type]);
-                      if(searchResults.results[drug].openfda.product_type[type] == 'HUMAN OTC DRUG') {
-                        otc++;
-                      }
-                      else if(searchResults.results[drug].openfda.product_type[type] == 'HUMAN PRESCRIPTION DRUG') {
-                        prescription++;
-                      }
+                if(searchResults && searchResults.results) {
+                  searchResults.results.forEach(function(drug) {
+                    if(drug.openfda) {
+                      drug.openfda.product_type.forEach(function(type) {
+                        if(type === 'HUMAN OTC DRUG') {
+                          otc++;
+                        }
+                        else if(type === 'HUMAN PRESCRIPTION DRUG') {
+                          prescription++;
+                        }
+                      });
                     }
-                  }
+                  });
                 }
+                var type;
                 if(prescription > otc) {
                   type = 'prescription';
                 }
                 else if(otc > prescription) {
                   type = 'otc';
                 }
-                //console.log(type);
                 if(type) {
                   $http.post('/REST/trendingDrugs', {
                     'name': drug_name.toLowerCase(),
@@ -67,7 +64,7 @@ angular.module('MedExplorer')
               for(var drug in searchResults.results) {
                 if(searchResults.results[drug].openfda.brand_name) {
                   searchResults.results[drug].has_ongoing_recalls = false;
-                  setTimeout(function hasRecall(index) {
+                  setTimeout(function (index) {
                     if(searchResults.results && searchResults.results[index] && searchResults.results[index].openfda) {
                       $http.get('/REST/search?source=drug'
                         + '&type=enforcement'

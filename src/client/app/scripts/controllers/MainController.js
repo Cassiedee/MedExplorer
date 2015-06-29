@@ -5,12 +5,11 @@ angular.module('MedExplorer')
   .controller('MainController', ['$scope', '$state', '$stateParams', '$filter', function ($scope, $state, $stateParams, $filter) {
     $stateParams.breadCrumbName = 'Home';
     $scope.update = function() {
-    	//alert('button pressed: ' + $scope.search.value);
     	$state.go('home.search', {
           'source': 'drug',
           'type': 'label',
           'field': 'openfda.brand_name',
-          'value': $filter('title')($scope.search.value),
+          'value': '\"' + $filter('title')($scope.search.value) + '\"',
           'limit': 25,
           'breadCrumbName': $filter('title')($scope.search.value)
         });
