@@ -144,7 +144,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
     else {
       options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
     }
-    console.log(options.path);
+    //console.log(options.path);
 
     var result = {};
     retriveFromCache(options.path, function(data){
@@ -260,7 +260,7 @@ exports.recentRecalls = function(num, callback) {
   function fetchloop(dateRange, counter) {
     var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
     options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-    console.log(options.path);
+    //console.log(options.path);
     retriveFromCache(options.path, function(data) {
       if(data) {
         console.log('fetchloop cache hit!!');
