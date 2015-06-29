@@ -3,7 +3,7 @@
 
 Using our Agile framework, which is built upon Scrum, Extreme Programming, and user-centered design techniques, we were able to develop the product in an iterative fashion while receiving regular, timely feedback from users and stakeholders. Our initial kick-off was defined as Sprint 0. During this time we reviewed the project (RFQ) requirements and, based upon those needs, identified our Agile Team and the supporting company stakeholders who would need to be involved in the approval process of the release of the product.
 
-The [Agile team](../../MedExplorer Development Team.md) was a [multidisciplinary and collaborative team](../../Diagrams/AgileTeam.png) comprised of a Product Manager, Agile Coach, Technical architect, UX designers, web engineers, DevOps engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
+The [Agile team](../../MedExplorer Development Team.md) was a [multidisciplinary and collaborative team](../../Diagrams/AgileTeam.png) comprised of a Product Manager, Agile Coach, Technical Architect, UX Designers, Web Developers, DevOps Engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
 
 
 | Multidisciplinary and Collaborative Team |
