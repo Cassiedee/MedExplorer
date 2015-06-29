@@ -207,7 +207,6 @@ exports.recentRecalls = function(num, callback) {
 
   fetchloop(30, 0);
   function fetchloop(dateRange, counter) {
-    var recalls = [];
     var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
     options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
     console.log(options.path);
@@ -243,25 +242,23 @@ exports.recentRecalls = function(num, callback) {
     });
 
     function resultCheck(statusCode, results) {
-      if(results.results) {
-        if(counter < 25) {
-          if(results.results.length < num) {
-            fetchloop(dateRange * 1.5, counter + 1);
-          }
-          else if(results.results.length >= 100) {
-            fetchloop(dateRange * 0.75, counter + 1);
-          }
-          else {
-            callback(results.resStatusCode, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
-          }
+      if(counter < 25) {
+        if(results.results == undefined || results.results.length < num) {
+          fetchloop(dateRange * 1.5, counter + 1);
+        }
+        else if(results.results.length >= 100) {
+          fetchloop(dateRange * 0.75, counter + 1);
         }
         else {
-          if(results.results) {
-            callback(200, null, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
-          }
-          else {
-            callback(404, null, 'None found');
-          }
+          callback(results.resStatusCode, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num), null);
+        }
+      }
+      else {
+        if(results.results) {
+          callback(200, null, results.results.sort(function(a, b) {return parseInt(b.report_date) - parseInt(a.report_date);}).slice(0, num));
+        }
+        else {
+          callback(404, null, 'None found');
         }
       }
     };
@@ -283,7 +280,7 @@ function retriveFromCache(query, callback) {
       //that are more than 24 hours old
       if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
         console.log('Record found but too old');
-        cleanCache(db);
+        cleanCache(collection);
         data = null;
       }
       if(data){
@@ -297,11 +294,11 @@ function retriveFromCache(query, callback) {
   });
 };
 
-function cleanCache(db) {
+function cleanCache(collection) {
   //delete all data that is more than 24 hours old
   var twentyFourHoursAgo = new Date(new Date().getTime() - twentyFourHoursInMillis);
-  var mongoQuery = { insertTime: {$lt:twentyFourHoursAgo} };	    
-  db.remove(mongoQuery);
+  var mongoQuery = { insertTime: {$lt:twentyFourHoursAgo} };    
+  collection.remove(mongoQuery);
 };
 
 function insertIntoCache(query, result) {
