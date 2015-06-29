@@ -67,5 +67,3 @@ src/server/npm-debug.log
 .metadata/version.ini
 .project
 
-# Ignore coverage reports
-src/server/coverage
