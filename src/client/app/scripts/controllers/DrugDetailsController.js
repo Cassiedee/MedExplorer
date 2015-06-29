@@ -58,20 +58,22 @@ angular.module('MedExplorer')
               onDrugEventsArrived();
             }
 
-   //         console.log('indications: ' + $scope.result.indications_and_usage[0])
-            $scope.indicationListArray = dataSplitter($scope.result.indications_and_usage[0]);
+			if($scope.result.indications_and_usage){
+				$scope.indicationListArray = dataSplitter($scope.result.indications_and_usage[0]);
+			} else {
+				$scope.indicationListArray = [];
+			}
             if($scope.result.contraindications){
-            $scope.contraindicationListArray = dataSplitter($scope.result.contraindications[0]);
+				$scope.contraindicationListArray = dataSplitter($scope.result.contraindications[0]);
             } else {
               $scope.contraindicationListArray = [];
             }
             if( $scope.result.drug_abuse_and_dependence){
-            $scope.abuseListArray = $scope.result.drug_abuse_and_dependence[0];
-            console.log($scope.indicationListArray);
+				$scope.abuseListArray = $scope.result.drug_abuse_and_dependence[0];
+				console.log($scope.indicationListArray);
             } else {
               $scope.abuseListArray = {};
             }
-            
             if(!$scope.result.active_ingredient || $scope.result.active_ingredient.length < 1){
             	$scope.result.active_ingredient = $scope.result.openfda.substance_name;
             }
