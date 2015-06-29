@@ -16,49 +16,64 @@ exports.getTrendingDrugs = function(callback) {
     else {
       var collection = db.collection('trending_drugs');
       collection.count(function (err, count) {
-        if (!err && count === 0) {
-          fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
-            data = JSON.parse(data.toLowerCase());
-            if(erra) {
-              callback(500, null, err);
-            }
-            else {
-              callback(200, data, null);
-            }
-            var array = [];
-            if(data && data.prescription) {
-              for(var prop in data.prescription) {
-                if(data.prescription.hasOwnProperty(prop)) {
-                  data.prescription[prop].type = 'prescription';
-                  array.push(data.prescription[prop]);
-                }
-              }
-            }
-            if(data && data.otc) {
-              for(var prop in data.otc) {
-                if(data.otc.hasOwnProperty(prop)) {
-                  data.otc[prop].type = 'otc';
-                  array.push(data.otc[prop]);
-                }
-              }
-            }
-            collection.insert(array);
-            db.close();
-          });
+        if(err) {
+          console.log(err);
         }
-        else if(!err && count !== 0) {
-          var results = {};
-          collection.find({type: 'otc'}).toArray(function(err, items1) {
-            results.otc = items1.sort(function(a, b) {
-              return b.count - a.count;
-            }).slice(0, 20);
-            collection.find({type: 'prescription'}).toArray(function(err, items2) {
-              results.prescription = items2.sort(function(a, b) {
-                return b.count - a.count;
-              }).slice(0, 20);
-              callback(200, results, null);
+        else {
+          if (count === 0) {
+            fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
+              data = JSON.parse(data.toLowerCase());
+              if(err) {
+                callback(500, null, err);
+              }
+              else {
+                callback(200, data, null);
+              }
+              var array = [];
+              if(data && data.prescription) {
+                for(var prop in data.prescription) {
+                  if(data.prescription.hasOwnProperty(prop)) {
+                    data.prescription[prop].type = 'prescription';
+                    array.push(data.prescription[prop]);
+                  }
+                }
+              }
+              if(data && data.otc) {
+                for(var prop in data.otc) {
+                  if(data.otc.hasOwnProperty(prop)) {
+                    data.otc[prop].type = 'otc';
+                    array.push(data.otc[prop]);
+                  }
+                }
+              }
+              collection.insert(array);
+              db.close();
             });
-          });
+          }
+          else if(count !== 0) {
+            var results = {};
+            collection.find({type: 'otc'}).toArray(function(err, items1) {
+              if(err) {
+                console.log(err);
+              }
+              else {
+                results.otc = items1.sort(function(a, b) {
+                  return b.count - a.count;
+                }).slice(0, 20);
+                collection.find({type: 'prescription'}).toArray(function(err, items2) {
+                  if(err) {
+                    console.log(err);
+                  }
+                  else {
+                    results.prescription = items2.sort(function(a, b) {
+                      return b.count - a.count;
+                    }).slice(0, 20);
+                    callback(200, results, null);
+                  }
+                });
+              }
+            });
+          }
         }
       });
     }
@@ -317,20 +332,24 @@ function retriveFromCache(query, callback) {
       // Fetch the document
       console.log(query);
       collection.findOne({ mongoKey: query }, function(err, item) {
-        var data = item;
+        if(err) {
+          console.log(err);
+        else {
+          var data = item;
 
-        //if data is more than 24 hours old clear the cache of all objects
-        //that are more than 24 hours old
-        if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
-          console.log('Record found but too old');
-          cleanCache(collection);
-          data = null;
+          //if data is more than 24 hours old clear the cache of all objects
+          //that are more than 24 hours old
+          if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
+            console.log('Record found but too old');
+            cleanCache(collection);
+            data = null;
+          }
+          if(data && !data.resStatusCode) {
+            data.resStatusCode = 200;
+          }
+          callback(data);
+          db.close();
         }
-        if(data && !data.resStatusCode) {
-          data.resStatusCode = 200;
-        }
-        callback(data);
-        db.close();
       });
     }
   });
