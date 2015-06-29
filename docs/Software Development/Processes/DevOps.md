@@ -19,6 +19,9 @@ Our continuous integration process uses a Jenkins CI server which is connected t
 The MedExplorer team set up automated unit testing for the MedExplorer baseline. There are two separate testing frameworks used: one for the front-end code and another for the back-end code. The front-end is using the Jasmine testing
 framework, which is run by the Karma test-runner. The back-end code is tested using the UnitJS testing framework and is run by mocha. 
 
+### Jenkins Test Results Screenshot
+![Jenkins Test Results Screenshot](../Screenshots/jenkins_tests2.PNG)
+
 ## Automated Software Quality
 
 SonarQube is being used to perform automated software quality checks on the baseline.  SonarQube checks the code against the coding standards and languages specific coding issues and provides an automated quality score and an estimate of technical debt for the code baseline.  We used SonarQube to identify any Blocking and/or Critical coding errors and ensured that all were removed prior to delivery.  We also worked off the Major issues as time permitted.
