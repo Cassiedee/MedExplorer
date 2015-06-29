@@ -3,14 +3,14 @@
 
 Using our Agile framework, which is built upon Scrum, Extreme Programming, and user-centered design techniques, we were able to develop the product in an iterative fashion while receiving regular, timely feedback from users and stakeholders. Our initial kick-off was defined as Sprint 0. During this time we reviewed the project (RFQ) requirements and, based upon those needs, identified our Agile Team and the supporting company stakeholders who would need to be involved in the approval process of the release of the product.
 
-The [Agile team](../../MedExplorer Development Team.md) was a [multidisciplinary and collaborative team](../../Diagrams/AgileTeam.png) comprised of a Product Manager, Agile Coach, Technical architect, UX designers, web engineers, DevOps engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
+The [Agile team](../../MedExplorer Development Team.md) was a [multidisciplinary and collaborative team](../../Diagrams/AgileTeam.png) comprised of a Product Manager, Agile Coach, Technical Architect, UX Designers, Web Developers, DevOps Engineer, and Delivery Manager. Our Product Manager was the final decision maker in the prioritization of the product backlog.
 
 
 | Multidisciplinary and Collaborative Team |
 | ------------- |
 | ![Backlog](../../Diagrams/AgileTeam.png) |
 
-Once the team was identified and collocated we created a backlog of Sprint 0 activities (picture) for the first couple days. These activities provided the groundwork for identifying our users, product vision, and stakeholders. Some of the tasks during [Sprint 0](../../Pictures/Sprint0activities.jpg) included:
+Once the team was identified and collocated we created a backlog of Sprint 0 activities for the first couple days. These activities provided the groundwork for identifying our users, product vision, and stakeholders. Some of the tasks during [Sprint 0](../../Pictures/Sprint0activities.jpg) included:
 
 * Identify draft vision/problem statement
 * Start capturing personas
@@ -24,7 +24,7 @@ Once the team was identified and collocated we created a backlog of Sprint 0 act
 * Create initial backlog items and prioritize
 
 ### Our Sprint Cycles
-We defined our sprints as five-hour time boxes occurring twice per day. Each sprint included a brief planning session (about 30 minutes), periodic standups to synchronize on activities, and a sprint review (about ~30 minutes). Scrum was selected as our approach because it provides regular synchronization points, __demonstrations__, and opportunities to __inspect and improve the process__. We implemented Extreme Programming practices as we began to agree upon our engineering practices such as continuous integration, user stories, small iterations, giving the team a collaborative, dedicated work space, and implementing a simple architecture and design to easily manage changing needs and priorities.
+We defined our sprints as five-hour time boxes occurring twice per day. Each sprint included a brief planning session (about 30 minutes), periodic standups to synchronize on activities, and a sprint review (about ~30 minutes). Scrum was selected as our approach because it provides regular synchronization points, demonstrations, and opportunities to [inspect and improve the process](../../Pictures/Retrospective.jpg). We implemented Extreme Programming practices as we began to agree upon our engineering practices such as continuous integration, user stories, small iterations, giving the team a collaborative, dedicated work space, and implementing a simple architecture and design to easily manage changing needs and priorities.
 
 Having two sprints per day was necessary if we wanted regular input from our stakeholders. Because some of our stakeholders were not collocated they were able to regularly engage throughout the day. 
 
@@ -39,6 +39,6 @@ During sprint planning the team reviewed the product backlog, pulled in the next
 During sprint execution we implemented: the user stories and other backlog items (such as research items), continuous integration, feature and usability testing, unit testing, and documentation updates. UX members with the Product Manager elicit user needs and translate needs into backlog items for prioritization to support the next round of sprint planning. Wireframes and style guides were enhanced during each sprint and were used to support the development of the features. 
 
 ### Sprint Review
-During the sprint review we conducted a demonstration of completed work items against defined acceptance criteria, received feedback from the stakeholders, and conducted a retrospective to improve the process and how we are working together. At each sprint review we reviewed the number of stories completed for each sprint and discussed our overall progress. We had daily goals which were discussed at each Sprint review with the team and stakeholders. Concerns or risks in meeting those goals were discussed with actions taken. Feedback sometimes resulted in capturing additional product backlog items which were added to the product backlog for refinement and prioritization.
+During the sprint review we conducted a demonstration of completed work items against defined acceptance criteria, received feedback from the stakeholders, and conducted a [retrospective](../../Pictures/Retrospective.jpg) to improve the process and how we are working together. At each sprint review we reviewed the number of stories completed for each sprint and discussed our overall progress. We had daily goals which were discussed at each Sprint review with the team and stakeholders. Concerns or risks in meeting those goals were discussed with actions taken. Feedback sometimes resulted in capturing additional product backlog items which were added to the product backlog for refinement and prioritization.
 
 Example [product backlog items/stories can be found here](../User-Stories/Sample MedExplorer User Stories.xlsx).
