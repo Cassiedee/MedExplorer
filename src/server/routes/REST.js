@@ -4,25 +4,15 @@ var datasource = require('../controllers/datasource');
 var router = express.Router();
 
 var restFunctions = {
-  'hello': testFunction,
   'search': search,
   'getTrendingDrugs': getTrendingDrugs,
   'setTrendingDrugs': setTrendingDrugs,
   'recentRecalls': recentRecalls
 };
 
-function testFunction(req, res) {
-  res.json({
-    "response": "Hello, " + req.params.name
-  });
-};
-
 /*
  * GET REST calls
  */
-router.get('/REST/hello/:name', restFunctions.hello);
-
-
 router.get('/REST/search', search);
 function search(req, res) {
   if(!(req.query.source
