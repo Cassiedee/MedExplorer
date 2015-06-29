@@ -83,6 +83,9 @@ exports.setTrendingDrugs = function(body) {
             collection.insert({'type': body.type, 'name': body.name, 'count': 0});
           }
           collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
+            if(err) {
+              console.log(err);
+            }
             db.close();
           });
         }
@@ -261,7 +264,7 @@ exports.recentRecalls = function(num, callback) {
           res.on('end', function() {
             var obj = JSON.parse(output);
             obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-            insertIntoCache(options.path, obj)
+            insertIntoCache(options.path, obj);
             resultCheck(obj);
           });
         });

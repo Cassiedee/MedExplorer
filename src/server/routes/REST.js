@@ -69,7 +69,7 @@ function getTrendingDrugs(req, res) {
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
   datasource.setTrendingDrugs(req.body, function() {});
-  rest.status(200).send('Done.');
+  res.status(200).send('Done.');
 };
 
 module.exports = router;

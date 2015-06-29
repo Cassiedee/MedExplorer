@@ -64,26 +64,28 @@ angular.module('MedExplorer')
               for(var drug in searchResults.results) {
                 if(searchResults.results[drug].openfda.brand_name) {
                   searchResults.results[drug].has_ongoing_recalls = false;
-                  setTimeout(function (index) {
-                    if(searchResults.results && searchResults.results[index] && searchResults.results[index].openfda) {
-                      $http.get('/REST/search?source=drug'
-                        + '&type=enforcement'
-                        + '&field=[\"openfda.spl_id\",\"status\"]'
-                        + '&value=[\"\\\"' + searchResults.results[index].openfda.spl_id[0] + '\\\"\",\"Ongoing\"]&terms=2&limit='+ 30).success(function(recalls) {
-                          searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
-                          if(searchResults.results[index].has_ongoing_recalls) {
-                            searchResults.results[index].recalls = recalls.response.results;
-                          }
-                          $rootScope.$broadcast('searchResultsRetrieved', '');
-                        });
-                    }
-                  }, 250 * drug, drug);
+                  setTimeout(getRecalls, 250 * drug, drug);
                 }
               }
             }
           }
       });
     }
+
+    function getRecalls(index) {
+      if(searchResults.results && searchResults.results[index] && searchResults.results[index].openfda) {
+        $http.get('/REST/search?source=drug'
+          + '&type=enforcement'
+          + '&field=[\"openfda.spl_id\",\"status\"]'
+          + '&value=[\"\\\"' + searchResults.results[index].openfda.spl_id[0] + '\\\"\",\"Ongoing\"]&terms=2&limit='+ 30).success(function(recalls) {
+            searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
+            if(searchResults.results[index].has_ongoing_recalls) {
+              searchResults.results[index].recalls = recalls.response.results;
+            }
+            $rootScope.$broadcast('searchResultsRetrieved', '');
+          });
+      }
+    };
  
     return searchResults;
   }]);
