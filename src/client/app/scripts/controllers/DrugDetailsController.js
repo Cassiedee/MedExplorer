@@ -14,6 +14,7 @@ angular.module('MedExplorer')
         $scope.drugname = $state.params.name;
         $scope.value = $filter('title')($stateParams.value);
         $scope.commonDrugsDuringAdverseEvent = {};
+        $scope.noAdverseEvents = false;
         $scope.commonDrugsPieChartData = [];
         $scope.pieChartDataIsHere = function() {
           return $scope.commonDrugsPieChartData.length > 0;
@@ -29,7 +30,7 @@ angular.module('MedExplorer')
             + '&field=openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=1').success(function(data) {
-              if(data.source === 'search ' + ($stateParams.spl_id)) {
+              if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
                 if(data.response.results && data.response.results.length > 0) {
                   $scope.result = data.response.results[0];
                   onDrugDetailsArrived();
@@ -236,19 +237,27 @@ angular.module('MedExplorer')
       };
 
       function onDrugDetailsArrived() {
-        if($scope.result ) {
-			console.log($scope.result);
+        if($scope.result) {
           if(!$scope.events) {
           $http.get('/REST/search?source=drug'
             + '&type=event'
             + '&field=patient.drug.openfda.spl_id'
-            + '&value=' + $stateParams.spl_id
-            + '&limit=100').success(function(data) {
-              if(data.source === ('search ' + $stateParams.spl_id)) {
+            + '&value=\"' + $stateParams.spl_id
+            + '\"&limit=100').success(function(data) {
+              if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
                 if(data.response && data.response.results && data.response.results.length > 0) {
                   $scope.events = data.response.results;
                   onDrugEventsArrived();
                 }
+                else {
+                  console.log(data);
+                  $scope.commonDrugsPieChartData.push({});
+                  $scope.noAdverseEvents = true;
+                }
+              }
+              else {
+                console.log(data.source);
+                console.log(('search ' + $stateParams.spl_id + ''));
               }
             });
           }
