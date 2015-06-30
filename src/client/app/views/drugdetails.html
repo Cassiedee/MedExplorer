@@ -397,7 +397,7 @@
 		  <div class=col-xs-6>
 			<button type="button" data-toggle="collapse" data-target="#dosage-and-administration-detail" class="collapse-button"
 			  ng-click="toggleDosageAndAdministration = !toggleDosageAndAdministration">
-			  <span ng-class="toggleDosageAndAdministration"></span>
+			  <span ng-class="toggleDosageAndAdministrationText"></span>
 			</button>
 		  </div>
 		  <div id="dosage-and-administration-detail" class="collapse in">
@@ -430,7 +430,7 @@
               <span ng-class="toggleOverdosageText"></span>
             </button>
           </div>
-          <div id="user-safety-warning-detail" class="collapse in col-xs-11">{{result.overdosage[0] |
+          <div id="overdosage-detail" class="collapse in col-xs-11">{{result.overdosage[0] |
             sentence}}</div>
           <div class="col-xs-1"></div>
         </div>
