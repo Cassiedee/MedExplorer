@@ -29,11 +29,9 @@ angular.module('MedExplorer')
             + '&field=openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=1').success(function(data) {
-              if(data.source === 'search ' + ($stateParams.spl_id)) {
-                if(data.response.results && data.response.results.length > 0) {
-                  $scope.result = data.response.results[0];
-                  onDrugDetailsArrived();
-                }
+              if(data.response.results && data.response.results.length > 0) {
+                $scope.result = data.response.results[0];
+                onDrugDetailsArrived();
               }
             });
 
@@ -185,9 +183,14 @@ angular.module('MedExplorer')
                   $scope.toggleAdverseEventChartText = $scope.toggleAdverseEventChart ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
-			  $scope.toggleDosesAndStrengths = true;
-              $scope.$watch('toggleDosesAndStrengths', function(){
-                  $scope.toggleDosesAndStrengthsText = $scope.toggleDosesAndStrengths ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+			  $scope.toggleDosageAndAdministration = true;
+              $scope.$watch('toggleDosageAndAdministration', function(){
+                  $scope.toggleDosageAndAdministrationText = $scope.toggleDosageAndAdministration ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleDosageFormsAndStrengths = true;
+              $scope.$watch('toggleDosageFormsAndStrengths', function(){
+                  $scope.toggleDosageFormsAndStrengthsText = $scope.toggleDosageFormsAndStrengths ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
 			  $scope.toggleOverdosage = true;
@@ -229,6 +232,7 @@ angular.module('MedExplorer')
               $scope.$watch('toggleTeratogenicEffects', function(){
                   $scope.toggleTeratogenicEffectsText = $scope.toggleTeratogenicEffects ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
+			  
 			  $scope.toggleNonTeratogenicEffects = true;
               $scope.$watch('toggleNonTeratogenicEffects', function(){
                   $scope.toggleNonTeratogenicEffectsText = $scope.toggleNonTeratogenicEffects ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
@@ -244,11 +248,9 @@ angular.module('MedExplorer')
             + '&field=patient.drug.openfda.spl_id'
             + '&value=' + $stateParams.spl_id
             + '&limit=100').success(function(data) {
-              if(data.source === ('search ' + $stateParams.spl_id)) {
-                if(data.response && data.response.results && data.response.results.length > 0) {
-                  $scope.events = data.response.results;
-                  onDrugEventsArrived();
-                }
+              if(data.response && data.response.results && data.response.results.length > 0) {
+                $scope.events = data.response.results;
+                onDrugEventsArrived();
               }
             });
           }
@@ -305,7 +307,7 @@ angular.module('MedExplorer')
           }
         };
 		
-		$scope.trustDosesAndStrengthsAsHtml = function() {
+		$scope.trustDosageAndAdministrationAsHtml = function() {
           if($scope.result && $scope.result.dosage_and_administration_table){
             return $sce.trustAsHtml($scope.result.dosage_and_administration_table[0]); //html content is th binded content.
           }
