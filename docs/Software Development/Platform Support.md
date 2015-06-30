@@ -1,6 +1,6 @@
 # Platform Support
 
-Our MedExplorer applilcation supports multiple browsers with multiple screen sizes so that we can support most of the popular platforms.  We have tested MedExplorer using Chrome, Firefox, IE and Safari browsers. We have used multiple different platforms including [PC based browsers](Platform%20Support.md#pc-browser-support), [Android tablets](Platform%20Support.md#android-tablet-support), Android phones, and iPhones.
+Our MedExplorer applilcation supports multiple browsers with multiple screen sizes so that we can support most of the popular platforms.  We have tested MedExplorer using Chrome, Firefox, IE and Safari browsers. We have used multiple different platforms including [PC based browsers](Platform%20Support.md#pc-browser-support), [Android tablets](Platform%20Support.md#android-tablet-support), [Android phones](Platform%20Support.md#android-phone-support), and iPhones.
 
 ## PC Browser Support
 
@@ -39,3 +39,27 @@ Our MedExplorer applilcation supports multiple browsers with multiple screen siz
 ![Android Tablet Warning Page 1] (Screenshots/Platforms/Android_Tablet_Warning1.png)
 
 ![Android Tablet Warning Page 2] (Screenshots/Platforms/Android_Tablet_Warning2.png)
+
+## Android Phone Support
+
+### Android Phone - Home Page
+
+![Android Phone Home] (Screenshots/Platforms/Android_Phone_Home1.png)
+
+![Android Phone Home] (Screenshots/Platforms/Android_Phone_Home2.png)
+
+### Android Phone - Search Results Page
+
+![Android Phone Search Results] (Screenshots/Platforms/Android_Phone_SearchResults1.png)
+
+![Android Phone Search Results] (Screenshots/Platforms/Android_Phone_SearchResults1.png)
+
+### Android Phone - General Info Page
+
+![Android Phone General Info] (Screenshots/Platforms/Android_Phone_GeneralInfo.png)
+
+### Android Phone - Warning Page
+
+![Android Tablet Phone Page 1] (Screenshots/Platforms/Android_Phone_Warnings1.png)
+
+![Android Tablet Phone Page 2] (Screenshots/Platforms/Android_Phone_Warnings2.png)
