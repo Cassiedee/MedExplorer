@@ -130,6 +130,11 @@ angular.module('MedExplorer')
                $scope.$watch('toggleAdverseReactions', function(){
                    $scope.toggleAdverseReactionsText = $scope.toggleAdverseReactions ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
                });
+			   
+			   $scope.toggleWhenUsing = true;
+               $scope.$watch('toggleWhenUsing', function(){
+                   $scope.toggleWhenUsingText = $scope.toggleWhenUsing ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+               });
 
                $scope.toggleStopUse = true;
                $scope.$watch('toggleStopUse', function(){

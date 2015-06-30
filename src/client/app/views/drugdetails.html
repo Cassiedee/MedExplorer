@@ -211,6 +211,26 @@
           </div>
         </div>
       </div>
+	  
+	  <div ng-show="result.when_using[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">When Using...</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#when-using-detail" class="collapse-button"
+              ng-click="toggleWhenUsing = !toggleWhenUsing">
+              <span ng-class="toggleWhenUsingText"></span>
+            </button>
+          </div>
+		  
+          <div id="when-using-detail" class="collapse in col-xs-11">
+			<div ng-repeat="case in result.when_using">
+				{{case | sentence}}
+			</div>
+		  </div>
+          <div class="col-xs-1"></div>
+        </div>
+      </div>
 
       <div ng-show="result.stop_use[0]">
         <div class="row">
