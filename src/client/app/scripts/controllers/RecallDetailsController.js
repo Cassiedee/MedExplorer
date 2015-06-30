@@ -11,8 +11,10 @@
 angular.module('MedExplorer')
   .controller('RecallDetailsController', ['$scope', '$http', '$filter', '$state', '$stateParams', function($scope, $http, $filter, $state, $stateParams) {
     $scope.value = $filter('title')($stateParams.value);
+    $scope.recallDetailsAreIn = false;
     if($stateParams.recallDetails) {
       $scope.recallList = $stateParams.recallList;
+      $scope.recallDetailsAreIn = true;
     }
     else {
       $http.get('/REST/search?source=drug'
@@ -21,6 +23,7 @@ angular.module('MedExplorer')
         + '&value=' + $stateParams.spl_id
         + '&limit=100').success(function(data) {
           if(data.response && data.response.results && data.response.results.length > 0) {
+            $scope.recallDetailsAreIn = true;
             $scope.recallList = data.response.results;
             console.log($scope.recallList);
           }
