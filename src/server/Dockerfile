@@ -5,6 +5,8 @@ MAINTAINER The CentOS Project <cloud-ops@centos.org>
 ADD . /src
 WORKDIR /src/
 
+ENV NODE_ENV=production
+
 RUN npm install
 
 #CMD ["npm", "start"]

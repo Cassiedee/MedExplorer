@@ -59,9 +59,9 @@ describe('REST API Test Suite', function()
     res.status = function(code) {
         this.status = code;
         var returnObj = {};
-        returnObj.send = function(msg) {}
+        returnObj.send = function(msg) {};
         return returnObj;
-    }
+    };
 
     var req = {
       'body': {'name' : 'Tony'}
