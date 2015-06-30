@@ -56,11 +56,19 @@ describe('REST API Test Suite', function()
     res.json = function(res) {
       this.responseObj = res;
     };
+    res.status = function(code) {
+        this.status = code;
+        var returnObj = {};
+        returnObj.send = function(msg) {}
+        return returnObj;
+    }
+
     var req = {
-      'body': ''
+      'body': {'name' : 'Tony'}
     };
+
     rest.functions.setTrendingDrugs(req,res);
-    test.assert.equal(res.status, undefined);
+    test.assert.equal(res.status, 200);
     test.assert.equal(res.response, null);
     test.assert.equal(res.error, undefined);
   });
