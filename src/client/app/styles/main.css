@@ -521,6 +521,10 @@ input::-moz-focus-inner {
 /*	background-color: transparent;*/
 }
 
+#details-tab-link-1, #details-tab-link-2, #details-tab-link-3, #details-tab-link-4 {
+	border: 1px solid;
+	border-color: #cdd7e1;
+}
 
 #tab-jumbotron {
 	margin-left: 0px;
