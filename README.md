@@ -1,6 +1,7 @@
-Publicly-available URL to prototype: http://medexplorer.northropgrumman.com
+# Publicly-available URL to prototype: 
+http://medexplorer.northropgrumman.com
 
-Brief description of the approach used to create the prototype.
+# Brief description of the approach used to create the prototype.
 
 # ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
 ![Agile User Centered Approach](docs/Diagrams/Agile User Centered%20Approach.png)
