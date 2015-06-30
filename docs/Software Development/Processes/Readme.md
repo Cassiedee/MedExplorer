@@ -43,4 +43,4 @@ During the sprint review we conducted a demonstration of completed work items ag
 
 Example [product backlog items/stories can be found here](../User-Stories/Sample MedExplorer User Stories.xlsx).
 
-You can see more pictures of our Agile development process in action [here] ../../Pictures/Readme.md).
+You can see more pictures of our Agile development process in action [here] (../../Pictures/Readme.md).
