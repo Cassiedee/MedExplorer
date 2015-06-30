@@ -88,6 +88,7 @@ exports.getTrendingDrugs = function(callback) {
 
 
 exports.setTrendingDrugs = function(body) {
+  console.log('body.name: ' + body.name);
   body.name = body.name.split('\"').join('');
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
