@@ -365,7 +365,7 @@ function retriveFromCache(query, callback) {
 
           //if data is more than 24 hours old clear the cache of all objects
           //that are more than 24 hours old
-          if(data && data.insertTime.getTime() < new Date().getTime() - twentyFourHoursInMillis) {
+          if(data && data.insertTime < new Date().getTime() - twentyFourHoursInMillis) {
             console.log('Record found but too old');
             cleanCache(collection);
             data = null;
@@ -383,7 +383,7 @@ function retriveFromCache(query, callback) {
 
 function cleanCache(collection) {
   //delete all data that is more than 24 hours old
-  var twentyFourHoursAgo = new Date(new Date().getTime() - twentyFourHoursInMillis);
+  var twentyFourHoursAgo = new Date().getTime() - twentyFourHoursInMillis;
   var mongoQuery = { insertTime: {$lt:twentyFourHoursAgo} };    
   collection.remove(mongoQuery);
 };
@@ -401,7 +401,7 @@ function insertIntoCache(query, result) {
       else {
         var collection = db.collection("medicine_explorer");
 
-        result.insertTime = new Date();
+        result.insertTime = new Date().getTime();
         result.mongoKey = query;
         collection.insert(result);
         db.close();
