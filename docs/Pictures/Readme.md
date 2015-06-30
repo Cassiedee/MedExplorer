@@ -26,7 +26,7 @@ Here is a picture of our draft vision statement for the project.
 ![Draft Vision Statement] (Draft Vision Statement.jpg)
 
 ## Feature Level Demonstration Goals
-Here is an initial set of feature level demonstration goals that our team put together to provide a set of goals for the first three days of development.
+Here is an initial set of feature level demonstration goals that our team put together to provide a set of goals for the first five days of development.
 
 ![Demo Goals] (FeatureLevel_DemoGoals.jpg)
 
@@ -39,3 +39,39 @@ This picture show the multi-disciplinary, cross functional team that designed an
 Here is a picture of one of our morning stand ups at the Scrum board.
 
 ![Morning Stand-Up] (Morning Standup.jpg)
+
+## Product Name Brainstorming
+Here is a picture of the results of our Product Name brainstorming and the resulting dot voting.
+
+![Product Name Brainstorming] (Product Name Brainstorming.jpg)
+
+## Restrospective
+Here is a picture of the results of one of our sprint retrospectives.
+
+![Retrospective] (Retrospective.jpg)
+
+## Scrum Room
+Here is a picture of the entrance to our Scrum room that was used for the design and development of the MedExplorer project.
+
+![Scrum room] (Scrum Room.jpg)
+
+## Sprint Goals
+Here is a picture of one our our sprint goals highlighted what we wanted to get done in that 5 hour sprint.
+
+![Sprint Goals] (Sprint Goals.jpg)
+
+## Sprint Review
+Here is a picture of one of our Sprint Reviews around our Scrum Board.
+
+![Sprint Review] (Sprint Review.jpg)
+
+## Sprint 0 Activities
+Here is a picture of our Sprint 0 activities that we used to kick-off the project.
+
+![Sprint 0 Activities] (Sprint0activities.jpg)
+
+## Sprint Roadmaps
+Here is a picture of the Roadmap for Sprint 3 & 4.
+
+![Sprint Roadmap] (Sprint3_roadmap planning.jpg)
+
