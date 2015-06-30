@@ -1,6 +1,6 @@
 # Platform Support
 
-Our MedExplorer applilcation supports multiple browsers with multiple screen sizes so that we can support most of the popular platforms.  We have tested MedExplorer using Chrome, Firefox, IE and Safari browsers. We have used multiple different platforms including [PC based browsers](docs/Software%20Development/Platform%20Support.md#pc-browser-support), [Android tablets](docs/Software%20Development/Platform%20Support.md#android-tablet-support), Android phones, and iPhones.
+Our MedExplorer applilcation supports multiple browsers with multiple screen sizes so that we can support most of the popular platforms.  We have tested MedExplorer using Chrome, Firefox, IE and Safari browsers. We have used multiple different platforms including [PC based browsers](Platform%20Support.md#pc-browser-support), [Android tablets](Platform%20Support.md#android-tablet-support), Android phones, and iPhones.
 
 ## PC Browser Support
 
