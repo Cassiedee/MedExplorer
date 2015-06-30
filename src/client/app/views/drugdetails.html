@@ -9,13 +9,13 @@
     <div class="tab col-xs-12" id="general-info-tab">
       <ul class="nav nav-tabs">
         <li ng-class="{active:isSelected(1), 'general-info-tab-li-border':isSelected(1)}" class="general-info-tab-li"
-        id="general-info-tab1"><a ui-sref="home.search.drugdetails({'tabName': 'General Info', 'breadCrumbName': 'General Info'})" ui-sref-opts="{'inherit': true}" class="tab-link">General Info</a></li>
+        id="general-info-tab1"><a id="details-tab-link-1" ui-sref="home.search.drugdetails({'tabName': 'General Info', 'breadCrumbName': 'General Info'})" ui-sref-opts="{'inherit': true}" class="tab-link">General Info</a></li>
         <li ng-class="{active:isSelected(2), 'general-info-tab-li-border':isSelected(2)}" class="general-info-tab-li"
-        id="general-info-tab2"><a ui-sref="home.search.drugdetails({'tabName': 'Warnings', 'breadCrumbName': 'Warnings'})" ui-sref-opts="{'inherit': true}" class="tab-link">Warnings</a></li>
+        id="general-info-tab2"><a id="details-tab-link-2" ui-sref="home.search.drugdetails({'tabName': 'Warnings', 'breadCrumbName': 'Warnings'})" ui-sref-opts="{'inherit': true}" class="tab-link">Warnings</a></li>
 		<li ng-class="{active:isSelected(3), 'general-info-tab-li-border':isSelected(3)}" class="general-info-tab-li"
-        id="general-info-tab3"><a ui-sref="home.search.drugdetails({'tabName': 'Dosage Info', 'breadCrumbName': 'Dosage Info'})" ui-sref-opts="{'inherit': true}" class="tab-link">Dosage Info</a></li>
+        id="general-info-tab3"><a id="details-tab-link-3" ui-sref="home.search.drugdetails({'tabName': 'Dosage Info', 'breadCrumbName': 'Dosage Info'})" ui-sref-opts="{'inherit': true}" class="tab-link">Dosage Info</a></li>
 		<li ng-class="{active:isSelected(4), 'general-info-tab-li-border':isSelected(3)}" class="general-info-tab-li"
-        id="general-info-tab3"><a ui-sref="home.search.drugdetails({'tabName': 'At-Risk Groups', 'breadCrumbName': 'At-Risk Groups'})" ui-sref-opts="{'inherit': true}" class="tab-link">At-Risk Pop.</a></li>
+        id="general-info-tab3"><a id="details-tab-link-4" ui-sref="home.search.drugdetails({'tabName': 'At-Risk Groups', 'breadCrumbName': 'At-Risk Groups'})" ui-sref-opts="{'inherit': true}" class="tab-link">At-Risk Pop.</a></li>
       </ul>
     </div>
   </div>
@@ -28,10 +28,10 @@
     <span class="drugtitle col-xs-11"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
 	<span class="drugtitle col-xs-1">
 		<div ng-show="result.openfda.product_type[0] === 'HUMAN OTC DRUG'" class="col-xs-1">
-			<img src="images/otc-small.png" style="margin-left:-5px" alt="Over the counter" title="Over the counter">
+			<img src="images/icon_availability_otc.svg" height="40px" width="40px"  style="margin-left:-5px" alt="Over the counter" title="Over the counter">
 		</div>
 		<div ng-show="result.openfda.product_type[0] === 'HUMAN PRESCRIPTION DRUG'" class="col-xs-1">
-			<img src="images/rx-small.png" style="margin-left:-5px" alt="Prescription" title="Prescription">
+			<img src="images/icon_availability_rx.svg" height="40px" width="40px"  style="margin-left:-5px" alt="Prescription" title="Prescription">
 		</div>
 	</span>
   </div>

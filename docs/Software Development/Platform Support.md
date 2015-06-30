@@ -1,6 +1,6 @@
 # Platform Support
 
-Our MedExplorer applilcation supports multiple browsers with multiple screen sizes so that we can support most of the popular platforms.  We have tested MedExplorer using Chrome, Firefox, IE and Safari browsers. We have used multiple different platforms including [PC based browsers](Platform%20Support.md#pc-browser-support), [Android tablets](Platform%20Support.md#android-tablet-support), [Android phones](Platform%20Support.md#android-phone-support), and iPhones.
+Our MedExplorer applilcation supports multiple browsers with multiple screen sizes so that we can support most of the popular platforms.  We have tested MedExplorer using Chrome, Firefox, IE and Safari browsers. We have used multiple different platforms including [PC based browsers](Platform%20Support.md#pc-browser-support), [Android tablets](Platform%20Support.md#android-tablet-support), [Android phones](Platform%20Support.md#android-phone-support), and [iPhones](Platform%20Support.md#iphone-support).
 
 ## PC Browser Support
 
@@ -60,6 +60,30 @@ Our MedExplorer applilcation supports multiple browsers with multiple screen siz
 
 ### Android Phone - Warning Page
 
-![Android Tablet Phone Page 1] (Screenshots/Platforms/Android_Phone_Warnings1.png)
+![Android Phone Page 1] (Screenshots/Platforms/Android_Phone_Warnings1.png)
 
-![Android Tablet Phone Page 2] (Screenshots/Platforms/Android_Phone_Warnings2.png)
+![Android Phone Page 2] (Screenshots/Platforms/Android_Phone_Warnings2.png)
+
+## iPhone Support
+
+### iPhone - Home Page
+
+![iPhone Home] (Screenshots/Platforms/iPhone_Home1.jpg)
+
+![iPhone Home] (Screenshots/Platforms/iPhone_Home2.jpg)
+
+### iPhone - Search Results Page
+
+![iPhone Search Results] (Screenshots/Platforms/iPhone_SearchResults1.jpg)
+
+![iPhone Search Results] (Screenshots/Platforms/iPhone_SearchResults2.jpg)
+
+### iPhone - General Info Page
+
+![iPhone General Info] (Screenshots/Platforms/iPhone_GeneralInfo.jpg)
+
+### iPhone - Warning Page
+
+![iPhone Page 1] (Screenshots/Platforms/iPhone_Warnings1.jpg)
+
+![iPhone Page 2] (Screenshots/Platforms/iPhone_Warnings2.jpg)
