@@ -22,7 +22,7 @@ Sprint planning was a time to focus on the goal(s) for the sprint. During sprint
 ####End of description
 ***
 ## Approach Criteria Evidence
-[Link to Attachment E Approach Criteria Evidence spreadsheet](docs/Evidence/Attachment E Approach Criteria Evidence Template Mod 5.xlsx)
+[Link to Attachment E Approach Criteria Evidence Template Mod 5 spreadsheet](docs/Evidence/Attachment E Approach Criteria Evidence Template Mod 5.xlsx)
 
 |#|criteria |evidence #1|
 |---|---------|-----------|
