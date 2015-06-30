@@ -1,9 +1,9 @@
-## Publicly-available URL to prototype: 
+# ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
+
+## Publicly-available URL to prototype
 http://medexplorer.northropgrumman.com
 
 ## Description of the approach used to create the prototype
-
-## ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
 ![Agile User Centered Approach](docs/Diagrams/Agile User Centered%20Approach.png)
 
 Our Agile User-Centered approach ensures ongoing collaboration between development team, users, and stakeholders. To implement our [framework](docs/Software Development/Processes/Readme.md) we first identified the members of [our team and the roles](docs/MedExplorer Development Team.md) they would fulfil. We aligned our team with the RFQ requirements and leveraged our experience from our Health Division. Our [multidisciplinary team](docs/Pictures/MedExplorer_Team.jpg) is comprised of experienced user experience (UX) designers, product manager (PM), software and test engineers, delivery manager, agile coach, and business owners. Our product, Medicine Explorer, is designed for the general public and clinicians who seek information on pharmaceutical (prescription and over the counter) performance so they can make better health decisions. The product supports [multiple device platforms](docs/Software Development/Screenshots/Platforms) and provides searchable information and trends on pharmaceuticals and related adverse effects. Our goal is to provide authoritative, trustworthy, and objective information to our users.
@@ -19,7 +19,6 @@ Our [Agile process](docs/Software Development/Processes#agile-user-centered-desi
 Sprint planning was a time to focus on the goal(s) for the sprint. During sprint execution team members met with users to conduct [usability](docs/User Centered Design/Research Findings/Focus_Group.pdf) and [expectancy tests](docs/User Centered Design/Research Findings/Expectancy_Tests.pdf). These tests helped the team understand how intuitive the features are, whether layouts need to be modified, and how well the features meet user expectations. Our challenge was to identify the "minimum viable product" that we would provide for the first release. This caused us to focus on feature prioritization and move some stories into the [next release](docs/Diagrams/MedExplorer Product Roadmap.png).  We used [open-source technologies](License.md) throughout development and as part of our [DevOps](docs/Software Development/Processes/DevOps.md) practices. Practices included [unit testing](docs/Software%20Development/Processes/DevOps.md#unit-testing-and-automated-test), [continuous integration](docs/Software%20Development/Processes/DevOps.md#continuous-integration), [source code management](docs/Software%20Development/Processes/DevOps.md#source-code-management), and [continuous delivery](docs/Software%20Development/Processes/DevOps.md#continuous-deliverydeployment) and [monitoring](docs/Software%20Development/Processes/DevOps.md#continuous-monitoring). We also included [install procedures](docs/Install Procedures) to support the deploy process. This enabled us to regularly test features as they were developed and build a more sustainable product. Regular demonstrations provided continuous progress of a working product to our users (internal and [IaaS provider](docs/Software Development/Screenshots/softlayer.png)). Based on review feedback, we regularly reprioritized our backlog with focus on the high value items. Our detailed evidence is highlighted below.
 
 ####End of description
-***
 ***
 ## Approach Criteria Evidence
 [Link to Approach Criteria Evidence spreadsheet](docs/Evidence/Attachment E Approach Criteria Evidence NorthropGrumman.xlsx)
