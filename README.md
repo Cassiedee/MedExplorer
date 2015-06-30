@@ -1,6 +1,6 @@
 # ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
 
-## Publicly-available URL to prototype: 
+## Publicly-available URL to prototype
 http://medexplorer.northropgrumman.com
 
 ## Description of the approach used to create the prototype
