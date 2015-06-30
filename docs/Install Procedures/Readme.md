@@ -39,7 +39,7 @@ this container, follow these steps:
     
         git clone http://git.triad.local/NorthropGrumman/MedExplorer.git
 
-    The rest of this readme will assume that the root directory for this git 
+    The following steps will assume that the root directory for this git 
     repository is /path/to/MedExplorer
 
 2.  Set up the node modules for the server:
@@ -54,7 +54,7 @@ this container, follow these steps:
         bower install
         sudo grunt --force
         
-4.  Run the following commands to deploy to build and run the nodejs container:
+4.  Run the following commands to build and run the nodejs container:
 
         cd /path/to/MedExplorer/src/server/
         sudo docker build --rm -t <name>/nodejs:centos6 .
