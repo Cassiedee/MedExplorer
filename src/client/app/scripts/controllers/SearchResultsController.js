@@ -11,7 +11,9 @@ angular.module('MedExplorer')
         $stateParams.type, $stateParams.field, $stateParams.value, $stateParams.limit);
 
     $scope.$on('searchResultsRetrieved', function(event, data) {
-      $scope.results = searchResultsFactory.results;
-      $scope.resultsAreIn = true;
+      if(searchResultsFactory.source === ('search ' + $stateParams.value)) {
+        $scope.results = searchResultsFactory.results;
+        $scope.resultsAreIn = true;
+      }
     });
   }]);

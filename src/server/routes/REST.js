@@ -22,20 +22,22 @@ function search(req, res) {
         && req.query.limit)) {
     res.status(400).json({
       'response': null,
+      'source': 'search ' + req.query.value,
       'error': 'Doesn\'t contain the required parameters!'
     });
   }
   else {
-
     datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
       if(status !== 200) {
         console.log({
           'response': data,
+          'source': 'search ' + req.query.value,
           'error': error
         });
       }
       res.status(status).json({
         'response': data,
+        'source': 'search ' + req.query.value,
         'error': error
       });
     });
@@ -50,6 +52,7 @@ function recentRecalls(req, res) {
   datasource.recentRecalls(req.query.num, function(status, data, error) {
     res.status(status).json({
       'response': data,
+      'source': 'recentRecalls',
       'error': error
     });
   });
@@ -61,6 +64,7 @@ function getTrendingDrugs(req, res) {
   datasource.getTrendingDrugs(function(status, data, error) {
     res.status(status).json({
       'response': data,
+      'source': 'trendingDrugs',
       'error': error
     });
   });

@@ -7,8 +7,10 @@ angular.module('MedExplorer')
     $scope.trendingTablesAreIn = false;
     $http.get('/REST/trendingDrugs').success(function(data) {
       if(!data.error) {
-        $scope.results = data.response;
-        $scope.trendingTablesAreIn = true;
+        if(data.source === 'trendingDrugs') {
+          $scope.results = data.response;
+          $scope.trendingTablesAreIn = true;
+        }
       }
     });
   }]);

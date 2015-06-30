@@ -5,13 +5,15 @@ angular.module('MedExplorer')
   .controller('SidebarRecentRecallsController', ['$scope', '$http', function ($scope, $http) {
     $scope.recentRecallsAreIn = false;
     $http.get('/REST/recentRecalls').success(function(data) {
-      if(!data.error) {
-        $scope.results = data.response;
-        $scope.recentRecallsAreIn = true;
-      }
-      $scope.resultsLength = 0;
-      if($scope.results && $scope.results.length) {
-        $scope.resultsLength = $scope.results.length;
+      if(data.source === 'recentRecalls') {
+        if(!data.error) {
+          $scope.results = data.response;
+          $scope.recentRecallsAreIn = true;
+        }
+        $scope.resultsLength = 0;
+        if($scope.results && $scope.results.length) {
+          $scope.resultsLength = $scope.results.length;
+        }
       }
     });
   }]);

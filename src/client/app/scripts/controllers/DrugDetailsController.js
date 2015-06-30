@@ -29,9 +29,11 @@ angular.module('MedExplorer')
             + '&field=openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=1').success(function(data) {
-              if(data.response.results && data.response.results.length > 0) {
-                $scope.result = data.response.results[0];
-                onDrugDetailsArrived();
+              if(data.source === 'search ' + ($stateParams.spl_id)) {
+                if(data.response.results && data.response.results.length > 0) {
+                  $scope.result = data.response.results[0];
+                  onDrugDetailsArrived();
+                }
               }
             });
 
@@ -242,9 +244,11 @@ angular.module('MedExplorer')
             + '&field=patient.drug.openfda.spl_id'
             + '&value=' + $stateParams.spl_id
             + '&limit=100').success(function(data) {
-              if(data.response && data.response.results && data.response.results.length > 0) {
-                $scope.events = data.response.results;
-                onDrugEventsArrived();
+              if(data.source === ('search ' + $stateParams.spl_id)) {
+                if(data.response && data.response.results && data.response.results.length > 0) {
+                  $scope.events = data.response.results;
+                  onDrugEventsArrived();
+                }
               }
             });
           }
