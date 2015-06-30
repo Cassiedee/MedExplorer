@@ -15,6 +15,11 @@ This diagram shows our User Centered Design Process that the MedExplorer team us
 
 ![User_Centered_Design_Process.png](User_Centered_Design_Process.png)
 
+## Technology Stack
+This diagram shows the technology stack that we used to build our MedExplorer application.
+
+![Technology Stack] (MedExplorer_TechnologyStack.png)
+
 ## DevOps Diagram
 This diagram shows the DevOps evnironment used on teh MedExplorer project.
 
