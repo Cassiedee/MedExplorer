@@ -69,8 +69,8 @@ This container runs continuous monitoring on our web application. To deploy
 this container, follow these steps:
 
 1.  Simply run the following command:
-	docker run -d -p 10051:10051 -p 10052:10052 -p 9001:80 -p 2812:2812 
-		--name zabbix berngp/docker-zabbix
+
+        docker run -d -p 10051:10051 -p 10052:10052 -p 9001:80 -p 2812:2812 --name zabbix berngp/docker-zabbix
 			
     Zabbix should now be accessible from \<hostname\>:9001/zabbix
 	
