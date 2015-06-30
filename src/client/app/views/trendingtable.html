@@ -9,8 +9,7 @@
       </div>
 	<div class="row">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 trendingdrug" ng-repeat="drug in results.otc track by $index">
-			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': '&quot;' + drug.name + '&quot;', 'limit': 25})"
-      ui-sref-opts="{'inherit':false}">
+                  <a ng-href="{{$state.href('home.search', {'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': '&quot;' + (drug.name | title) + '&quot;', 'limit': 25})}}">
                           <span class="trendingdrug">{{drug.name| title}}</span>
 			</a>
 		</div>
@@ -25,7 +24,7 @@
       </div>
 	<div class="row extra-bottom-margin">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6" ng-repeat="drug in results.prescription track by $index">
-			<a ui-sref="home.search({'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': drug.name, 'limit': 25})">
+                  <a ng-href="{{$state.href('home.search', {'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': '&quot;' + (drug.name | title) + '&quot;', 'limit': 25})}}">
                           <span class="trendingdrug">{{drug.name | title}}</span>
 			</a>
 		</div>

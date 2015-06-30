@@ -27,8 +27,8 @@ angular.module('MedExplorer')
           $http.get('/REST/search?source=drug'
             + '&type=label'
             + '&field=openfda.spl_id'
-            + '&value=' + $stateParams.spl_id
-            + '&limit=100').success(function(data) {
+            + '&value=\"' + $stateParams.spl_id
+            + '\"&limit=1').success(function(data) {
               if(data.response.results && data.response.results.length > 0) {
                 $scope.result = data.response.results[0];
                 onDrugDetailsArrived();

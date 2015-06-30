@@ -20,8 +20,8 @@ angular.module('MedExplorer')
       $http.get('/REST/search?source=drug'
         + '&type=enforcement'
         + '&field=openfda.spl_id'
-        + '&value=' + $stateParams.spl_id
-        + '&limit=100').success(function(data) {
+        + '&value=\"' + $stateParams.spl_id
+        + '\"&limit=100').success(function(data) {
           if(data.response && data.response.results && data.response.results.length > 0) {
             $scope.recallDetailsAreIn = true;
             $scope.recallList = data.response.results;
