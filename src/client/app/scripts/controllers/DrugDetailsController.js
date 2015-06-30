@@ -163,9 +163,9 @@ angular.module('MedExplorer')
                   $scope.toggleGeneralPrecautionsText = $scope.toggleGeneralPrecautions ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 
-              $scope.toggleDrugAbuseAndDependency = true;
-              $scope.$watch('toggleDrugAbuseAndDependency', function(){
-                  $scope.toggleDrugAbuseAndDependencyText = $scope.toggleDrugAbuseAndDependency ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              $scope.toggleAbuseAndDependence = true;
+              $scope.$watch('toggleAbuseAndDependence', function(){
+                  $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 
               $scope.toggleUserSafetyWarning = true;
@@ -198,9 +198,19 @@ angular.module('MedExplorer')
                   $scope.toggleOverdosageText = $scope.toggleOverdosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
-			  $scope.toggleAbuseAndDependence = true;
-              $scope.$watch('toggleAbuseAndDependence', function(){
-                  $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+			  $scope.toggleAbuse = true;
+              $scope.$watch('toggleAbuse', function(){
+                  $scope.toggleAbuseText = $scope.toggleAbuse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleDependence = true;
+              $scope.$watch('toggleDependence', function(){
+                  $scope.toggleDependenceText = $scope.toggleDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleOverdosage = true;
+              $scope.$watch('toggleOverdosage', function(){
+                  $scope.toggleOverdosageText = $scope.toggleOverdosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
 			  $scope.togglePregnancy = true;
