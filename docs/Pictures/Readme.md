@@ -25,3 +25,17 @@ Here is a picture of our draft vision statement for the project.
 
 ![Draft Vision Statement] (Draft Vision Statement.jpg)
 
+## Feature Level Demonstration Goals
+Here is an initial set of feature level demonstration goals that our team put together to provide a set of goals for the first three days of development.
+
+![Demo Goals] (FeatureLevel_DemoGoals.jpg)
+
+## MedExplorer Team
+This picture show the multi-disciplinary, cross functional team that designed and developed the MedExplorer applcation.
+
+![MedExplorer Team] (MedExplorer_Team.jpg)
+
+## Morning Stand-Up
+Here is a picture of one of our morning stand ups at the Scrum board.
+
+![Morning Stand-Up] (Morning Standup.jpg)
