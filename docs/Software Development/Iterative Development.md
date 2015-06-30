@@ -1,6 +1,6 @@
 # Iterative Development
 
-The MedExplorer application was built in a interative fashion in a collaboration with the user experience (UX) staff and the web developers.  We started out with a paper design concept from the UX staff.  This diagram was used to create Version 0 of the web application.  As we iteratived through a series of [wireframe diagrams] (../User Centered Design/Wireframes) and web applications, we used both the wireframes and web application to perform [user expectancy and usability tests](../User%20Centered%20Design/Readme.md#evaluation) that drove the evolution of the web application to its final versions.
+The MedExplorer application was built in a iterative fashion in collaboration with the user experience (UX) staff and the web developers.  We started out with a paper design concept from the UX staff.  This diagram was used to create Version 0 of the web application.  As we iteratived through a series of [wireframe diagrams] (../User Centered Design/Wireframes) and web applications, we used both the wireframes and web application to perform [user expectancy and usability tests](../User%20Centered%20Design/Readme.md#evaluation) that drove the evolution of the web application to its final versions.
 
 ## Initial Search Results Design Concept
 
