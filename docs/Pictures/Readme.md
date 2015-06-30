@@ -75,3 +75,22 @@ Here is a picture of the Roadmap for Sprint 3 & 4.
 
 ![Sprint Roadmap] (Sprint3_roadmap planning.jpg)
 
+## Sprint Review - Risks & Concerns
+Here is a picture of the set of the Risks and Concerns that came out of one of our Sprint Reviews.
+
+![Sprint Review Risks and Concerns] (SprintReview_RisksConcerns2.jpg)
+
+## Stand-Up In Progress
+Here is a picture of one of our Stand-Ups in Progress.
+
+![Stand-Up In Progress] (Standup In-Progress.jpg)
+
+## Scrum Task Board
+Here is a picture of our Scrum Task Board.
+
+![Scrum Task Board] (Task Board.jpg)
+
+## Team Members with Continuous Snacks
+The availability of snacks was necessary in order to make significant progress on the MedExplorer development.
+
+![Continuous Snacks] (Team members with continuous snacks.jpg)
