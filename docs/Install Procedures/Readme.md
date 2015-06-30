@@ -40,13 +40,18 @@ this container, follow these steps:
 
 
 1.  SSH into the development server as fdaexplorer. The ip address is 
-    10.2.101.112. Then run the script /home/fdaexplorer/docker_ws/scripts/DEPLOY_TO_SL.sh.
-	This will send the the docker image currently on jenkins to the SoftLayer
-	server.
+    10.2.101.112. Then run the script:
+    
+        sudo sh /home/fdaexplorer/docker_ws/scripts/DEPLOY_TO_SL.sh.
+	
+    This will send the the docker image currently on jenkins to the SoftLayer server.
 		
 2.  SSH into the Softlayer server as sstulga. The ip address is 208.43.120.198.
-	Then run the script /home/sstulga/docker_ws/scripts/DEPLOY_FROM_DEV.sh.
-	This will deploy the image sent from the development server.
+    Then run the script:
+    
+        sudo sh /home/sstulga/docker_ws/scripts/DEPLOY_FROM_DEV.sh.
+	
+    This will deploy the image sent from the development server.
 
 		
 ===============================================================================
