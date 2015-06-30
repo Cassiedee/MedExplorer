@@ -5,9 +5,8 @@ container, the Mongo Database container, and the Zabbix Continuous Monitoring
 container. This installation procedure assumes that you already have docker 
 installed on your system.
 
-===============================================================================
-Deployment of Mongo Database container:
-===============================================================================
+
+## Deployment of Mongo Database container:
 
 The MongoDB container is used by the web application to cache the queries,
 results, and other cached items. Follow these steps to deploy the Mongo
@@ -30,9 +29,7 @@ container:
         sudo docker run -d --name mongoDB mongo
 
 
-===============================================================================
-Deployment of Nodejs container:
-===============================================================================
+## Deployment of Nodejs container:
 	
 The Nodejs container runs the MedExplorer web application itself. To deploy
 this container, follow these steps:
@@ -66,9 +63,7 @@ this container, follow these steps:
     Replace \<name\> with any name you want, so long as they match in both commands.
     
 		
-===============================================================================
-Deployment of Zabbix Continuous Monitoring container:
-===============================================================================
+## Deployment of Zabbix Continuous Monitoring container:
 
 This container runs continuous monitoring on our web application. To deploy
 this container, follow these steps:
