@@ -52,7 +52,7 @@ Our MedExplorer applilcation supports multiple browsers with multiple screen siz
 
 ![Android Phone Search Results] (Screenshots/Platforms/Android_Phone_SearchResults1.png)
 
-![Android Phone Search Results] (Screenshots/Platforms/Android_Phone_SearchResults1.png)
+![Android Phone Search Results] (Screenshots/Platforms/Android_Phone_SearchResults2.png)
 
 ### Android Phone - General Info Page
 
