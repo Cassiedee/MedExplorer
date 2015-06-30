@@ -5,9 +5,20 @@ var fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
+var RateLimiter = require('limiter').RateLimiter;
 
-var delay = 300;
-var openRequests = 0;
+var limiter = new RateLimiter(1, 250);
+
+var API_KEY = 'PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc';
+
+var options = {
+  host: 'api.fda.gov',
+  port: 443,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
 
 exports.getTrendingDrugs = function(callback) {
   //Read trending_drugs into memory
@@ -129,16 +140,6 @@ exports.setTrendingDrugs = function(body) {
   });
 };
 
-var API_KEY = 'w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g';
-
-var options = {
-  host: 'api.fda.gov',
-  port: 443,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-};
-
 /*
  *  datasource should be drug, device, or food
  *  type should be event, label, or enforcement
@@ -180,9 +181,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
       }
       else {
         console.log('cache miss!!');
-        console.log('open requests: ' + openRequests);
-        console.log('delay: ' + openRequests * delay);
-        setTimeout(function() {
+        limiter.removeTokens(1, function() {
           var protocol = options.port === 443 ? https : http;
           var req = protocol.request(options, function(res) {
             var output = '';
@@ -204,8 +203,6 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
               }
               //put the object into the cache
               insertIntoCache(options.path, obj);
-              openRequests--;
-              console.log('request closed: ' + openRequests);
             } catch(err) {
                 console.log(err);
             }
@@ -218,7 +215,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
           });
 
           req.end();
-        }, openRequests++ * delay);
+        });
       }
     });
   } catch(err) {
@@ -294,7 +291,7 @@ exports.recentRecalls = function(num, callback) {
       }
       else {
         console.log('fetchloop cache miss!!');
-        setTimeout(function() {
+        limiter.removeTokens(1, function() {
           req = protocol.request(options, function(res) {
             var output = '';
             res.setEncoding('utf8');
@@ -308,7 +305,6 @@ exports.recentRecalls = function(num, callback) {
               obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
               insertIntoCache(options.path, obj);
               resultCheck(obj);
-              openRequests--;
             });
           });
           req.on('error', function(err) {
@@ -317,7 +313,7 @@ exports.recentRecalls = function(num, callback) {
           });
 
           req.end();
-        }, openRequests++ * delay);
+        });
       }
     });
 
