@@ -14,7 +14,3 @@ To better understand the needs of the users (Clinicians and General Public), we 
 | Making further progress!! |
 | --- |
 | ![Additional Stories2](../../Pictures/Completed Stories2.jpg) |
-
-***
-[Link to Sample user stories - not inclusive](Sample MedExplorer User Stories.xlsx)
-***
