@@ -6,6 +6,9 @@ var MongoClient = require('mongodb').MongoClient;
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
 
+var delay = 250;
+var openRequests = 0;
+
 exports.getTrendingDrugs = function(callback) {
   //Read trending_drugs into memory
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
@@ -166,39 +169,45 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
       }
       else {
         console.log('cache miss!!');
-        var protocol = options.port === 443 ? https : http;
-        var req = protocol.request(options, function(res) {
-          var output = '';
-          res.setEncoding('utf8');
+        console.log('open requests: ' + openRequests);
+        console.log('delay: ' + openRequests * delay);
+        setTimeout(function() {
+          var protocol = options.port === 443 ? https : http;
+          var req = protocol.request(options, function(res) {
+            var output = '';
+            res.setEncoding('utf8');
 
-          res.on('data', function (chunk) {
-            output += chunk;
+            res.on('data', function (chunk) {
+              output += chunk;
+            });
+
+            res.on('end', function() {
+            try {
+              var obj = JSON.parse(output);
+              obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+              if(obj.resStatusCode === 404) {
+                callback(obj.resStatusCode, null, obj);
+              }
+              else {
+                callback(obj.resStatusCode, obj, null);
+              }
+              //put the object into the cache
+              insertIntoCache(options.path, obj);
+              openRequests--;
+              console.log('request closed: ' + openRequests);
+            } catch(err) {
+                console.log(err);
+            }
+            });
           });
 
-          res.on('end', function() {
-          try {
-            var obj = JSON.parse(output);
-            obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-            if(obj.resStatusCode === 404) {
-              callback(obj.resStatusCode, null, obj);
-            }
-            else {
-              callback(obj.resStatusCode, obj, null);
-            }
-            //put the object into the cache
-            insertIntoCache(options.path, obj);
-          } catch(err) {
-              console.log(err);
-          }
+          req.on('error', function(err) {
+            console.log(err);
+            callback(500, null, err);
           });
-        });
 
-        req.on('error', function(err) {
-          console.log(err);
-          callback(500, null, err);
-        });
-
-        req.end();
+          req.end();
+        }, openRequests++ * delay);
       }
     });
   } catch(err) {
@@ -274,27 +283,30 @@ exports.recentRecalls = function(num, callback) {
       }
       else {
         console.log('fetchloop cache miss!!');
-        req = protocol.request(options, function(res) {
-          var output = '';
-          res.setEncoding('utf8');
+        setTimeout(function() {
+          req = protocol.request(options, function(res) {
+            var output = '';
+            res.setEncoding('utf8');
 
-          res.on('data', function (chunk) {
-            output += chunk;
+            res.on('data', function (chunk) {
+              output += chunk;
+            });
+
+            res.on('end', function() {
+              var obj = JSON.parse(output);
+              obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+              insertIntoCache(options.path, obj);
+              resultCheck(obj);
+              openRequests--;
+            });
+          });
+          req.on('error', function(err) {
+            console.log(err);
+            callback(500, null, err);
           });
 
-          res.on('end', function() {
-            var obj = JSON.parse(output);
-            obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-            insertIntoCache(options.path, obj);
-            resultCheck(obj);
-          });
-        });
-        req.on('error', function(err) {
-          console.log(err);
-          callback(500, null, err);
-        });
-
-        req.end();
+          req.end();
+        }, openRequests++ * delay);
       }
     });
 

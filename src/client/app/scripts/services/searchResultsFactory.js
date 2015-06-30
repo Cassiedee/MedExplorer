@@ -64,7 +64,7 @@ angular.module('MedExplorer')
               for(var drug in searchResults.results) {
                 if(searchResults.results[drug].openfda.brand_name) {
                   searchResults.results[drug].has_ongoing_recalls = false;
-                  setTimeout(getRecalls, 250 * drug, drug);
+                  getRecalls(drug);
                 }
               }
             }
