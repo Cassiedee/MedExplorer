@@ -15,12 +15,14 @@ exports.getTrendingDrugs = function(callback) {
   db.open(function(err, db) {
     if(err) {
       console.log(err);
+      db.close();
     } 
     else {
       var collection = db.collection('trending_drugs');
       collection.count(function (err, count) {
         if(err) {
           console.log(err);
+          db.close();
         }
         else if (db === 'undefined') {
           console.log("WARNING: db is undefined!");
@@ -61,6 +63,7 @@ exports.getTrendingDrugs = function(callback) {
             collection.find({type: 'otc'}).toArray(function(err, items1) {
               if(err) {
                 console.log(err);
+                db.close();
               }
               else {
                 results.otc = items1.sort(function(a, b) {
@@ -69,12 +72,14 @@ exports.getTrendingDrugs = function(callback) {
                 collection.find({type: 'prescription'}).toArray(function(err, items2) {
                   if(err) {
                     console.log(err);
+                    db.close();
                   }
                   else {
                     results.prescription = items2.sort(function(a, b) {
                       return b.count - a.count;
                     }).slice(0, 20);
                     callback(200, results, null);
+                    db.close();
                   }
                 });
               }
@@ -94,6 +99,7 @@ exports.setTrendingDrugs = function(body) {
   db.open(function(err, db) {
     if(err) {
       console.log(err);
+      db.close();
     }
     else if (db === 'undefined') {
       console.log("WARNING: db is undefined!");
@@ -103,10 +109,13 @@ exports.setTrendingDrugs = function(body) {
       collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
         if(err) {
           console.log(err);
+          db.close();
         }
         else {
           if(!item) {
-            collection.insert({'type': body.type, 'name': body.name, 'count': 0});
+            collection.insert({'type': body.type, 'name': body.name, 'count': 0}, function(err, data) {
+              db.close(); 
+            });
           }
           collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
             if(err) {
@@ -347,12 +356,12 @@ function retriveFromCache(query, callback) {
   db.open(function(err, db) {
     if (err) {
         console.log(err);
+        db.close();
     } 
     else if (db === 'undefined') {
       console.log("WARNING: db is undefined!");
     }
     else {
-      
       console.log('type of db: ' + typeof db);
       var collection = db.collection("medicine_explorer");
       // Fetch the document
@@ -360,6 +369,7 @@ function retriveFromCache(query, callback) {
       collection.findOne({ mongoKey: query }, function(err, item) {
         if(err) {
           console.log(err);
+          db.close();
         }
         else {
           var data = item;
@@ -395,6 +405,7 @@ function insertIntoCache(query, result) {
     db.open(function(err, db) {
       if(err) {
         console.log(err);
+        db.close();
       }
       else if (db === 'undefined') {
         console.log("WARNING: db is undefined!");
