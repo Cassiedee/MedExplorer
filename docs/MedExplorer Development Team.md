@@ -21,3 +21,8 @@ Category | Category Name | Team Members | Description
 10 | Delivery Manager | Scotty W. | Our Delivery Manager worked tirelessly to make our Agile development team successful by removing impediments, managing external stakeholders and allowing the team to self-manage.  He helped to provide the multi-disciplinary team for the MedExplorer prototype development team. He also worked with the Product Manager and Agile Coach to define the roadmap and priorities for the team.|
 11 | Agile Coach | Suzette J., Steve B. | Our Agile Coaches worked with the team to help provide guidance for effective Agile process for our MedExplorer prototype effort. |
 
+***
+## MedExplorer Team
+Here is a picture of the MedExplorer team in front of our Scrum board.
+
+![MedExplorer Team](Pictures/MedExplorer_Team.jpg)
