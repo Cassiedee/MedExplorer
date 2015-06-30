@@ -30,11 +30,17 @@ angular.module('MedExplorer')
             + '&field=openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=1').success(function(data) {
+<<<<<<< HEAD
               if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
                 if(data.response.results && data.response.results.length > 0) {
                   $scope.result = data.response.results[0];
                   onDrugDetailsArrived();
                 }
+=======
+              if(data.response.results && data.response.results.length > 0) {
+                $scope.result = data.response.results[0];
+                onDrugDetailsArrived();
+>>>>>>> 0d908a4450fd908fbd13c5c17a950b21294cd73c
               }
             });
 
@@ -166,9 +172,9 @@ angular.module('MedExplorer')
                   $scope.toggleGeneralPrecautionsText = $scope.toggleGeneralPrecautions ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 
-              $scope.toggleDrugAbuseAndDependency = true;
-              $scope.$watch('toggleDrugAbuseAndDependency', function(){
-                  $scope.toggleDrugAbuseAndDependencyText = $scope.toggleDrugAbuseAndDependency ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              $scope.toggleAbuseAndDependence = true;
+              $scope.$watch('toggleAbuseAndDependence', function(){
+                  $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 
               $scope.toggleUserSafetyWarning = true;
@@ -186,9 +192,14 @@ angular.module('MedExplorer')
                   $scope.toggleAdverseEventChartText = $scope.toggleAdverseEventChart ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
-			  $scope.toggleDosesAndStrengths = true;
-              $scope.$watch('toggleDosesAndStrengths', function(){
-                  $scope.toggleDosesAndStrengthsText = $scope.toggleDosesAndStrengths ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+			  $scope.toggleDosageAndAdministration = true;
+              $scope.$watch('toggleDosageAndAdministration', function(){
+                  $scope.toggleDosageAndAdministrationText = $scope.toggleDosageAndAdministration ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleDosageFormsAndStrengths = true;
+              $scope.$watch('toggleDosageFormsAndStrengths', function(){
+                  $scope.toggleDosageFormsAndStrengthsText = $scope.toggleDosageFormsAndStrengths ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
 			  $scope.toggleOverdosage = true;
@@ -196,9 +207,19 @@ angular.module('MedExplorer')
                   $scope.toggleOverdosageText = $scope.toggleOverdosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
-			  $scope.toggleAbuseAndDependence = true;
-              $scope.$watch('toggleAbuseAndDependence', function(){
-                  $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+			  $scope.toggleAbuse = true;
+              $scope.$watch('toggleAbuse', function(){
+                  $scope.toggleAbuseText = $scope.toggleAbuse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleDependence = true;
+              $scope.$watch('toggleDependence', function(){
+                  $scope.toggleDependenceText = $scope.toggleDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleOverdosage = true;
+              $scope.$watch('toggleOverdosage', function(){
+                  $scope.toggleOverdosageText = $scope.toggleOverdosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
 			  
 			  $scope.togglePregnancy = true;
@@ -230,6 +251,7 @@ angular.module('MedExplorer')
               $scope.$watch('toggleTeratogenicEffects', function(){
                   $scope.toggleTeratogenicEffectsText = $scope.toggleTeratogenicEffects ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
+			  
 			  $scope.toggleNonTeratogenicEffects = true;
               $scope.$watch('toggleNonTeratogenicEffects', function(){
                   $scope.toggleNonTeratogenicEffectsText = $scope.toggleNonTeratogenicEffects ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
@@ -242,6 +264,7 @@ angular.module('MedExplorer')
           $http.get('/REST/search?source=drug'
             + '&type=event'
             + '&field=patient.drug.openfda.spl_id'
+<<<<<<< HEAD
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=100').success(function(data) {
               if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
@@ -258,6 +281,13 @@ angular.module('MedExplorer')
               else {
                 console.log(data.source);
                 console.log(('search ' + $stateParams.spl_id + ''));
+=======
+            + '&value=' + $stateParams.spl_id
+            + '&limit=100').success(function(data) {
+              if(data.response && data.response.results && data.response.results.length > 0) {
+                $scope.events = data.response.results;
+                onDrugEventsArrived();
+>>>>>>> 0d908a4450fd908fbd13c5c17a950b21294cd73c
               }
             });
           }
@@ -314,7 +344,7 @@ angular.module('MedExplorer')
           }
         };
 		
-		$scope.trustDosesAndStrengthsAsHtml = function() {
+		$scope.trustDosageAndAdministrationAsHtml = function() {
           if($scope.result && $scope.result.dosage_and_administration_table){
             return $sce.trustAsHtml($scope.result.dosage_and_administration_table[0]); //html content is th binded content.
           }
