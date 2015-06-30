@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
 
-var delay = 250;
+var delay = 300;
 var openRequests = 0;
 
 exports.getTrendingDrugs = function(callback) {
