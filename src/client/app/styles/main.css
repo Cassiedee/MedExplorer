@@ -508,6 +508,9 @@ input::-moz-focus-inner {
 	height: 50px;
 	text-align: center;
 }
+#general-info-tab4 {
+	width: 155px;
+}
 
 .general-info-tab-li-border {
 	/*background-color:#0d283d;*/
