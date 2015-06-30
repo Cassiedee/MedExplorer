@@ -60,7 +60,7 @@ this container, follow these steps:
         sudo docker build --rm -t <name>/nodejs:centos6 .
         sudo docker run -d -p 80:80 -p 10050:10050 --link mongoDB:mdb --name nodejs <name>/nodejs:centos6
         
-    Replace \<name\> with any name you want, so long as they match in both commands.
+    Replace \<name\> with any name you would like, so long as they match in both commands.
     
 		
 ## Deployment of Zabbix Continuous Monitoring container:
@@ -77,7 +77,7 @@ this container, follow these steps:
 2.  Next we need to set up Zabbix to monitor our web application. Log into the 
     Zabbix site.
 	
-3.  At the top of the Zabix site, go to Configuration -> Hosts -> click on 
+3.  At the top of the Zabbix site, go to Configuration -> Hosts -> click on 
     Zabbix Server -> Web scenarios.
 
 4.  At the "Configuration of Web Monitoring" page, click the "Create Scenario" 
@@ -93,7 +93,7 @@ this container, follow these steps:
 8.  Inside the steps box, click the "Add" link.
 
 9.  Enter the necessary information for the URL to listen to and specify the 
-    url to listen to. Example http://localhost:9000/. Click the "Add" button.
+    url to listen to (eg: http://localhost:9000/). Click the "Add" button.
 
 10. Add any other steps to monitor a URL.
 
