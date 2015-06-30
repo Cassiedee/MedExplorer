@@ -426,7 +426,23 @@
             sentence}}</div>
           <div class="col-xs-1"></div>
         </div>
-      </div>
+    </div>
+	<div ng-show="result.drug_abuse_and_dependence[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Abuse and Dependence</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#abuse-and-dependence-detail"
+              class="collapse-button" ng-click="toggleAbuseAndDependence = !toggleAbuseAndDependence">
+              <span ng-class="toggleAbuseAndDependenceText"></span>
+            </button>
+          </div>
+          <div id="abuse-and-dependence-detail" class="collapse in col-xs-11">
+		  {{result.drug_abuse_and_dependence[0] | sentence}}
+		  </div>
+          <div class="col-xs-1"></div>
+        </div>
+    </div>
   </div>
 </div>
 

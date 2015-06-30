@@ -192,6 +192,11 @@ angular.module('MedExplorer')
               $scope.$watch('toggleOverdosage', function(){
                   $scope.toggleOverdosageText = $scope.toggleOverdosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
+			  
+			  $scope.toggleAbuseAndDependence = true;
+              $scope.$watch('toggleAbuseAndDependence', function(){
+                  $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
       };
 
       function onDrugDetailsArrived() {
