@@ -504,12 +504,12 @@ input::-moz-focus-inner {
 .general-info-tab-li{
 	margin-right: 10px;
 	font-size: 18px;
-	width: 150px;
+	width: 140px;
 	height: 50px;
 	text-align: center;
 }
 #general-info-tab4 {
-	width: 155px;
+	width: 160px;
 }
 
 .general-info-tab-li-border {
