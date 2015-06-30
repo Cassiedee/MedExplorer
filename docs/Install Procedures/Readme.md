@@ -1,6 +1,6 @@
 # Install Procedures
 
-There are three containers to deploy on SoftLayer: the Nodejs container, the 
+There are three containers to deploy on a Docker container system: the Nodejs container, the 
 Mongo Database container, and the Zabbix Continuous Monitoring container. This
 installation procedure assumes that you already have docker installed on your
 system.
@@ -9,7 +9,7 @@ system.
 Deployment of Mongo Database container:
 ===============================================================================
 
-The MongoDB container is used by the web application to store the queries,
+The MongoDB container is used by the web application to cache the queries,
 results, and other cached items. Follow these steps to deploy the Mongo
 container:
 
