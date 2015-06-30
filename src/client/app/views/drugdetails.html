@@ -14,7 +14,7 @@
         id="general-info-tab2"><a id="details-tab-link-2" ui-sref="home.search.drugdetails({'tabName': 'Warnings', 'breadCrumbName': 'Warnings'})" ui-sref-opts="{'inherit': true}" class="tab-link">Warnings</a></li>
 		<li ng-show="result.dosage_and_administration_table[0] || result.overdosage[0] || result.drug_abuse_and_dependence[0]" ng-class="{active:isSelected(3), 'general-info-tab-li-border':isSelected(3)}" class="general-info-tab-li"
         id="general-info-tab3"><a id="details-tab-link-3" ui-sref="home.search.drugdetails({'tabName': 'Dosage Info', 'breadCrumbName': 'Dosage Info'})" ui-sref-opts="{'inherit': true}" class="tab-link">Dosage Info</a></li>
-		<li ng-show="result.pregnancy[0] || result.labor_and_delivery[0] || result.nursing_mothers[0] || result.pediatric_use[0]" ng-class="{active:isSelected(4), 'general-info-tab-li-border':isSelected(4)}" class="general-info-tab-li"
+		<li ng-show="result.pregnancy[0] || result.labor_and_delivery[0] || result.nursing_mothers[0] || result.pediatric_use[0] || result.geriatric_use[0] || result.teratogenic_effects[0] || result.nonteratogenic_effects[0]" ng-class="{active:isSelected(4), 'general-info-tab-li-border':isSelected(4)}" class="general-info-tab-li"
         id="general-info-tab4"><a id="details-tab-link-4" ui-sref="home.search.drugdetails({'tabName': 'At-Risk Groups', 'breadCrumbName': 'At-Risk Groups'})" ui-sref-opts="{'inherit': true}" class="tab-link">At-Risk Groups</a></li>
       </ul>
     </div>
@@ -499,6 +499,52 @@
           <div class="col-xs-1"></div>
         </div>
     </div>
+	<div ng-show="result.geriatric_use[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">For Geriatric Use</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#geriatric-use-detail"
+              class="collapse-button" ng-click="toggleGeriatricUse = !toggleGeriatricUse">
+              <span ng-class="toggleGeriatricUseText"></span>
+            </button>
+          </div>
+          <div id="geriatric-use-detail" class="collapse in col-xs-11">{{result.geriatric_use[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+    </div>
+	<div ng-show="result.teratogenic_effects[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Teratogenic Effects</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#teratogenic-effects-detail"
+              class="collapse-button" ng-click="toggleTeratogenicEffects = !toggleTeratogenicEffects">
+              <span ng-class="toggleTeratogenicEffectsText"></span>
+            </button>
+          </div>
+          <div id="teratogenic-effects-detail" class="collapse in col-xs-11">{{result.teratogenic_effects[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+    </div>
+	<div ng-show="result.nonteratogenic_effects[0]">
+        <div class="row">
+          <hr class="detail-hr" class="col-xs-12">
+          <span class="col-xs-6 tab-section-header-span">Non-Teratogenic Effects</span>
+          <div class=col-xs-6>
+            <button type="button" data-toggle="collapse" data-target="#nonteratogenic-effects-detail"
+              class="collapse-button" ng-click="toggleNonTeratogenicEffects = !toggleNonTeratogenicEffects">
+              <span ng-class="toggleNonTeratogenicEffectsText"></span>
+            </button>
+          </div>
+          <div id="nonteratogenic-effects-detail" class="collapse in col-xs-11">{{result.nonteratogenic_effects[0] |
+            sentence}}</div>
+          <div class="col-xs-1"></div>
+        </div>
+    </div>
+	
   </div>
   
 </div>
