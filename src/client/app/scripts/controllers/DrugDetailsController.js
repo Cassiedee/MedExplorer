@@ -30,17 +30,11 @@ angular.module('MedExplorer')
             + '&field=openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=1').success(function(data) {
-<<<<<<< HEAD
               if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
                 if(data.response.results && data.response.results.length > 0) {
                   $scope.result = data.response.results[0];
                   onDrugDetailsArrived();
                 }
-=======
-              if(data.response.results && data.response.results.length > 0) {
-                $scope.result = data.response.results[0];
-                onDrugDetailsArrived();
->>>>>>> 0d908a4450fd908fbd13c5c17a950b21294cd73c
               }
             });
 
@@ -264,7 +258,6 @@ angular.module('MedExplorer')
           $http.get('/REST/search?source=drug'
             + '&type=event'
             + '&field=patient.drug.openfda.spl_id'
-<<<<<<< HEAD
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=100').success(function(data) {
               if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
@@ -281,13 +274,6 @@ angular.module('MedExplorer')
               else {
                 console.log(data.source);
                 console.log(('search ' + $stateParams.spl_id + ''));
-=======
-            + '&value=' + $stateParams.spl_id
-            + '&limit=100').success(function(data) {
-              if(data.response && data.response.results && data.response.results.length > 0) {
-                $scope.events = data.response.results;
-                onDrugEventsArrived();
->>>>>>> 0d908a4450fd908fbd13c5c17a950b21294cd73c
               }
             });
           }
