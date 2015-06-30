@@ -35,7 +35,7 @@ angular.module('MedExplorer')
                 var prescription = 0;
                 if(searchResults && searchResults.results) {
                   searchResults.results.forEach(function(drug) {
-                    if(drug.openfda) {
+                    if(drug.openfda.product_type) {
                       drug.openfda.product_type.forEach(function(type) {
                         if(type === 'HUMAN OTC DRUG') {
                           otc++;

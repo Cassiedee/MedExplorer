@@ -182,10 +182,26 @@ angular.module('MedExplorer')
               $scope.$watch('toggleAdverseEventChart', function(){
                   $scope.toggleAdverseEventChartText = $scope.toggleAdverseEventChart ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
+			  
+			  $scope.toggleDosesAndStrengths = true;
+              $scope.$watch('toggleDosesAndStrengths', function(){
+                  $scope.toggleDosesAndStrengthsText = $scope.toggleDosesAndStrengths ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleOverdosage = true;
+              $scope.$watch('toggleOverdosage', function(){
+                  $scope.toggleOverdosageText = $scope.toggleOverdosage ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleAbuseAndDependence = true;
+              $scope.$watch('toggleAbuseAndDependence', function(){
+                  $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
       };
 
       function onDrugDetailsArrived() {
         if($scope.result ) {
+			console.log($scope.result);
           if(!$scope.events) {
           $http.get('/REST/search?source=drug'
             + '&type=event'
@@ -225,15 +241,32 @@ angular.module('MedExplorer')
         }
 
         $scope.tabName = $state.params.tabName?$state.params.tabName:'General Info';
-        $scope.tab = $scope.tabName === 'General Info'?1:2;
+        //$scope.tab = $scope.tabName === 'General Info'?1:2;
 
         $scope.isSelected = function(checkTab) {
+		  switch($scope.tabName){
+			case 'General Info':
+				$scope.tab = 1;
+				break;
+			case 'Warnings':
+				$scope.tab =  2;
+				break;
+			case 'Dosage Info':
+				$scope.tab =  3;
+				break;
+		  }
           return $scope.tab === checkTab;
         };
 
         $scope.trustAdverseReactionsAsHtml = function() {
           if($scope.result && $scope.result.adverse_reactions_table){
             return $sce.trustAsHtml($scope.result.adverse_reactions_table[0]); //html content is th binded content.
+          }
+        };
+		
+		$scope.trustDosesAndStrengthsAsHtml = function() {
+          if($scope.result && $scope.result.dosage_and_administration_table){
+            return $sce.trustAsHtml($scope.result.dosage_and_administration_table[0]); //html content is th binded content.
           }
         };
 
