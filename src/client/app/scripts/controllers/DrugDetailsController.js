@@ -217,6 +217,20 @@ angular.module('MedExplorer')
               $scope.$watch('togglePediatricUse', function(){
                   $scope.togglePediatricUseText = $scope.togglePediatricUse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
+			  
+			  $scope.toggleGeriatricUse = true;
+              $scope.$watch('toggleGeriatricUse', function(){
+                  $scope.toggleGeriatricUseText = $scope.toggleGeriatricUse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleTeratogenicEffects = true;
+              $scope.$watch('toggleTeratogenicEffects', function(){
+                  $scope.toggleTeratogenicEffectsText = $scope.toggleTeratogenicEffects ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  $scope.toggleNonTeratogenicEffects = true;
+              $scope.$watch('toggleNonTeratogenicEffects', function(){
+                  $scope.toggleNonTeratogenicEffectsText = $scope.toggleNonTeratogenicEffects ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
       };
 
       function onDrugDetailsArrived() {
