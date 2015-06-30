@@ -197,6 +197,26 @@ angular.module('MedExplorer')
               $scope.$watch('toggleAbuseAndDependence', function(){
                   $scope.toggleAbuseAndDependenceText = $scope.toggleAbuseAndDependence ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
               });
+			  
+			  $scope.togglePregnancy = true;
+              $scope.$watch('togglePregnancy', function(){
+                  $scope.togglePregnancyText = $scope.togglePregnancy ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleLaborAndDelivery = true;
+              $scope.$watch('toggleLaborAndDelivery', function(){
+                  $scope.toggleLaborAndDeliveryText = $scope.toggleLaborAndDelivery ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.toggleNursingMothers = true;
+              $scope.$watch('toggleNursingMothers', function(){
+                  $scope.toggleNursingMothersText = $scope.toggleNursingMothers ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
+			  
+			  $scope.togglePediatricUse = true;
+              $scope.$watch('togglePediatricUse', function(){
+                  $scope.togglePediatricUseText = $scope.togglePediatricUse ? 'glyphicon glyphicon-triangle-bottom' : 'glyphicon glyphicon-triangle-left';
+              });
       };
 
       function onDrugDetailsArrived() {
@@ -253,6 +273,9 @@ angular.module('MedExplorer')
 				break;
 			case 'Dosage Info':
 				$scope.tab =  3;
+				break;
+			case 'At-Risk Groups':
+				$scope.tab = 4;
 				break;
 		  }
           return $scope.tab === checkTab;
