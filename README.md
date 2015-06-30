@@ -20,7 +20,6 @@ Sprint planning was a time to focus on the goal(s) for the sprint. During sprint
 
 ####End of description
 ***
-***
 ## Approach Criteria Evidence
 [Link to Approach Criteria Evidence spreadsheet](docs/Evidence/Attachment E Approach Criteria Evidence NorthropGrumman.xlsx)
 
