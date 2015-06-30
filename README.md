@@ -1,9 +1,9 @@
 ## Publicly-available URL to prototype: 
 http://medexplorer.northropgrumman.com
 
-## Brief description of the approach used to create the prototype.
+## Description of the approach used to create the prototype
 
-# ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
+## ![MedExplorer] (docs/Diagrams/icon_logo_medex_banner.png) MedExplorer
 ![Agile User Centered Approach](docs/Diagrams/Agile User Centered%20Approach.png)
 
 Our Agile User-Centered approach ensures ongoing collaboration between development team, users, and stakeholders. To implement our [framework](docs/Software Development/Processes/Readme.md) we first identified the members of [our team and the roles](docs/MedExplorer Development Team.md) they would fulfil. We aligned our team with the RFQ requirements and leveraged our experience from our Health Division. Our [multidisciplinary team](docs/Pictures/MedExplorer_Team.jpg) is comprised of experienced user experience (UX) designers, product manager (PM), software and test engineers, delivery manager, agile coach, and business owners. Our product, Medicine Explorer, is designed for the general public and clinicians who seek information on pharmaceutical (prescription and over the counter) performance so they can make better health decisions. The product supports [multiple device platforms](docs/Software Development/Screenshots/Platforms) and provides searchable information and trends on pharmaceuticals and related adverse effects. Our goal is to provide authoritative, trustworthy, and objective information to our users.
