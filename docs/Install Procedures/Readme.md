@@ -92,14 +92,15 @@ this container, follow these steps:
 5.  Enter scenario name, "MedExplorer", and select application, "General". 
     Change update interval, if necessary.
 
-6.  Click the "Add" button at the bottom of the page.
+6.  Click the "Steps" tab.
 
-7.  Click the "Steps" tab.
+7.  Click the "Add" button at the bottom of the page.
 
 8.  Inside the steps box, click the "Add" link.
 
 9.  Enter the necessary information for the URL to listen to and specify the 
-    url to listen to (eg: http://localhost:9000/). Click the "Add" button.
+    url to listen to (for the nodejs container configured above it should be
+    http://localhost:80/). Click the "Add" button.
 
 10. Add any other steps to monitor a URL.
 
