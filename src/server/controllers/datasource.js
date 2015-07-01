@@ -25,6 +25,7 @@ exports.getTrendingDrugs = function(callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if(err) {
+      console.log('Error opening db during getTrendingDrugs: ');
       console.log(err);
       db.close();
     } 
@@ -32,16 +33,24 @@ exports.getTrendingDrugs = function(callback) {
       var collection = db.collection('trending_drugs');
       collection.count(function (err, count) {
         if(err) {
+          console.log('Error on collection.count during getTrendingDrugs: ');
           console.log(err);
           db.close();
         }
         else if (db === 'undefined') {
-          console.log("WARNING: db is undefined!");
+          console.log("ERROR: db is undefined in getTrendingDrugs!");
         }
         else {
           if (count === 0) {
             fs.readFile('data/trending_drugs.json', 'utf8', function (err, data) {
-              data = JSON.parse(data.toLowerCase());
+              try {
+                data = JSON.parse(data.toLowerCase());
+              }
+              catch(err) {
+                console.log(err);
+                console.log('getTrendingDrugs data: ');
+                console.log(data.toLowerCase());
+              }
               if(err) {
                 callback(500, null, err);
               }
@@ -73,6 +82,7 @@ exports.getTrendingDrugs = function(callback) {
             var results = {};
             collection.find({type: 'otc'}).toArray(function(err, items1) {
               if(err) {
+                console.log('Error on collection.find otc during getTrendingDrugs: ');
                 console.log(err);
                 db.close();
               }
@@ -82,6 +92,7 @@ exports.getTrendingDrugs = function(callback) {
                 }).slice(0, 20);
                 collection.find({type: 'prescription'}).toArray(function(err, items2) {
                   if(err) {
+                    console.log('Error on collection.find prescription during getTrendingDrugs: ');
                     console.log(err);
                     db.close();
                   }
@@ -109,16 +120,18 @@ exports.setTrendingDrugs = function(body) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if(err) {
+      console.log('Error opening db during setTrendingDrugs: ');
       console.log(err);
       db.close();
     }
     else if (db === 'undefined') {
-      console.log("WARNING: db is undefined!");
+      console.log("ERROR: db is undefined during setTrendingDrugs!");
     }
     else {
       var collection = db.collection('trending_drugs');
       collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
         if(err) {
+          console.log('Error from collection.findOne during setTrendingDrugs: ');
           console.log(err);
           db.close();
         }
@@ -130,6 +143,7 @@ exports.setTrendingDrugs = function(body) {
           }
           collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
             if(err) {
+              console.log('Error from collection.update during setTrendingDrugs: ');
               console.log(err);
             }
             db.close();
@@ -147,80 +161,90 @@ exports.setTrendingDrugs = function(body) {
  *  where the value of field matches value for each result
  */
 exports.search = function(datasource, type, field, value, terms, limit, callback) {
-  try {
-    options.method = 'GET';
-    if(terms > 1) {
-      field = JSON.parse(field);
-      value = JSON.parse(value);
+  options.method = 'GET';
+  if(terms > 1) {
+    try {
+    field = JSON.parse(field);
+    value = JSON.parse(value);
+    }
+    catch(err) {
+      console.log(err);
+      console.log('field: ');
+      console.log(field);
+      console.log('value: ');
+      console.log(value);
+      return;
+    }
 
-      options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
-      for(var i = 0; i < field.length && i < value.length; i++) {
-        options.path += encodeURIComponent(field[i] + ':' + value[i]);
-        if(i < field.length - 1 && i < value.length - 1) {
-          options.path += '+AND+';
-        }
+    options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
+    for(var i = 0; i < field.length && i < value.length; i++) {
+      options.path += encodeURIComponent(field[i] + ':' + value[i]);
+      if(i < field.length - 1 && i < value.length - 1) {
+        options.path += '+AND+';
       }
-      options.path += '&limit=' + limit;
     }
-    else {
-      options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
-    }
-    console.log('options.path: ' + options.path);
+    options.path += '&limit=' + limit;
+  }
+  else {
+    options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
+  }
+  console.log('options.path: ' + options.path);
 
-    var result = {};
-    retriveFromCache(options.path, function(data){
-      result.data = data;
-      if(data){
-        console.log('cache hit!!');
-        if(data.resStatusCode === 404) {
-          callback(200, null, data);
-        }
-        else {
-          callback(data.resStatusCode, data, null);
-        }
+  var result = {};
+  retrieveFromCache(options.path, function(data){
+    result.data = data;
+    if(data){
+      console.log('cache hit!!');
+      if(data.resStatusCode === 404) {
+        callback(200, null, data);
       }
       else {
-        console.log('cache miss!!');
-        limiter.removeTokens(1, function() {
-          var protocol = options.port === 443 ? https : http;
-          var req = protocol.request(options, function(res) {
-            var output = '';
-            res.setEncoding('utf8');
-
-            res.on('data', function (chunk) {
-              output += chunk;
-            });
-
-            res.on('end', function() {
-            try {
-              var obj = JSON.parse(output);
-              obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-              if(obj.resStatusCode === 404) {
-                callback(obj.resStatusCode, null, obj);
-              }
-              else {
-                callback(obj.resStatusCode, obj, null);
-              }
-              //put the object into the cache
-              insertIntoCache(options.path, obj);
-            } catch(err) {
-                console.log(err);
-            }
-            });
-          });
-
-          req.on('error', function(err) {
-            console.log(err);
-            callback(500, null, err);
-          });
-
-          req.end();
-        });
+        callback(data.resStatusCode, data, null);
       }
-    });
-  } catch(err) {
-    console.log(err);
-  }
+    }
+    else {
+      console.log('cache miss!!');
+      limiter.removeTokens(1, function() {
+        var protocol = options.port === 443 ? https : http;
+        var req = protocol.request(options, function(res) {
+          var output = '';
+          res.setEncoding('utf8');
+
+          res.on('data', function (chunk) {
+            output += chunk;
+          });
+
+          res.on('end', function() {
+          try {
+            var obj = JSON.parse(output);
+            obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+            if(obj.resStatusCode === 404) {
+              callback(obj.resStatusCode, null, obj);
+            }
+            else {
+              callback(obj.resStatusCode, obj, null);
+            }
+            //put the object into the cache
+            insertIntoCache(options.path, obj);
+          } catch(err) {
+              console.log('Error in search response: ');
+              console.log(err);
+              console.log('Data from API: ');
+              console.log(output);
+          }
+          });
+        });
+
+        req.on('error', function(err) {
+          console.log('Search request error: ');
+          console.log(err);
+          callback(500, null, err);
+        });
+
+        req.end();
+      });
+    }
+  });
 };
 
 function dateDecrement(yyyymmdd, num) {
@@ -284,7 +308,7 @@ exports.recentRecalls = function(num, callback) {
     var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
     options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
     console.log('options.path: ' + options.path);
-    retriveFromCache(options.path, function(data) {
+    retrieveFromCache(options.path, function(data) {
       if(data) {
         console.log('fetchloop cache hit!!');
         resultCheck(data);
@@ -301,13 +325,22 @@ exports.recentRecalls = function(num, callback) {
             });
 
             res.on('end', function() {
-              var obj = JSON.parse(output);
-              obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-              insertIntoCache(options.path, obj);
-              resultCheck(obj);
+              try {
+                var obj = JSON.parse(output);
+                obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+                insertIntoCache(options.path, obj);
+                resultCheck(obj);
+              }
+              catch(err) {
+                console.log('Error in recentRecalls response: ');
+                console.log(err);
+                console.log('Data from API: ');
+                console.log(output);
+              }
             });
           });
           req.on('error', function(err) {
+            console.log('recentRecalls request error: ');
             console.log(err);
             callback(500, null, err);
           });
@@ -347,23 +380,24 @@ exports.recentRecalls = function(num, callback) {
 
 var twentyFourHoursInMillis = 86400000;
 
-function retriveFromCache(query, callback) {
+function retrieveFromCache(query, callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if (err) {
+        console.log('Error on opening db in retrieveFromCache: ');
         console.log(err);
         db.close();
     } 
     else if (db === 'undefined') {
-      console.log("WARNING: db is undefined!");
+      console.log("WARNING: db is undefined in retrieveFromCache!");
     }
     else {
-      console.log('type of db: ' + typeof db);
       var collection = db.collection("medicine_explorer");
       // Fetch the document
       console.log(query);
       collection.findOne({ mongoKey: query }, function(err, item) {
         if(err) {
+          console.log('Error on collection.findOne in retrieveFromCache: ');
           console.log(err);
           db.close();
         }
@@ -389,10 +423,16 @@ function retriveFromCache(query, callback) {
 };
 
 function cleanCache(collection) {
-  //delete all data that is more than 24 hours old
-  var twentyFourHoursAgo = new Date().getTime() - twentyFourHoursInMillis;
-  var mongoQuery = { insertTime: {$lt:twentyFourHoursAgo} };    
-  collection.remove(mongoQuery);
+  try {
+    //delete all data that is more than 24 hours old
+    var twentyFourHoursAgo = new Date().getTime() - twentyFourHoursInMillis;
+    var mongoQuery = { insertTime: {$lt:twentyFourHoursAgo} };    
+    collection.remove(mongoQuery);
+  }
+  catch(err) {
+    console.log('Error in cleanCache: ');
+    console.log(err);
+  }
 };
 
 function insertIntoCache(query, result) {
@@ -400,11 +440,12 @@ function insertIntoCache(query, result) {
     var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
     db.open(function(err, db) {
       if(err) {
+        console.log('Error opening db in insertIntoCache: ');
         console.log(err);
         db.close();
       }
       else if (db === 'undefined') {
-        console.log("WARNING: db is undefined!");
+        console.log("WARNING: db is undefined in insertIntoCache!");
       }
       else {
         var collection = db.collection("medicine_explorer");
@@ -419,5 +460,5 @@ function insertIntoCache(query, result) {
 };
 
 
-module.exports.retriveFromCache = retriveFromCache;
+module.exports.retrieveFromCache = retrieveFromCache;
 module.exports.insertIntoCache = insertIntoCache;

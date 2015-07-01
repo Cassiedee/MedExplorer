@@ -15,66 +15,90 @@ var restFunctions = {
  */
 router.get('/REST/search', search);
 function search(req, res) {
-  if(!(req.query.source
-        && req.query.type
-        && req.query.field
-        && req.query.value
-        && req.query.limit)) {
-    res.status(400).json({
-      'response': null,
-      'source': 'search ' + req.query.value,
-      'error': 'Doesn\'t contain the required parameters!'
-    });
-  }
-  else {
-    datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
-      if(status !== 200) {
-        console.log({
+  try {
+    if(!(req.query.source
+          && req.query.type
+          && req.query.field
+          && req.query.value
+          && req.query.limit)) {
+      res.status(400).json({
+        'response': null,
+        'source': 'search ' + req.query.value,
+        'error': 'Doesn\'t contain the required parameters!'
+      });
+    }
+    else {
+      datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
+        if(status !== 200) {
+          console.log({
+            'response': data,
+            'source': 'search ' + req.query.value,
+            'error': error
+          });
+        }
+        res.status(status).json({
           'response': data,
           'source': 'search ' + req.query.value,
           'error': error
         });
-      }
-      res.status(status).json({
-        'response': data,
-        'source': 'search ' + req.query.value,
-        'error': error
       });
-    });
+    }
+  }
+  catch(err) {
+    console.log('Error in /REST/search : ');
+    console.log(err);
   }
 };
 
 router.get('/REST/recentRecalls', recentRecalls);
 function recentRecalls(req, res) {
-  if(!req.query.num) {
-    req.query.num = 10;
-  }
-  datasource.recentRecalls(req.query.num, function(status, data, error) {
-    res.status(status).json({
-      'response': data,
-      'source': 'recentRecalls',
-      'error': error
+  try {
+    if(!req.query.num) {
+      req.query.num = 10;
+    }
+    datasource.recentRecalls(req.query.num, function(status, data, error) {
+      res.status(status).json({
+        'response': data,
+        'source': 'recentRecalls',
+        'error': error
+      });
     });
-  });
+  }
+  catch(err) {
+    console.log('Error in /REST/recentRecalls : ');
+    console.log(err);
+  }
 }
 
 /* test that trending drugs are returned */
 router.get('/REST/trendingDrugs', getTrendingDrugs);
 function getTrendingDrugs(req, res) {
-  datasource.getTrendingDrugs(function(status, data, error) {
-    res.status(status).json({
-      'response': data,
-      'source': 'trendingDrugs',
-      'error': error
+  try {
+    datasource.getTrendingDrugs(function(status, data, error) {
+      res.status(status).json({
+        'response': data,
+        'source': 'trendingDrugs',
+        'error': error
+      });
     });
-  });
+  }
+  catch(err) {
+    console.log('Error in get /REST/trendingDrugs : ');
+    console.log(err);
+  }
 };
 
 /* test that trending drugs are set correctly */
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
+  try {
   datasource.setTrendingDrugs(req.body, function() {});
   res.status(200).send('Done.');
+  }
+  catch(err) {
+    console.log('Error in post /REST/trendingDrugs : ');
+    console.log(err);
+  }
 };
 
 module.exports = router;
