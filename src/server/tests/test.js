@@ -106,7 +106,7 @@ describe('controller test suite', function()
       var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
       var callback = function(data) {};
 
-      controller.functions.retriveFromCache(query,callback);
+      controller.functions.retrieveFromCache(query,callback);
   });
 
   it('insertIntoCache_test', function() {
