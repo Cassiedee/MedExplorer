@@ -399,12 +399,12 @@
 			</button>
           </div>
 			<div id="adverse-event-chart" class="collapse in">
-				<div ng-show="pieChartDataIsHere()">
+                                <div class="col-xs-12" ng-show="noAdverseEvents" style="text-align:center;"><b>None.</b></div>
+				<div ng-show="pieChartDataIsHere && !noAdverseEvents">
 				  <div class="col-xs-12" style="text-align:center;">Number of adverse events containing other drugs with {{result.openfda.brand_name[0] | title}}</div>
-                                  <div class="col-xs-12" ng-show="noAdverseEvents" style="text-align:center;"><b>None.</b></div>
 				  <div class="col-xs-12" c3-pie-chart="commonDrugsPieChartData" id="chart"></div>
 				</div>
-				<div class="col-xs-12" ng-hide="pieChartDataIsHere()">
+				<div class="col-xs-12" ng-hide="pieChartDataIsHere">
 				  <div progressbar class="progress-striped active" type="warning">Loading... This may take a few minutes!</div>
 				</div>
 			</div>

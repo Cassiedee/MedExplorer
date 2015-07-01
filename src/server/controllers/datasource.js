@@ -9,6 +9,8 @@ var RateLimiter = require('limiter').RateLimiter;
 
 var limiter = new RateLimiter(1, 250);
 
+var openDbConnections = 0;
+
 var LOG = (function(){
     var timestamp = function(){};
     timestamp.toString = function(){
@@ -35,10 +37,14 @@ exports.getTrendingDrugs = function(callback) {
   //Read trending_drugs into memory
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
+    openDbConnections++;
+    LOG.log('Opened DB connection...' + openDbConnections);
     if(err) {
       LOG.log('Error opening db during getTrendingDrugs: ');
       LOG.log(err);
       db.close();
+      openDbConnections--;
+      LOG.log('Closed DB connection...' + openDbConnections);
     } 
     else {
       var collection = db.collection('trending_drugs');
@@ -47,6 +53,8 @@ exports.getTrendingDrugs = function(callback) {
           LOG.log('Error on collection.count during getTrendingDrugs: ');
           LOG.log(err);
           db.close();
+          openDbConnections--;
+          LOG.log('Closed DB connection...' + openDbConnections);
         }
         else if (db === 'undefined') {
           LOG.log("ERROR: db is undefined in getTrendingDrugs!");
@@ -87,6 +95,8 @@ exports.getTrendingDrugs = function(callback) {
               }
               collection.insert(array);
               db.close();
+              openDbConnections--;
+              LOG.log('Closed DB connection...' + openDbConnections);
             });
           }
           else if(count !== 0) {
@@ -96,6 +106,8 @@ exports.getTrendingDrugs = function(callback) {
                 LOG.log('Error on collection.find otc during getTrendingDrugs: ');
                 LOG.log(err);
                 db.close();
+                openDbConnections--;
+                LOG.log('Closed DB connection...' + openDbConnections);
               }
               else {
                 results.otc = items1.sort(function(a, b) {
@@ -106,6 +118,8 @@ exports.getTrendingDrugs = function(callback) {
                     LOG.log('Error on collection.find prescription during getTrendingDrugs: ');
                     LOG.log(err);
                     db.close();
+                    openDbConnections--;
+                    LOG.log('Closed DB connection...' + openDbConnections);
                   }
                   else {
                     results.prescription = items2.sort(function(a, b) {
@@ -113,6 +127,8 @@ exports.getTrendingDrugs = function(callback) {
                     }).slice(0, 20);
                     callback(200, results, null);
                     db.close();
+                    openDbConnections--;
+                    LOG.log('Closed DB connection...' + openDbConnections);
                   }
                 });
               }
@@ -130,10 +146,14 @@ exports.setTrendingDrugs = function(body) {
   body.name = body.name.split('\"').join('');
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
+    openDbConnections++;
+    LOG.log('Opened DB connection...' + openDbConnections);
     if(err) {
       LOG.log('Error opening db during setTrendingDrugs: ');
       LOG.log(err);
       db.close();
+      openDbConnections--;
+      LOG.log('Closed DB connection...' + openDbConnections);
     }
     else if (db === 'undefined') {
       LOG.log("ERROR: db is undefined during setTrendingDrugs!");
@@ -145,11 +165,15 @@ exports.setTrendingDrugs = function(body) {
           LOG.log('Error from collection.findOne during setTrendingDrugs: ');
           LOG.log(err);
           db.close();
+          openDbConnections--;
+          LOG.log('Closed DB connection...' + openDbConnections);
         }
         else {
           if(!item) {
             collection.insert({'type': body.type, 'name': body.name, 'count': 0}, function(err, data) {
               db.close(); 
+              openDbConnections--;
+              LOG.log('Closed DB connection...' + openDbConnections);
             });
           }
           collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
@@ -158,6 +182,8 @@ exports.setTrendingDrugs = function(body) {
               LOG.log(err);
             }
             db.close();
+            openDbConnections--;
+            LOG.log('Closed DB connection...' + openDbConnections);
           });
         }
       });
@@ -173,12 +199,15 @@ exports.setTrendingDrugs = function(body) {
  */
 exports.search = function(datasource, type, field, value, terms, limit, callback) {
   options.method = 'GET';
+  var fieldArray;
+  var valueArray;
   if(terms > 1) {
     try {
-    field = JSON.parse(field);
-    value = JSON.parse(value);
+      fieldArray = JSON.parse(field);
+      valueArray = JSON.parse(value);
     }
     catch(err) {
+      console.log('Invalid field/value parameters: ');
       LOG.log(err);
       LOG.log('field: ');
       LOG.log(field);
@@ -188,9 +217,9 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
     }
 
     options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=';
-    for(var i = 0; i < field.length && i < value.length; i++) {
-      options.path += encodeURIComponent(field[i] + ':' + value[i]);
-      if(i < field.length - 1 && i < value.length - 1) {
+    for(var i = 0; i < fieldArray.length && i < valueArray.length; i++) {
+      options.path += encodeURIComponent(fieldArray[i] + ':' + valueArray[i]);
+      if(i < fieldArray.length - 1 && i < valueArray.length - 1) {
         options.path += '+AND+';
       }
     }
@@ -226,23 +255,25 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
           });
 
           res.on('end', function() {
-          try {
-            var obj = JSON.parse(output);
-            obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-            if(obj.resStatusCode === 404) {
-              callback(obj.resStatusCode, null, obj);
+            try {
+              var obj = JSON.parse(output);
+              obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
+              if(obj.resStatusCode === 404) {
+                callback(obj.resStatusCode, null, obj);
+              }
+              else {
+                callback(obj.resStatusCode, obj, null);
+              }
+              //put the object into the cache
+              insertIntoCache(options.path, obj);
+            } catch(err) {
+                LOG.log('Error in search response: ');
+                LOG.log(err);
+                LOG.log('Data from API: ');
+                LOG.log(output);
+                exports.search(datasource, type, field, value, terms, limit, callback);
+                callback = function(a, b, c) {};
             }
-            else {
-              callback(obj.resStatusCode, obj, null);
-            }
-            //put the object into the cache
-            insertIntoCache(options.path, obj);
-          } catch(err) {
-              LOG.log('Error in search response: ');
-              LOG.log(err);
-              LOG.log('Data from API: ');
-              LOG.log(output);
-          }
           });
         });
 
@@ -347,6 +378,8 @@ exports.recentRecalls = function(num, callback) {
                 LOG.log(err);
                 LOG.log('Data from API: ');
                 LOG.log(output);
+                exports.recentReclls(num, callback);
+                callback = function(a, b, c) {};
               }
             });
           });
@@ -394,10 +427,14 @@ var twentyFourHoursInMillis = 86400000;
 function retrieveFromCache(query, callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
+    openDbConnections++;
+    LOG.log('Opened DB connection...' + openDbConnections);
     if (err) {
         LOG.log('Error on opening db in retrieveFromCache: ');
         LOG.log(err);
         db.close();
+        openDbConnections--;
+        LOG.log('Closed DB connection...' + openDbConnections);
     } 
     else if (db === 'undefined') {
       LOG.log("WARNING: db is undefined in retrieveFromCache!");
@@ -405,12 +442,13 @@ function retrieveFromCache(query, callback) {
     else {
       var collection = db.collection("medicine_explorer");
       // Fetch the document
-      LOG.log(query);
       collection.findOne({ mongoKey: query }, function(err, item) {
         if(err) {
           LOG.log('Error on collection.findOne in retrieveFromCache: ');
           LOG.log(err);
           db.close();
+          openDbConnections--;
+          LOG.log('Closed DB connection...' + openDbConnections);
         }
         else {
           var data = item;
@@ -427,6 +465,8 @@ function retrieveFromCache(query, callback) {
           }
           callback(data);
           db.close();
+          openDbConnections--;
+          LOG.log('Closed DB connection...' + openDbConnections);
         }
       });
     }
@@ -450,10 +490,14 @@ function insertIntoCache(query, result) {
   if(result.resStatusCode < 400) {
     var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
     db.open(function(err, db) {
+      openDbConnections++;
+      LOG.log('Opened DB connection...' + openDbConnections);
       if(err) {
         LOG.log('Error opening db in insertIntoCache: ');
         LOG.log(err);
         db.close();
+        openDbConnections--;
+        LOG.log('Closed DB connection...' + openDbConnections);
       }
       else if (db === 'undefined') {
         LOG.log("WARNING: db is undefined in insertIntoCache!");
@@ -463,8 +507,12 @@ function insertIntoCache(query, result) {
 
         result.insertTime = new Date().getTime();
         result.mongoKey = query;
-        collection.insert(result);
+        collection.insert(result, function() {
+           
+        });
         db.close();
+        openDbConnections--;
+        LOG.log('Closed DB connection...' + openDbConnections);
       }
     });
   }

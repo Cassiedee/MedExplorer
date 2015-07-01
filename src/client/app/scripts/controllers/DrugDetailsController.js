@@ -16,9 +16,7 @@ angular.module('MedExplorer')
         $scope.commonDrugsDuringAdverseEvent = {};
         $scope.noAdverseEvents = false;
         $scope.commonDrugsPieChartData = [];
-        $scope.pieChartDataIsHere = function() {
-          return $scope.commonDrugsPieChartData.length > 0;
-        };
+        $scope.pieChartDataIsHere = false;
 
         if($stateParams.drugDetails) {
           $scope.result = $stateParams.drugDetails;
@@ -39,41 +37,6 @@ angular.module('MedExplorer')
             });
 
         }
-        function onDrugEventsArrived() {
-          if($scope.events) {
-            $scope.events.forEach(function(event) {
-              if(event.patient && event.patient.drug) {
-                event.patient.drug.forEach(function(drug) {
-                  if(drug.openfda && drug.openfda.generic_name) {
-                  drug.openfda.generic_name.forEach(function(genericName) {
-                    if(!$scope.commonDrugsDuringAdverseEvent[genericName]) {
-                      $scope.commonDrugsDuringAdverseEvent[genericName] = 1;
-                    }
-                    else {
-                      $scope.commonDrugsDuringAdverseEvent[genericName]++;
-                    }
-                  });
-                }
-              });
-            }
-          });
-        }
-
-        $scope.commonDrugsDuringAdverseEvent[$scope.result.openfda.generic_name] = null;
-        var temp = [];
-        for(var name in $scope.commonDrugsDuringAdverseEvent) {
-          if($scope.commonDrugsDuringAdverseEvent.hasOwnProperty(name)) {
-            temp.push([
-              name,
-              $scope.commonDrugsDuringAdverseEvent[name]
-            ]);
-          }
-        }
-
-        $scope.commonDrugsPieChartData = temp.sort(function(a, b) {
-          return b[1] - a[1];
-        }).slice(0, 10);
-      };
 
       function startWatch() {
                $scope.toggleDescription = true;
@@ -264,15 +227,14 @@ angular.module('MedExplorer')
             + '&type=event'
             + '&field=patient.drug.openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
-            + '\"&limit=100').success(function(data) {
+            + '\"&limit=50').success(function(data) {
               if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
                 if(data.response && data.response.results && data.response.results.length > 0) {
                   $scope.events = data.response.results;
                   onDrugEventsArrived();
                 }
                 else {
-                  console.log(data);
-                  $scope.commonDrugsPieChartData.push({});
+                  $scope.pieChartDataIsHere = true;
                   $scope.noAdverseEvents = true;
                 }
               }
@@ -342,6 +304,48 @@ angular.module('MedExplorer')
         };
 
         startWatch();
+      };
+
+      function onDrugEventsArrived() {
+        if($scope.events) {
+          $scope.events.forEach(function(event) {
+            if(event.patient && event.patient.drug) {
+              event.patient.drug.forEach(function(drug) {
+                if(drug.openfda && drug.openfda.brand_name) {
+                  drug.openfda.brand_name.forEach(function(brandName) {
+                    if(!$scope.commonDrugsDuringAdverseEvent[brandName]) {
+                      $scope.commonDrugsDuringAdverseEvent[brandName] = 1;
+                    }
+                    else {
+                      $scope.commonDrugsDuringAdverseEvent[brandName]++;
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+        $scope.commonDrugsDuringAdverseEvent[$scope.result.openfda.brand_name[0].toUpperCase()] = null;
+        console.log($scope.commonDrugsDuringAdverseEvent);
+        var temp = [];
+        for(var name in $scope.commonDrugsDuringAdverseEvent) {
+          if($scope.commonDrugsDuringAdverseEvent.hasOwnProperty(name)) {
+            if($scope.commonDrugsDuringAdverseEvent[name]) {
+              temp.push([
+                name,
+                $scope.commonDrugsDuringAdverseEvent[name]
+              ]);
+            }
+          }
+        }
+
+        $scope.commonDrugsPieChartData = temp.sort(function(a, b) {
+          return b[1] - a[1];
+        }).slice(0, 10);
+        $scope.pieChartDataIsHere = true;
+        if($scope.commonDrugsPieChartData.length == 0) {
+          $scope.noAdverseEvents = true;
+        }
       };
   }]);
 

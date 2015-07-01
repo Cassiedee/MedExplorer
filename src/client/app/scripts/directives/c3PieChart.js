@@ -44,6 +44,7 @@ angular.module('MedExplorer')
         scope.$watch(function() {
           return scope.data;
         }, function() {
+          console.log(scope.data);
           chart.load({
             columns: scope.data
           });
