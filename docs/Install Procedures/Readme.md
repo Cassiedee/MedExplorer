@@ -57,7 +57,7 @@ this container, follow these steps:
         
 4.  Run the following commands to build and run the nodejs container:
 
-        cd /path/to/MedExplorer/jenkins-base
+        cd /path/to/MedExplorer/src/jenkins-base
         sudo docker build --rm -t jenkins-base:latest .
         cd /path/to/MedExplorer/src/server/
         sudo docker build --rm -t <name>/nodejs:centos6 .
