@@ -38,7 +38,7 @@ this container, follow these steps:
 
 1.  Run the following command to pull the github repository:
     
-        git clone http://git.triad.local/NorthropGrumman/MedExplorer.git
+        git clone http://www.github.com/NorthropGrumman/MedExplorer.git
 
     The following steps will assume that the root directory for this git 
     repository is /path/to/MedExplorer
