@@ -57,12 +57,17 @@ this container, follow these steps:
         
 4.  Run the following commands to build and run the nodejs container:
 
+        cd /path/to/MedExplorer/src/jenkins-base
+        sudo docker build --rm -t jenkins-base:latest .
         cd /path/to/MedExplorer/src/server/
         sudo docker build --rm -t <name>/nodejs:centos6 .
         sudo docker run -d -p 80:80 -p 10050:10050 --link mongoDB:mdb --name nodejs <name>/nodejs:centos6
         
-    Replace \<name\> with any name you would like, so long as they match in both commands.
     
+    Replace \<name\> with any name you would like, so long as they match in both commands.
+    The first two commands build the docker base image. This will be used to build the nodejs
+    image. In future builds, you can then just execute the last three lines to re-build 
+    the nodejs container more quickly.
 		
 ## Deployment of Zabbix Continuous Monitoring container:
 

@@ -296,6 +296,10 @@
                     paginationService.setCurrentPage(paginationId, num);
                 }
             };
+			
+			scope.scrollToTop = function(){
+				window.scrollTo(0,0);
+			};
 
             function goToPage(num) {
                 if (isValidPageNumber(num)) {
