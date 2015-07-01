@@ -373,22 +373,6 @@
         </div>
       </div>
 
-      <div ng-show="result.user_safety_warnings[0]">
-        <div class="row">
-          <hr class="detail-hr" class="col-xs-12">
-          <span class="col-xs-6 tab-section-header-span">User Safety Warning</span>
-          <div class=col-xs-6>
-            <button type="button" data-toggle="collapse" data-target="#user-safety-warning-detail"
-              class="collapse-button" ng-click="toggleUserSafetyWarning = !toggleUserSafetyWarning">
-              <span ng-class="toggleUserSafetyWarningText"></span>
-            </button>
-          </div>
-          <div id="user-safety-warning-detail" class="collapse in col-xs-11">{{result.user_safety_warnings[0] |
-            sentence}}</div>
-          <div class="col-xs-1"></div>
-        </div>
-      </div>
-
         <div class="row">
           <hr class="detail-hr" class="col-xs-12">
           <span class="col-xs-6 tab-section-header-span">Common Adverse Events By Drug</span>

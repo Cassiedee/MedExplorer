@@ -198,6 +198,7 @@ exports.setTrendingDrugs = function(body) {
  *  where the value of field matches value for each result
  */
 exports.search = function(datasource, type, field, value, terms, limit, callback) {
+
   options.method = 'GET';
   var fieldArray;
   var valueArray;
@@ -335,6 +336,7 @@ function dateFormat(yyyy, mm, dd) {
   return yyyymmdd;
 }
 
+
 exports.recentRecalls = function(num, callback) {
   options.method = 'GET';
   var today = new Date();
@@ -346,11 +348,18 @@ exports.recentRecalls = function(num, callback) {
   var req;
 
   fetchloop(30, 0);
+
   function fetchloop(dateRange, counter) {
-    var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
-    options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
+    var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + 
+                         encodeURIComponent(yyyymmdd + ']');
+  
+    options.path = '/drug/enforcement.json?api_key=' + API_KEY + 
+        '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
+  
+  
     LOG.log('options.path: ' + options.path);
     retrieveFromCache(options.path, function(data) {
+
       if(data) {
         LOG.log('fetchloop cache hit!!');
         resultCheck(data);
@@ -361,11 +370,11 @@ exports.recentRecalls = function(num, callback) {
           req = protocol.request(options, function(res) {
             var output = '';
             res.setEncoding('utf8');
-
+  
             res.on('data', function (chunk) {
               output += chunk;
             });
-
+  
             res.on('end', function() {
               try {
                 var obj = JSON.parse(output);
@@ -388,7 +397,7 @@ exports.recentRecalls = function(num, callback) {
             LOG.log(err);
             callback(500, null, err);
           });
-
+  
           req.end();
         });
       }
@@ -419,8 +428,11 @@ exports.recentRecalls = function(num, callback) {
         }
       }
     };
-  };
+  }
+
 };
+
+
 
 var twentyFourHoursInMillis = 86400000;
 
@@ -519,5 +531,10 @@ function insertIntoCache(query, result) {
 };
 
 
-module.exports.retrieveFromCache = retrieveFromCache;
-module.exports.insertIntoCache = insertIntoCache;
+var functions = {
+    'retrieveFromCache' : retrieveFromCache,
+    'insertIntoCache' : insertIntoCache,
+    'dateDecrement' : dateDecrement
+}
+
+module.exports.functions = functions;
