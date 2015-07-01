@@ -81,7 +81,7 @@ this container, follow these steps:
     Zabbix should now be accessible from \<hostname\>:9001/zabbix
 	
 2.  Next we need to set up Zabbix to monitor our web application. Log into the 
-    Zabbix site.
+    Zabbix site. The default username is admin and password is zabbix.
 	
 3.  At the top of the Zabbix site, go to Configuration -> Hosts -> click on 
     Zabbix Server -> Web scenarios.
