@@ -97,24 +97,67 @@ describe('REST API Test Suite', function()
 
 
 
-describe('controllers test suite', function()
+describe('controller test suite', function()
 {
 
   it('retriveFromCache_test', function() {
-      //just call it to make sure it executes right
+      //call it to make sure it is covered
 
       var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
       var callback = function(data) {};
 
-      controller.retriveFromCache(query,callback);
+      controller.functions.retriveFromCache(query,callback);
   });
 
-  it('retriveFromCache_test', function() {
-      //just call it to make sure it executes right
+  it('insertIntoCache_test', function() {
+      //call it to make sure it is covered
 
       var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
       var callback = function(data) {};
 
-      controller.insertIntoCache(query,callback);
+      controller.functions.insertIntoCache(query,callback);
   });
+
+  it('search test', function() {
+      //call it to make sure it is covered
+      
+      var datasource = 'drug';
+      var type = 'enforcement';
+      var field = "[\"openfda.spl_id\",\"status\"]";
+      var value = "[\"\\\"5b990e3-25c0-415c-9bd1-36532d3634e9\\\"\",\"Ongoing\"]";
+      var terms = 2;
+      var limit = 30;
+      var callback = function(status, data, error) {
+      if(status !== 200) {
+        console.log({
+          'response': data,
+          'source': 'search ' + req.query.value,
+          'error': error
+        });
+      }
+      res.status(status).json({
+        'response': data,
+        'source': 'search ' + req.query.value,
+        'error': error
+      });
+    };
+      
+    controller.search(datasource, type, field, value, terms, limit, callback);
+  });
+
+
+  it('dateDecrement test', function() {
+
+      var yyyymmdd = '19941222';
+      var num = '365';
+
+      console.log(3);
+      console.log(controller.functions);
+      console.log(4);
+
+      var result = controller.functions.dateDecrement(yyyymmdd,num);
+
+	  test.assert.equal(19931222, result);
+  });
+
 });

@@ -147,6 +147,15 @@ exports.setTrendingDrugs = function(body) {
  *  where the value of field matches value for each result
  */
 exports.search = function(datasource, type, field, value, terms, limit, callback) {
+
+  console.log('datasource: ' + datasource + ', type: ' + typeof datasource);
+  console.log('type: ' + type + ', type: ' + typeof type);
+  console.log('field: ' + field + ', type: ' + typeof field);
+  console.log('value: ' + value + ', type: ' + typeof value);
+  console.log('terms: ' + terms + ', type: ' + typeof terms);
+  console.log('limit: ' + limit + ', type: ' + typeof limit);
+  console.log('callback: ' + callback + ', type: ' + typeof callback);
+
   try {
     options.method = 'GET';
     if(terms > 1) {
@@ -269,6 +278,7 @@ function dateFormat(yyyy, mm, dd) {
   return yyyymmdd;
 }
 
+
 exports.recentRecalls = function(num, callback) {
   options.method = 'GET';
   var today = new Date();
@@ -280,10 +290,16 @@ exports.recentRecalls = function(num, callback) {
   var req;
 
   fetchloop(30, 0);
+
   function fetchloop(dateRange, counter) {
-    var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
-    options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-    console.log('options.path: ' + options.path);
+    var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + 
+                         encodeURIComponent(yyyymmdd + ']');
+  
+    options.path = '/drug/enforcement.json?api_key=' + API_KEY + 
+        '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
+  
+    //console.log('options.path: ' + options.path);
+  
     retriveFromCache(options.path, function(data) {
       if(data) {
         console.log('fetchloop cache hit!!');
@@ -295,11 +311,11 @@ exports.recentRecalls = function(num, callback) {
           req = protocol.request(options, function(res) {
             var output = '';
             res.setEncoding('utf8');
-
+  
             res.on('data', function (chunk) {
               output += chunk;
             });
-
+  
             res.on('end', function() {
               var obj = JSON.parse(output);
               obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
@@ -311,7 +327,7 @@ exports.recentRecalls = function(num, callback) {
             console.log(err);
             callback(500, null, err);
           });
-
+  
           req.end();
         });
       }
@@ -342,8 +358,11 @@ exports.recentRecalls = function(num, callback) {
         }
       }
     };
-  };
+  }
+
 };
+
+
 
 var twentyFourHoursInMillis = 86400000;
 
@@ -419,5 +438,10 @@ function insertIntoCache(query, result) {
 };
 
 
-module.exports.retriveFromCache = retriveFromCache;
-module.exports.insertIntoCache = insertIntoCache;
+var functions = {
+    'retriveFromCache' : retriveFromCache,
+    'insertIntoCache' : insertIntoCache,
+    'dateDecrement' : dateDecrement
+}
+
+module.exports.functions = functions;

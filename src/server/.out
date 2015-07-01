@@ -6,180 +6,114 @@ C:\dev\MedExplorer\src\server>npm start
 > server@0.0.0 start C:\dev\MedExplorer\src\server
 > nodemon ./bin/www
 
-29 Jun 15:53:02 - [33m[nodemon] v1.3.7[39m
-29 Jun 15:53:02 - [33m[nodemon] to restart at any time, enter `rs`[39m
-29 Jun 15:53:02 - [33m[nodemon] watching: *.*[39m
-29 Jun 15:53:02 - [32m[nodemon] starting `node ./bin/www`[39m
-[0mGET / [36m304 [0m17.905 ms - -[0m
-[0mGET /styles/vendor.1c424917.css [36m304 [0m8.380 ms - -[0m
-[0mGET /styles/main.2253dbd8.css [36m304 [0m6.568 ms - -[0m
-[0mGET /scripts/vendor.9388b87e.js [36m304 [0m6.323 ms - -[0m
-[0mGET /scripts/scripts.f1e34088.js [36m304 [0m6.656 ms - -[0m
-[0mGET /views/main.html [36m304 [0m1.200 ms - -[0m
-[0mGET /views/sidebar_recent_recalls.html [36m304 [0m1.741 ms - -[0m
-[0mGET /views/trendingtable.html [36m304 [0m1.457 ms - -[0m
-[0mGET /views/sidebar_search_results.html [36m304 [0m1.472 ms - -[0m
-[0mGET /views/search_results.html [36m304 [0m1.258 ms - -[0m
-[0mGET /images/icon_logo_medex_banner_caplet.0401cb21.svg [36m304 [0m1.424 ms - -[0m
-[0mGET /assets/angular-utils-pagination/dirPagination.tpl.html [33m404 [0m370.015 ms - 1064[0m
-options.path: /drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30
-[0mGET /fonts/glyphicons-halflings-regular.woff2 [33m404 [0m73.167 ms - 1064[0m
-[0mGET /fonts/glyphicons-halflings-regular.woff [33m404 [0m37.051 ms - 1064[0m
+1 Jul 09:28:20 - [33m[nodemon] v1.3.7[39m
+1 Jul 09:28:20 - [33m[nodemon] to restart at any time, enter `rs`[39m
+1 Jul 09:28:20 - [33m[nodemon] watching: *.*[39m
+1 Jul 09:28:20 - [32m[nodemon] starting `node ./bin/www`[39m
+[0mGET / [36m304 [0m14.900 ms - -[0m
+[0mGET /styles/vendor.1c424917.css [36m304 [0m8.602 ms - -[0m
+[0mGET /styles/main.3e492c34.css [36m304 [0m5.809 ms - -[0m
+[0mGET /scripts/vendor.29f9db6c.js [36m304 [0m5.377 ms - -[0m
+[0mGET /scripts/scripts.adee6ce3.js [36m304 [0m5.237 ms - -[0m
+[0mGET /views/main.html [36m304 [0m2.266 ms - -[0m
+[0mGET /views/sidebar_recent_recalls.html [36m304 [0m2.295 ms - -[0m
+[0mGET /views/trendingtable.html [36m304 [0m1.524 ms - -[0m
 type of db: object
-/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30
-[0mGET /fonts/glyphicons-halflings-regular.ttf [33m404 [0m36.261 ms - 1064[0m
-cache hit!!
-[0mGET /REST/search?source=drug&type=label&field=openfda.brand_name&value=Hello&limit=30 [32m200 [0m186.163 ms - 53681[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22050540cd-5fc8-40c4-8ee8-216116f1e8c9%22+AND+status%3AOngoing&limit=30
+/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150601+TO+20150701%5D+AND+_exists_:openfda.brand_name&limit=100
+fetchloop cache hit!!
+[0mGET /fonts/glyphicons-halflings-regular.woff2 [36m304 [0m5.292 ms - -[0m
+[0mGET /images/icon_logo_medex_banner_caplet.0401cb21.svg [36m304 [0m6.611 ms - -[0m
+[0mGET /images/icon_availability_otc.88f7723c.svg [36m304 [0m6.557 ms - -[0m
+[0mGET /images/icon_availability_rx.2f516dc9.svg [36m304 [0m6.257 ms - -[0m
+[0mGET /REST/trendingDrugs [32m200 [0m81.136 ms - 234[0m
 type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22050540cd-5fc8-40c4-8ee8-216116f1e8c9%22+AND+status%3AOngoing&limit=30
+/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150517+TO+20150701%5D+AND+_exists_:openfda.brand_name&limit=100
+fetchloop cache hit!!
+type of db: object
+/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150425+TO+20150701%5D+AND+_exists_:openfda.brand_name&limit=100
+fetchloop cache hit!!
+[0mGET /REST/recentRecalls [36m304 [0m122.851 ms - -[0m
+[0mGET /views/sidebar_search_results.html [36m304 [0m1.392 ms - -[0m
+[0mGET /views/search_results.html [36m304 [0m1.122 ms - -[0m
+[0mGET /views/dirPagination.tpl.html [36m304 [0m1.423 ms - -[0m
+datasource: drug
+type: label
+field: openfda.brand_name
+value: "Goodbye"
+terms: undefined
+limit: 25
+callback: function (status, data, error) {
+      if(status !== 200) {
+        console.log({
+          'response': data,
+          'source': 'search ' + req.query.value,
+          'error': error
+        });
+      }
+      res.status(status).json({
+        'response': data,
+        'source': 'search ' + req.query.value,
+        'error': error
+      });
+    }
+options.path: /drug/label.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.brand_name:%22Goodbye%22&limit=25
+type of db: object
+/drug/label.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.brand_name:%22Goodbye%22&limit=25
 cache miss!!
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2272947b6c-9947-4882-ad4a-9e897a4f6ebd%22+AND+status%3AOngoing&limit=30
+[0mGET /REST/search?source=drug&type=label&field=openfda.brand_name&value=%22Goodbye%22&limit=25 [32m200 [0m159.482 ms - 5326[0m
+body.name: "goodbye"
+[0mPOST /REST/trendingDrugs [32m200 [0m19.732 ms - 5[0m
+datasource: drug
+type: enforcement
+field: ["openfda.spl_id","status"]
+value: ["\"8c3ae600-4511-4868-a9bd-848f707e7f87\"","Ongoing"]
+terms: 2
+limit: 30
+callback: function (status, data, error) {
+      if(status !== 200) {
+        console.log({
+          'response': data,
+          'source': 'search ' + req.query.value,
+          'error': error
+        });
+      }
+      res.status(status).json({
+        'response': data,
+        'source': 'search ' + req.query.value,
+        'error': error
+      });
+    }
+options.path: /drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%228c3ae600-4511-4868-a9bd-848f707e7f87%22+AND+status%3AOngoing&limit=30
+datasource: drug
+type: enforcement
+field: ["openfda.spl_id","status"]
+value: ["\"a5157e03-c82f-4ce9-9355-6b1e5c078fe4\"","Ongoing"]
+terms: 2
+limit: 30
+callback: function (status, data, error) {
+      if(status !== 200) {
+        console.log({
+          'response': data,
+          'source': 'search ' + req.query.value,
+          'error': error
+        });
+      }
+      res.status(status).json({
+        'response': data,
+        'source': 'search ' + req.query.value,
+        'error': error
+      });
+    }
+options.path: /drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%22a5157e03-c82f-4ce9-9355-6b1e5c078fe4%22+AND+status%3AOngoing&limit=30
+{ [MongoError: server localhost:27017 sockets closed]
+  name: 'MongoError',
+  message: 'server localhost:27017 sockets closed' }
 type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2272947b6c-9947-4882-ad4a-9e897a4f6ebd%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%2272947b6c-9947-4882-ad4a-9e897a4f6ebd\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m16.013 ms - 361[0m
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22050540cd-5fc8-40c4-8ee8-216116f1e8c9\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m150.330 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22fafec8e0-92b0-4934-a95f-004040452442%22+AND+status%3AOngoing&limit=30
+/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%22a5157e03-c82f-4ce9-9355-6b1e5c078fe4%22+AND+status%3AOngoing&limit=30
 type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22fafec8e0-92b0-4934-a95f-004040452442%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22fafec8e0-92b0-4934-a95f-004040452442\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m13.605 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222aa26fb5-9dbf-40f8-ad7d-f9964a910ab2%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222aa26fb5-9dbf-40f8-ad7d-f9964a910ab2%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%222aa26fb5-9dbf-40f8-ad7d-f9964a910ab2\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m15.667 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%228d81bf67-0cf6-44fb-982b-d7163adc7e7d%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%228d81bf67-0cf6-44fb-982b-d7163adc7e7d%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%228d81bf67-0cf6-44fb-982b-d7163adc7e7d\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m13.488 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e7ddebed-3b7c-434e-b579-c54c06c8ffee%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e7ddebed-3b7c-434e-b579-c54c06c8ffee%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22e7ddebed-3b7c-434e-b579-c54c06c8ffee\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m12.153 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%220b0ea9e1-1ae8-4804-9a06-a0c6b5c1489d%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%220b0ea9e1-1ae8-4804-9a06-a0c6b5c1489d%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%220b0ea9e1-1ae8-4804-9a06-a0c6b5c1489d\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m16.358 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222a182f48-a429-426a-8e22-3f10dc75561f%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222a182f48-a429-426a-8e22-3f10dc75561f%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%222a182f48-a429-426a-8e22-3f10dc75561f\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m12.374 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e0544c72-f88a-48a4-addb-c78237a5daf1%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e0544c72-f88a-48a4-addb-c78237a5daf1%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22e0544c72-f88a-48a4-addb-c78237a5daf1\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m14.901 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%224beb4e93-06fb-4cd9-8209-0855798d0b69%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%224beb4e93-06fb-4cd9-8209-0855798d0b69%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%224beb4e93-06fb-4cd9-8209-0855798d0b69\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m14.155 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2219fe0844-6e5b-4828-a064-73a0378e01c9%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2219fe0844-6e5b-4828-a064-73a0378e01c9%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%2219fe0844-6e5b-4828-a064-73a0378e01c9\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m14.439 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22b38716fa-bc12-4834-a05e-fda3e6bed7ab%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22b38716fa-bc12-4834-a05e-fda3e6bed7ab%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22b38716fa-bc12-4834-a05e-fda3e6bed7ab\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m12.873 ms - 361[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%225b99b0e3-25c0-415c-9bd1-36532d3634e9%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%225b99b0e3-25c0-415c-9bd1-36532d3634e9%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%225b99b0e3-25c0-415c-9bd1-36532d3634e9\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m16.940 ms - 361[0m
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=report_date:%5B20150530+TO+20150629%5D+AND+_exists_:openfda.brand_name&limit=100
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=report_date:%5B20150530+TO+20150629%5D+AND+_exists_:openfda.brand_name&limit=100
-fetchloop cache hit!!
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=report_date:%5B20150515+TO+20150629%5D+AND+_exists_:openfda.brand_name&limit=100
-[0mGET /REST/trendingDrugs [36m304 [0m27.600 ms - -[0m
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=report_date:%5B20150515+TO+20150629%5D+AND+_exists_:openfda.brand_name&limit=100
-fetchloop cache hit!!
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=report_date:%5B20150423+TO+20150629%5D+AND+_exists_:openfda.brand_name&limit=100
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=report_date:%5B20150423+TO+20150629%5D+AND+_exists_:openfda.brand_name&limit=100
-fetchloop cache hit!!
-[0mGET /REST/recentRecalls [36m304 [0m69.526 ms - -[0m
-[0mGET /assets/angular-utils-pagination/dirPagination.tpl.html [33m404 [0m22.276 ms - 1064[0m
-options.path: /drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30
-type of db: object
-/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=label&field=openfda.brand_name&value=Hello&limit=30 [36m304 [0m45.298 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22050540cd-5fc8-40c4-8ee8-216116f1e8c9%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22050540cd-5fc8-40c4-8ee8-216116f1e8c9%22+AND+status%3AOngoing&limit=30
+/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%228c3ae600-4511-4868-a9bd-848f707e7f87%22+AND+status%3AOngoing&limit=30
 cache miss!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22050540cd-5fc8-40c4-8ee8-216116f1e8c9\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m98.264 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2272947b6c-9947-4882-ad4a-9e897a4f6ebd%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2272947b6c-9947-4882-ad4a-9e897a4f6ebd%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%2272947b6c-9947-4882-ad4a-9e897a4f6ebd\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m14.738 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22fafec8e0-92b0-4934-a95f-004040452442%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22fafec8e0-92b0-4934-a95f-004040452442%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22fafec8e0-92b0-4934-a95f-004040452442\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m13.755 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222aa26fb5-9dbf-40f8-ad7d-f9964a910ab2%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222aa26fb5-9dbf-40f8-ad7d-f9964a910ab2%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%222aa26fb5-9dbf-40f8-ad7d-f9964a910ab2\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m13.651 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%228d81bf67-0cf6-44fb-982b-d7163adc7e7d%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%228d81bf67-0cf6-44fb-982b-d7163adc7e7d%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%228d81bf67-0cf6-44fb-982b-d7163adc7e7d\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m13.478 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e7ddebed-3b7c-434e-b579-c54c06c8ffee%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e7ddebed-3b7c-434e-b579-c54c06c8ffee%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22e7ddebed-3b7c-434e-b579-c54c06c8ffee\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m18.212 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%220b0ea9e1-1ae8-4804-9a06-a0c6b5c1489d%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%220b0ea9e1-1ae8-4804-9a06-a0c6b5c1489d%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%220b0ea9e1-1ae8-4804-9a06-a0c6b5c1489d\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m16.637 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222a182f48-a429-426a-8e22-3f10dc75561f%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%222a182f48-a429-426a-8e22-3f10dc75561f%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%222a182f48-a429-426a-8e22-3f10dc75561f\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m15.325 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e0544c72-f88a-48a4-addb-c78237a5daf1%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22e0544c72-f88a-48a4-addb-c78237a5daf1%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22e0544c72-f88a-48a4-addb-c78237a5daf1\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m16.467 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%224beb4e93-06fb-4cd9-8209-0855798d0b69%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%224beb4e93-06fb-4cd9-8209-0855798d0b69%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%224beb4e93-06fb-4cd9-8209-0855798d0b69\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m14.991 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2219fe0844-6e5b-4828-a064-73a0378e01c9%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%2219fe0844-6e5b-4828-a064-73a0378e01c9%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%2219fe0844-6e5b-4828-a064-73a0378e01c9\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m14.780 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22b38716fa-bc12-4834-a05e-fda3e6bed7ab%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%22b38716fa-bc12-4834-a05e-fda3e6bed7ab%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22b38716fa-bc12-4834-a05e-fda3e6bed7ab\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m15.395 ms - -[0m
-options.path: /drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%225b99b0e3-25c0-415c-9bd1-36532d3634e9%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.spl_id%3A%225b99b0e3-25c0-415c-9bd1-36532d3634e9%22+AND+status%3AOngoing&limit=30
-cache hit!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%225b99b0e3-25c0-415c-9bd1-36532d3634e9\%22%22,%22Ongoing%22]&terms=2&limit=30 [36m304 [0m15.555 ms - -[0m
+cache miss!!
+[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22a5157e03-c82f-4ce9-9355-6b1e5c078fe4\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m152.646 ms - 187[0m
+[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%228c3ae600-4511-4868-a9bd-848f707e7f87\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m381.455 ms - 187[0m
 Terminate batch job (Y/N)? Terminate batch job (Y/N)? 
-
-C:\dev\MedExplorer\src\server>
