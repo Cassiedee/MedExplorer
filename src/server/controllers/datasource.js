@@ -16,7 +16,7 @@ var LOG = (function(){
     };
 
     return {
-        log: LOG.log.bind(console, '%s', timestamp)
+        log: console.log.bind(console, '%s', timestamp)
     }
 })();
 
