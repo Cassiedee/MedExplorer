@@ -7,11 +7,11 @@
         <h3 class="trendingdrug jumbotron-title">Most Recent Recalls:</h3>
       </div>
     </div>
-      <div class="col-xs-12" ng-hide="recentRecallsAreIn" style="margin-top:10px;margin-bottom:10px;">
+      <div class="col-xs-12" ng-hide="sidebar.recentRecallsAreIn" style="margin-top:10px;margin-bottom:10px;">
         <div progressbar class="progress-striped active" type="info">Loading...</div>
       </div>
     <div class="row sidebar-content" id="recalls">
-      <span class="col-lg-12" ng-repeat="recall in recalls track by $index">
+      <span class="col-lg-12" ng-repeat="recall in sidebar.recalls track by $index">
         <a ui-sref="home.recalldetails({'spl_id': '&quot;' + recall.openfda.spl_id + '&quot;', 'recallList': recalls})" class="row">
           <span class="trendingdrug">
                 {{recall.report_date | mmddyyyy_slashes}} - {{recall.openfda.brand_name[0] | title}}

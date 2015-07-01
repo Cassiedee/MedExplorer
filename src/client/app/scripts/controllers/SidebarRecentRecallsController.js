@@ -3,12 +3,14 @@
 
 angular.module('MedExplorer')
   .controller('SidebarRecentRecallsController', ['$scope', '$http', function ($scope, $http) {
-    $scope.recentRecallsAreIn = false;
+    $scope.sidebar = {};
+    $scope.sidebar.recentRecallsAreIn = false;
     $http.get('/REST/recentRecalls').success(function(data) {
+      console.log(data.source);
       if(data.source === 'recentRecalls') {
         if(!data.error) {
-          $scope.recalls = data.response;
-          $scope.recentRecallsAreIn = true;
+          $scope.sidebar.recalls = data.response;
+          $scope.sidebar.recentRecallsAreIn = true;
         }
       }
     });
