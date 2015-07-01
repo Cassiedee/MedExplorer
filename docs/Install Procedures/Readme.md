@@ -3,7 +3,8 @@
 There are three containers to deploy on a Docker container system: the Nodejs 
 container, the Mongo Database container, and the Zabbix Continuous Monitoring 
 container. This installation procedure assumes that you already have docker 
-installed on your system.
+installed on your system and that you are on a unix system (for Windows machines,
+you will most likely just need to remove 'sudo' from the commands).
 
 
 ## Deployment of Mongo Database container:
