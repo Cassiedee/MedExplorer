@@ -2,7 +2,7 @@
 
 There are three containers to deploy on a Docker container system: the Nodejs 
 container, the Mongo Database container, and the Zabbix Continuous Monitoring 
-container. This installation procedure assumes that you already have docker 
+container. This installation procedure assumes that you already have Docker 
 installed on your system and that you are on a unix system (for Windows machines,
 you will most likely just need to remove 'sudo' from the commands).
 
@@ -102,4 +102,9 @@ this container, follow these steps:
 
 9. Add any other steps to monitor a URL.
 
-10. Click update to save the scenario.
+10. Click update to save the scenario. (Note: the Zabbix server may be disabled by default. To check this, go back to   
+    Configuration -> Hosts and look under "Status". If "disabled", check the box of the server and select "Enable
+    selected" in the dropdown below.)
+
+11. To view continuous monitoring graphs, click the "Monitoring" tab at the top left of the page, then click on the "Graphs"
+    tab. If no data is displayed, be sure to select a graph inside the "GRAPHS" box.
