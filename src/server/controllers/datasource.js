@@ -9,6 +9,17 @@ var RateLimiter = require('limiter').RateLimiter;
 
 var limiter = new RateLimiter(1, 250);
 
+var LOG = (function(){
+    var timestamp = function(){};
+    timestamp.toString = function(){
+        return "[DATASOURCE " + (new Date).toLocaleTimeString() + "]";    
+    };
+
+    return {
+        log: LOG.log.bind(console, '%s', timestamp)
+    }
+})();
+
 var API_KEY = 'PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc';
 
 var options = {
@@ -25,20 +36,20 @@ exports.getTrendingDrugs = function(callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if(err) {
-      console.log('Error opening db during getTrendingDrugs: ');
-      console.log(err);
+      LOG.log('Error opening db during getTrendingDrugs: ');
+      LOG.log(err);
       db.close();
     } 
     else {
       var collection = db.collection('trending_drugs');
       collection.count(function (err, count) {
         if(err) {
-          console.log('Error on collection.count during getTrendingDrugs: ');
-          console.log(err);
+          LOG.log('Error on collection.count during getTrendingDrugs: ');
+          LOG.log(err);
           db.close();
         }
         else if (db === 'undefined') {
-          console.log("ERROR: db is undefined in getTrendingDrugs!");
+          LOG.log("ERROR: db is undefined in getTrendingDrugs!");
         }
         else {
           if (count === 0) {
@@ -47,9 +58,9 @@ exports.getTrendingDrugs = function(callback) {
                 data = JSON.parse(data.toLowerCase());
               }
               catch(err) {
-                console.log(err);
-                console.log('getTrendingDrugs data: ');
-                console.log(data.toLowerCase());
+                LOG.log(err);
+                LOG.log('getTrendingDrugs data: ');
+                LOG.log(data.toLowerCase());
               }
               if(err) {
                 callback(500, null, err);
@@ -82,8 +93,8 @@ exports.getTrendingDrugs = function(callback) {
             var results = {};
             collection.find({type: 'otc'}).toArray(function(err, items1) {
               if(err) {
-                console.log('Error on collection.find otc during getTrendingDrugs: ');
-                console.log(err);
+                LOG.log('Error on collection.find otc during getTrendingDrugs: ');
+                LOG.log(err);
                 db.close();
               }
               else {
@@ -92,8 +103,8 @@ exports.getTrendingDrugs = function(callback) {
                 }).slice(0, 20);
                 collection.find({type: 'prescription'}).toArray(function(err, items2) {
                   if(err) {
-                    console.log('Error on collection.find prescription during getTrendingDrugs: ');
-                    console.log(err);
+                    LOG.log('Error on collection.find prescription during getTrendingDrugs: ');
+                    LOG.log(err);
                     db.close();
                   }
                   else {
@@ -115,24 +126,24 @@ exports.getTrendingDrugs = function(callback) {
 
 
 exports.setTrendingDrugs = function(body) {
-  console.log('body.name: ' + body.name);
+  LOG.log('body.name: ' + body.name);
   body.name = body.name.split('\"').join('');
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if(err) {
-      console.log('Error opening db during setTrendingDrugs: ');
-      console.log(err);
+      LOG.log('Error opening db during setTrendingDrugs: ');
+      LOG.log(err);
       db.close();
     }
     else if (db === 'undefined') {
-      console.log("ERROR: db is undefined during setTrendingDrugs!");
+      LOG.log("ERROR: db is undefined during setTrendingDrugs!");
     }
     else {
       var collection = db.collection('trending_drugs');
       collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
         if(err) {
-          console.log('Error from collection.findOne during setTrendingDrugs: ');
-          console.log(err);
+          LOG.log('Error from collection.findOne during setTrendingDrugs: ');
+          LOG.log(err);
           db.close();
         }
         else {
@@ -143,8 +154,8 @@ exports.setTrendingDrugs = function(body) {
           }
           collection.update({ 'type': body.type, 'name': body.name }, { $inc: { count: 1 } }, function(err, data) {
             if(err) {
-              console.log('Error from collection.update during setTrendingDrugs: ');
-              console.log(err);
+              LOG.log('Error from collection.update during setTrendingDrugs: ');
+              LOG.log(err);
             }
             db.close();
           });
@@ -168,11 +179,11 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
     value = JSON.parse(value);
     }
     catch(err) {
-      console.log(err);
-      console.log('field: ');
-      console.log(field);
-      console.log('value: ');
-      console.log(value);
+      LOG.log(err);
+      LOG.log('field: ');
+      LOG.log(field);
+      LOG.log('value: ');
+      LOG.log(value);
       return;
     }
 
@@ -188,13 +199,13 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
   else {
     options.path = '/' + datasource + '/' + type + '.json?api_key=' + API_KEY + '&search=' + encodeURIComponent(field) + ':' + encodeURIComponent(value) + '&limit=' + limit;
   }
-  console.log('options.path: ' + options.path);
+  LOG.log('options.path: ' + options.path);
 
   var result = {};
   retrieveFromCache(options.path, function(data){
     result.data = data;
     if(data){
-      console.log('cache hit!!');
+      LOG.log('cache hit!!');
       if(data.resStatusCode === 404) {
         callback(200, null, data);
       }
@@ -203,7 +214,7 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
       }
     }
     else {
-      console.log('cache miss!!');
+      LOG.log('cache miss!!');
       limiter.removeTokens(1, function() {
         var protocol = options.port === 443 ? https : http;
         var req = protocol.request(options, function(res) {
@@ -227,17 +238,17 @@ exports.search = function(datasource, type, field, value, terms, limit, callback
             //put the object into the cache
             insertIntoCache(options.path, obj);
           } catch(err) {
-              console.log('Error in search response: ');
-              console.log(err);
-              console.log('Data from API: ');
-              console.log(output);
+              LOG.log('Error in search response: ');
+              LOG.log(err);
+              LOG.log('Data from API: ');
+              LOG.log(output);
           }
           });
         });
 
         req.on('error', function(err) {
-          console.log('Search request error: ');
-          console.log(err);
+          LOG.log('Search request error: ');
+          LOG.log(err);
           callback(500, null, err);
         });
 
@@ -307,14 +318,14 @@ exports.recentRecalls = function(num, callback) {
   function fetchloop(dateRange, counter) {
     var dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange)) + '+TO+' + encodeURIComponent(yyyymmdd + ']');
     options.path = '/drug/enforcement.json?api_key=' + API_KEY + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
-    console.log('options.path: ' + options.path);
+    LOG.log('options.path: ' + options.path);
     retrieveFromCache(options.path, function(data) {
       if(data) {
-        console.log('fetchloop cache hit!!');
+        LOG.log('fetchloop cache hit!!');
         resultCheck(data);
       }
       else {
-        console.log('fetchloop cache miss!!');
+        LOG.log('fetchloop cache miss!!');
         limiter.removeTokens(1, function() {
           req = protocol.request(options, function(res) {
             var output = '';
@@ -332,16 +343,16 @@ exports.recentRecalls = function(num, callback) {
                 resultCheck(obj);
               }
               catch(err) {
-                console.log('Error in recentRecalls response: ');
-                console.log(err);
-                console.log('Data from API: ');
-                console.log(output);
+                LOG.log('Error in recentRecalls response: ');
+                LOG.log(err);
+                LOG.log('Data from API: ');
+                LOG.log(output);
               }
             });
           });
           req.on('error', function(err) {
-            console.log('recentRecalls request error: ');
-            console.log(err);
+            LOG.log('recentRecalls request error: ');
+            LOG.log(err);
             callback(500, null, err);
           });
 
@@ -384,21 +395,21 @@ function retrieveFromCache(query, callback) {
   var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
   db.open(function(err, db) {
     if (err) {
-        console.log('Error on opening db in retrieveFromCache: ');
-        console.log(err);
+        LOG.log('Error on opening db in retrieveFromCache: ');
+        LOG.log(err);
         db.close();
     } 
     else if (db === 'undefined') {
-      console.log("WARNING: db is undefined in retrieveFromCache!");
+      LOG.log("WARNING: db is undefined in retrieveFromCache!");
     }
     else {
       var collection = db.collection("medicine_explorer");
       // Fetch the document
-      console.log(query);
+      LOG.log(query);
       collection.findOne({ mongoKey: query }, function(err, item) {
         if(err) {
-          console.log('Error on collection.findOne in retrieveFromCache: ');
-          console.log(err);
+          LOG.log('Error on collection.findOne in retrieveFromCache: ');
+          LOG.log(err);
           db.close();
         }
         else {
@@ -407,7 +418,7 @@ function retrieveFromCache(query, callback) {
           //if data is more than 24 hours old clear the cache of all objects
           //that are more than 24 hours old
           if(data && data.insertTime < new Date().getTime() - twentyFourHoursInMillis) {
-            console.log('Record found but too old');
+            LOG.log('Record found but too old');
             cleanCache(collection);
             data = null;
           }
@@ -430,8 +441,8 @@ function cleanCache(collection) {
     collection.remove(mongoQuery);
   }
   catch(err) {
-    console.log('Error in cleanCache: ');
-    console.log(err);
+    LOG.log('Error in cleanCache: ');
+    LOG.log(err);
   }
 };
 
@@ -440,12 +451,12 @@ function insertIntoCache(query, result) {
     var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
     db.open(function(err, db) {
       if(err) {
-        console.log('Error opening db in insertIntoCache: ');
-        console.log(err);
+        LOG.log('Error opening db in insertIntoCache: ');
+        LOG.log(err);
         db.close();
       }
       else if (db === 'undefined') {
-        console.log("WARNING: db is undefined in insertIntoCache!");
+        LOG.log("WARNING: db is undefined in insertIntoCache!");
       }
       else {
         var collection = db.collection("medicine_explorer");

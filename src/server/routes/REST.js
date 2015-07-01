@@ -3,6 +3,17 @@ var express = require('express');
 var datasource = require('../controllers/datasource');
 var router = express.Router();
 
+var LOG = (function(){
+    var timestamp = function(){};
+    timestamp.toString = function(){
+        return "[REST " + (new Date).toLocaleTimeString() + "]";    
+    };
+
+    return {
+        log: LOG.log.bind(console, '%s', timestamp)
+    }
+})();
+
 var restFunctions = {
   'search': search,
   'getTrendingDrugs': getTrendingDrugs,
@@ -30,7 +41,7 @@ function search(req, res) {
     else {
       datasource.search(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit, function(status, data, error) {
         if(status !== 200) {
-          console.log({
+          LOG.log({
             'response': data,
             'source': 'search ' + req.query.value,
             'error': error
@@ -45,8 +56,8 @@ function search(req, res) {
     }
   }
   catch(err) {
-    console.log('Error in /REST/search : ');
-    console.log(err);
+    LOG.log('Error in /REST/search : ');
+    LOG.log(err);
   }
 };
 
@@ -65,8 +76,8 @@ function recentRecalls(req, res) {
     });
   }
   catch(err) {
-    console.log('Error in /REST/recentRecalls : ');
-    console.log(err);
+    LOG.log('Error in /REST/recentRecalls : ');
+    LOG.log(err);
   }
 }
 
@@ -83,8 +94,8 @@ function getTrendingDrugs(req, res) {
     });
   }
   catch(err) {
-    console.log('Error in get /REST/trendingDrugs : ');
-    console.log(err);
+    LOG.log('Error in get /REST/trendingDrugs : ');
+    LOG.log(err);
   }
 };
 
@@ -96,8 +107,8 @@ function setTrendingDrugs(req, res) {
   res.status(200).send('Done.');
   }
   catch(err) {
-    console.log('Error in post /REST/trendingDrugs : ');
-    console.log(err);
+    LOG.log('Error in post /REST/trendingDrugs : ');
+    LOG.log(err);
   }
 };
 

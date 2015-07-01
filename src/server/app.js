@@ -8,6 +8,17 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var LOG = (function(){
+    var timestamp = function(){};
+    timestamp.toString = function(){
+        return "[APP " + (new Date).toLocaleTimeString() + "]";    
+    };
+
+    return {
+        log: LOG.log.bind(console, '%s', timestamp)
+    }
+})();
+
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jade')
 
@@ -40,6 +51,7 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
+  LOG.log(err);
 }
 
 // production error handler
@@ -50,6 +62,7 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+  LOG.log(err);
 });
 
 module.exports = app;
