@@ -17,6 +17,7 @@ angular.module('MedExplorer')
         $scope.noAdverseEvents = false;
         $scope.commonDrugsPieChartData = [];
         $scope.pieChartDataIsHere = false;
+		$scope.hasRecalls = false;
 
         if($stateParams.drugDetails) {
           $scope.result = $stateParams.drugDetails;
@@ -243,6 +244,21 @@ angular.module('MedExplorer')
                 console.log(('search ' + $stateParams.spl_id + ''));
               }
             });
+			
+	var value = '[\"\\\"' + $stateParams.spl_id + '\\\"\",\"Ongoing\"]';
+	$http.get('/REST/search?source=drug'
+	  + '&type=enforcement'
+	  + '&field=[\"openfda.spl_id\",\"status\"]'
+	  + '&value=' + value + '&terms=2&limit='+ 30).success(function(recalls) {
+		console.log(recalls);
+		if(recalls.source === ('search ' + value)) {
+		  $scope.hasRecalls = true;
+		}
+		else {
+		  $scope.hasRecalls = false;
+		}
+	  });
+
           }
           else {
             onDrugEventsArrived();

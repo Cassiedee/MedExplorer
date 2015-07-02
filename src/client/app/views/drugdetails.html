@@ -25,7 +25,17 @@
     <!-- Tab 1 -->
     <div ng-show="isSelected(1)" class="general-tab-content">
   <div class="row drugdetailheader">
-    <span class="drugtitle col-xs-11"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
+    <span class="drugtitle col-xs-9"> <strong> {{result.openfda.brand_name[0] | title}} </strong></span>
+	<span class="drugtitle col-xs-1">
+		<div ng-show="hasRecalls" class="col-xs-1">
+			<span style="position:relative; left:0; top:0;">
+				<img src="images/icon_recall_box.svg" style="position: relative; top: 0; left: 0;" alt="Recall" title="Recall">
+				<img src="images/icon_recall_R.svg" style="position: absolute; top:-7px; left: 0;" alt="Recall" title="Recall">
+			</span>
+		</div>
+	</span>
+	<span class="drugtitle col-xs-1">
+	</span>
 	<span class="drugtitle col-xs-1">
 		<div ng-show="result.openfda.product_type[0] === 'HUMAN OTC DRUG'" class="col-xs-1">
 			<img src="images/icon_availability_otc.svg" height="40px" width="40px"  style="margin-left:-5px" alt="Over the counter" title="Over the counter">
