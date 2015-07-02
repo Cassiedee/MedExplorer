@@ -28,18 +28,18 @@ exports.search = function (req, res) {
     });
   }
   else {
-    var path = buildPath(req.query.source, req.query.type, req.query.field, req.query.value, req.query.limit);
-    cache.retrieve(path, 'medicine_explorer').then(function(status, data) {
-      res.status(status).json({
+    var path = buildPath(req.query.source, req.query.type, req.query.field, req.query.value, req.query.terms, req.query.limit);
+    cache.retrieve(path, 'medicine_explorer').then(function(data) {
+      res.status(200).json({
         'response': data,
         'source': 'search ' + req.query.value
       });
-    }, function(status, err) {
+    }, function(err) {
       var JSON = {
         'source': 'search ' + req.query.value,
         'error': err
       };
-      res.status(status).json(JSON);
+      res.status(500).json(JSON);
       LOG.log(JSON);
     });
   }
@@ -47,6 +47,51 @@ exports.search = function (req, res) {
 router.get('/REST/search', exports.search);
 
 
+function dateDecrement(yyyymmdd, num) {
+  var yyyy = parseInt(yyyymmdd.substring(0, 4));
+  var mm = parseInt(yyyymmdd.substring(4, 6));
+  var dd = parseInt(yyyymmdd.substring(6, 8));
+  num = Math.floor(num);
+  for(var i = 0; i < num; i++) {
+    dd--;
+    if(dd < 1) {
+      mm--;
+      switch(mm) {
+        case 2:
+          dd = 28;
+          break;
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+          dd = 31;
+          break;
+        case 4: case 6: case 9: case 11:
+          dd = 30;
+          break;
+        default:
+          mm = 12;
+          dd = 31;
+          yyyy--;
+      }
+    }
+  }
+  return dateFormat(yyyy, mm, dd);
+}
+
+function dateFormat(yyyy, mm, dd) {
+  var yyyymmdd = '' + yyyy;
+  if(mm < 10) {
+    yyyymmdd += '0' + mm;
+  }
+  else {
+    yyyymmdd += '' + mm;
+  }
+  if(dd < 10) {
+    yyyymmdd += '0' + dd;
+  }
+  else {
+    yyyymmdd += '' + dd;
+  }
+  return yyyymmdd;
+}
 
 exports.recentRecalls = function(req, res) {
   LOG.log('Recent recalls called');
@@ -124,89 +169,42 @@ exports.recentRecalls = function(req, res) {
 };
 router.get('/REST/recentRecalls', exports.recentRecalls);
 
-
-
-function dateDecrement(yyyymmdd, num) {
-  var yyyy = parseInt(yyyymmdd.substring(0, 4));
-  var mm = parseInt(yyyymmdd.substring(4, 6));
-  var dd = parseInt(yyyymmdd.substring(6, 8));
-  num = Math.floor(num);
-  for(var i = 0; i < num; i++) {
-    dd--;
-    if(dd < 1) {
-      mm--;
-      switch(mm) {
-        case 2:
-          dd = 28;
-          break;
-        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-          dd = 31;
-          break;
-        case 4: case 6: case 9: case 11:
-          dd = 30;
-          break;
-        default:
-          mm = 12;
-          dd = 31;
-          yyyy--;
-      }
-    }
-  }
-  return dateFormat(yyyy, mm, dd);
-}
-
-function dateFormat(yyyy, mm, dd) {
-  var yyyymmdd = '' + yyyy;
-  if(mm < 10) {
-    yyyymmdd += '0' + mm;
-  }
-  else {
-    yyyymmdd += '' + mm;
-  }
-  if(dd < 10) {
-    yyyymmdd += '0' + dd;
-  }
-  else {
-    yyyymmdd += '' + dd;
-  }
-  return yyyymmdd;
-}
-
-/* test that trending drugs are returned */
-/*router.get('/REST/trendingDrugs', exports.getTrendingDrugs);
 exports.getTrendingDrugs = function(req, res) {
-  try {
-    datasource.getTrendingDrugs(function(status, data, error) {
-      res.status(status).json({
-        'response': data,
-        'source': 'trendingDrugs',
-        'error': error
-      });
+  LOG.log('Retrieving trending drugs...');
+  cache.getTrendingDrugs('trending_drugs').then(function(data) {
+    res.status(200).json({
+      'response': data,
+      'source': 'trendingDrugs'
     });
-  }
-  catch(err) {
-    LOG.log('Error in get /REST/trendingDrugs : ');
-    LOG.log(err);
-  }
+  }, function(err) {
+      var JSON = {
+        'source': 'trendingDrugs',
+        'error': err
+      };
+      res.status(500).json(JSON);
+      LOG.log(JSON);
+  });
 };
+router.get('/REST/trendingDrugs', exports.getTrendingDrugs);
 
-/* test that trending drugs are set correctly 
-router.post('/REST/trendingDrugs', function (req, res) {
-  try {
-    datasource.setTrendingDrugs(req.body, function() {});
+exports.setTrendingDrugs = function (req, res) {
+  cache.setTrendingDrugs(req.body, 'trending_drugs').then(function() {
     res.status(200).send('Done.');
-  }
-  catch(err) {
-    LOG.log('Error in post /REST/trendingDrugs : ');
-    LOG.log(err);
-  }
-});*/
+  }, function(err) {
+    res.status(500).json({
+      'error': err,
+      'source': 'trendingDrugs'
+    });
+  });
+}
+router.post('/REST/trendingDrugs', exports.setTrendingDrugs);
 
 function buildPath(datasource, type, field, value, terms, limit) {
   var path;
   var fieldArray;
   var valueArray;
-  if(terms > 1) {
+  if(terms && terms > 1) {
+    LOG.log('Terms: ' + terms);
     try {
       fieldArray = JSON.parse(field);
       valueArray = JSON.parse(value);
