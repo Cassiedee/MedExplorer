@@ -2,6 +2,7 @@
 
 Our development team was a multi-disciplinary, cross-functional, collaborative development team where team members filled multiple roles 
 during the course of the rapid development of our application. The table below describes the team roles and responsibilities.
+In addition to cross-functional Agile Core Team, we had several supporting members/stakeholders. These members did not work in the Scrum Room everyday with the team, but did provide requirements and approvals that must be met in order to release our product.
 
 ![Agile Team](Diagrams/AgileTeam.png)
 
