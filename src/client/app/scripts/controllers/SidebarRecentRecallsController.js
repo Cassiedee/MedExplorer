@@ -6,12 +6,16 @@ angular.module('MedExplorer')
     $scope.sidebar = {};
     $scope.sidebar.recentRecallsAreIn = false;
     $http.get('/REST/recentRecalls').success(function(data) {
-      console.log(data.source);
       if(data.source === 'recentRecalls') {
         if(!data.error) {
-          $scope.sidebar.recalls = data.response;
-          $scope.sidebar.recentRecallsAreIn = true;
+          if(data.response && data.response.results) {
+            $scope.sidebar.recalls = data.response.results;
+            $scope.sidebar.recentRecallsAreIn = true;
+          }
         }
+      }
+      else {
+        console.log(data.source);
       }
     });
   }]);

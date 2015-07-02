@@ -19,6 +19,7 @@ angular.module('MedExplorer')
           if(!data.error) {
             if(data.source === ('search ' + value)) {
               searchResults.source = data.source;
+              console.log('SETTING SEARCH RESULTS');
               searchResults.results = data.response.results;
               $rootScope.$broadcast('searchResultsRetrieved', '');
               if(searchResults.results && searchResults.results.length) {
@@ -65,11 +66,9 @@ angular.module('MedExplorer')
                     });
                   }
                 }
-                for(var drug in searchResults.results) {
-                  if(searchResults.results[drug].openfda.brand_name) {
-                    searchResults.results[drug].has_ongoing_recalls = false;
-                    getRecalls(drug);
-                  }
+                for(var drug = 0; drug < searchResults.results.length; drug++) {
+                  console.log(drug + ' spl_id is ' + searchResults.results[drug].openfda.spl_id[0]);
+                  getRecalls(drug);
                 }
               }
             }
@@ -87,14 +86,15 @@ angular.module('MedExplorer')
           + '&type=enforcement'
           + '&field=[\"openfda.spl_id\",\"status\"]'
           + '&value=' + value + '&terms=2&limit='+ 30).success(function(recalls) {
+            console.log(value + ' === ' + recalls.source);
+            console.log('response: ' + index + ' spl_id is ' + searchResults.results[index].openfda.spl_id[0]);
             if(recalls.source === ('search ' + value)) {
-              if(searchResults.results[index]) {
-                searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
-                if(searchResults.results[index].has_ongoing_recalls) {
-                  searchResults.results[index].recalls = recalls.response.results;
-                }
-                $rootScope.$broadcast('searchResultsRetrieved', '');
+              searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
+              if(searchResults.results[index].has_ongoing_recalls) {
+                searchResults.results[index].recalls = recalls.response.results;
+                console.log('RECALL FOUND: ' + searchResults.results[index].openfda.spl_id[0] + ' has recall with spl_id ' + searchResults.results[index].recalls[0].openfda.spl_id[0]);
               }
+              $rootScope.$broadcast('searchResultsRetrieved', '');
             }
             else {
               console.log(recalls.source);
