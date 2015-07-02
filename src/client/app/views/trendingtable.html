@@ -8,7 +8,7 @@
       <div class="col-xs-12" ng-hide="trendingTablesAreIn" style="margin-top:10px;margin-bottom:10px;">
         <div progressbar class="progress-striped active" type="info">Loading...</div>
       </div>
-	<div class="row">
+	<div class="row extra-bottom-margin">
 		<div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 trendingdrug" ng-repeat="drug in results.otc track by $index">
                   <a ng-href="{{$state.href('home.search', {'source': 'drug', 'type': 'label', 'field': 'openfda.brand_name', 'value': '&quot;' + (drug.name | title) + '&quot;', 'limit': 25})}}">
                           <span class="trendingdrug">{{drug.name| title}}</span>
