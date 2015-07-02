@@ -151,9 +151,7 @@ describe('controller test suite', function()
       var yyyymmdd = '19941222';
       var num = '365';
 
-      console.log(3);
       console.log(controller.functions);
-      console.log(4);
 
       var result = controller.functions.dateDecrement(yyyymmdd,num);
 

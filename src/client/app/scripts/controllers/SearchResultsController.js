@@ -3,6 +3,7 @@
 
 angular.module('MedExplorer')
   .controller('SearchResultsController', ['$scope', '$rootScope', '$filter', '$stateParams', 'searchResultsFactory', function($scope, $rootScope, $filter, $stateParams, searchResultsFactory) {
+    console.log('in searchResultsController.js');
     $scope.value = $filter('title')($stateParams.value);
     $scope.results = [];
     $scope.resultsAreIn = false;

@@ -387,7 +387,7 @@ exports.recentRecalls = function(num, callback) {
                 LOG.log(err);
                 LOG.log('Data from API: ');
                 LOG.log(output);
-                exports.recentReclls(num, callback);
+                exports.recentRecalls(num, callback);
                 callback = function(a, b, c) {};
               }
             });

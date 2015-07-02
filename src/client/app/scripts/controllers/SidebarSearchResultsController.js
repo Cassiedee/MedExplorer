@@ -3,6 +3,7 @@
 
 angular.module('MedExplorer')
   .controller('SidebarSearchResultsController', ['$scope', '$stateParams', 'searchResultsFactory', function ($scope, $stateParams, searchResultsFactory) {
+    console.log('in sidebarSearchResultsController.js');
     $scope.results = [];
     $scope.searchTerm = $stateParams.value;
 
