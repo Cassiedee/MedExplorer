@@ -3,6 +3,7 @@
 
 angular.module('MedExplorer')
   .factory('searchResultsFactory', ['$rootScope', '$http', 'lodash', function($rootScope, $http) {
+    console.log('in searchResultsFactory.js');
     var searchResults = {
       source: null,
       results: null,
@@ -10,6 +11,9 @@ angular.module('MedExplorer')
     };
 
     function executeSearch(source, type, field, value, limit) {
+
+      console.log('in executeSearch: ' + source + ' ' + type + ' ' + field + ' ' + value);
+
       $http.get('/REST/search?source=' + source
         + '&type=' + type
         + '&field=' + field

@@ -216,4 +216,3 @@ exports.setTrendingDrugs = function(body) {
       });
     }
   });
-};*/

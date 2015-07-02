@@ -67,3 +67,7 @@ src/server/npm-debug.log
 .metadata/version.ini
 .project
 
+
+#ignore test results
+src/client/test-results.xml
+src/server/test-results.xml
