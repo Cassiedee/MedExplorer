@@ -103,8 +103,8 @@ function getTrendingDrugs(req, res) {
 router.post('/REST/trendingDrugs', setTrendingDrugs);
 function setTrendingDrugs(req, res) {
   try {
-  datasource.setTrendingDrugs(req.body, function() {});
-  res.status(200).send('Done.');
+    datasource.setTrendingDrugs(req.body, function() {});
+    res.status(200).send('Done.');
   }
   catch(err) {
     LOG.log('Error in post /REST/trendingDrugs : ');

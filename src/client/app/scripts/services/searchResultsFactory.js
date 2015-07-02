@@ -19,6 +19,7 @@ angular.module('MedExplorer')
         + '&field=' + field
         + '&value=' + value
         + '&limit=' + limit).success(function(data) {
+          console.log(data);
           if(!data.error) {
             if(data.source === ('search ' + value)) {
               searchResults.source = data.source;
@@ -92,11 +93,13 @@ angular.module('MedExplorer')
           + '&field=[\"openfda.spl_id\",\"status\"]'
           + '&value=' + value + '&terms=2&limit='+ 30).success(function(recalls) {
             if(recalls.source === ('search ' + value)) {
-              searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
-              if(searchResults.results[index].has_ongoing_recalls) {
-                searchResults.results[index].recalls = recalls.response.results;
+              if(searchResults.results[index]) {
+                searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
+                if(searchResults.results[index].has_ongoing_recalls) {
+                  searchResults.results[index].recalls = recalls.response.results;
+                }
+                $rootScope.$broadcast('searchResultsRetrieved', '');
               }
-              $rootScope.$broadcast('searchResultsRetrieved', '');
             }
             else {
               console.log(recalls.source);

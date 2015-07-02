@@ -1,8 +1,6 @@
-
 <ul class="pagination" ng-if="1 < pages.length">
     <li ng-repeat="pageNumber in pages track by $index" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
-    <a href="" ng-hide="pageNumber == '...'" ng-click="setCurrent(pageNumber)">{{pageButtonLabel((pageNumber - 1) * itemsPerPage + 1, pageNumber * itemsPerPage)}}</a>
-    <a href="" ng-show="pageNumber == '...'" ng-click="setCurrent(pageNumber)">...</a>
+    <a href="" ng-hide="pageNumber == '...'" ng-click="scrollToTop();setCurrent(pageNumber)">{{pageButtonLabel((pageNumber - 1) * itemsPerPage + 1, pageNumber * itemsPerPage)}}</a>
+    <a href="" ng-show="pageNumber == '...'" ng-click="scrollToTop();setCurrent(pageNumber)">...</a>
     </li>
 </ul>
-

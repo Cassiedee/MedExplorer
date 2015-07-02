@@ -379,7 +379,8 @@ exports.recentRecalls = function(num, callback) {
               try {
                 var obj = JSON.parse(output);
                 obj.resStatusCode = res.statusCode === 404 ? 200 : res.statusCode;
-                insertIntoCache(options.path, obj);
+                obj.mongoKey = options.path
+                insertIntoCache(obj);
                 resultCheck(obj);
               }
               catch(err) {
@@ -498,7 +499,7 @@ function cleanCache(collection) {
   }
 };
 
-function insertIntoCache(query, result) {
+function insertIntoCache(result) {
   if(result.resStatusCode < 400) {
     var db = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
     db.open(function(err, db) {
@@ -515,16 +516,18 @@ function insertIntoCache(query, result) {
         LOG.log("WARNING: db is undefined in insertIntoCache!");
       }
       else {
+        try {
         var collection = db.collection("medicine_explorer");
-
         result.insertTime = new Date().getTime();
-        result.mongoKey = query;
-        collection.insert(result, function() {
-           
-        });
+        collection.insert(result);
         db.close();
         openDbConnections--;
         LOG.log('Closed DB connection...' + openDbConnections);
+        }
+        catch(err) {
+          LOG.log('Error while inserting into cache: ');
+          LOG.log(err);
+        }
       }
     });
   }

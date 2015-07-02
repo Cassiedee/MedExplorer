@@ -2,7 +2,7 @@
 
 There are three containers to deploy on a Docker container system: the Nodejs 
 container, the Mongo Database container, and the Zabbix Continuous Monitoring 
-container. This installation procedure assumes that you already have docker 
+container. This installation procedure assumes that you already have Docker 
 installed on your system and that you are on a unix system (for Windows machines,
 you will most likely just need to remove 'sudo' from the commands).
 
@@ -38,7 +38,7 @@ this container, follow these steps:
 
 1.  Run the following command to pull the github repository:
     
-        git clone http://git.triad.local/NorthropGrumman/MedExplorer.git
+        git clone http://www.github.com/NorthropGrumman/MedExplorer.git
 
     The following steps will assume that the root directory for this git 
     repository is /path/to/MedExplorer
@@ -81,7 +81,7 @@ this container, follow these steps:
     Zabbix should now be accessible from \<hostname\>:9001/zabbix
 	
 2.  Next we need to set up Zabbix to monitor our web application. Log into the 
-    Zabbix site.
+    Zabbix site. The default username is admin and password is zabbix.
 	
 3.  At the top of the Zabbix site, go to Configuration -> Hosts -> click on 
     Zabbix Server -> Web scenarios.
@@ -92,15 +92,19 @@ this container, follow these steps:
 5.  Enter scenario name, "MedExplorer", and select application, "General". 
     Change update interval, if necessary.
 
-6.  Click the "Add" button at the bottom of the page.
+6.  Click the "Steps" tab.
 
-7.  Click the "Steps" tab.
+7.  Inside the steps box, click the "Add" link.
 
-8.  Inside the steps box, click the "Add" link.
+8.  Enter the necessary information for the URL to listen to and specify the 
+    url to listen to (for the nodejs container configured above it should be
+    http://localhost:80/). Click the "Add" button.
 
-9.  Enter the necessary information for the URL to listen to and specify the 
-    url to listen to (eg: http://localhost:9000/). Click the "Add" button.
+9. Add any other steps to monitor a URL.
 
-10. Add any other steps to monitor a URL.
+10. Click update to save the scenario. (Note: the Zabbix server may be disabled by default. To check this, go back to   
+    Configuration -> Hosts and look under "Status". If "disabled", check the box of the server and select "Enable
+    selected" in the dropdown below.)
 
-11. Click update to save the scenario.
+11. To view continuous monitoring graphs, click the "Monitoring" tab at the top left of the page, then click on the "Graphs"
+    tab. If no data is displayed, be sure to select a graph inside the "GRAPHS" box.

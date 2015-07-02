@@ -6,7 +6,7 @@
         <h3 class="trendingdrug jumbotron-title">{{searchTerm | title}}</h3>
       </div>
       <ul class="list-group sidebar-content">
-        <h5> Results: {{results.length ? results.length : 0}}</h5>
+        <h5> Results: {{sidebar.search.results.length ? sidebar.search.results.length : 0}}</h5>
         <li class="list-group-item noborder">
           <dir-pagination-controls direction-links="false" auto-hide="false" max-size="5" template-url="views/dirPagination.tpl.html"></dir-pagination-controls>
         </li>

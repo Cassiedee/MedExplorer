@@ -3,19 +3,21 @@
 
 angular.module('MedExplorer')
   .controller('SidebarSearchResultsController', ['$scope', '$stateParams', 'searchResultsFactory', function ($scope, $stateParams, searchResultsFactory) {
-    console.log('in sidebarSearchResultsController.js');
-    $scope.results = [];
+    $scope.sidebar = {
+      search: {}
+    };
+    $scope.sidebar.search.results = [];
     $scope.searchTerm = $stateParams.value;
 
     $scope.$on('searchResultsRetrieved', function() {
       if(searchResultsFactory.source === ('search ' + $stateParams.value)) {
-        $scope.results = searchResultsFactory.results;
+        $scope.sidebar.search.results = searchResultsFactory.results;
         $scope.dosageForms = {};
         $scope.distributionTypes = {};
         var unknown_dosage_form = 0;
         var unknown_dist_type = 0;
-            if($scope.results){
-                  $scope.results.forEach(function(drug) {
+            if($scope.sidebar.search.results){
+                  $scope.sidebar.search.results.forEach(function(drug) {
                           var dosage_forms = drug.openfda.dosage_form;
                           if(dosage_forms) {
                             dosage_forms.forEach(function(form) {
