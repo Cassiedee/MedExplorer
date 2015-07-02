@@ -1,5 +1,6 @@
 var datasource = require('../controllers/datasource');
 var q = require('q');
+var fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
@@ -16,12 +17,71 @@ var LOG = (function(){
     }
 })();
 
-var MongoDb = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
 var twentyFourHoursInMillis = 86400000;
+
+(function checkForTrendingDrugs(collectionName) {
+  LOG.log('Retrieve called...');
+  return openConnection().then(function(db) {
+    var collection = db.collection(collectionName);
+    return q.Promise(function(resolve, reject) {
+      LOG.log('Checking for trending_drugs in collection...');
+        collection.count(function(err, count) {
+        if(err) {
+          reject('Error on collection.count: ' + err);
+        }
+        else if(count === 0) {
+          LOG.log('No trending drugs found');
+          fs.readFile('data/trending_drugs.json', 'utf8', function(err, data) {
+            if(err) {
+              reject('Error reading trending_drugs.json: ' + err);
+            }
+            else {
+              LOG.log('Read in data/trending_drugs.json');
+              try {
+                data = JSON.parse(data.toLowerCase());
+                var array = [];
+                if(data && data.prescription) {
+                  for(var prop in data.prescription) {
+                    if(data.prescription.hasOwnProperty(prop)) {
+                      data.prescription[prop].type = 'prescription';
+                      array.push(data.prescription[prop]);
+                    }
+                  }
+                }
+                if(data && data.otc) {
+                  for(var prop in data.otc) {
+                    if(data.otc.hasOwnProperty(prop)) {
+                      data.otc[prop].type = 'otc';
+                      array.push(data.otc[prop]);
+                    }
+                  }
+                }
+                collection.insert(array);
+                LOG.log('Intialized trending drugs successfully!');
+                resolve();
+              }
+              catch(err) {
+                reject('Error parsing trending_drugs.json: ' + err);
+              }
+            }
+          });
+        }
+        else {
+          resolve();
+          LOG.log('Found trending drugs in collection!');
+        }
+      });
+    }).then(function(record) {
+      db.close();
+      LOG.log('Closed connection to MongoDb.');
+    });
+  });
+})('trending_drugs');
 
 function openConnection() {
   LOG.log('Opening connection to MongoDb...');
   return q.Promise(function(resolve, reject) {
+    var MongoDb = new Db('test', new Server(process.env.MDB_PORT_27017_TCP_ADDR, 27017));
     MongoDb.open(function(err, db) {
       if(err) {
         LOG.log('Error opening database connection!');
@@ -37,7 +97,7 @@ function openConnection() {
 };
 
 exports.retrieve = function(path, collectionName) {
-  LOG.log('Retreive called...');
+  LOG.log('Retrieve called...');
   return openConnection().then(function(db) {
     var collection = db.collection(collectionName);
     return q.Promise(function(resolve, reject) {
@@ -69,10 +129,11 @@ exports.retrieve = function(path, collectionName) {
     }).then(function(record) {
       db.close();
       LOG.log('Retrieved record successfully!');
+      LOG.log('Closed connection to MongoDb.');
       return record; 
     });
   });
-}
+};
 
 function checkRecordDate(record, path, collection) {
   if(!record) {
@@ -95,17 +156,17 @@ function checkRecordDate(record, path, collection) {
       return record;
     });
   }
-}
+};
 
 function fetchFromDatasource(path, collection) {
-  LOG.log('Retreiving from API...');
+  LOG.log('Retrieving from API...');
   return datasource.makeRequest(path).then(function(data) {
+    LOG.log('Pulled some data from the API...');
     return insertIntoCache(data, collection).then(function() {
-      LOG.log('we got here...');
       return data;
     });
   });
-}
+};
 
 function insertIntoCache(record, collection) {
   return q.Promise(function(resolve, reject) {
@@ -142,5 +203,76 @@ function cleanCache(collection, db) {
     catch(err) {
       reject('Error while cleaning cache: ' + err);
     }
+  });
+};
+
+exports.getTrendingDrugs = function(collectionName) {
+  LOG.log('Retrieve trending drugs called...');
+  return openConnection().then(function(db) {
+    var collection = db.collection(collectionName);
+    return q.Promise(function(resolve, reject) {
+      var results = {};
+      collection.find({type: 'otc'}).toArray(function(err, otc) {
+        if(err) {
+          reject('Error retrieving trending otc drugs from collection: ' + err);
+        }
+        else {
+          results.otc = otc.sort(function(a, b) {
+            return b.count - a.count;
+          }).slice(0, 20);
+          collection.find({type: 'prescription'}).toArray(function(err, prescription) {
+            if(err) {
+              reject('Error retrieving trending prescription drugs from collection: ' + err);
+            }
+            else {
+              results.prescription = prescription.sort(function(a, b) {
+                return b.count - a.count;
+              }).slice(0, 20);
+              resolve(results);
+            }
+          });
+        }
+      });
+    }).then(function(records) {
+      db.close();
+      LOG.log('Retrieved records successfully!');
+      LOG.log('Closed connection to MongoDb.');
+      return records; 
+    });
+  });
+};
+
+exports.setTrendingDrugs = function(body, collectionName) {
+  LOG.log('Set trending drugs called...');
+  return openConnection().then(function(db) {
+    var collection = db.collection(collectionName);
+    return q.Promise(function(resolve, reject) {
+      collection.findOne({'type': body.type, 'name': body.name}, function(err, item) {
+        if(err) {
+          reject('Error checking for already existing trending drug: ' + err);
+        }
+        else {
+          if(!item) {
+            collection.insert({'type': body.type, 'name': body.name, 'count': 1}, function(err) {
+              if(err) {
+                reject('Error initializing new trending drug: ' + err);
+              }
+            });
+          }
+          collection.update({'type': body.type, 'name': body.name}, {'$inc': { 'count': 1}}, function(err, data) {
+            if(err) {
+              reject('Error updating trending drug: ' + err);
+            }
+            else {
+              resolve();
+            }
+          });
+        }
+      });
+    }).then(function() {
+      db.close();
+      LOG.log('Updated record successfully!');
+      LOG.log('Closed connection to MongoDb.');
+    });
   });
 };

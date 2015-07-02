@@ -68,6 +68,7 @@ src/server/npm-debug.log
 .project
 
 
-#ignore test results
+#ignore test and coverage results
 src/client/test-results.xml
 src/server/test-results.xml
+src/server/coverage/
