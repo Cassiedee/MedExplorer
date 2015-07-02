@@ -19,7 +19,7 @@ var API_KEY = 'PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc';
 /*
  * GET REST calls
  */
-exports.search = function (req, res) {
+function search (req, res) {
   if(!(req.query.source && req.query.type && req.query.field && req.query.value && req.query.limit)) {
     res.status(400).json({
       'response': null,
@@ -44,7 +44,7 @@ exports.search = function (req, res) {
     });
   }
 };
-router.get('/REST/search', exports.search);
+router.get('/REST/search',search);
 
 
 function dateDecrement(yyyymmdd, num) {
@@ -93,7 +93,7 @@ function dateFormat(yyyy, mm, dd) {
   return yyyymmdd;
 }
 
-exports.recentRecalls = function(req, res) {
+function recentRecalls (req, res) {
   LOG.log('Recent recalls called');
   if(!req.query.num) {
     req.query.num = 10;
@@ -112,13 +112,16 @@ exports.recentRecalls = function(req, res) {
   function loop(dateRange) {
     LOG.log('loop iteration: ' + i);
     i++;
+
     dateRangeQuery = encodeURIComponent('[' + dateDecrement(yyyymmdd, dateRange))
       + '+TO+' + encodeURIComponent(yyyymmdd + ']');
+
     path = '/drug/enforcement.json?api_key=' + API_KEY
       + '&search=report_date:' + dateRangeQuery + '+AND+_exists_:openfda.brand_name&limit=100';
 
     LOG.log('Retrieving ' + path + ' ...');
     cache.retrieve(path, 'medicine_explorer').then(function(data) {
+      console.log('1');
       if(i >= 25) {
         if(data.results) {
           respond(200, {
@@ -167,7 +170,8 @@ exports.recentRecalls = function(req, res) {
     });
   };
 };
-router.get('/REST/recentRecalls', exports.recentRecalls);
+router.get('/REST/recentRecalls', recentRecalls);
+
 
 exports.getTrendingDrugs = function(req, res) {
   LOG.log('Retrieving trending drugs...');
@@ -235,3 +239,14 @@ function buildPath(datasource, type, field, value, terms, limit) {
 };
 
 module.exports = router;
+
+
+/* For testing */
+module.exports.functions = {
+    'dateDecrement' : dateDecrement,
+    'search' : search,
+    'recentRecalls' : recentRecalls,
+    'buildPath' : buildPath
+}
+
+

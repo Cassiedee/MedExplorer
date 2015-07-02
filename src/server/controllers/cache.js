@@ -5,6 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
 
+
 var LOG = (function(){
     var timestamp = function(){};
     timestamp.toString = function(){
