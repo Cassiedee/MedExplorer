@@ -1,35 +1,35 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="PhantomJS 1.9.8 (Windows 7 0.0.0)" package="" timestamp="2015-07-02T16:41:48" id="0" hostname="MOngoDB3" tests="29" errors="0" failures="0" time="0.392">
+  <testsuite name="PhantomJS 1.9.8 (Windows 7 0.0.0)" package="" timestamp="2015-07-02T17:20:05" id="0" hostname="MOngoDB3" tests="29" errors="0" failures="0" time="0.394">
     <properties>
       <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34"/>
     </properties>
     <testcase name="has a DrugDetailsController" time="0.052" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: DrugDetailsController"/>
     <testcase name="scope values should be not null" time="0.011" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: DrugDetailsController"/>
-    <testcase name="has a MainController" time="0.01" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: MainController"/>
-    <testcase name="scope values should be not null" time="0.017" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: MainController"/>
+    <testcase name="has a MainController" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: MainController"/>
+    <testcase name="scope values should be not null" time="0.018" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: MainController"/>
     <testcase name="has a RecallDetailsController" time="0.01" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: RecallDetailsController"/>
-    <testcase name="scope values should be not null" time="0.01" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: RecallDetailsController"/>
+    <testcase name="scope values should be not null" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: RecallDetailsController"/>
     <testcase name="has a SearchResultsController" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SearchResultsController"/>
-    <testcase name="scope values should be not null" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SearchResultsController"/>
-    <testcase name="has a SidebarRecentRecallsController" time="0.021" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarRecentRecallsController"/>
+    <testcase name="scope values should be not null" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SearchResultsController"/>
+    <testcase name="has a SidebarRecentRecallsController" time="0.022" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarRecentRecallsController"/>
     <testcase name="scope values should be not null" time="0.01" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarRecentRecallsController"/>
-    <testcase name="has a SidebarSearchResultsController" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarSearchResultsController"/>
-    <testcase name="scope values should be not null" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarSearchResultsController"/>
+    <testcase name="has a SidebarSearchResultsController" time="0.01" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarSearchResultsController"/>
+    <testcase name="scope values should be not null" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: SidebarSearchResultsController"/>
     <testcase name="has a TrendingTableController" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: TrendingTableController"/>
-    <testcase name="results should be not null" time="0.014" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: TrendingTableController"/>
-    <testcase name="should check validity on init" time="0.019" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Directive: c3PieChart"/>
+    <testcase name="results should be not null" time="0.015" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Controller: TrendingTableController"/>
+    <testcase name="should check validity on init" time="0.022" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Directive: c3PieChart"/>
     <testcase name="should contain a div tag with proper attribute values" time="0.012" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Directive: c3PieChart"/>
-    <testcase name="should check validity on init" time="0.034" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Directive: scrollableDiv"/>
+    <testcase name="should check validity on init" time="0.032" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Directive: scrollableDiv"/>
     <testcase name="should contain a div tag with proper attribute values" time="0.011" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Directive: scrollableDiv"/>
     <testcase name="filters not null" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
-    <testcase name="sentence_test" time="0.009" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
+    <testcase name="sentence_test" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
     <testcase name="uppercase_test" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
     <testcase name="lowercase_test" time="0.007" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
     <testcase name="title_test" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
     <testcase name="titlePreserveUpper_test" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: capitalization"/>
-    <testcase name="has a mmddyyyy_slashes date filter" time="0.007" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: date"/>
-    <testcase name="convert mmddyyyy_slashes" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: date"/>
+    <testcase name="has a mmddyyyy_slashes date filter" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: date"/>
+    <testcase name="convert mmddyyyy_slashes" time="0.007" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: date"/>
     <testcase name="has a replaceOTC filter" time="0.008" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: replaceotc"/>
     <testcase name="convert replaceOTC" time="0.007" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Filter: replaceotc"/>
     <testcase name="return results" time="0.038" classname="PhantomJS 1.9.8 (Windows 7 0.0.0).Service: searchResultsFactory"/>
