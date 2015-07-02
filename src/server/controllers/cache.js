@@ -4,6 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 var Db = require('mongodb').Db;
 var Server = require('mongodb').Server;
 
+
 var LOG = (function(){
     var timestamp = function(){};
     timestamp.toString = function(){
@@ -40,11 +41,12 @@ exports.retrieve = function(path, collectionName) {
   return openConnection().then(function(db) {
     var collection = db.collection(collectionName);
     return q.Promise(function(resolve, reject) {
+      try {
       LOG.log('Seeking record...');
       collection.findOne({'path': path}, function(err, record) {
         if(err) {
           LOG.log('Error retrieving ' + path + ' from collection ' + collectionName);
-          return fetchFromDatasource(path, collection, db).then(function(record) {
+          fetchFromDatasource(path, collection, db).then(function(record) {
             resolve(record);
           }, function(err) {
             reject(err); 
@@ -59,6 +61,11 @@ exports.retrieve = function(path, collectionName) {
           });
         }
       });
+      console.log('1');
+      } catch(err) {
+        LOG.log(err);
+        reject(err);
+      }
     }).then(function(record) {
       db.close();
       LOG.log('Retrieved record successfully!');

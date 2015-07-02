@@ -1,119 +1,66 @@
 
 C:\dev\MedExplorer\src\server>SET MDB_PORT_27017_TCP_ADDR=localhost 
 
-C:\dev\MedExplorer\src\server>npm start 
+C:\dev\MedExplorer\src\server>istanbul cover node_modules\mocha\bin\_mocha tests\test.js 
 
-> server@0.0.0 start C:\dev\MedExplorer\src\server
-> nodemon ./bin/www
 
-1 Jul 09:28:20 - [33m[nodemon] v1.3.7[39m
-1 Jul 09:28:20 - [33m[nodemon] to restart at any time, enter `rs`[39m
-1 Jul 09:28:20 - [33m[nodemon] watching: *.*[39m
-1 Jul 09:28:20 - [32m[nodemon] starting `node ./bin/www`[39m
-[0mGET / [36m304 [0m14.900 ms - -[0m
-[0mGET /styles/vendor.1c424917.css [36m304 [0m8.602 ms - -[0m
-[0mGET /styles/main.3e492c34.css [36m304 [0m5.809 ms - -[0m
-[0mGET /scripts/vendor.29f9db6c.js [36m304 [0m5.377 ms - -[0m
-[0mGET /scripts/scripts.adee6ce3.js [36m304 [0m5.237 ms - -[0m
-[0mGET /views/main.html [36m304 [0m2.266 ms - -[0m
-[0mGET /views/sidebar_recent_recalls.html [36m304 [0m2.295 ms - -[0m
-[0mGET /views/trendingtable.html [36m304 [0m1.524 ms - -[0m
-type of db: object
-/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150601+TO+20150701%5D+AND+_exists_:openfda.brand_name&limit=100
-fetchloop cache hit!!
-[0mGET /fonts/glyphicons-halflings-regular.woff2 [36m304 [0m5.292 ms - -[0m
-[0mGET /images/icon_logo_medex_banner_caplet.0401cb21.svg [36m304 [0m6.611 ms - -[0m
-[0mGET /images/icon_availability_otc.88f7723c.svg [36m304 [0m6.557 ms - -[0m
-[0mGET /images/icon_availability_rx.2f516dc9.svg [36m304 [0m6.257 ms - -[0m
-[0mGET /REST/trendingDrugs [32m200 [0m81.136 ms - 234[0m
-type of db: object
-/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150517+TO+20150701%5D+AND+_exists_:openfda.brand_name&limit=100
-fetchloop cache hit!!
-type of db: object
-/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150425+TO+20150701%5D+AND+_exists_:openfda.brand_name&limit=100
-fetchloop cache hit!!
-[0mGET /REST/recentRecalls [36m304 [0m122.851 ms - -[0m
-[0mGET /views/sidebar_search_results.html [36m304 [0m1.392 ms - -[0m
-[0mGET /views/search_results.html [36m304 [0m1.122 ms - -[0m
-[0mGET /views/dirPagination.tpl.html [36m304 [0m1.423 ms - -[0m
-datasource: drug
-type: label
-field: openfda.brand_name
-value: "Goodbye"
-terms: undefined
-limit: 25
-callback: function (status, data, error) {
-      if(status !== 200) {
-        console.log({
-          'response': data,
-          'source': 'search ' + req.query.value,
-          'error': error
-        });
-      }
-      res.status(status).json({
-        'response': data,
-        'source': 'search ' + req.query.value,
-        'error': error
-      });
-    }
-options.path: /drug/label.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.brand_name:%22Goodbye%22&limit=25
-type of db: object
-/drug/label.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.brand_name:%22Goodbye%22&limit=25
-cache miss!!
-[0mGET /REST/search?source=drug&type=label&field=openfda.brand_name&value=%22Goodbye%22&limit=25 [32m200 [0m159.482 ms - 5326[0m
-body.name: "goodbye"
-[0mPOST /REST/trendingDrugs [32m200 [0m19.732 ms - 5[0m
-datasource: drug
-type: enforcement
-field: ["openfda.spl_id","status"]
-value: ["\"8c3ae600-4511-4868-a9bd-848f707e7f87\"","Ongoing"]
-terms: 2
-limit: 30
-callback: function (status, data, error) {
-      if(status !== 200) {
-        console.log({
-          'response': data,
-          'source': 'search ' + req.query.value,
-          'error': error
-        });
-      }
-      res.status(status).json({
-        'response': data,
-        'source': 'search ' + req.query.value,
-        'error': error
-      });
-    }
-options.path: /drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%228c3ae600-4511-4868-a9bd-848f707e7f87%22+AND+status%3AOngoing&limit=30
-datasource: drug
-type: enforcement
-field: ["openfda.spl_id","status"]
-value: ["\"a5157e03-c82f-4ce9-9355-6b1e5c078fe4\"","Ongoing"]
-terms: 2
-limit: 30
-callback: function (status, data, error) {
-      if(status !== 200) {
-        console.log({
-          'response': data,
-          'source': 'search ' + req.query.value,
-          'error': error
-        });
-      }
-      res.status(status).json({
-        'response': data,
-        'source': 'search ' + req.query.value,
-        'error': error
-      });
-    }
-options.path: /drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%22a5157e03-c82f-4ce9-9355-6b1e5c078fe4%22+AND+status%3AOngoing&limit=30
-{ [MongoError: server localhost:27017 sockets closed]
-  name: 'MongoError',
-  message: 'server localhost:27017 sockets closed' }
-type of db: object
-/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%22a5157e03-c82f-4ce9-9355-6b1e5c078fe4%22+AND+status%3AOngoing&limit=30
-type of db: object
-/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%228c3ae600-4511-4868-a9bd-848f707e7f87%22+AND+status%3AOngoing&limit=30
-cache miss!!
-cache miss!!
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%22a5157e03-c82f-4ce9-9355-6b1e5c078fe4\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m152.646 ms - 187[0m
-[0mGET /REST/search?source=drug&type=enforcement&field=[%22openfda.spl_id%22,%22status%22]&value=[%22\%228c3ae600-4511-4868-a9bd-848f707e7f87\%22%22,%22Ongoing%22]&terms=2&limit=30 [32m200 [0m381.455 ms - 187[0m
-Terminate batch job (Y/N)? Terminate batch job (Y/N)? 
+  REST API Test Suite
+Invalid field/value parameters: 
+[REST 3:31:46 PM] [SyntaxError: Unexpected token o]
+[REST 3:31:46 PM] field: 
+[REST 3:31:46 PM] openfda.brand_name
+[REST 3:31:46 PM] value: 
+[REST 3:31:46 PM] Tylenol
+[CACHE 3:31:46 PM] Retreive called...
+[CACHE 3:31:46 PM] Opening connection to MongoDb...
+    √ search test
+    √ search test - 400 response
+[REST 3:31:46 PM] Recent recalls called
+[REST 3:31:46 PM] loop iteration: 0
+[REST 3:31:46 PM] Retrieving /drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150602+TO+20150702%5D+AND+_exists_:openfda.brand_name&limit=100 ...
+[CACHE 3:31:46 PM] Retreive called...
+[CACHE 3:31:46 PM] Opening connection to MongoDb...
+    1) recentRecalls test
+/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=%5B%22openfda.spl_id%22%2C%22status%22%5D:%5B%22%5C%22a%5C%22%22%2C%22Ongoing%22%5D&limit=30
+    √ buildPath test
+    √ dateDecrement test
+[CACHE 3:31:46 PM] Connection opened...
+[CACHE 3:31:46 PM] Connection opened...
+[CACHE 3:31:46 PM] Seeking record...
+[CACHE 3:31:46 PM] Seeking record...
+[CACHE 3:31:46 PM] Checking record date...
+[CACHE 3:31:46 PM] Record found but too old
+[CACHE 3:31:46 PM] Retreiving from API...
+
+[CACHE 3:31:46 PM] Checking record date...
+[CACHE 3:31:46 PM] Record found in cache is up to date...
+[CACHE 3:31:46 PM] Retrieved record successfully!
+1
+[REST 3:31:46 PM] Short data set!
+[REST 3:31:46 PM] loop iteration: 1
+[REST 3:31:46 PM] Retrieving /drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=report_date:%5B20150518+TO+20150702%5D+AND+_exists_:openfda.brand_name&limit=100 ...
+[CACHE 3:31:46 PM] Retreive called...
+[CACHE 3:31:46 PM] Opening connection to MongoDb...
+
+  4 passing (99ms)
+  1 failing
+
+  1) REST API Test Suite recentRecalls test:
+
+      AssertionError: 0 == 200
+      + expected - actual
+
+      -0
+      +200
+      
+      at Context.<anonymous> (C:\dev\MedExplorer\src\server\tests\test.js:91:17)
+
+
+
+
+=============================== Coverage summary ===============================
+Statements   : 70.43% ( 162/230 )
+Branches     : 64.06% ( 41/64 )
+Functions    : 56.6% ( 30/53 )
+Lines        : 70.43% ( 162/230 )
+================================================================================

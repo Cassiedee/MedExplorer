@@ -7,9 +7,9 @@ var controller = require('../controllers/datasource.js');
 
 describe('REST API Test Suite', function()
 {
-  it('search_test', function()
+  it('search test', function()
   {
-    /* configure mock response object */
+    // configure mock response object
     var res = {
       responseObj: null
     }; 
@@ -31,9 +31,108 @@ describe('REST API Test Suite', function()
     test.assert.equal(res.error, undefined);
   });
 
+
+  it('search test - 400 response', function()
+  {
+    //mock res
+    var res = {
+      s : 0,
+      status : function status(n) {
+        this.s = n;
+        return {
+          j : {},
+          json : function json(res) {
+            json = res;
+          }
+        }
+      } 
+    };
+
+    // mock req
+    var req = {
+      'query' : {
+        'source': 'drug',
+        'type': 'label',
+        'field': 'openfda.brand_name',
+        'value':'Tylenol',
+      }
+    };
+
+    rest.functions.search(req,res);
+
+    test.assert.equal(res.s, 400);
+  });
+
+
+  it('recentRecalls test', function()
+  {
+    var req = {
+      'query' : {},
+      'body' : {
+        'num' : 10
+      }
+    };
+
+    var res = {
+      s : 0,
+      status : function status(n) {
+        res.s = n;
+        return {
+          j : {},
+          json : function json(res) {
+            json = res;
+          }
+        }
+      } 
+    };
+
+    rest.functions.recentRecalls(req,res);
+
+    //var currentTime = new Date().getTime(); 
+
+    //while (currentTime + 5000 >= new Date().getTime()) {}
+
+    test.assert.equal(res.s,200);
+  });
+
+
+  it('buildPath test 1', function()
+  {
+    var datasource = 'drug';
+    var type = 'enforcement';
+    var field = "[\"openfda.spl_id\",\"status\"]";
+    var value = "[\"\\\"a\\\"\",\"Ongoing\"]";
+    var terms = 1;
+    var limit = 30;
+
+    var expect = "/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=%5B%22openfda.spl_id%22%2C%22status%22%5D:%5B%22%5C%22a%5C%22%22%2C%22Ongoing%22%5D&limit=30"; 
+
+    var got = rest.functions.buildPath(datasource,type,field,value,terms,limit);
+
+    test.assert.equal(expect,got);
+  });
+
+  
+  it('buildPath test 2', function()
+  {
+    var datasource = 'drug';
+    var type = 'enforcement';
+    var field = "[\"openfda.spl_id\",\"status\"]";
+    var value = "[\"\\\"a\\\"\",\"Ongoing\"]";
+    var terms = 2;
+    var limit = 30;
+
+    var expect = "/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=%5B%22openfda.spl_id%22%2C%22st2%5D&limit=30";
+
+    var got = rest.functions.buildPath(datasource,type,field,value,terms,limit);
+
+    test.assert.equal(expect,got);
+  });
+
+  /*
   it('getTrendingDrugs_test', function()
   {
-    /* configure mock response object */
+    // configure mock response object 
 	    var res = {
               responseObj: null
             }; 
@@ -49,7 +148,7 @@ describe('REST API Test Suite', function()
 
   it('setTrendingDrugs_test', function()
   {
-    /* configure mock response object */
+    // configure mock response object
     var res = {
       responseObj: null
     }; 
@@ -73,10 +172,9 @@ describe('REST API Test Suite', function()
     test.assert.equal(res.error, undefined);
   });
 
-  /* test the fetch loop here (complex) */
   it('recentRecalls_test', function()
   {
-	  /* configure mock response object */
+	  // configure mock response object
 	    var res = {
               responseObj :null
             }; 
@@ -93,10 +191,23 @@ describe('REST API Test Suite', function()
 	    test.assert.equal(res.response, null);
 	    test.assert.equal(res.error, undefined);
   });
+   */
+
+
+  it('dateDecrement test', function() {
+
+      var yyyymmdd = '19941222';
+      var num = '365';
+
+      var result = rest.functions.dateDecrement(yyyymmdd,num);
+
+	  test.assert.equal(19931222, result);
+  });
 });
 
 
 
+/*
 describe('controller test suite', function()
 {
 
@@ -146,16 +257,14 @@ describe('controller test suite', function()
   });
 
 
-  it('dateDecrement test', function() {
-
-      var yyyymmdd = '19941222';
-      var num = '365';
-
-      console.log(controller.functions);
-
-      var result = controller.functions.dateDecrement(yyyymmdd,num);
-
-	  test.assert.equal(19931222, result);
-  });
+  
 
 });
+
+
+
+describe('cache.js test suite', function()
+{
+  it (
+
+  */
