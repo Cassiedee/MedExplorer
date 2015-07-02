@@ -154,7 +154,7 @@ function checkRecordDate(record, path, collection) {
 function fetchFromDatasource(path, collection) {
   LOG.log('Retrieving from API...');
   return datasource.makeRequest(path).then(function(data) {
-    LOG.log('Succesfully pulled some data from the API...');
+    LOG.log('Pulled some data from the API...');
     return insertIntoCache(data, collection).then(function() {
       return data;
     });
