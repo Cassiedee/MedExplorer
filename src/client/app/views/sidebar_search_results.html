@@ -18,10 +18,12 @@
         </li>
         <hr class="sidebar-divider">
         <li class="list-group-item noborder" style="padding-left:0px;">Recalls:
-          <div class="col-xs-12" ng-show="countingRecalls" style="margin-top:10px;margin-bottom:10px;">
-            <div progressbar class="progress-striped active" type="info">Loading...</div>
-          </div>
-          <li class="list-group-item noborder" ng-hide="countingRecalls">Count: {{recallCount}}</li>
+          <ul class="list-group">
+            <div class="col-xs-12" ng-show="countingRecalls" style="margin-top:10px;margin-bottom:10px;">
+              <div progressbar class="progress-striped active" type="info">Loading...</div>
+            </div>
+            <li class="list-group-item noborder" ng-hide="countingRecalls">Count: {{recallCount}}</li>
+          </ul>
         </li>
       </ul>
     </div>
