@@ -29,8 +29,11 @@
 	<span class="drugtitle col-xs-1">
 		<div ng-show="hasRecalls" class="col-xs-1">
 			<span style="position:relative; left:0; top:0;">
+			<a ui-sref="home.search.recalldetails({spl_id:result.openfda.spl_id, recallList:drugRecalls})">
 				<img src="images/icon_recall_box.svg" style="position: relative; top: 0; left: 0;" alt="Recall" title="Recall">
 				<img src="images/icon_recall_R.svg" style="position: absolute; top:-7px; left: 0;" alt="Recall" title="Recall">
+			</a> 
+				
 			</span>
 		</div>
 	</span>

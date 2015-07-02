@@ -18,6 +18,7 @@ angular.module('MedExplorer')
         $scope.commonDrugsPieChartData = [];
         $scope.pieChartDataIsHere = false;
 		$scope.hasRecalls = false;
+		$scope.drugRecalls = null;
 
         if($stateParams.drugDetails) {
           $scope.result = $stateParams.drugDetails;
@@ -250,9 +251,10 @@ angular.module('MedExplorer')
 	  + '&type=enforcement'
 	  + '&field=[\"openfda.spl_id\",\"status\"]'
 	  + '&value=' + value + '&terms=2&limit='+ 30).success(function(recalls) {
-		console.log(recalls);
 		if(recalls.source === ('search ' + value)) {
 		  $scope.hasRecalls = true;
+		  console.log(recalls.response);
+		  $scope.drugRecalls = recalls.response.results;
 		}
 		else {
 		  $scope.hasRecalls = false;
