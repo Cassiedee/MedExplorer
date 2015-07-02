@@ -8,31 +8,17 @@ angular.module('MedExplorer')
     };
     $scope.sidebar.search.results = [];
     $scope.searchTerm = $stateParams.value;
+    $scope.countingRecalls = searchResultsFactory.countingRecalls;
 
     $scope.$on('searchResultsRetrieved', function() {
+      $scope.recallCount = searchResultsFactory.recallCount;
+      $scope.countingRecalls = searchResultsFactory.countingRecalls;
       if(searchResultsFactory.source === ('search ' + $stateParams.value)) {
         $scope.sidebar.search.results = searchResultsFactory.results;
-        $scope.dosageForms = {};
         $scope.distributionTypes = {};
-        var unknown_dosage_form = 0;
         var unknown_dist_type = 0;
             if($scope.sidebar.search.results){
                   $scope.sidebar.search.results.forEach(function(drug) {
-                          var dosage_forms = drug.openfda.dosage_form;
-                          if(dosage_forms) {
-                            dosage_forms.forEach(function(form) {
-                                  if(!$scope.dosageForms[form]) {
-                                    $scope.dosageForms[form] = 1;
-                                  }
-                                  else {
-                                    $scope.dosageForms[form]++;
-                                  }
-                            });
-                          }
-                          else {
-                            unknown_dosage_form++;
-                          }
-
                           var product_type = drug.openfda.product_type;
                           if(product_type) {
                             product_type.forEach(function(type) {
@@ -50,8 +36,6 @@ angular.module('MedExplorer')
                           }
                     });
             }
-        
-        $scope.dosageForms['Unknown'] = unknown_dosage_form;
         $scope.distributionTypes['Unknown'] = unknown_dist_type;
       }
     });

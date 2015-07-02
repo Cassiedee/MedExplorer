@@ -3,27 +3,26 @@
 
 angular.module('MedExplorer')
   .factory('searchResultsFactory', ['$rootScope', '$http', 'lodash', function($rootScope, $http) {
-    console.log('in searchResultsFactory.js');
     var searchResults = {
       source: null,
       results: null,
-      executeSearch: executeSearch
+      executeSearch: executeSearch,
+      recallCount: 0,
+      countingRecalls: true
     };
 
+    var requestsReturned = 0;
+
     function executeSearch(source, type, field, value, limit) {
-
-      console.log('in executeSearch: ' + source + ' ' + type + ' ' + field + ' ' + value);
-
+      searchResults.countingRecalls = true;
       $http.get('/REST/search?source=' + source
         + '&type=' + type
         + '&field=' + field
         + '&value=' + value
         + '&limit=' + limit).success(function(data) {
-          console.log(data);
           if(!data.error) {
             if(data.source === ('search ' + value)) {
               searchResults.source = data.source;
-              console.log('SETTING SEARCH RESULTS');
               searchResults.results = data.response.results;
               $rootScope.$broadcast('searchResultsRetrieved', '');
               if(searchResults.results && searchResults.results.length) {
@@ -70,9 +69,11 @@ angular.module('MedExplorer')
                     });
                   }
                 }
+                
+                requestsReturned = 0;
+                searchResults.recallCount = 0;
                 for(var drug = 0; drug < searchResults.results.length; drug++) {
-                  console.log(drug + ' spl_id is ' + searchResults.results[drug].openfda.spl_id[0]);
-                  getRecalls(drug);
+                  getRecalls(drug, searchResults.results.length);
                 }
               }
             }
@@ -83,20 +84,24 @@ angular.module('MedExplorer')
       });
     }
 
-    function getRecalls(index) {
+    function getRecalls(index, total) {
       if(searchResults.results && searchResults.results[index] && searchResults.results[index].openfda) {
         var value = '[\"\\\"' + searchResults.results[index].openfda.spl_id[0] + '\\\"\",\"Ongoing\"]';
         $http.get('/REST/search?source=drug'
           + '&type=enforcement'
           + '&field=[\"openfda.spl_id\",\"status\"]'
           + '&value=' + value + '&terms=2&limit='+ 30).success(function(recalls) {
-            console.log(value + ' === ' + recalls.source);
-            console.log('response: ' + index + ' spl_id is ' + searchResults.results[index].openfda.spl_id[0]);
             if(recalls.source === ('search ' + value)) {
               searchResults.results[index].has_ongoing_recalls = recalls.response && recalls.response.results && recalls.response.results.length > 0;
               if(searchResults.results[index].has_ongoing_recalls) {
                 searchResults.results[index].recalls = recalls.response.results;
-                console.log('RECALL FOUND: ' + searchResults.results[index].openfda.spl_id[0] + ' has recall with spl_id ' + searchResults.results[index].recalls[0].openfda.spl_id[0]);
+                searchResults.recallCount++;
+                console.log(searchResults.recallCount);
+              }
+              requestsReturned++;
+              console.log(requestsReturned + ' : ' + total);
+              if(requestsReturned >= total) {
+                searchResults.countingRecalls = false;
               }
               $rootScope.$broadcast('searchResultsRetrieved', '');
             }
