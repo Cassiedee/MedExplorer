@@ -140,7 +140,7 @@ function recentRecalls (req, res) {
             respond(200, {
               'results': data.results.sort(function(a, b) {
                   return parseInt(b.report_date) - parseInt(a.report_date);
-                }).slice(0, req.body.num)
+                }).slice(0, req.query.num)
             });
           }
           else {
@@ -161,7 +161,7 @@ function recentRecalls (req, res) {
             respond(200, {
               'results': data.results.sort(function(a, b) {
                   return parseInt(b.report_date) - parseInt(a.report_date);
-                }).slice(0, req.body.num)
+                }).slice(0, req.query.num)
             });
           }
         }

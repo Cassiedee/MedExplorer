@@ -30,21 +30,7 @@
     and run "quick_update.bat"
       -- this will compile all of the front end files into the
           "src/server/dist" folder
-
-9)  to run the node server, cd to the "src/server" directory and
-    run "start_node.bat". Then visit "http://localhost:3000" in your browser.
-      -- this starts the node server, which hosts the front end out of the
-          "src/server/dist" folder onto localhost over port 3000
-
-NOTE: nodemon will re-deploy the node server when any changes are made,
-      automatically
-      
-      While developing the client, you can use grunt to host and update any
-      changes you make to the front end code. To do this, cd
-      to the "src/client" directory and run "quick_update.bat" to update
-	  your front-end changes on the node server.
-
-10) cd to the src/server directory
+9) cd to the src/server directory
 	install mongodb with the command "npm install mongodb"
 	This required me to install python 2.7.10 found here
 	https://www.python.org/downloads/
@@ -60,3 +46,16 @@ NOTE: nodemon will re-deploy the node server when any changes are made,
 	this required me to log into as a microsoft user
 	
 	Don't forget to restart the cmd shell after installing software
+
+10)  to run the node server, cd to the "src/server" directory and
+    run "start_node.bat". Then visit "http://localhost:3000" in your browser.
+      -- this starts the node server, which hosts the front end out of the
+          "src/server/dist" folder onto localhost over port 3000
+
+NOTE: nodemon will re-deploy the node server when any changes are made,
+      automatically
+      
+      While developing the client, you can use grunt to host and update any
+      changes you make to the front end code. To do this, cd
+      to the "src/client" directory and run "quick_update.bat" to update
+	  your front-end changes on the node server.
