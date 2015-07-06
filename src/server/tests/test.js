@@ -54,7 +54,7 @@ describe('REST API Test Suite', function()
         'source': 'drug',
         'type': 'label',
         'field': 'openfda.brand_name',
-        'value':'Tylenol',
+        'value':'Tylenol'
       }
     };
 
