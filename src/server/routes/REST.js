@@ -11,7 +11,7 @@ var LOG = (function(){
 
     return {
         log: console.log.bind(console, '%s', timestamp)
-    }
+    };
 })();
 
 var API_KEY = 'PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc';
@@ -225,7 +225,7 @@ exports.setTrendingDrugs = function (req, res) {
   } catch(err) {
     LOG.log('Error in setTrendingDrugs: ' + err);
   }
-}
+};
 router.post('/REST/trendingDrugs', exports.setTrendingDrugs);
 
 function buildPath(datasource, type, field, value, terms, limit) {
@@ -276,4 +276,4 @@ module.exports.functions = {
     'search' : search,
     'recentRecalls' : recentRecalls,
     'buildPath' : buildPath
-}
+};

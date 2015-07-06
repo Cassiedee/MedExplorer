@@ -20,14 +20,16 @@ angular.module('MedExplorer')
       $http.get('/REST/search?source=drug'
         + '&type=enforcement'
         + '&field=openfda.spl_id'
-        + '&value=' + $stateParams.spl_id
-        + '&limit=100').success(function(data) {
-          if(data.source === ('search ' + $stateParams.spl_id)) {
-            if(data.response && data.response.results && data.response.results.length > 0) {
-              $scope.recallDetailsAreIn = true;
-              $scope.recallList = data.response.results;
-              console.log($scope.recallList);
-            }
+        + '&value=\"' + $stateParams.spl_id
+        + '\"&limit=100').success(function(data) {
+          if(data.source === ('search \"' + $stateParams.spl_id + '\"')
+            && data.response && data.response.results && data.response.results.length > 0) {
+            $scope.recallDetailsAreIn = true;
+            $scope.recallList = data.response.results;
+            console.log($scope.recallList);
+          }
+          else {
+            console.log(data);
           }
         });
     }

@@ -6,13 +6,10 @@ angular.module('MedExplorer')
     $scope.sidebar = {};
     $scope.sidebar.recentRecallsAreIn = false;
     $http.get('/REST/recentRecalls').success(function(data) {
-      if(data.source === 'recentRecalls') {
-        if(!data.error) {
-          if(data.response && data.response.results) {
-            $scope.sidebar.recalls = data.response.results;
-            $scope.sidebar.recentRecallsAreIn = true;
-          }
-        }
+      if(data.source === 'recentRecalls'
+        && !data.error && data.response && data.response.results) {
+        $scope.sidebar.recalls = data.response.results;
+        $scope.sidebar.recentRecallsAreIn = true;
       }
       else {
         console.log(data.source);

@@ -44,7 +44,7 @@ describe('REST API Test Suite', function()
           json : function json(res) {
             json = res;
           }
-        }
+        };
       } 
     };
 

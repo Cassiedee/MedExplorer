@@ -30,11 +30,10 @@ angular.module('MedExplorer')
             + '&field=openfda.spl_id'
             + '&value=\"' + $stateParams.spl_id
             + '\"&limit=1').success(function(data) {
-              if(data.source === ('search \"' + $stateParams.spl_id + '\"')) {
-                if(data.response.results && data.response.results.length > 0) {
-                  $scope.result = data.response.results[0];
-                  onDrugDetailsArrived();
-                }
+              if(data.source === ('search \"' + $stateParams.spl_id + '\"')
+                  && data.response.results && data.response.results.length > 0) {
+                $scope.result = data.response.results[0];
+                onDrugDetailsArrived();
               }
             });
 
@@ -289,7 +288,6 @@ angular.module('MedExplorer')
         }
 
         $scope.tabName = $state.params.tabName?$state.params.tabName:'General Info';
-        //$scope.tab = $scope.tabName === 'General Info'?1:2;
 
         $scope.isSelected = function(checkTab) {
 		  switch($scope.tabName){
@@ -305,6 +303,8 @@ angular.module('MedExplorer')
 			case 'At-Risk Groups':
 				$scope.tab = 4;
 				break;
+                        default:
+                                $scope.tab = 1;
 		  }
           return $scope.tab === checkTab;
         };
@@ -347,13 +347,12 @@ angular.module('MedExplorer')
         console.log($scope.commonDrugsDuringAdverseEvent);
         var temp = [];
         for(var name in $scope.commonDrugsDuringAdverseEvent) {
-          if($scope.commonDrugsDuringAdverseEvent.hasOwnProperty(name)) {
-            if($scope.commonDrugsDuringAdverseEvent[name]) {
-              temp.push([
-                name,
-                $scope.commonDrugsDuringAdverseEvent[name]
-              ]);
-            }
+          if($scope.commonDrugsDuringAdverseEvent.hasOwnProperty(name)
+              && $scope.commonDrugsDuringAdverseEvent[name]) {
+            temp.push([
+              name,
+              $scope.commonDrugsDuringAdverseEvent[name]
+            ]);
           }
         }
 
@@ -361,7 +360,7 @@ angular.module('MedExplorer')
           return b[1] - a[1];
         }).slice(0, 10);
         $scope.pieChartDataIsHere = true;
-        if($scope.commonDrugsPieChartData.length == 0) {
+        if($scope.commonDrugsPieChartData.length === 0) {
           $scope.noAdverseEvents = true;
         }
       };

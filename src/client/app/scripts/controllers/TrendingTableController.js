@@ -6,11 +6,9 @@ angular.module('MedExplorer')
     $scope.$state = $state;
     $scope.trendingTablesAreIn = false;
     $http.get('/REST/trendingDrugs').success(function(data) {
-      if(!data.error) {
-        if(data.source === 'trendingDrugs') {
-          $scope.results = data.response;
-          $scope.trendingTablesAreIn = true;
-        }
+      if(!data.error && data.source === 'trendingDrugs') {
+        $scope.results = data.response;
+        $scope.trendingTablesAreIn = true;
       }
     });
   }]);

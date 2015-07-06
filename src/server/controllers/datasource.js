@@ -12,7 +12,7 @@ var LOG = (function(){
 
     return {
         log: console.log.bind(console, '%s', timestamp)
-    }
+    };
 })();
 
 var throttle = new RateLimiter(1, 250);

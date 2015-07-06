@@ -12,7 +12,7 @@ angular.module('MedExplorer')
     searchResultsFactory.executeSearch($stateParams.source,
         $stateParams.type, $stateParams.field, $stateParams.value, $stateParams.limit);
 
-    $scope.$on('searchResultsRetrieved', function(event, data) {
+    $scope.$on('searchResultsRetrieved', function() {
       if(searchResultsFactory.source === ('search ' + $stateParams.value)) {
         $scope.search.results = searchResultsFactory.results;
         $scope.search.resultsAreIn = true;
