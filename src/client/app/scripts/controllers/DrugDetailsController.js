@@ -250,11 +250,11 @@ angular.module('MedExplorer')
 	$http.get('/REST/search?source=drug'
 	  + '&type=enforcement'
 	  + '&field=[\"openfda.spl_id\",\"status\"]'
-	  + '&value=' + value + '&terms=2&limit='+ 30).success(function(recalls) {
-		if(recalls.source === ('search ' + value)) {
+	  + '&value=' + value + '&terms=2&limit='+ 30).success(function(data) {
+		if(data.response && data.response.results && data.response.results.length > 0) {
 		  $scope.hasRecalls = true;
-		  console.log(recalls.response);
-		  $scope.drugRecalls = recalls.response.results;
+		  console.log(data.response);
+		  $scope.drugRecalls = data.response.results;
 		}
 		else {
 		  $scope.hasRecalls = false;
