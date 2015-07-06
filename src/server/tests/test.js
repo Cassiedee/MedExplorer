@@ -64,6 +64,7 @@ describe('REST API Test Suite', function()
   });
 
 
+  /*
   it('recentRecalls test', function()
   {
     var req = {
@@ -94,6 +95,7 @@ describe('REST API Test Suite', function()
 
     test.assert.equal(res.s,200);
   });
+   */
 
 
   it('buildPath test 1', function()
@@ -122,11 +124,11 @@ describe('REST API Test Suite', function()
     var terms = 2;
     var limit = 30;
 
-    var expect = "/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=%5B%22openfda.spl_id%22%2C%22st2%5D&limit=30";
+    var expect = "/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%22a%22+AND+status%3AOngoing&limit=30";
 
     var got = rest.functions.buildPath(datasource,type,field,value,terms,limit);
 
-    test.assert.equal(expect,got);
+    test.assert.equal(got,expect);
   });
 
   /*
@@ -208,7 +210,7 @@ describe('REST API Test Suite', function()
 
 
 /*
-describe('controller test suite', function()
+describe('datasource test suite', function()
 {
 
   it('retriveFromCache_test', function() {
@@ -256,9 +258,6 @@ describe('controller test suite', function()
     controller.search(datasource, type, field, value, terms, limit, callback);
   });
 
-
-  
-
 });
 
 
@@ -266,5 +265,5 @@ describe('controller test suite', function()
 describe('cache.js test suite', function()
 {
   it (
+ */
 
-  */
