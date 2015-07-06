@@ -1,5 +1,7 @@
 Docker setup:
 
+This readme assumes that you are running Boot2Docker on Windows
+
 1. Open the start menu, and open 'All Programs'->'Docker'->'Boot2Docker start'. This will start 
    a VM that is running Docker.
    
