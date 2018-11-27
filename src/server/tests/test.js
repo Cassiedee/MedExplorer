@@ -107,7 +107,7 @@ describe('REST API Test Suite', function()
     var terms = 1;
     var limit = 30;
 
-    var expect = "/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=%5B%22openfda.spl_id%22%2C%22status%22%5D:%5B%22%5C%22a%5C%22%22%2C%22Ongoing%22%5D&limit=30"; 
+    var expect = "/drug/enforcement.json?api_key=PLACE_API_TOKEN_HERE&search=%5B%22openfda.spl_id%22%2C%22status%22%5D:%5B%22%5C%22a%5C%22%22%2C%22Ongoing%22%5D&limit=30"; 
 
     var got = rest.functions.buildPath(datasource,type,field,value,terms,limit);
 
@@ -124,7 +124,7 @@ describe('REST API Test Suite', function()
     var terms = 2;
     var limit = 30;
 
-    var expect = "/drug/enforcement.json?api_key=PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc&search=openfda.spl_id%3A%22a%22+AND+status%3AOngoing&limit=30";
+    var expect = "/drug/enforcement.json?api_key=PLACE_API_TOKEN_HERE&search=openfda.spl_id%3A%22a%22+AND+status%3AOngoing&limit=30";
 
     var got = rest.functions.buildPath(datasource,type,field,value,terms,limit);
 
@@ -216,7 +216,7 @@ describe('datasource test suite', function()
   it('retriveFromCache_test', function() {
       //call it to make sure it is covered
 
-      var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
+      var query = '/drug/label.json?api_key=PLACE_API_TOKEN_HERE&search=openfda.brand_name:Hello&limit=30';
       var callback = function(data) {};
 
       controller.functions.retrieveFromCache(query,callback);
@@ -225,7 +225,7 @@ describe('datasource test suite', function()
   it('insertIntoCache_test', function() {
       //call it to make sure it is covered
 
-      var query = '/drug/label.json?api_key=w41m08ZpKcgzEhSxRYvfa0GzpjVFRTLGRU93gU3g&search=openfda.brand_name:Hello&limit=30';
+      var query = '/drug/label.json?api_key=PLACE_API_TOKEN_HERE&search=openfda.brand_name:Hello&limit=30';
       var callback = function(data) {};
 
       controller.functions.insertIntoCache(query,callback);
