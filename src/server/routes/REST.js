@@ -14,7 +14,7 @@ var LOG = (function(){
     };
 })();
 
-var API_KEY = 'PnTZ5GvvuFT6ooEaMtQfuaQZJchizAuKaEr5HZXc';
+var API_KEY = 'PLACE_API_KEY_HERE';
 
 /*
  * GET REST calls
