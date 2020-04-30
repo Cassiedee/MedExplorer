@@ -34,12 +34,12 @@ SonarQube is being used to perform automated software quality checks on the base
 Our continuous delivery and deployment processes uses Jenkins to automate the creation and deployment of updated Docker containers to the production environment.
 
 ### Docker Screenshot
-![Docker Screenshot] (../Screenshots/DOCKER.png)
+![Docker Screenshot](../Screenshots/DOCKER.png)
 
 ### SoftLayer IaaS
 We used IBM's SoftLayer IaaS infrastructure for hosting the virtual machine that contains our three docker containers.
 
-![SoftLayer] (../Screenshots/softlayer.png)
+![SoftLayer](../Screenshots/softlayer.png)
 
 ## Continuous Monitoring
 
@@ -47,4 +47,4 @@ As shown in our diagram we are using Zabbix to monitor our development/test and 
 
 ###MedExplorer Zabbix Dashboard
 
-![Zabbix Dashboard] (../../Software Development/Screenshots/Continuous-Monitoring/MedExplorer_Zabbix_Monitoring.png)
+![Zabbix Dashboard](../../Software Development/Screenshots/Continuous-Monitoring/MedExplorer_Zabbix_Monitoring.png)

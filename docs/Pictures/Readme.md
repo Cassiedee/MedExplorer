@@ -83,7 +83,7 @@ Here is a picture of the set of the Risks and Concerns that came out of one of o
 ## Stand-Up In Progress
 Here is a picture of one of our Stand-Ups in Progress.
 
-![Stand-Up In Progress](Standup In-Progress.jpg)
+![Stand-Up In Progress](Standup%20In-Progress.jpg)
 
 ## Scrum Task Board
 Here is a picture of our Scrum Task Board.

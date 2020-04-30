@@ -2,11 +2,11 @@
 
 ## Jenkins
 
-![Jenkins Screenshot] (Jenkins.png)
+![Jenkins Screenshot](Jenkins.png)
 
 ## Zabbix
 
-![MedExplorer Zabbix Screenshot] (Continuous-Monitoring/MedExplorer_Zabbix_Monitoring.png)
+![MedExplorer Zabbix Screenshot](Continuous-Monitoring/MedExplorer_Zabbix_Monitoring.png)
 
 ## GitHub
 
