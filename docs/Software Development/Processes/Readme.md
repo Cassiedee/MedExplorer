@@ -29,11 +29,11 @@ We defined our sprints as five-hour time boxes occurring twice per day. Each spr
 Having two sprints per day was necessary if we wanted regular input from our stakeholders. Because some of our stakeholders were not collocated they were able to regularly engage throughout the day. 
 
 ### Sprint Planning
-During sprint planning the team reviewed the product backlog, pulled in the next highest value items, and identified tasks. To assist in release planning we had a [sprint backlog](../../Pictures/Sprint3_roadmap planning.jpg) assigned to specific sprints. For each sprint planning we pulled the items from the roadmap onto the [Scrum board for current sprint planning](../../Pictures/Task Board.jpg). In addition, as the product backlog of stories continued to grow the team created a [product roadmap for release 1 and release 2](../../Diagrams/MedExplorer Product Roadmap.png) (if there were to be a second release). This helped the team with the product owner in deciding what the minimum viable product features were and which could be moved to the second release for future refinement. 
+During sprint planning the team reviewed the product backlog, pulled in the next highest value items, and identified tasks. To assist in release planning we had a [sprint backlog](../../Pictures/Sprint3_roadmap planning.jpg) assigned to specific sprints. For each sprint planning we pulled the items from the roadmap onto the [Scrum board for current sprint planning](../../Pictures/Task%20Board.jpg). In addition, as the product backlog of stories continued to grow the team created a [product roadmap for release 1 and release 2](../../Diagrams/MedExplorer%20Product%20Roadmap.png) (if there were to be a second release). This helped the team with the product owner in deciding what the minimum viable product features were and which could be moved to the second release for future refinement. 
 
 | Backlog Items | Scrum Board |
 | ------------- |:-----------:|
-| ![Backlog](../../Pictures/Sprint3_roadmap planning.jpg) | ![Scrum board](../../Pictures/Task Board.jpg) | 
+| ![Backlog](../../Pictures/Sprint3_roadmap%20planning.jpg) | ![Scrum board](../../Pictures/Task%20Board.jpg) | 
 
 ### Sprint Execution
 During sprint execution we implemented: the user stories and other backlog items (such as research items), continuous integration, feature and usability testing, unit testing, and documentation updates. UX members with the Product Manager elicit user needs and translate needs into backlog items for prioritization to support the next round of sprint planning. Wireframes and style guides were enhanced during each sprint and were used to support the development of the features. 
@@ -41,6 +41,6 @@ During sprint execution we implemented: the user stories and other backlog items
 ### Sprint Review
 During the sprint review we conducted a demonstration of completed work items against defined acceptance criteria, received feedback from the stakeholders, and conducted a [retrospective](../../Pictures/Retrospective.jpg) to improve the process and how we are working together. At each sprint review we reviewed the number of stories completed for each sprint and discussed our overall progress. We had daily goals which were discussed at each Sprint review with the team and stakeholders. Concerns or risks in meeting those goals were discussed with actions taken. Feedback sometimes resulted in capturing additional product backlog items which were added to the product backlog for refinement and prioritization.
 
-Example [product backlog items/stories can be found here](../User-Stories/Sample MedExplorer User Stories.xlsx).
+Example [product backlog items/stories can be found here](../User-Stories/Sample%20MedExplorer%20User%20Stories.xlsx).
 
-You can see more pictures of our Agile development process in action [here] (../../Pictures/Readme.md).
+You can see more pictures of our Agile development process in action [here](../../Pictures/Readme.md).

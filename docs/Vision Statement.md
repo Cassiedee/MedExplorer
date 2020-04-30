@@ -16,4 +16,4 @@
 
 *** 
 ### Draft vision statement / picture...
-![Draft vision statement / picture...](Pictures/Draft Vision Statement.jpg)
+![Draft vision statement / picture...](Pictures/Draft%20Vision%20Statement.jpg)
